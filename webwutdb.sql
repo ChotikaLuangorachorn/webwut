@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2018 at 07:56 AM
+-- Generation Time: Mar 02, 2018 at 08:43 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -52,7 +52,7 @@ CREATE TABLE `event_attendant` (
   `aID` int(11) NOT NULL,
   `flag` varchar(8) NOT NULL,
   `paymentID` int(11) NOT NULL,
-  `qrCode` varchar(255) DEFAULT NULL
+  `qrCode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -63,7 +63,9 @@ CREATE TABLE `event_attendant` (
 
 CREATE TABLE `event_comment` (
   `eventID` int(11) NOT NULL,
-  `comment` varchar(255) DEFAULT NULL
+  `userID` int(11) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -111,7 +113,7 @@ CREATE TABLE `personal_info` (
 CREATE TABLE `personal_message` (
   `fromID` int(11) NOT NULL,
   `toID` int(11) NOT NULL,
-  `message` varchar(255) DEFAULT NULL,
+  `message` varchar(255) NOT NULL,
   `messageType` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -150,7 +152,8 @@ ALTER TABLE `event_attendant`
 -- Indexes for table `event_comment`
 --
 ALTER TABLE `event_comment`
-  ADD PRIMARY KEY (`eventID`);
+  ADD PRIMARY KEY (`eventID`),
+  ADD KEY `event_comment_user_id_fk` (`userID`);
 
 --
 -- Indexes for table `event_requirement`
@@ -228,7 +231,8 @@ ALTER TABLE `event_attendant`
 -- Constraints for table `event_comment`
 --
 ALTER TABLE `event_comment`
-  ADD CONSTRAINT `eventComment_event_eventID_fk` FOREIGN KEY (`eventID`) REFERENCES `event` (`eventID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `eventComment_event_eventID_fk` FOREIGN KEY (`eventID`) REFERENCES `event` (`eventID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `event_comment_user_id_fk` FOREIGN KEY (`userID`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `event_requirement`
