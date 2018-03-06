@@ -9,6 +9,7 @@
 <body>
     <?php
         session_start();
+        //เช็คว่ามี error ไหม
         if (array_key_exists("e", $_GET)) {
             if ($_GET['e']==1) {
                 echo "<p>Incorrect Username and/or Password</p>";
