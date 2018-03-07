@@ -8,14 +8,14 @@
         $pass = $_POST['password'];
 
         include 'connectDB.php';
-        $sql = "SELECT * FROM user WHERE ID=? AND PASSWORD=?";
+        $sql = "SELECT * FROM user WHERE userID=? AND PASSWORD=?";
         $statement = $conn->prepare($sql);
         $statement->execute([$uid, $pass]);
         $user = $statement->fetch(PDO::FETCH_OBJ);
 
         if ($user !== FALSE) {
             //set ตัวแปรใน session ไว้ว่าใคร log in อยู่ และเป็น role อะไร
-            $_SESSION["UID"] = $user->id;
+            $_SESSION["ID"] = $user->id;
             $_SESSION["ROLE"] = $user->role;
             session_write_close();
             //เช็คว่ากด login มาจากหน้าไหนให้กลับไปหน้านั้น
