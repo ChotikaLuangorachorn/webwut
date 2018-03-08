@@ -1,8 +1,8 @@
 <?php
-    include("./config.php");
+    include("./connectDB.php");
     session_start();
     // $uid = $_POST['username'];
-    $uid="user";
+    $uid = "user";
 
     $thaiMonth = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
     // id ของ User ที่ Login
@@ -15,6 +15,7 @@ JOIN user as uf
 ON p.fromID = uf.id
 WHERE ut.userID="'. $uid .'" 
 ORDER BY timestamp DESC';
+
     $statement = $connection->query($query);
 
     while($row = $statement->fetch(PDO::FETCH_ASSOC)) {

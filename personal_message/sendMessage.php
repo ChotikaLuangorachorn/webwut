@@ -1,5 +1,5 @@
 <?php
-	include("./config.php");
+	include("./connectDB.php");
 	session_start();
 	// $uid = $_POST['username'];
 
