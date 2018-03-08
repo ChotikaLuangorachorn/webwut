@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <style>
+    /* background */
       body {
-        background-color: #ebe7db;
+        background-image: url("background.jpg");
+        background-attachment: fixed;
       }
       #banner {
-        background-image: url("Banner.jpg");
+        background-image: url("banner.jpg");
         height: 115px;
         background-size: auto;
         background-repeat: repeat-x;
@@ -28,7 +30,7 @@
       <div class="container">
           <a class="navbar-brand" href="#">
             <img  src="logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
-            <font size="6">WEBWUT <b>Event</b></font>
+            <font size="6" color="#f675b3">WEBWUT <b>Event</b></font>
           </a>
       </div>
     </nav>
