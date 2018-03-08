@@ -1,0 +1,34 @@
+.btn-primary {
+    background-color: #f675b3;
+    border-color: #f675b3;
+}
+
+.btn-primary#add-event {
+    background-color: #61b3cf;
+    border-color: #61b3cf;
+}
+
+.btn-primary:hover,
+.btn-primary#add-event:hover {
+    color: black;
+    background-color: white;
+    border-color: black;
+}
+
+h1.headings {
+    background-color: #f7e881;
+}
+
+div#event-options {
+    background-color: #f39e98;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.event-holder,
+.event-location-wrapper {
+    background-color: rgba(235, 231, 218,0.7);
+}
