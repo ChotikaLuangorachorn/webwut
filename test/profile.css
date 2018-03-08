@@ -1,0 +1,26 @@
+body {
+    background-color: antiquewhite;
+}
+.banner {
+    height: 150px;
+    background-color: aliceblue;
+}
+.content {
+    background-color: white;
+}
+.padding-top {
+    padding-top: 50px;
+}
+figure {
+    display: block;
+    width: 100%;
+    margin: 20px; /* adjust as needed */
+    text-align: center;
+}
+figure img {
+    vertical-align: top;
+    border: 1px solid black;
+}
+figure figcaption {
+    text-align: center;
+}

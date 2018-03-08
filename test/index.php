@@ -10,7 +10,9 @@
     <?php
         include 'checkLogin.php';
         if ($LOGGEDIN) {
-            if ($_SESSION['ROLE']=='administrator') {
+            if ($_SESSION['ROLE']=='AD') {
+                //ถ้า log in แล้ว แต่ role เป็น admin ให้ย้ายไปหน้าแรกของ admin
+                //organizer ด้วย แต่ในนี้ยังไม่ได้ทำ
                 header('location:admin.php');
             }
             echo "You are logged in as ".$_SESSION['UID'];
