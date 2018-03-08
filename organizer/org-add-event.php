@@ -29,30 +29,51 @@ require_once 'header.php' ?>
     <!-- Wrapper -->
     <div class="event-location-wrapper p-4">
         <!-- form -->
-        <form class="col-10 offset-1">
+        <form class="col-10 offset-1 needs-validation" novalidate>
+            <!-- Event Name -->
             <div class="form-group row">
                 <label for="event-name" class="col-sm-3 col-form-label">Event Name</label>
-                <input type="email" class="col-sm-8 form-control" id="event-name"
-                       placeholder="Name">
+                <input type="text" class="col-sm-8 form-control" id="event-name"
+                       placeholder="Name" required>
+                <div class="invalid-feedback">
+                    Please fill an event name.
+                </div>
             </div>
+            <!-- Type of Event -->
             <div class="form-group row align-items-center">
                 <label class="col-sm-3 col-form-label" for="event-selector">Type of
                     Event</label>
-                <select class="col-sm-3 custom-select" id="event-selector">
-                    <option selected>Choose...</option>
+                <select class="col-sm-3 custom-select" id="event-selector" required>
+                    <option value="">Choose...</option>
                     <option value="c">Conference</option>
                     <option value="e">Entertainment</option>
                     <option value="s">Seminar</option>
                     <option value="t">Trade Fair</option>
                 </select>
+                <div class="invalid-feedback">
+                    Please select a type of event.
+                </div>
             </div>
+            <!-- Entries -->
             <div class="form-group row">
                 <label for="max-entries" class="col-sm-3 col-form-label">Maximum
                     Entries</label>
                 <input type="number" class="col-sm-3 form-control" id="max-entries"
-                       placeholder="Entries" min="1" max="999">
+                       placeholder="Entries" min="1" max="999" required>
+                <div class="invalid-feedback">
+                    Please specify a maximum entries.
+                </div>
             </div>
-
+            <!-- Event Thumbnail -->
+            <div class="form-group row">
+                <label for="event-thumbnail" class="col-sm-3 col-form-label">Event Thumbnail</label>
+                <input type="file" class="col-sm-6" id="event-thumbnail" accept="image/*">
+            </div>
+            <!-- Event Description -->
+            <div class="form-group row">
+                <label for="event-description" class="col-sm-3 col-form-label">Event Description</label>
+                <textarea class="col-sm-9 form-control" id="event-description" rows="4"></textarea>
+            </div>
             <!-- Location -->
             <div class="form-group row">
                 <!-- Auto Complete -->
@@ -63,6 +84,17 @@ require_once 'header.php' ?>
                            placeholder="Enter your address..."
                            onFocus="geolocate()" type="text">
                     <div class="row container">
+                        <!-- Location Name -->
+                        <div class="form-group row col-12 mb-4">
+                            <label for="premise"
+                                   class="col-lg-2 col-form-label">Location Name</label>
+                            <input type="text" class="col-lg-10 form-control"
+                                   id="premise"
+                                   placeholder="Location Name" required>
+                            <div class="invalid-feedback">
+                                Please fill a location name.
+                            </div>
+                        </div>
                         <!-- House No/ Village, Road -->
                         <div class="form-group row col-12 mb-4">
                             <label for="street_number" class="col-lg-2 col-form-label">House
@@ -116,7 +148,7 @@ require_once 'header.php' ?>
                     <button type="submit" class="btn btn-primary m-1" id="add-event">Add
                         Event
                     </button>
-                    <button type="submit" class="btn btn-primary m-1">Discard</button>
+                    <button type="submit" class="btn btn-primary m-1" id="discard-event">Discard</button>
                 </div>
             </div>
             <!-- /.form -->
@@ -139,6 +171,8 @@ require_once 'header.php' ?>
         crossorigin="anonymous"></script>
 <!-- Header Script -->
 <script src="headerjs.js"></script>
+<!-- Event Validator-->
+<script src="event-validator.js"></script>
 <!-- Auto Address Script -->
 <script src="auto-address.js"></script>
 <!-- Google Maps JS API -->
