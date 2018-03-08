@@ -1,0 +1,72 @@
+body {
+    background-color: antiquewhite;
+}
+.banner {
+    height: 150px;
+    background-color: aliceblue;
+}
+.content {
+    background-color: white;
+}
+.padding-top {
+    padding-top: 50px;
+}
+.text-centered {
+    text-align: center;
+}
+figure {
+    display: block;
+    width: 100%;
+    margin: 20px; /* adjust as needed */
+    text-align: center;
+}
+figure img {
+    vertical-align: top;
+    border: 1px solid black;
+}
+figure figcaption {
+    text-align: center;
+}
+
+.table-header {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.table-header > * {
+    background-color: #f7e881;
+    border: 1px solid black;
+    border-right: 0px;
+}
+
+.table-header > *:last-child {
+    border-right: 1px solid black;
+}
+
+
+.table-row > * {
+    background-color: #ebe7da;
+    border: 1px solid black;
+    border-top: 0px;
+    border-right: 0px;
+}
+
+.table-row > *:last-child {
+    border-right: 1px solid black;
+}
+
+.row-with-centered-col > *{
+    float: none;
+}
+
+.row-with-centered-col > *:first-child{
+    margin-left: auto;
+}
+
+.row-with-centered-col > *:last-child{
+    margin-right: auto;
+}
+
+no-event {
+    display: block;
+}

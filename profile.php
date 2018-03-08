@@ -1,6 +1,6 @@
 <?php
     // include 'checkLogin.php';
-    include '../header.php'; 
+    include 'header.php'; 
     $ISOWNER = FALSE;
     if ($LOGGEDIN) {
         $ROLE = $_SESSION['ROLE'];
@@ -19,12 +19,12 @@
         }
     } else {
         if (!array_key_exists('user', $_GET)) {
-            header('location:/test_profile/oops.html');
+            header('location:oops.html');
         }
         $USER = $_GET['user'];
     }
 
-    include 'connectDB.php';
+    include 'services/connectDB.php';
     if (isset($conn)) {
         $sql = "SELECT * FROM personal_info WHERE userID=?";
 
@@ -48,7 +48,7 @@
     <title>Document</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
     <?php ?>
@@ -59,7 +59,7 @@
         <div class="row">
             <div class="col-md-4 col-12">
                 <figure>
-                    <img src="<?php if ($info->image) echo $info->image; else echo "image/nopic.png"; ?>" style="border-radius: 25px; padding: 10px;" width="200" height="250">
+                    <img src="assets/user/<?php if ($info->image) echo $info->image; else echo "assets/user/nopic.png"; ?>" style="border-radius: 25px; padding: 10px;" width="200" height="250">
                     <figcaption>
                         <form action="services/updateProfile.php" method="post" enctype="multipart/form-data">
                             <label class="btn btn-outline-primary" for="image">อัพโหลดรูป Profile<input type="file" name="image" id="image" accept="image/*" hidden onchange="form.submit();"></label>

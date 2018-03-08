@@ -12,11 +12,11 @@
     <style>
     /* background */
       body {
-        background-image: url("imageHeader/background.jpg");
+        background-image: url("assets/image/background.jpg");
         background-attachment: fixed;
       }
       #banner {
-        background-image: url("imageHeader/banner.jpg");
+        background-image: url("assets/image/banner.jpg");
         height: 115px;
         background-size: auto;
         background-repeat: repeat-x;
@@ -35,7 +35,7 @@
     <nav class="navbar navbar-light" style="background-color: white;">
       <div class="container">
           <a class="navbar-brand" href="#">
-            <img  src="imageHeader/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
+            <img  src="assets/image/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
             <font size="6" color="#f675b3">WEBWUT <b>Event</b></font>
           </a>
           <?php 
