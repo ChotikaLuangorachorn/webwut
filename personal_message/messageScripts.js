@@ -1,4 +1,7 @@
 $(document).ready(function(e){
+	$(".btnDeleteFile").hide();
+
+// display msg
 	function displayInbox(){
 		$.ajax({
 			url: 'inbox.php',
@@ -17,35 +20,63 @@ $(document).ready(function(e){
 			}
 		});
 	}
-	setInterval(function(){displayInbox();displaySentBox();},1000);
+	setInterval(function(){
+		displayInbox();
+		displaySentBox();
+	},1000);
 
+// show image after select image file.
+	$("#file").change(function(){
+		readURL(this);
+		console.log(this);
+	})
+	function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+
+	    reader.onload = function(e) {
+	    	$('#preview').attr('src', e.target.result);
+	    	$(".btnDeleteFile").show();
+	    }
+
+	    reader.readAsDataURL(input.files[0]);
+
+	  }
+	}
+
+// send form(reviever, msg, image file) + upload image
 	$("#message-sender").ajaxForm({
 		url: "sendMessage.php",
 		type: "post",
 		success: function(response){
 			console.log(response);
 			if (response == "true"){
-				// Get the snackbar DIV
 			    $('#snackbar').text('ข้อความถูกส่งแล้ว');
 			    document.getElementById('toID').value = '';
 				document.getElementById('msg-box').value = '';
-				document.getElementById("snackbar").style.backgroundColor ="#00cc00";
+				document.getElementById("file").value = '';
+				document.getElementById("snackbar").style.backgroundColor ="#61cf6a";
+				
 			}else if (response == "false"){
 				$('#snackbar').text('User ID ไม่ถูกต้อง');
-				document.getElementById("snackbar").style.backgroundColor ="red";
+				document.getElementById("snackbar").style.backgroundColor = "#ff5432";
 			}else{
 				$('#snackbar').text('กรอกข้อมูลไม่ครบถ้วน');
-				document.getElementById("snackbar").style.backgroundColor ="red";
+				document.getElementById("snackbar").style.backgroundColor = "#ff5432";
 			}
 
+			// snackbar: alert sending msg 
 			var x = document.getElementById("snackbar");
-
-		    // Add the "show" class to DIV
 		    x.className = "show";
-
-		    // After 3 seconds, remove the show class from DIV
 		    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 		}
+	})
+
+// delete button for delete image is select
+	$('.btnDeleteFile').click(function(e) {
+		document.getElementById("file").value = '';
+		$('#preview').attr('src', '');
+		$(".btnDeleteFile").hide();
 	})
 
 	// $('#send').click(function(e) {

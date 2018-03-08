@@ -6,59 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Index Page</title>
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="messageStyle.css">
 </head>
 <body>    
-<div class="container" role="main">
-    <h1 class="jumbotron">Testing CSS</h1>
+    <div class="container" role="main">
+        <h1 class="jumbotron">Testing CSS</h1>
 
-    <div class="row" id="msg-form">
-        <div class="col">
-            <form id="message-sender" enctype="multipart/form-data">
-                Send to: <input name="toID" type="text" id="toID" placeholder="User ID"><br><br>
-                <textarea name="msg" id="msg-box" placeholder="Enter your message"></textarea><br>
-                <input name="file" type="file" id="file" accept="image/*">
-                <button class="btn btn-info" id="send">Send</button>
-            </form><br>
+        <div class="row" id="msg-form">
+            <div class="col-12">
+                <form id="message-sender" enctype="multipart/form-data">
+                    <!-- user name -->
+                    <span>ผู้รับ: </span><input name="toID" type="text" id="toID" placeholder="User ID ของผู้รับ"><br><br>
+
+                    <!-- Enter Message -->
+                    <textarea name="msg" id="msg-box" placeholder="ข้อความที่ต้องการส่ง"></textarea><br>
+
+                    <!-- attach image file -->
+                    <label class="btnFile">อัพโหลดรูปภาพ<input name="file" type="file" id="file" accept="image/*" hidden></label>
+
+                    <!-- send button -->
+                    <button class="btnSend" id="send">ส่ง</button>
+                    
+                    <!-- show preview image -->
+                    <div class="col-xs-12">
+                        <img width="30%" id="preview" src="">
+                    </div>
+                </form>
+                <button class="btnDeleteFile">ลบรูปภาพ</button>
+            </div>
         </div>
+
+        <!-- snackbar: alert sending msg -->
+        <div id="snackbar"></div>
+        
+        <!-- display msg -->
+        <div class="row" id="displayMessage">
+            <div class="col-xs-12 col-lg-6">
+                ข้อความส่งถึงคุณ
+                <div id="inbox"></div>
+            </div>
+            <div class="col-xs-12 col-lg-6">
+                ข้อความที่ส่งแล้ว
+                <div id="sentBox"></div>
+            </div>
+        </div>
+
     </div>
 
-    <div id="snackbar">ข้อความถูกส่งแล้ว</div>
-    <div class="row">
-        <div class="col-6" style="text-align: center;">
-            Inbox
-        </div>
-        <div class="col-6" style="text-align: center;">
-            Sent Message
-        </div>
-    </div>
-    <div class="row" id="displayMessage">
-        <div class="col-6">
-            <div id="inbox"></div>
-        </div>
-        <div class="col-6">
-            <div id="sentBox"></div>
-        </div>
-    </div>
 
+    <!-- Loading Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
 
-
-</div>
-
-
-<!-- Loading Scripts -->
-<!-- Bootstrap core JavaScript -->
-<!-- JQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
-
-<script src="scripts.js"></script>
+    <script src="messageScripts.js"></script>
 </body>
 </html>
