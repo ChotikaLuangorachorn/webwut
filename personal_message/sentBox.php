@@ -1,5 +1,8 @@
 <?php
     include("./config.php");
+    session_start();
+    // $uid = $_POST['username'];
+
     $thaiMonth = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
     // id ของ User ที่ Login
     $statement = $connection->query('SELECT * FROM personal_message WHERE fromID="1" ORDER BY timestamp DESC');

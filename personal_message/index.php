@@ -1,3 +1,6 @@
+<?php
+    include("header.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +11,12 @@
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="messageStyle.css">
+    
 </head>
-<body>    
+<body>   
     <div class="container" role="main">
-        <h1 class="jumbotron">Testing CSS</h1>
+        
+        <!-- <link rel="import" href="header.php"> -->
 
         <div class="row" id="msg-form">
             <div class="col-12">

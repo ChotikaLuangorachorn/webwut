@@ -55,6 +55,8 @@ $(document).ready(function(e){
 			    document.getElementById('toID').value = '';
 				document.getElementById('msg-box').value = '';
 				document.getElementById("file").value = '';
+				$('#preview').attr('src', '');
+				$(".btnDeleteFile").hide();
 				document.getElementById("snackbar").style.backgroundColor ="#61cf6a";
 				
 			}else if (response == "false"){

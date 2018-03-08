@@ -1,8 +1,19 @@
 <?php
     include("./config.php");
-     $thaiMonth = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+    session_start();
+    // $uid = $_POST['username'];
+
+    $thaiMonth = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
     // id ของ User ที่ Login
     $statement = $connection->query('SELECT * FROM personal_message WHERE toID="1" ORDER BY timestamp DESC');
+//     $statement = $connection->query('SELECT p.*, ut.userID as toUserID, uf.userID as fromUserID FROM personal_message as p
+// JOIN user as ut
+// ON p.toID = ut.id
+// JOIN user as uf
+// ON p.fromID = uf.id
+// WHERE toID="1" 
+// ORDER BY timestamp DESC');
+
     while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         // set day, time format
         $day = date('j',strtotime($row['timestamp']));

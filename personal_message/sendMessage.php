@@ -1,5 +1,8 @@
 <?php
 	include("./config.php");
+	session_start();
+	// $uid = $_POST['username'];
+
 	$statement = $connection->query('SELECT CURRENT_TIMESTAMP');
 	$timestamp = $statement->fetchAll(PDO::FETCH_OBJ)[0]->CURRENT_TIMESTAMP;
 
@@ -40,6 +43,9 @@
 				$query = $connection->exec(
 					"INSERT INTO personal_message (`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ('$fromID', '$toID', '$msg', '$target_file', '$timestamp')");
 
+// INSERT INTO `personal_message`(`fromID`, `toID`, `message`, `filePath`, `timestamp`) 
+// VALUES ((select id from user where userID="fromUserID"),(select id from user where userID="toUserID"),
+//     "message","filepath",CURRENT_TIMESTAMP)
 				if ($query){
 					echo "true";
 					// save file to folder + upload image
@@ -57,6 +63,9 @@
 	    if ($toID!="" && $msg!=""){
 			$query = $connection->exec(
 				"INSERT INTO personal_message (`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ('$fromID', '$toID', '$msg', '', '$timestamp')");
+// INSERT INTO `personal_message`(`fromID`, `toID`, `message`, `filePath`, `timestamp`) 
+// VALUES ((select id from user where userID="fromUserID"),(select id from user where userID="toUserID"),
+//     "message","filepath",CURRENT_TIMESTAMP)
 			if ($query){
 				echo "true";
 			} else{
