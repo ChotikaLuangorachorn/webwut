@@ -2,7 +2,7 @@
 // Check if image file is a actual image or fake image
 session_start();
 if(isset($_FILES["image"])) {
-    $UID = $_SESSION["UID"];
+    $UID = $_SESSION["ID"];
     $target_dir = "image/";
     $imageFileType = strtolower(pathinfo($_FILES["image"]["name"],PATHINFO_EXTENSION));
     $target_file = $target_dir . "profile-".$UID.".".$imageFileType;

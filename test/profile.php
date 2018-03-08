@@ -134,6 +134,11 @@
             }
             else {
                 soon.push(event);
+                $("#upcoming-events").append(`<div class="row table-row row-with-centered-col">
+                <div class="col-5 text-centered">`+event.eventName+`</div>
+                <div class="col-3 text-centered">`+event.location+`</div>
+                <div class="col-11 text-centered">`+date+`</div>
+                </div>`);
             }
         }
         if (past.length > 0) {

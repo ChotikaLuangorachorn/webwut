@@ -1,3 +1,4 @@
+<?php include 'php/checkLogin.php' ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,6 +38,14 @@
             <img  src="imageHeader/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
             <font size="6" color="#f675b3">WEBWUT <b>Event</b></font>
           </a>
+          <?php 
+          if ($LOGGEDIN) {
+            $ID = $_SESSION['ID'];
+            echo "Welcome, ". $ID;
+          } else {
+            echo "You are not logged in";
+          }
+          ?>
       </div>
     </nav>
     <div id="fake-navbar"></div>

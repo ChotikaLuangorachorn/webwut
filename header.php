@@ -1,3 +1,4 @@
+<?php include 'services/checkLogin.php' ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,14 +12,19 @@
     <style>
     /* background */
       body {
-        background-image: url("background.jpg");
+        background-image: url("imageHeader/background.jpg");
         background-attachment: fixed;
       }
       #banner {
-        background-image: url("banner.jpg");
+        background-image: url("imageHeader/banner.jpg");
         height: 115px;
         background-size: auto;
         background-repeat: repeat-x;
+      }
+      #fake-navbar {
+        height: 76px;
+        width: 100%;
+        display: none;
       }
     </style>
   </head>
@@ -29,11 +35,20 @@
     <nav class="navbar navbar-light" style="background-color: white;">
       <div class="container">
           <a class="navbar-brand" href="#">
-            <img  src="logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
+            <img  src="imageHeader/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
             <font size="6" color="#f675b3">WEBWUT <b>Event</b></font>
           </a>
+          <?php 
+          if ($LOGGEDIN) {
+            $ID = $_SESSION['ID'];
+            echo "Welcome, ". $ID;
+          } else {
+            echo "You are not logged in";
+          }
+          ?>
       </div>
     </nav>
+    <div id="fake-navbar"></div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -43,10 +58,12 @@
 
     <script>
       $(window).scroll(function(){
-          if ($(window).scrollTop() == 0) {
+          if ($(window).scrollTop() < 116) {
               $(".navbar").removeClass("fixed-top");
+              $("#fake-navbar").hide();
           } else {
               $(".navbar").addClass("fixed-top");
+              $("#fake-navbar").show();
           }
       });
     </script>

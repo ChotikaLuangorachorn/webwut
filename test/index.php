@@ -15,7 +15,7 @@
                 //organizer ด้วย แต่ในนี้ยังไม่ได้ทำ
                 header('location:admin.php');
             }
-            echo "You are logged in as ".$_SESSION['UID'];
+            echo "You are logged in as ".$_SESSION['ID'];
         } else {
             echo "<a href='login.php'>login</a>";
         }
