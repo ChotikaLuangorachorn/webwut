@@ -58,9 +58,11 @@ $(document).ready(function(e){
 				$('#preview').attr('src', '');
 				$(".btnDeleteFile").hide();
 				document.getElementById("snackbar").style.backgroundColor ="#61cf6a";
-				
 			}else if (response == "false"){
 				$('#snackbar').text('Invalid user ID');
+				document.getElementById("snackbar").style.backgroundColor = "#ff5432";
+			}else if (response == "not ID"){
+				$('#snackbar').text('Please enter user ID');
 				document.getElementById("snackbar").style.backgroundColor = "#ff5432";
 			}else{
 				$('#snackbar').text('Fill in not complete');
