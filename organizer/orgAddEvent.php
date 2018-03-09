@@ -1,4 +1,10 @@
-<?php
+<?php session_start();
+if (isset($_SESSION["event-data"])) {
+    echo var_dump($_SESSION["event-data"]);
+}
+if (isset($_SESSION["event-thumbnail"])) {
+    echo $_SESSION["event-thumbnail"]["name"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +26,7 @@
 <body>
 
 <?php // header
-require_once 'header.php' ?>
+require_once "header.php" ?>
 
 <!-- Page Content -->
 <div class="container-fluid">
@@ -29,11 +35,24 @@ require_once 'header.php' ?>
     <!-- Wrapper -->
     <div class="event-location-wrapper p-4">
         <!-- form -->
-        <form class="col-10 offset-1 needs-validation" method="get"
+        <form class="col-10 offset-1 needs-validation" method="post"
+              enctype="multipart/form-data"
               action="eventAppender.php" novalidate>
+            <!-- Event Thumbnail -->
+            <div class="form-group row">
+                <label for="event-thumbnail" class="col-sm-3 col-form-label">Event
+                    Thumbnail:</label>
+                <input type="file" id="event-thumbnail"
+                       name="event-thumbnail" accept=".jpg, .png">
+                <button type="submit" class="btn btn-primary m-1" id="upload-image-btn"
+                        name="upload-image-btn">
+                    Upload Image
+                </button>
+            </div>
             <!-- Event Name -->
             <div class="form-group row">
-                <label for="event-name" class="col-sm-3 col-form-label">Event Name:</label>
+                <label for="event-name" class="col-sm-3 col-form-label">Event
+                    Name:</label>
                 <input type="text" class="col-sm-8 form-control" id="event-name"
                        name="event-name"
                        placeholder="Name" required>
@@ -56,13 +75,6 @@ require_once 'header.php' ?>
                 <div class="invalid-feedback offset-sm-3">
                     Please select a type of the event.
                 </div>
-            </div>
-            <!-- Event Thumbnail -->
-            <div class="form-group row">
-                <label for="event-thumbnail" class="col-sm-3 col-form-label">Event
-                    Thumbnail:</label>
-                <input type="file" class="col-sm-6" id="event-thumbnail"
-                       name="event-thumbnail" accept="image/*">
             </div>
             <!-- Event Description -->
             <div class="form-group row">
@@ -96,13 +108,13 @@ require_once 'header.php' ?>
                     <div class="col-sm-4 input-group p-0">
                         <div class="custom-control custom-checkbox m-2">
                             <input type="checkbox" class="custom-control-input"
-                                   id="age-checkbox">
+                                   id="age-checkbox" name="age" value="0" checked>
                             <label class="custom-control-label"
-                                   for="age-checkbox">Age</label>
+                                   for="age-checkbox">Any Age</label>
                         </div>
                         <input type="number" class="form-control" id="age"
                                name="age"
-                               placeholder="Age" min="12" max="130" required>
+                               placeholder="Age" min="12" max="130" required disabled>
                         <div class="invalid-feedback">
                             Please specify a proper minimum age. (12-130)
                         </div>
@@ -110,12 +122,14 @@ require_once 'header.php' ?>
                     <!-- Gender -->
                     <div class="col-sm-7 offset-sm-1 input-group p-0">
                         <div class="form-check form-check-inline">
-                            <label class="form-check-label" for="all-gender">Gender:</label>
+                            <label class="form-check-label"
+                                   for="all-gender">Gender:</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="gender"
                                    id="all-gender" value="a" checked>
-                            <label class="form-check-label" for="all-gender">All Gender</label>
+                            <label class="form-check-label" for="all-gender">All
+                                Gender</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="gender"
@@ -138,14 +152,15 @@ require_once 'header.php' ?>
                 <div class="col-sm-3 input-group p-0">
                     <div class="custom-control custom-checkbox m-2">
                         <input type="checkbox" class="custom-control-input"
-                               id="attending-cost-free-checkbox">
+                               id="attending-cost-free-checkbox" name="attending-cost"
+                               value="0" checked>
                         <label class="custom-control-label"
                                for="attending-cost-free-checkbox">Free</label>
                     </div>
                     <input type="number" class="form-control"
                            id="attending-cost"
                            name="attending-cost"
-                           min="1" placeholder="Price" required>
+                           min="1" placeholder="Price" required disabled>
                     <div class="input-group-append">
                         <div class="input-group-text">฿</div>
                     </div>
@@ -260,11 +275,14 @@ require_once 'header.php' ?>
             <!-- Submit -->
             <div class="form-group row col-sm-8 offset-sm-2">
                 <div class="col-centered">
-                    <button type="submit" class="btn btn-primary m-1" id="add-event">Add
+                    <button type="submit" class="btn btn-primary m-1" id="add-event-btn">
+                        Add
                         Event
                     </button>
-                    <button type="button" class="btn btn-primary m-1" id="discard-event">
-                        Discard
+                    <button type="button" class="btn btn-secondary m-1"
+                            id="discard-event-btn"
+                            onclick="window.location.replace('orgHomepage.php')">
+                        Cancel
                     </button>
                 </div>
             </div>
@@ -300,3 +318,5 @@ require_once 'header.php' ?>
 <script src="event-checkbox.js"></script>
 </body>
 </html>
+
+

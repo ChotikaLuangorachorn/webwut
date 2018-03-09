@@ -3,13 +3,25 @@
     border-color: #f675b3;
 }
 
-.btn-primary#add-event {
+.btn-primary#add-event-btn {
     background-color: #61b3cf;
     border-color: #61b3cf;
 }
 
+.btn-primary#upload-image-btn {
+    background-color: #f7e881;
+    border-color: #f7e881;
+}
+
+.btn-secondary {
+    background-color: #df8a83;
+    border-color: #df8a83;
+}
+
 .btn-primary:hover,
-.btn-primary#add-event:hover {
+.btn-secondary:hover,
+.btn-primary#add-event-btn:hover,
+.btn-primary#upload-image-btn:hover {
     color: black;
     background-color: white;
     border-color: black;
@@ -30,5 +42,5 @@ div#event-options {
 
 .event-holder,
 .event-location-wrapper {
-    background-color: rgba(235, 231, 218,0.7);
+    background-color: rgba(235, 231, 218, 0.7);
 }

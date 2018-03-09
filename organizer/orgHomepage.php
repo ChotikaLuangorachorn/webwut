@@ -1,4 +1,10 @@
-<?php
+<?php session_start();
+if (isset($_SESSION["event-data"])) {
+    echo var_dump($_SESSION["event-data"]);
+}
+if (isset($_SESSION["event-thumbnail"])) {
+    echo $_SESSION["event-thumbnail"]["name"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +25,7 @@
 </head>
 <body>
 
-<?php require_once 'header.php' ?>
+<?php require_once "header.php" ?>
 
 <!-- Page Content -->
 <div class="container-fluid">
@@ -33,7 +39,7 @@
     <div class="row">
         <!-- Add Events Button-->
         <div class="col-md-3 p-4">
-            <a class="btn btn-primary btn-lg btn-block p-3" id="add-event"
+            <a class="btn btn-primary btn-lg btn-block p-3" id="add-event-btn"
                href="orgAddEvent.php">Add Event</a>
         </div>
         <!-- Events holder-->
