@@ -13,9 +13,13 @@
     <link rel="stylesheet" type="text/css" href="adminStyle.css">
     
 </head>
-<body>   
+<body>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
+        <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+    </div>
     <div class="container" role="main">
-     
 
     </div>
 
