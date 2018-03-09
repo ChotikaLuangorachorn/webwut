@@ -1,5 +1,5 @@
 $(document).ready(function () {
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+// JavaScript for disabling form submissions if there are invalid fields
     (function () {
         'use strict';
         window.addEventListener('load', function () {

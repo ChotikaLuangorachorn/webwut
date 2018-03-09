@@ -34,7 +34,7 @@
         <!-- Add Events Button-->
         <div class="col-md-3 p-4">
             <a class="btn btn-primary btn-lg btn-block p-3" id="add-event"
-               href="org-add-event.php">Add Event</a>
+               href="orgAddEvent.php">Add Event</a>
         </div>
         <!-- Events holder-->
         <div class="col-md-9 mx-auto p-4 container-fluid row">

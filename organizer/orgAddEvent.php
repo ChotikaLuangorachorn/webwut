@@ -29,13 +29,13 @@ require_once 'header.php' ?>
     <!-- Wrapper -->
     <div class="event-location-wrapper p-4">
         <!-- form -->
-        <form class="col-10 offset-1 needs-validation" novalidate>
+        <form class="col-10 offset-1 needs-validation" method="post" action="eventAppender.php" novalidate>
             <!-- Event Name -->
             <div class="form-group row">
                 <label for="event-name" class="col-sm-3 col-form-label">Event Name</label>
-                <input type="text" class="col-sm-8 form-control" id="event-name"
+                <input type="text" class="col-sm-8 form-control" id="event-name" name="event-name"
                        placeholder="Name" required>
-                <div class="invalid-feedback">
+                <div class="invalid-feedback offset-sm-3">
                     Please fill an event name.
                 </div>
             </div>
@@ -43,36 +43,42 @@ require_once 'header.php' ?>
             <div class="form-group row align-items-center">
                 <label class="col-sm-3 col-form-label" for="event-selector">Type of
                     Event</label>
-                <select class="col-sm-3 custom-select" id="event-selector" required>
+                <select class="col-sm-3 custom-select" id="event-selector" name="event-selector" required>
                     <option value="">Choose...</option>
                     <option value="c">Conference</option>
                     <option value="e">Entertainment</option>
                     <option value="s">Seminar</option>
                     <option value="t">Trade Fair</option>
                 </select>
-                <div class="invalid-feedback">
-                    Please select a type of event.
+                <div class="invalid-feedback offset-sm-3">
+                    Please select a type of the event.
                 </div>
             </div>
             <!-- Entries -->
             <div class="form-group row">
                 <label for="max-entries" class="col-sm-3 col-form-label">Maximum
                     Entries</label>
-                <input type="number" class="col-sm-3 form-control" id="max-entries"
+                <input type="number" class="col-sm-3 form-control" id="max-entries" name="max-entries"
                        placeholder="Entries" min="1" max="999" required>
-                <div class="invalid-feedback">
+                <div class="invalid-feedback offset-sm-3">
                     Please specify a maximum entries.
                 </div>
             </div>
             <!-- Event Thumbnail -->
             <div class="form-group row">
-                <label for="event-thumbnail" class="col-sm-3 col-form-label">Event Thumbnail</label>
-                <input type="file" class="col-sm-6" id="event-thumbnail" accept="image/*">
+                <label for="event-thumbnail" class="col-sm-3 col-form-label">Event
+                    Thumbnail</label>
+                <input type="file" class="col-sm-6" id="event-thumbnail" name="event-thumbnail" accept="image/*">
             </div>
             <!-- Event Description -->
             <div class="form-group row">
-                <label for="event-description" class="col-sm-3 col-form-label">Event Description</label>
-                <textarea class="col-sm-9 form-control" id="event-description" rows="4"></textarea>
+                <label for="event-description" class="col-sm-3 col-form-label">Event
+                    Description</label>
+                <textarea class="col-sm-9 form-control" id="event-description" name="event-description"
+                          rows="4" required></textarea>
+                <div class="invalid-feedback offset-sm-3">
+                    Please describe a description about the event.
+                </div>
             </div>
             <!-- Location -->
             <div class="form-group row">
@@ -80,7 +86,7 @@ require_once 'header.php' ?>
                 <label for="autocomplete-address"
                        class="col-sm-3 col-form-label">Location</label>
                 <div id="location-field" class="col-sm-9 px-0">
-                    <input id="autocomplete-address" class="form-control mb-4"
+                    <input id="autocomplete-address" name="autocomplete-address" class="form-control mb-4"
                            placeholder="Enter your address..."
                            onFocus="geolocate()" type="text">
                     <div class="row container">
@@ -89,9 +95,9 @@ require_once 'header.php' ?>
                             <label for="premise"
                                    class="col-lg-2 col-form-label">Location Name</label>
                             <input type="text" class="col-lg-10 form-control"
-                                   id="premise"
+                                   id="premise" name="premise"
                                    placeholder="Location Name" required>
-                            <div class="invalid-feedback">
+                            <div class="invalid-feedback offset-lg-2">
                                 Please fill a location name.
                             </div>
                         </div>
@@ -100,55 +106,75 @@ require_once 'header.php' ?>
                             <label for="street_number" class="col-lg-2 col-form-label">House
                                 Number</label>
                             <input type="text" class="col-lg-2 form-control"
-                                   id="street_number"
+                                   id="street_number" name="street_number"
                                    placeholder="House No.">
                             <label for="route" class="col-lg-2 col-form-label">Road
                                 Address</label>
-                            <input type="text" class="col-lg-6 form-control" id="route"
-                                   placeholder="Road Address">
+                            <input type="text" class="col-lg-6 form-control" id="route" name="route"
+                                   placeholder="Road Address" required>
+                            <div class="invalid-feedback col-lg-6 offset-lg-6">
+                                Please fill a road address name.
+                            </div>
                         </div>
                         <!-- Subdistrict, District -->
                         <div class="form-group row col-12 mb-4">
                             <label for="sublocality_level_2"
                                    class="col-lg-2 col-form-label">Subdistrict</label>
                             <input type="text" class="col-lg-4 form-control"
-                                   id="sublocality_level_2"
-                                   placeholder="Subdistrict">
+                                   id="sublocality_level_2" name="sublocality_level_2"
+                                   placeholder="Subdistrict" required>
+                            <div class="invalid-feedback offset-lg-2">
+                                Please fill a subdiestrict name.
+                            </div>
                             <label for="sublocality_level_1"
                                    class="col-lg-2 col-form-label">District</label>
                             <input type="text" class="col-lg-4 form-control"
-                                   id="sublocality_level_1"
-                                   placeholder="District">
+                                   id="sublocality_level_1" name="sublocality_level_1"
+                                   placeholder="District" required>
+                            <div class="invalid-feedback offset-lg-2">
+                                Please fill a district name.
+                            </div>
                         </div>
                         <!-- City -->
                         <div class="form-group row col-12 mb-4">
                             <label for="administrative_area_level_1"
                                    class="col-lg-2 col-form-label">City</label>
                             <input type="text" class="col-lg-10 form-control"
-                                   id="administrative_area_level_1"
-                                   placeholder="City">
+                                   id="administrative_area_level_1" name="administrative_area_level_1"
+                                   placeholder="City" required>
+                            <div class="invalid-feedback offset-lg-2">
+                                Please fill a city name.
+                            </div>
                         </div>
                         <!-- Postal code, Country -->
                         <div class="form-group row col-12 mb-4">
                             <label for="postal_code" class="col-lg-2 col-form-label">Postal
                                 Code</label>
                             <input type="number" class="col-lg-2 form-control"
-                                   id="postal_code"
-                                   placeholder="Postal Code">
+                                   id="postal_code" name="postal_code"
+                                   placeholder="Postal Code" required>
                             <label for="country"
                                    class="col-lg-2 col-form-label">Country</label>
-                            <input type="text" class="col-lg-6 form-control" id="country"
-                                   placeholder="Country">
+                            <input type="text" class="col-lg-6 form-control" id="country" name="country"
+                                   placeholder="Country" required>
+                            <div class="invalid-feedback col-lg-2 offset-lg-2">
+                                Please fill a postal code.
+                            </div>
+                            <div class="invalid-feedback col-lg-6 offset-lg-2">
+                                Please fill a country name.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="form-group row col-sm-8 offset-2">
+            <div class="form-group row col-sm-8 offset-sm-2">
                 <div class="col-centered">
                     <button type="submit" class="btn btn-primary m-1" id="add-event">Add
                         Event
                     </button>
-                    <button type="submit" class="btn btn-primary m-1" id="discard-event">Discard</button>
+                    <button type="button" class="btn btn-primary m-1" id="discard-event">
+                        Discard
+                    </button>
                 </div>
             </div>
             <!-- /.form -->
