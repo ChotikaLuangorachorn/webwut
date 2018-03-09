@@ -21,23 +21,23 @@
             session_write_close();
             //เช็คว่ากด login มาจากหน้าไหนให้กลับไปหน้านั้น
             //ถ้าไม่ได้บอกไว้ให้ไปหน้าแรกของแต่ละ Role
-            // if (array_key_exists("PREV", $_SESSION)) {
-            //     // header("location:".$_SESSION["PREV"]);
-            //     echo 'PREV';
-            // } else {
-            //     if ($user->role == 'AT') {
-            //         // header("location:index.php");
-            //         echo 'Welcome Attendant !';
-            //     }
-            //     if ($user->role == 'OR') {
-            //         // header("location:index.php");
-            //         echo 'Hello Organizer !!';
-            //     }
-            //     if ($user->role == 'AD') {
-            //         // header("location:admin.php");
-            //         echo 'Hi ! Admin';
-            //     }
-            // }
+            if (array_key_exists("PREV", $_SESSION)) {
+                // header("location:".$_SESSION["PREV"]);
+                echo 'PREV';
+            } else {
+                if ($user->role == 'AT') {
+                    // header("location:index.php");
+                    echo 'Welcome Attendant !';
+                }
+                if ($user->role == 'OR') {
+                    // header("location:index.php");
+                    echo 'Hello Organizer !!';
+                }
+                if ($user->role == 'AD') {
+                    // header("location:admin.php");
+                    echo 'Hi ! Admin';
+                }
+            }
         } else {
             //login ไม่สำเร็จ show error
             // header("location:login.php?e=1");

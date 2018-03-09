@@ -42,7 +42,8 @@
                                 <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                             </div>
                             <div class="etc-login-form">
-                                <p>new user? <a href="./registration.php">create new account</a></p>
+                                <p><a href="./registration.php">create new attendant</a></p>
+                                <p><a href="./regis_organizer.php">create new organizer</a></p>
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="text-center">
-        <div class="logo">Create a new attendant</div>
+        <div class="logo">Create a new organizer</div>
         <!-- Main Form -->
         <div class="login-form-1">
             <form id="register-form" class="text-left">
@@ -32,16 +32,8 @@
                             <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Full Name</label>
-                            <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="first name">
-                        </div>
-                        <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Surname</label>
-                            <input type="text" class="form-control" id="reg_lastname" name="reg_lastname" placeholder="surname">
-                        </div>
-                        <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Age</label>
-                            <input type="text" class="form-control" id="reg_age" name="reg_age" placeholder="age">
+                            <label for="reg_fullname" class="sr-only">Name</label>
+                            <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="organization name">
                         </div>
                         <div class="form-group">
                             <label for="reg_email" class="sr-only">Email</label>
@@ -50,14 +42,7 @@
                         <div class="form-group">
                             <label for="reg_fullname" class="sr-only">Mobile No</label>
                             <input type="text" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
-                        </div>                          
-                        <div class="form-group login-group-checkbox">
-                            <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
-                            <label for="male">male</label>
-                                
-                            <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
-                            <label for="female">female</label>
-                        </div>                            
+                        </div>                                                    
                     </div>
                     <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                     <!-- <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button> -->
