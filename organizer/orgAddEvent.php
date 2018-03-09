@@ -1,11 +1,3 @@
-<?php session_start();
-if (isset($_SESSION["event-data"])) {
-    echo var_dump($_SESSION["event-data"]);
-}
-if (isset($_SESSION["event-thumbnail"])) {
-    echo $_SESSION["event-thumbnail"]["name"];
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +36,8 @@ require_once "header.php" ?>
                     Thumbnail:</label>
                 <input type="file" id="event-thumbnail"
                        name="event-thumbnail" accept=".jpg, .png">
-                <button type="submit" class="btn btn-primary m-1" id="upload-image-btn"
+                <button type="submit" class="btn btn-primary m-1"
+                        id="upload-image-btn"
                         name="upload-image-btn">
                     Upload Image
                 </button>
@@ -62,7 +55,8 @@ require_once "header.php" ?>
             </div>
             <!-- Type of Event -->
             <div class="form-group row align-items-center">
-                <label class="col-sm-3 col-form-label" for="event-selector">Type of
+                <label class="col-sm-3 col-form-label" for="event-selector">Type
+                    of
                     Event:</label>
                 <select class="col-sm-3 custom-select" id="event-selector"
                         name="event-selector" required>
@@ -91,7 +85,8 @@ require_once "header.php" ?>
             <div class="form-group row">
                 <label for="max-entries" class="col-sm-3 col-form-label">Maximum
                     Entries:</label>
-                <input type="number" class="col-sm-3 form-control" id="max-entries"
+                <input type="number" class="col-sm-3 form-control"
+                       id="max-entries"
                        name="max-entries"
                        placeholder="Entries" min="1" max="999" required>
                 <div class="invalid-feedback offset-sm-3">
@@ -108,13 +103,15 @@ require_once "header.php" ?>
                     <div class="col-sm-4 input-group p-0">
                         <div class="custom-control custom-checkbox m-2">
                             <input type="checkbox" class="custom-control-input"
-                                   id="age-checkbox" name="age" value="0" checked>
+                                   id="age-checkbox" name="age" value="0"
+                                   checked>
                             <label class="custom-control-label"
                                    for="age-checkbox">Any Age</label>
                         </div>
                         <input type="number" class="form-control" id="age"
                                name="age"
-                               placeholder="Age" min="12" max="130" required disabled>
+                               placeholder="Age" min="12" max="130" required
+                               disabled>
                         <div class="invalid-feedback">
                             Please specify a proper minimum age. (12-130)
                         </div>
@@ -126,18 +123,22 @@ require_once "header.php" ?>
                                    for="all-gender">Gender:</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender"
+                            <input class="form-check-input" type="radio"
+                                   name="gender"
                                    id="all-gender" value="a" checked>
                             <label class="form-check-label" for="all-gender">All
                                 Gender</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender"
+                            <input class="form-check-input" type="radio"
+                                   name="gender"
                                    id="male" value="m">
-                            <label class="form-check-label" for="male">Male Only</label>
+                            <label class="form-check-label" for="male">Male
+                                Only</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender"
+                            <input class="form-check-input" type="radio"
+                                   name="gender"
                                    id="female" value="f">
                             <label class="form-check-label" for="female">Female
                                 Only</label>
@@ -152,7 +153,8 @@ require_once "header.php" ?>
                 <div class="col-sm-3 input-group p-0">
                     <div class="custom-control custom-checkbox m-2">
                         <input type="checkbox" class="custom-control-input"
-                               id="attending-cost-free-checkbox" name="attending-cost"
+                               id="attending-cost-free-checkbox"
+                               name="attending-cost"
                                value="0" checked>
                         <label class="custom-control-label"
                                for="attending-cost-free-checkbox">Free</label>
@@ -184,7 +186,8 @@ require_once "header.php" ?>
                         <!-- Location Name -->
                         <div class="form-group row col-12 mb-4">
                             <label for="location-name"
-                                   class="col-lg-2 col-form-label">Location Name:</label>
+                                   class="col-lg-2 col-form-label">Location
+                                Name:</label>
                             <input type="text" class="col-lg-10 form-control"
                                    id="premise" name="location-name"
                                    placeholder="Location Name" required>
@@ -195,15 +198,17 @@ require_once "header.php" ?>
                         <!-- House No/ Village, Road -->
                         <div class="form-group row col-12 mb-4">
                             <!-- House No/ Village -->
-                            <label for="street_number" class="col-lg-2 col-form-label">House
+                            <label for="street_number"
+                                   class="col-lg-2 col-form-label">House
                                 Number:</label>
                             <input type="text" class="col-lg-2 form-control"
-                                   id="street_number" name="street_number"
+                                   id="street_number" name="street-number"
                                    placeholder="House No.">
                             <!-- Road -->
                             <label for="route" class="col-lg-2 col-form-label">Road
                                 Address:</label>
-                            <input type="text" class="col-lg-6 form-control" id="route"
+                            <input type="text" class="col-lg-6 form-control"
+                                   id="route"
                                    name="route"
                                    placeholder="Road Address" required>
                             <div class="invalid-feedback col-lg-6 offset-lg-6">
@@ -246,11 +251,13 @@ require_once "header.php" ?>
                         <!-- Postal code, Country -->
                         <div class="form-group row col-12 mb-4">
                             <!-- Postal code -->
-                            <label for="postal_code" class="col-lg-2 col-form-label">Postal
+                            <label for="postal_code"
+                                   class="col-lg-2 col-form-label">Postal
                                 Code:</label>
                             <div class="col-lg-4 input-group p-0">
-                                <input type="number" class="col-lg-6 form-control"
-                                       id="postal_code" name="postal_code"
+                                <input type="number"
+                                       class="col-lg-6 form-control"
+                                       id="postal_code" name="postal-code"
                                        placeholder="Postal Code" required>
                                 <div class="invalid-feedback col-lg-6">
                                     Please fill a postal code.
@@ -275,7 +282,8 @@ require_once "header.php" ?>
             <!-- Submit -->
             <div class="form-group row col-sm-8 offset-sm-2">
                 <div class="col-centered">
-                    <button type="submit" class="btn btn-primary m-1" id="add-event-btn">
+                    <button type="submit" class="btn btn-primary m-1"
+                            id="add-event-btn">
                         Add
                         Event
                     </button>
@@ -304,16 +312,19 @@ require_once "header.php" ?>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
 <!-- Header Script -->
 <script src="headerjs.js"></script>
-<!-- Event Validator-->
-<script src="event-validator.js"></script>
+
 <!-- Auto Address Script -->
 <script src="auto-address.js"></script>
 <!-- Google Maps JS API -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFDllUC_ofU2tABnCon3X-WUfPtjS4H_o
 &libraries=places&callback=initAutocomplete"
         async defer></script>
+
+<!-- Event Validator-->
+<script src="event-validator.js"></script>
 <!-- Event Checkbox -->
 <script src="event-checkbox.js"></script>
 </body>

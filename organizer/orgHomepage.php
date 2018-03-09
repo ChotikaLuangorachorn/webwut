@@ -1,6 +1,12 @@
-<?php session_start();
+<?php
+require_once 'Event.php';
+require_once 'Location.php';
+require_once 'EventPrecondition.php';
+
+session_start();
+
 if (isset($_SESSION["event-data"])) {
-    echo var_dump($_SESSION["event-data"]);
+    echo "<pre>".var_dump($_SESSION["event-data"])."</pre>";
 }
 if (isset($_SESSION["event-thumbnail"])) {
     echo $_SESSION["event-thumbnail"]["name"];
@@ -60,9 +66,12 @@ if (isset($_SESSION["event-thumbnail"])) {
                             expedita
                             laborum at voluptate.</p>
                         <div>
-                            <a class="btn btn-primary m-1" href="#">View Event</a>
-                            <a class="btn btn-primary m-1" href="#">Edit Event</a>
-                            <a class="btn btn-primary m-1" href="#">Delete Event</a>
+                            <a class="btn btn-primary m-1" href="#">View
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Edit
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Delete
+                                Event</a>
                         </div>
                     </div>
                 </div>
@@ -81,9 +90,12 @@ if (isset($_SESSION["event-thumbnail"])) {
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing
                             elit.</p>
                         <div>
-                            <a class="btn btn-primary m-1" href="#">View Event</a>
-                            <a class="btn btn-primary m-1" href="#">Edit Event</a>
-                            <a class="btn btn-primary m-1" href="#">Delete Event</a>
+                            <a class="btn btn-primary m-1" href="#">View
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Edit
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Delete
+                                Event</a>
                         </div>
                     </div>
                 </div>
@@ -108,9 +120,12 @@ if (isset($_SESSION["event-thumbnail"])) {
                             deleniti
                             alias possimus!</p>
                         <div>
-                            <a class="btn btn-primary m-1" href="#">View Event</a>
-                            <a class="btn btn-primary m-1" href="#">Edit Event</a>
-                            <a class="btn btn-primary m-1" href="#">Delete Event</a>
+                            <a class="btn btn-primary m-1" href="#">View
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Edit
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Delete
+                                Event</a>
                         </div>
                     </div>
                 </div>
@@ -128,9 +143,12 @@ if (isset($_SESSION["event-thumbnail"])) {
                         <h3>Event Four</h3>
                         <p>Hey HEY HEYYY</p>
                         <div>
-                            <a class="btn btn-primary m-1" href="#">View Event</a>
-                            <a class="btn btn-primary m-1" href="#">Edit Event</a>
-                            <a class="btn btn-primary m-1" href="#">Delete Event</a>
+                            <a class="btn btn-primary m-1" href="#">View
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Edit
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Delete
+                                Event</a>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+// script for auto toggle input when checkbox is marked
 $(document).ready(function () {
     let freeCheckbox = $('#attending-cost-free-checkbox');
     let acInput = $('#attending-cost');
