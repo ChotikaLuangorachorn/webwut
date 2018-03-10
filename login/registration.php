@@ -52,15 +52,13 @@
                             <input type="text" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
                         </div>                          
                         <div class="form-group login-group-checkbox">
-                            <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
+                            <input type="radio" class="" name="reg_gender" id="male" placeholder="username" value="male">
                             <label for="male">male</label>
-                                
-                            <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
+                            <input type="radio" class="" name="reg_gender" id="female" placeholder="username" value="female">
                             <label for="female">female</label>
                         </div>                            
                     </div>
                     <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
-                    <!-- <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button> -->
                 </div>
                 <div class="etc-login-form">
                     <p>already have an account? <a href="../login/login.php">login here</a></p>
@@ -71,9 +69,20 @@
     </div>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"
+            integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i"
+            crossorigin="anonymous">
+    </script>
+    <script src="add_at.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 </body>
