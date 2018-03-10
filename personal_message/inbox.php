@@ -30,7 +30,6 @@ ORDER BY timestamp DESC';
         $day = date('d',strtotime($row['timestamp']));
         $month = date('m',strtotime($row['timestamp']));
         $year = date('Y',strtotime($row['timestamp']));
-        $unitTime = date('A',strtotime($row['timestamp']));
 
 
         $hour = date('G',strtotime($row['timestamp']));
@@ -44,7 +43,7 @@ ORDER BY timestamp DESC';
                 <!-- <span style="float: right;"><?php echo $day . ' ' . $month . ' ' . $year .' (' . $hour . ':' . $minute .' น.)';?></span><br> -->
 
                 <!-- Eng format -->
-                <span style="float: right;"><?php echo $day . '/' . $month . '/' . $year .' (' . $hour . ':' . $minute. ' ' .$unitTime.')';?></span><br>
+                <span style="float: right;"><?php echo $day . '/' . $month . '/' . $year .' ' . $hour . ':' . $minute;?></span><br>
             </div>
             <div style="width: 99%; background-color: #ebe7da; padding: 1em;">
                 <span><?php echo nl2br($row['message']);?></span>
