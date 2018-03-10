@@ -122,15 +122,16 @@
           </ul>
     <!-- The slideshow -->
     <div class="carousel-inner">
-      <a href="#"><div class="carousel-item active">
-        <img src="https://p-u.popcdn.net/hero_images/desktop_images/000/000/116/medium/40fca800ed77afd6cdff29e2c9ca9940d02f8e0e.png?1519540399" alt="1">
-      </div></a>
-      <a href="#"><div class="carousel-item">
-        <img src="https://p-u.popcdn.net/hero_images/desktop_images/000/000/116/medium/40fca800ed77afd6cdff29e2c9ca9940d02f8e0e.png?1519540399" alt="2">
-      </div></a>
-      <a href="#"><div class="carousel-item">
-        <img src="https://p-u.popcdn.net/hero_images/desktop_images/000/000/116/medium/40fca800ed77afd6cdff29e2c9ca9940d02f8e0e.png?1519540399" alt="3">
-      </div></a>
+      <div class="carousel-item active">
+        <!-- image example ,, random from table ?-->
+        <a href="#"><img src="https://p-u.popcdn.net/hero_images/desktop_images/000/000/116/medium/40fca800ed77afd6cdff29e2c9ca9940d02f8e0e.png?1519540399" alt="1">
+      </a></div>
+      <div class="carousel-item">
+        <a href="#"><img src="https://p-u.popcdn.net/hero_images/desktop_images/000/000/116/medium/40fca800ed77afd6cdff29e2c9ca9940d02f8e0e.png?1519540399" alt="2">
+      </a></div>
+      <div class="carousel-item">
+        <a href="#"><img src="https://p-u.popcdn.net/hero_images/desktop_images/000/000/116/medium/40fca800ed77afd6cdff29e2c9ca9940d02f8e0e.png?1519540399" alt="3">
+      </a></div>
     </div>
 
     <!-- Left and right controls -->
