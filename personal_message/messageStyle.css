@@ -81,6 +81,13 @@
     border: 2px solid #4CAF50;
     border-color: black;
 }
+#header-box{
+    text-align: center;
+    background-color: #d9ceae;
+    font-weight: bold;
+    margin-left: 0%;
+    margin-right: 0%;
+}
 
 /*show all message*/
 #inbox{

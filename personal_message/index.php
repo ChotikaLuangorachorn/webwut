@@ -48,11 +48,15 @@
         <!-- display msg -->
         <div class="row" id="displayMessage">
             <div class="col-xs-12 col-lg-6">
-                Inbox
+                <div class="row" id="header-box">
+                    <div class="col">Inbox</div>
+                </div>
                 <div id="inbox"></div>
             </div>
             <div class="col-xs-12 col-lg-6">
-                Sent Message
+                <div class="row" id="header-box">
+                    <div class="col">Sent Message</div>
+                </div>
                 <div id="sentBox"></div>
             </div>
         </div>
@@ -64,10 +68,13 @@
     <!-- Bootstrap core JavaScript -->
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
 
     <script src="messageScripts.js"></script>
