@@ -10,8 +10,8 @@ var componentForm = {
     premise: 'long_name',
     street_number: 'short_name',
     route: 'long_name',
-    sublocality_level_2 : 'long_name',
-    sublocality_level_1 : 'long_name',
+    sublocality_level_2: 'long_name',
+    sublocality_level_1: 'long_name',
     administrative_area_level_1: 'short_name',
     country: 'long_name',
     postal_code: 'short_name'

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Index Page</title>
+    <title>Personal Message</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="messageStyle.css">
@@ -22,23 +22,23 @@
             <div class="col-12">
                 <form id="message-sender" enctype="multipart/form-data">
                     <!-- user name -->
-                    <span>ผู้รับ: </span><input name="toID" type="text" id="toID" placeholder="User ID ของผู้รับ"><br><br>
+                    <span>Receiver: </span><input name="toID" type="text" id="toID" placeholder="Enter user ID"><br><br>
 
                     <!-- Enter Message -->
-                    <textarea name="msg" id="msg-box" placeholder="ข้อความที่ต้องการส่ง"></textarea><br>
+                    <textarea name="msg" id="msg-box" placeholder="Enter your message"></textarea><br>
 
                     <!-- attach image file -->
-                    <label class="btnFile">อัพโหลดรูปภาพ<input name="file" type="file" id="file" accept="image/*" hidden></label>
+                    <label class="btnFile">Upload Image<input name="file" type="file" id="file" accept="image/*" hidden></label>
 
                     <!-- send button -->
-                    <button class="btnSend" id="send">ส่ง</button>
+                    <button class="btnSend" id="send">Send</button>
                     
                     <!-- show preview image -->
                     <div class="col-xs-12">
                         <img width="30%" id="preview" src="">
                     </div>
                 </form>
-                <button class="btnDeleteFile">ลบรูปภาพ</button>
+                <button class="btnDeleteFile">Delete Image</button>
             </div>
         </div>
 
@@ -48,11 +48,11 @@
         <!-- display msg -->
         <div class="row" id="displayMessage">
             <div class="col-xs-12 col-lg-6">
-                ข้อความส่งถึงคุณ
+                Inbox
                 <div id="inbox"></div>
             </div>
             <div class="col-xs-12 col-lg-6">
-                ข้อความที่ส่งแล้ว
+                Sent Message
                 <div id="sentBox"></div>
             </div>
         </div>

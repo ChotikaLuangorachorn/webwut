@@ -20,16 +20,32 @@ ORDER BY timestamp DESC';
 
     while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         // set day, time format
-        $day = date('j',strtotime($row['timestamp']));
-        $month = $thaiMonth[date('n',strtotime($row['timestamp']))];
-        $year = date('Y',strtotime($row['timestamp'])) + 543;
+
+        // Thai format
+        // $day = date('j',strtotime($row['timestamp']));
+        // $month = $thaiMonth[date('n',strtotime($row['timestamp']))];
+        // $year = date('Y',strtotime($row['timestamp'])) + 543;
+
+        // Eng format
+        $day = date('d',strtotime($row['timestamp']));
+        $month = date('m',strtotime($row['timestamp']));
+        $year = date('Y',strtotime($row['timestamp']));
+        $unitTime = date('A',strtotime($row['timestamp']));
+
+
         $hour = date('G',strtotime($row['timestamp']));
         $minute = date('i',strtotime($row['timestamp']));
 
+
+
 ?>      <div style="padding-bottom: 10px;">
             <div style="width: 99%; height: 50px; background-color: #f39e98; padding: 1em;">
-                <span>ผู้รับ: <?php echo $row['toUserID'];?></span>
-                <span style="float: right;"><?php echo $day . ' ' . $month . ' ' . $year .' (' . $hour . ':' . $minute .' น.)';?></span><br>
+                <span>Receiver: <?php echo $row['toUserID'];?></span>
+                <!-- Thai format -->
+                <!-- <span style="float: right;"><?php echo $day . ' ' . $month . ' ' . $year .' (' . $hour . ':' . $minute .' น.)';?></span><br> -->
+
+                <!-- Eng format -->
+                <span style="float: right;"><?php echo $day . '/' . $month . '/' . $year .' (' . $hour . ':' . $minute. ' ' .$unitTime.')';?></span><br>
             </div>
             <div style="width: 99%; background-color: #ebe7da; padding: 1em;">
                 <span><?php echo nl2br($row['message']);?></span>

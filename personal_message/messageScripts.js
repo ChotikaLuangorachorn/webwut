@@ -51,19 +51,21 @@ $(document).ready(function(e){
 		success: function(response){
 			console.log(response);
 			if (response == "true"){
-			    $('#snackbar').text('ข้อความถูกส่งแล้ว');
+			    $('#snackbar').text('Message sent');
 			    document.getElementById('toID').value = '';
 				document.getElementById('msg-box').value = '';
 				document.getElementById("file").value = '';
 				$('#preview').attr('src', '');
 				$(".btnDeleteFile").hide();
 				document.getElementById("snackbar").style.backgroundColor ="#61cf6a";
-				
 			}else if (response == "false"){
-				$('#snackbar').text('User ID ไม่ถูกต้อง');
+				$('#snackbar').text('Invalid user ID');
+				document.getElementById("snackbar").style.backgroundColor = "#ff5432";
+			}else if (response == "not ID"){
+				$('#snackbar').text('Please enter user ID');
 				document.getElementById("snackbar").style.backgroundColor = "#ff5432";
 			}else{
-				$('#snackbar').text('กรอกข้อมูลไม่ครบถ้วน');
+				$('#snackbar').text('Fill in not complete');
 				document.getElementById("snackbar").style.backgroundColor = "#ff5432";
 			}
 

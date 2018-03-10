@@ -4,7 +4,7 @@
     // $uid = $_POST['username'];
     $uid = "user";
 
-    $thaiMonth = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+    // $thaiMonth = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
     // id ของ User ที่ Login
     // $statement = $connection->query('SELECT * FROM personal_message WHERE toID="1" ORDER BY timestamp DESC');
     $query = 'SELECT p.*, ut.userID as toUserID, uf.userID as fromUserID
@@ -20,17 +20,31 @@ ORDER BY timestamp DESC';
 
     while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         // set day, time format
-        $day = date('j',strtotime($row['timestamp']));
-        $month = $thaiMonth[date('n',strtotime($row['timestamp']))];
-        $year = date('Y',strtotime($row['timestamp'])) + 543;
+
+        // thai format
+        // $day = date('j',strtotime($row['timestamp']));
+        // $month = $thaiMonth[date('n',strtotime($row['timestamp']))];
+        // $year = date('Y',strtotime($row['timestamp'])) + 543;
+
+        // Eng format
+        $day = date('d',strtotime($row['timestamp']));
+        $month = date('m',strtotime($row['timestamp']));
+        $year = date('Y',strtotime($row['timestamp']));
+        $unitTime = date('A',strtotime($row['timestamp']));
+
+
         $hour = date('G',strtotime($row['timestamp']));
         $minute = date('i',strtotime($row['timestamp']));
         
 ?>      
         <div style="padding-bottom: 10px;">
             <div style="width: 99%; height: 50px; background-color: #61b3cf; padding: 1em;">
-                <span>ผู้ส่ง: <?php echo $row['fromUserID'];?></span>
-                <span style="float: right;"><?php echo $day . ' ' . $month . ' ' . $year .' (' . $hour . ':' . $minute .' น.)';?></span><br>
+                <span>Sender: <?php echo $row['fromUserID'];?></span>
+                <!-- Thai format -->
+                <!-- <span style="float: right;"><?php echo $day . ' ' . $month . ' ' . $year .' (' . $hour . ':' . $minute .' น.)';?></span><br> -->
+
+                <!-- Eng format -->
+                <span style="float: right;"><?php echo $day . '/' . $month . '/' . $year .' (' . $hour . ':' . $minute. ' ' .$unitTime.')';?></span><br>
             </div>
             <div style="width: 99%; background-color: #ebe7da; padding: 1em;">
                 <span><?php echo nl2br($row['message']);?></span>
