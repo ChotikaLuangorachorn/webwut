@@ -14,6 +14,7 @@
         $user = $statement->fetch(PDO::FETCH_OBJ);
 
         if ($user !== FALSE) {
+            echo "enter IF";
             //set ตัวแปรใน session ไว้ว่าใคร log in อยู่ และเป็น role อะไร
             $_SESSION["ID"] = $user->id;
             $_SESSION["ROLE"] = $user->role;
