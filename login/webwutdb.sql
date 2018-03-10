@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2018 at 10:06 AM
+-- Generation Time: Mar 10, 2018 at 11:34 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -41,13 +41,6 @@ CREATE TABLE `event` (
   `surveyLink` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `event`
---
-
-INSERT INTO `event` (`eventID`, `date`, `orgID`, `eventName`, `price`, `capacity`, `location`, `qrCode`, `type`, `surveyLink`) VALUES
-(1, '2018-03-08 11:00:00', 3, 'Hello World', 100, 100, 'Town', '', 'Science', '');
-
 -- --------------------------------------------------------
 
 --
@@ -61,13 +54,6 @@ CREATE TABLE `event_attendant` (
   `paymentID` int(11) NOT NULL,
   `qrCode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `event_attendant`
---
-
-INSERT INTO `event_attendant` (`eventID`, `aID`, `flag`, `paymentID`, `qrCode`) VALUES
-(1, 1, '', 1, '');
 
 -- --------------------------------------------------------
 
@@ -114,7 +100,7 @@ CREATE TABLE `organizer_info` (
   `userID` int(11) NOT NULL,
   `orgName` varchar(255) CHARACTER SET utf8 NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `phoneNo` int(10) NOT NULL
+  `phoneNo` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -122,8 +108,8 @@ CREATE TABLE `organizer_info` (
 --
 
 INSERT INTO `organizer_info` (`userID`, `orgName`, `email`, `phoneNo`) VALUES
-(0, 'helloworld', 'kampanat@kkk.com', 853331111),
-(32, 'kampanat', 'god@webwut.com', 853331111);
+(43, 'admin', 'admin@webwut.com', '0812345678'),
+(45, 'GodMakeEvent', 'god@webwut.com', '0912345678');
 
 -- --------------------------------------------------------
 
@@ -165,8 +151,8 @@ CREATE TABLE `personal_info` (
 --
 
 INSERT INTO `personal_info` (`userID`, `firstName`, `lastName`, `email`, `age`, `phoneNo`, `gender`, `image`) VALUES
-(1, 'wi', 'chi', 'wiwadh.c@ku.th', 0, '0830504393', '', 'profile-1.jpg'),
-(30, 'kampanat', 'kr', 'hello@webwut.com', 20, '0853948854', 'male', '');
+(46, 'bob', 'maley', 'hello@webwut.com', 23, '0853331111', 'male', ''),
+(47, 'gracy', 'oman', 'omen@webwut.com', 18, '081122333', 'female', '');
 
 -- --------------------------------------------------------
 
@@ -191,7 +177,7 @@ CREATE TABLE `personal_message` (
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `userID` varchar(16) NOT NULL,
-  `password` varchar(16) NOT NULL,
+  `password` char(255) NOT NULL,
   `role` char(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -200,12 +186,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `userID`, `password`, `role`) VALUES
-(1, 'user', 'user', 'AT'),
-(2, 'admin', 'admin', 'AD'),
-(3, 'organizer', 'organizer', 'OR'),
-(30, 'kampanatkr', 'qwerty', 'AT'),
-(31, 'helloworld', 'qazwsx', 'OR'),
-(32, 'god', 'zxc', 'OR');
+(44, 'admin', '$wykCC0S6UsnU', 'AD'),
+(45, 'god', '$w75ElNTVyllI', 'OR'),
+(46, 'bob', '$wthDhZWZfLnA', 'AT'),
+(47, 'grace', '$wQosiKUx6mmg', 'AT');
 
 --
 -- Indexes for dumped tables
@@ -297,7 +281,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Constraints for dumped tables
