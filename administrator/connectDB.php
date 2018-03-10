@@ -1,13 +1,13 @@
 <?php
-	$DB_NAME = 'editted_webwut';
+	$DB_NAME = 'webwutdb';
 	$USERNAME = 'root';
 	$PASSWORD = '';
 	// $connection = new PDO('mysql:host=localhost;dbname=editted_webwut;charset=utf8mb4', 'root', '');
 
 	try {
-        $connection = new PDO('mysql:host=localhost;dbname='.$DB_NAME.';charset=utf8mb4', $USERNAME, $PASSWORD);
+        $conn = new PDO('mysql:host=localhost;dbname='.$DB_NAME.';charset=utf8mb4', $USERNAME, $PASSWORD);
         // set the PDO error mode to exception
-        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // echo "Connected successfully"; 
     }
     catch(PDOException $e) {

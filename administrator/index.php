@@ -15,11 +15,87 @@
 </head>
 <body>
     <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
-        <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+        <button id="btn-show-organizer">Organizer</button>
+        <button id="btn-show-attendant">Attendant</button>
+        <button id="btn-show-administrator">Administrator</button>
+        <button id="btn-show-event">Event</button>
     </div>
     <div class="container" role="main">
+        <!-- Organizer -->
+        <div class="row" id="show-organizer">
+            <div class="col">
+                <table>
+                    <thead>
+                        <tr>
+                            <th id="header-table" scope="col" style="width: 50px;">ID</th>
+                            <th id="header-table" scope="col" style="width: 200px;">UserID</th>
+                            <th id="header-table" scope="col" style="width: 200px;">Organizer Name</th>
+                            <th scope="col" style="width: 200px;">E-mail</th>
+                            <th scope="col" style="width: 100px;">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody class="organizer-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Attendant -->
+        <div class="row" id="show-attendant">
+            <div class="col">
+                <table>
+                    <thead>
+                        <tr> show-organizer
+                            <th id="header-table" scope="col" style="width: 50px;">ID</th>
+                            <th id="header-table" scope="col" style="width: 200px;">UserID</th>
+                            <th id="header-table" scope="col" style="width: 200px;">Organizer Name</th>
+                            <th scope="col" style="width: 200px;">E-mail</th>
+                            <th scope="col" style="width: 100px;">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody class="attendant-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Administrator -->
+        <div class="row" id="show-administrator">
+            <div class="col">
+                <table>
+                    <thead>
+                        <tr> show-administrator
+                            <th scope="col" style="width: 50px;">ID</th>
+                            <th scope="col" style="width: 200px;">UserID</th>
+                            <th scope="col" style="width: 200px;">Organizer Name</th>
+                            <th scope="col" style="width: 200px;">E-mail</th>
+                            <th scope="col" style="width: 100px;">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody class="administrator-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Event -->
+        <div class="row" id="show-event">
+            <div class="col">
+                <table>
+                    <thead>
+                        <tr> show-event
+                            <th scope="col" style="width: 50px;">ID</th>
+                            <th scope="col" style="width: 250px;">Date</th>
+                            <th scope="col" style="width: 200px;">Name</th>
+                            <th scope="col" style="width: 200px;">Location</th>
+                            <th scope="col" style="width: 200px;">Capacity</th>
+                            <th scope="col" style="width: 200px;">Price</th>
+                            <th scope="col" style="width: 200px;">Type</th>
+                            <th scope="col" style="width: 200px;">Organizer Name</th>
+                        </tr>
+                    </thead>
+                    <tbody class="event-list"></tbody>
+                </table>
+            </div>
+        </div>
+
 
     </div>
 

@@ -4,7 +4,6 @@
 }
 .tab {
     float: left;
-    border: 1px solid #ccc;
     background-color: #f39e98;
     width: 20%;
     height: 100%;
@@ -24,10 +23,26 @@
 }
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: white;
+    background-color: #df8a83;
 }
 
 /* Create an active/current "tab button" class */
-.tab button.active {
-    background-color: #ccc;
+button:focus{
+    background: white;
+}
+
+/*user table*/
+tr th{
+    background-color: #f7e881;
+    text-align: center;
+    border-bottom: 5px solid #f39e98;
+}
+tr:nth-child(odd) td{
+    background-color: #ebe7da;
+}tr:nth-child(even) td{
+    background-color: #d9ceae;
+}
+
+th, td{
+     border: 2px solid #f7e881;
 }
