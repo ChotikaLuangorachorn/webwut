@@ -45,8 +45,13 @@ div#event-options {
     background-color: rgba(235, 231, 218, 0.7);
 }
 
-.image-object-fit {
-    width: 700px;
-    height: 300px;
+.image-fit-cover {
+    max-width: 600px;
+    max-height: 300px;
     object-fit: cover;
+}
+
+.image-600-300 {
+    max-width: 600px;
+    max-height: 300px;
 }

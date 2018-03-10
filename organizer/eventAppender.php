@@ -1,7 +1,5 @@
 <?php
 require_once 'Event.php';
-require_once 'Location.php';
-require_once 'EventPrecondition.php';
 // open session
 session_start();
 
@@ -11,9 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         uploadImage($_FILES["event-thumbnail"]);
     }
     $eventData = createEventObject($_POST);
-    $eventData->addThumbnail($_FILES["event-thumbnail"]["name"]);
+    $eventData->setThumbnail($_FILES["event-thumbnail"]["name"]);
 
-    $_SESSION["event-data"] = $eventData;
+    $_SESSION["event-data"] = serialize($eventData);
 }
 // close session
 session_write_close();
@@ -24,25 +22,19 @@ function createEventObject($postData)
 {
     $eventName = $postData["event-name"];
     $eventType = $postData["event-selector"];
-    $eventDescription = $postData["event-description"];
-    $eventEntries = $postData["max-entries"];
+    $eventDetail = $postData["event-detail"];
+    $eventMaxEntries = $postData["max-entries"];
     $eventStartDate = $postData["event-start-date"];
     $age = $postData["age"];
     $gender = $postData["gender"];
     $attendingCost = $postData["attending-cost"];
-    $locationName = $postData["location-name"];
-    $streetNumber = $postData["street-number"];
-    $route = $postData["route"];
-    $subDistrict = $postData["sub-district"];
-    $district = $postData["district"];
-    $city = $postData["city"];
-    $postalCode = $postData["postal-code"];
-    $country = $postData["country"];
+    $indoorName = $postData["indoor-name"];
+    $location = $postData["location"];
+    $googleForm = $postData["event-google-form"];
 
-    $precondition = new EventPrecondition($age, $gender);
-    $locationInfo = new Location($locationName, $streetNumber, $route, $subDistrict, $district, $city, $postalCode, $country);
-    $event = new Event($eventName, $eventType, $eventDescription, $eventStartDate,
-        $eventEntries, $precondition, $attendingCost, $locationInfo);
+    $event = new Event($eventName, $eventType, $eventDetail, $eventStartDate,
+        $age, $gender, $eventMaxEntries, $attendingCost, $indoorName,
+        $location, $googleForm);
     return $event;
 }
 

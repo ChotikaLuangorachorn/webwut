@@ -1,12 +1,11 @@
 <?php
 require_once 'Event.php';
-require_once 'Location.php';
-require_once 'EventPrecondition.php';
 
 session_start();
 
 if (isset($_SESSION["event-data"])) {
-    echo "<pre>" . var_dump($_SESSION["event-data"]) . "</pre>";
+    $eventData = unserialize($_SESSION["event-data"]);
+    echo "<pre>" . var_dump($eventData) . "</pre>";
 }
 ?>
 <!DOCTYPE html>
@@ -52,26 +51,50 @@ if (isset($_SESSION["event-data"])) {
                 <div class="row">
                     <div class="col-lg-7">
                         <!-- View Event -->
-                        <a href="#">
-                            <img class="image-object-fit img-thumbnail rounded mb-3 mb-md-0"
-                                 src="<?php echo '../assets/events/' . $_SESSION["event-data"]->getEventThumbnail() ?>"
+                        <a href="<?php echo '../assets/events/' .
+                            $eventData->getThumbnail() ?>">
+                            <!-- Event Thumbnail -->
+                            <img class="image-600-300 image-fit-cover
+                            img-thumbnail
+                            rounded mb-3
+                             mb-md-0"
+                                 src="<?php echo '../assets/events/' .
+                                     $eventData->getThumbnail() ?>"
                             >
                         </a>
                     </div>
                     <div class="col-lg-5">
-                        <h3><?php echo $_SESSION["event-data"]->getEventName() ?></h3>
+                        <!-- Event Name -->
+                        <h3><?php echo $eventData->getEventName() ?></h3>
+                        <!-- Event Detail -->
                         <p>
-                            Description: <?php echo $_SESSION["event-data"]->getEventDescription() ?></p>
+                            Event Detail: <?php echo
+                            $eventData->getDetail() ?></p>
+                        <!-- Event Location -->
                         <p>
-                            Location: <?php echo $_SESSION["event-data"]->getLocationInfo()->getLocationName() ?></p>
+                            Location Name: <?php echo
+                            $eventData->getIndoorName()
+                            ?></p>
+                        <!-- Event Date -->
                         <p>Start
-                            Date: <?php echo date("d-m-Y", strtotime($_SESSION["event-data"]->getEventStartDate())) ?></p>
+                            Date: <?php echo date("d-m-Y", strtotime($eventData->getStartDate())) ?></p>
+                        <!-- Age Restriction -->
+                        <p>Age: <?php echo $eventData->getAgeCondition() ?></p>
+                        <!-- Gender Restriction -->
+                        <p>Gender: <?php echo $eventData->getGenderCondition() ?></p>
+                        <!-- Attending Cost -->
+                        <p>Attending Cost: <?php echo $eventData->getAttendingCostStr()
+                            ?></p>
+                        <!-- Current Entries -->
+                        <p>Available Entries: <?php echo
+                            $eventData->getGenderCondition() ?></p>
                         <div>
                             <a class="btn btn-primary m-1" href="#">Edit
                                 Event</a>
                             <a class="btn btn-primary m-1" href="#">Delete
                                 Event</a>
                         </div>
+
                     </div>
                 </div>
                 <!-- /.row -->

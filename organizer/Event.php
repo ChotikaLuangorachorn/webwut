@@ -6,44 +6,65 @@ class Event
     private $eventID;
     private $eventName;
     private $eventType;
-    private $eventDescription;
-    private $eventStartDate;
-    private $eventThumbnail;
-    private $eventEntries;
-    private $precondition;
+    private $detail;
+    private $startDate;
+    private $age;
+    private $gender;
+    private $currentEntries;
+    private $maxEntries;
     private $attendingCost;
-    private $locationInfo;
+    private $indoorName;
+    private $location;
+    private $googleForm;
+    private $thumbnail;
 
     /**
      * Event constructor.
-     * @param $eventID
      * @param $eventName
      * @param $eventType
-     * @param $eventDescription
-     * @param $eventStartDate
-     * @param $eventEntries
-     * @param $precondition
+     * @param $detail
+     * @param $startDate
+     * @param $age
+     * @param $gender
+     * @param $currentEntries
+     * @param $maxEntries
      * @param $attendingCost
-     * @param $locationInfo
+     * @param $indoorName
+     * @param $location
+     * @param $googleForm
      */
-    public function __construct($eventName, $eventType, $eventDescription, $eventStartDate,
-                                $eventEntries, $precondition, $attendingCost, $locationInfo)
+    public function __construct($eventName, $eventType, $detail, $startDate, $age, $gender, $maxEntries, $attendingCost, $indoorName, $location, $googleForm)
     {
         self::$EVENTID_PRIMARY++;
         $this->eventID = self::$EVENTID_PRIMARY;
         $this->eventName = $eventName;
         $this->eventType = $eventType;
-        $this->eventDescription = $eventDescription;
-        $this->eventStartDate = $eventStartDate;
-        $this->eventEntries = $eventEntries;
-        $this->precondition = $precondition;
+        $this->detail = $detail;
+        $this->startDate = $startDate;
+        $this->age = $age;
+        $this->gender = $gender;
+        $this->currentEntries = 0;
+        $this->maxEntries = $maxEntries;
         $this->attendingCost = $attendingCost;
-        $this->locationInfo = $locationInfo;
+        $this->indoorName = $indoorName;
+        $this->location = $location;
+        $this->googleForm = $googleForm;
     }
 
-    public function addThumbnail($thumbnailName)
+    /**
+     * @return int
+     */
+    public static function getEVENTIDPRIMARY(): int
     {
-        $this->eventThumbnail = $thumbnailName;
+        return self::$EVENTID_PRIMARY;
+    }
+
+    /**
+     * @param int $EVENTID_PRIMARY
+     */
+    public static function setEVENTIDPRIMARY(int $EVENTID_PRIMARY): void
+    {
+        self::$EVENTID_PRIMARY = $EVENTID_PRIMARY;
     }
 
     /**
@@ -56,12 +77,10 @@ class Event
 
     /**
      * @param int $eventID
-     * @return Event
      */
-    public function setEventID(int $eventID): Event
+    public function setEventID(int $eventID): void
     {
         $this->eventID = $eventID;
-        return $this;
     }
 
     /**
@@ -74,12 +93,10 @@ class Event
 
     /**
      * @param mixed $eventName
-     * @return Event
      */
-    public function setEventName($eventName)
+    public function setEventName($eventName): void
     {
         $this->eventName = $eventName;
-        return $this;
     }
 
     /**
@@ -92,102 +109,106 @@ class Event
 
     /**
      * @param mixed $eventType
-     * @return Event
      */
-    public function setEventType($eventType)
+    public function setEventType($eventType): void
     {
         $this->eventType = $eventType;
-        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getEventThumbnail()
+    public function getDetail()
     {
-        return $this->eventThumbnail;
+        return $this->detail;
     }
 
     /**
-     * @param mixed $eventThumbnail
-     * @return Event
+     * @param mixed $detail
      */
-    public function setEventThumbnail($eventThumbnail)
+    public function setDetail($detail): void
     {
-        $this->eventThumbnail = $eventThumbnail;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEventDescription()
-    {
-        return $this->eventDescription;
-    }
-
-    /**
-     * @param mixed $eventDescription
-     * @return Event
-     */
-    public function setEventDescription($eventDescription)
-    {
-        $this->eventDescription = $eventDescription;
-        return $this;
+        $this->detail = $detail;
     }
 
     /**
      * @return mixed
      */
-    public function getEventStartDate()
+    public function getStartDate()
     {
-        return $this->eventStartDate;
+        return $this->startDate;
     }
 
     /**
-     * @param mixed $eventStartDate
-     * @return Event
+     * @param mixed $startDate
      */
-    public function setEventStartDate($eventStartDate)
+    public function setStartDate($startDate): void
     {
-        $this->eventStartDate = $eventStartDate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEventEntries()
-    {
-        return $this->eventEntries;
-    }
-
-    /**
-     * @param mixed $eventEntries
-     * @return Event
-     */
-    public function setEventEntries($eventEntries)
-    {
-        $this->eventEntries = $eventEntries;
-        return $this;
+        $this->startDate = $startDate;
     }
 
     /**
      * @return mixed
      */
-    public function getPrecondition()
+    public function getAge()
     {
-        return $this->precondition;
+        return $this->age;
     }
 
     /**
-     * @param mixed $precondition
-     * @return Event
+     * @param mixed $age
      */
-    public function setPrecondition($precondition)
+    public function setAge($age): void
     {
-        $this->precondition = $precondition;
-        return $this;
+        $this->age = $age;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param mixed $gender
+     */
+    public function setGender($gender): void
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentEntries()
+    {
+        return $this->currentEntries;
+    }
+
+    /**
+     * @param mixed $currentEntries
+     */
+    public function setCurrentEntries($currentEntries): void
+    {
+        $this->currentEntries = $currentEntries;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaxEntries()
+    {
+        return $this->maxEntries;
+    }
+
+    /**
+     * @param mixed $maxEntries
+     */
+    public function setMaxEntries($maxEntries): void
+    {
+        $this->maxEntries = $maxEntries;
     }
 
     /**
@@ -200,32 +221,111 @@ class Event
 
     /**
      * @param mixed $attendingCost
-     * @return Event
      */
-    public function setAttendingCost($attendingCost)
+    public function setAttendingCost($attendingCost): void
     {
         $this->attendingCost = $attendingCost;
-        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getLocationInfo()
+    public function getIndoorName()
     {
-        return $this->locationInfo;
+        return $this->indoorName;
     }
 
     /**
-     * @param mixed $locationInfo
-     * @return Event
+     * @param mixed $indoorName
      */
-    public function setLocationInfo($locationInfo)
+    public function setIndoorName($indoorName): void
     {
-        $this->locationInfo = $locationInfo;
-        return $this;
+        $this->indoorName = $indoorName;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
 
+    /**
+     * @param mixed $location
+     */
+    public function setLocation($location): void
+    {
+        $this->location = $location;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getGoogleForm()
+    {
+        return $this->googleForm;
+    }
+
+    /**
+     * @param mixed $googleForm
+     */
+    public function setGoogleForm($googleForm): void
+    {
+        $this->googleForm = $googleForm;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getThumbnail()
+    {
+        return $this->thumbnail;
+    }
+
+    /**
+     * @param mixed $thumbnail
+     */
+    public function setThumbnail($thumbnail): void
+    {
+        $this->thumbnail = $thumbnail;
+    }
+
+    public function  getAttendingCostStr(){
+        if($this->attendingCost <= 0){
+            return "Free";
+        } else {
+            return "$this->attendingCost ฿";
+        }
+    }
+
+    public function getEntries(){
+        $remainEntries = ($this->maxEntries - $this->currentEntries);
+        if($remainEntries <= 0){
+            return "No available entry";
+        } else {
+            return "($this->currentEntries/$this->maxEntries ($remainEntries) Entries left)";
+        }
+    }
+
+    public function getAgeCondition(){
+        if($this->age < 0){
+            return 'Any Age';
+        } else {
+            return "Must be above $this->age";
+        }
+    }
+
+    public function getGenderCondition(){
+        switch ($this->gender){
+            case 'a':
+                return 'Any Gender';
+            case 'f':
+                return 'Female';
+            case 'm':
+                return 'Male';
+            default:
+                return "Shouldn't be executed this, some error occurs";
+        }
+    }
 }
