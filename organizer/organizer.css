@@ -44,3 +44,9 @@ div#event-options {
 .event-location-wrapper {
     background-color: rgba(235, 231, 218, 0.7);
 }
+
+.image-object-fit {
+    width: 700px;
+    height: 300px;
+    object-fit: cover;
+}

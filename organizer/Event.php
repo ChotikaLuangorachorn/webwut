@@ -7,6 +7,7 @@ class Event
     private $eventName;
     private $eventType;
     private $eventDescription;
+    private $eventStartDate;
     private $eventThumbnail;
     private $eventEntries;
     private $precondition;
@@ -19,12 +20,13 @@ class Event
      * @param $eventName
      * @param $eventType
      * @param $eventDescription
+     * @param $eventStartDate
      * @param $eventEntries
      * @param $precondition
      * @param $attendingCost
      * @param $locationInfo
      */
-    public function __construct($eventName, $eventType, $eventDescription,
+    public function __construct($eventName, $eventType, $eventDescription, $eventStartDate,
                                 $eventEntries, $precondition, $attendingCost, $locationInfo)
     {
         self::$EVENTID_PRIMARY++;
@@ -32,6 +34,7 @@ class Event
         $this->eventName = $eventName;
         $this->eventType = $eventType;
         $this->eventDescription = $eventDescription;
+        $this->eventStartDate = $eventStartDate;
         $this->eventEntries = $eventEntries;
         $this->precondition = $precondition;
         $this->attendingCost = $attendingCost;
@@ -100,6 +103,24 @@ class Event
     /**
      * @return mixed
      */
+    public function getEventThumbnail()
+    {
+        return $this->eventThumbnail;
+    }
+
+    /**
+     * @param mixed $eventThumbnail
+     * @return Event
+     */
+    public function setEventThumbnail($eventThumbnail)
+    {
+        $this->eventThumbnail = $eventThumbnail;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getEventDescription()
     {
         return $this->eventDescription;
@@ -112,6 +133,24 @@ class Event
     public function setEventDescription($eventDescription)
     {
         $this->eventDescription = $eventDescription;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEventStartDate()
+    {
+        return $this->eventStartDate;
+    }
+
+    /**
+     * @param mixed $eventStartDate
+     * @return Event
+     */
+    public function setEventStartDate($eventStartDate)
+    {
+        $this->eventStartDate = $eventStartDate;
         return $this;
     }
 

@@ -26,6 +26,7 @@ function createEventObject($postData)
     $eventType = $postData["event-selector"];
     $eventDescription = $postData["event-description"];
     $eventEntries = $postData["max-entries"];
+    $eventStartDate = $postData["event-start-date"];
     $age = $postData["age"];
     $gender = $postData["gender"];
     $attendingCost = $postData["attending-cost"];
@@ -40,7 +41,7 @@ function createEventObject($postData)
 
     $precondition = new EventPrecondition($age, $gender);
     $locationInfo = new Location($locationName, $streetNumber, $route, $subDistrict, $district, $city, $postalCode, $country);
-    $event = new Event($eventName, $eventType, $eventDescription,
+    $event = new Event($eventName, $eventType, $eventDescription, $eventStartDate,
         $eventEntries, $precondition, $attendingCost, $locationInfo);
     return $event;
 }

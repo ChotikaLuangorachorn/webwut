@@ -6,10 +6,7 @@ require_once 'EventPrecondition.php';
 session_start();
 
 if (isset($_SESSION["event-data"])) {
-    echo "<pre>".var_dump($_SESSION["event-data"])."</pre>";
-}
-if (isset($_SESSION["event-thumbnail"])) {
-    echo $_SESSION["event-thumbnail"]["name"];
+    echo "<pre>" . var_dump($_SESSION["event-data"]) . "</pre>";
 }
 ?>
 <!DOCTYPE html>
@@ -54,20 +51,22 @@ if (isset($_SESSION["event-thumbnail"])) {
                 <!-- Event One -->
                 <div class="row">
                     <div class="col-lg-7">
+                        <!-- View Event -->
                         <a href="#">
-                            <img class="img-fluid rounded mb-3 mb-md-0"
-                                 src="http://placehold.it/700x300" alt="">
+                            <img class="image-object-fit img-thumbnail rounded mb-3 mb-md-0"
+                                 src="<?php echo '../assets/events/' . $_SESSION["event-data"]->getEventThumbnail() ?>"
+                            >
                         </a>
                     </div>
                     <div class="col-lg-5">
-                        <h3>Event One</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Laudantium veniam exercitationem
-                            expedita
-                            laborum at voluptate.</p>
+                        <h3><?php echo $_SESSION["event-data"]->getEventName() ?></h3>
+                        <p>
+                            Description: <?php echo $_SESSION["event-data"]->getEventDescription() ?></p>
+                        <p>
+                            Location: <?php echo $_SESSION["event-data"]->getLocationInfo()->getLocationName() ?></p>
+                        <p>Start
+                            Date: <?php echo date("d-m-Y", strtotime($_SESSION["event-data"]->getEventStartDate())) ?></p>
                         <div>
-                            <a class="btn btn-primary m-1" href="#">View
-                                Event</a>
                             <a class="btn btn-primary m-1" href="#">Edit
                                 Event</a>
                             <a class="btn btn-primary m-1" href="#">Delete
@@ -77,83 +76,7 @@ if (isset($_SESSION["event-thumbnail"])) {
                 </div>
                 <!-- /.row -->
                 <hr>
-                <!-- Event Two -->
-                <div class="row">
-                    <div class="col-lg-7">
-                        <a href="#">
-                            <img class="img-fluid rounded mb-3 mb-md-0"
-                                 src="http://placehold.it/700x300" alt="">
-                        </a>
-                    </div>
-                    <div class="col-lg-5">
-                        <h3>Event Two</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit.</p>
-                        <div>
-                            <a class="btn btn-primary m-1" href="#">View
-                                Event</a>
-                            <a class="btn btn-primary m-1" href="#">Edit
-                                Event</a>
-                            <a class="btn btn-primary m-1" href="#">Delete
-                                Event</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <hr>
-                <!-- Event Three -->
-                <div class="row">
-                    <div class="col-lg-7">
-                        <a href="#">
-                            <img class="img-fluid rounded mb-3 mb-md-0"
-                                 src="http://placehold.it/700x300" alt="">
-                        </a>
-                    </div>
-                    <div class="col-lg-5">
-                        <h3>Event Three</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Omnis, temporibus, dolores, at,
-                            praesentium ut
-                            unde repudiandae voluptatum sit ab debitis suscipit
-                            fugiat natus velit excepturi amet
-                            commodi
-                            deleniti
-                            alias possimus!</p>
-                        <div>
-                            <a class="btn btn-primary m-1" href="#">View
-                                Event</a>
-                            <a class="btn btn-primary m-1" href="#">Edit
-                                Event</a>
-                            <a class="btn btn-primary m-1" href="#">Delete
-                                Event</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <hr>
-                <!-- Event Four -->
-                <div class="row">
-                    <div class="col-lg-7">
-                        <a href="#">
-                            <img class="img-fluid rounded mb-3 mb-md-0"
-                                 src="http://placehold.it/700x300" alt="">
-                        </a>
-                    </div>
-                    <div class="col-lg-5">
-                        <h3>Event Four</h3>
-                        <p>Hey HEY HEYYY</p>
-                        <div>
-                            <a class="btn btn-primary m-1" href="#">View
-                                Event</a>
-                            <a class="btn btn-primary m-1" href="#">Edit
-                                Event</a>
-                            <a class="btn btn-primary m-1" href="#">Delete
-                                Event</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <hr>
+
                 <!-- Pagination -->
                 <ul class="pagination justify-content-center">
                     <li class="page-item">

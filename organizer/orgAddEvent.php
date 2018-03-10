@@ -81,6 +81,19 @@ require_once "header.php" ?>
                     Please describe a description about the event.
                 </div>
             </div>
+            <!-- Event Start Date -->
+            <div class="form-group row">
+                <label for="event-start-date" class="col-sm-3 col-form-label">Event
+                    Start Date:</label>
+                <input type="date" class="col-sm-3 form-control"
+                       id="event-start-date"
+                       name="event-start-date"
+                       min="<?php echo date("Y-m-d"); ?>"
+                       required>
+                <div class="invalid-feedback offset-sm-3">
+                    Please select a start date.
+                </div>
+            </div>
             <!-- Entries -->
             <div class="form-group row">
                 <label for="max-entries" class="col-sm-3 col-form-label">Maximum
