@@ -1,23 +1,27 @@
-<style>
-    /* background */
-    body {
-        background: url("../imageHeader/background.jpg") fixed;
-    }
-
-    #banner {
-        height: 115px;
-        background-size: auto;
-        background: url("../imageHeader/banner.jpg") repeat-x;
-    }
-</style>
+<?php include '../services/checkLogin.php' ?>
 
 <div id="banner"></div>
 <nav class="navbar navbar-light" style="background-color: white;">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="../imageHeader/logo.png" class="d-inline-block align-top"
-                 alt="logo" style="max-width: 50px; max-height: 50px">
-            <span style="font-size: xx-large; color: #f675b3; ">WEBWUT <b>Event</b></span>
+        <a class="navbar-brand" href="../../">
+            <img src="../assets/image/logo.png" width="50" height="50"
+                 class="d-inline-block align-top" alt="">
+            <font size="6" color="#f675b3">WEBWUT <b>Event</b></font>
         </a>
+        <?php
+        if ($LOGGEDIN) {
+            $ID = $_SESSION['ID'];
+            echo "Welcome, " . $ID;
+            ?>
+            <button type="button" class="btn btn-light" id="btn-login"
+                    role="button">SIGN OUT
+            </button><?php
+        } else {
+            ?><a href="../login" class="btn btn-light" id="btn-login"
+                 role="button">SIGN IN</a><?php
+        }
+        ?>
     </div>
 </nav>
+<div id="fake-navbar"></div>
+

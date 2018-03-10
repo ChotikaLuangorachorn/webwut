@@ -304,7 +304,7 @@ class Event
         if($remainEntries <= 0){
             return "No available entry";
         } else {
-            return "($this->currentEntries/$this->maxEntries ($remainEntries) Entries left)";
+            return "$this->currentEntries/$this->maxEntries ($remainEntries Entries left)";
         }
     }
 
@@ -327,5 +327,9 @@ class Event
             default:
                 return "Shouldn't be executed this, some error occurs";
         }
+    }
+
+    public function getLocationName(){
+        return $this->indoorName . ' - ' . $this->location;
     }
 }

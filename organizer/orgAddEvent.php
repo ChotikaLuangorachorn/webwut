@@ -17,8 +17,7 @@
 </head>
 <body>
 
-<?php // header
-require_once "header.php" ?>
+<?php require_once "header.php" ?>
 
 <!-- Page Content -->
 <div class="container-fluid">

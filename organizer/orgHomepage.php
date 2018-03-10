@@ -1,13 +1,3 @@
-<?php
-require_once 'Event.php';
-
-session_start();
-
-if (isset($_SESSION["event-data"])) {
-    $eventData = unserialize($_SESSION["event-data"]);
-    echo "<pre>" . var_dump($eventData) . "</pre>";
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +17,14 @@ if (isset($_SESSION["event-data"])) {
 </head>
 <body>
 
-<?php require_once "header.php" ?>
+<?php
+require_once "header.php";
+require_once 'Event.php';
+
+if (isset($_SESSION["event-data"])) {
+    $eventData = unserialize($_SESSION["event-data"]);
+    echo "<pre>" . var_dump($eventData) . "</pre>";
+} ?>
 
 <!-- Page Content -->
 <div class="container-fluid">
@@ -65,7 +62,9 @@ if (isset($_SESSION["event-data"])) {
                     </div>
                     <div class="col-lg-5">
                         <!-- Event Name -->
-                        <h3><?php echo $eventData->getEventName() ?></h3>
+                        <h3><?php echo $eventData->getEventName() ?> -
+                            <small><?php echo $eventData->getEventType() ?></small>
+                        </h3>
                         <!-- Event Detail -->
                         <p>
                             Event Detail: <?php echo
@@ -73,7 +72,7 @@ if (isset($_SESSION["event-data"])) {
                         <!-- Event Location -->
                         <p>
                             Location Name: <?php echo
-                            $eventData->getIndoorName()
+                            $eventData->getLocationName()
                             ?></p>
                         <!-- Event Date -->
                         <p>Start
@@ -81,13 +80,19 @@ if (isset($_SESSION["event-data"])) {
                         <!-- Age Restriction -->
                         <p>Age: <?php echo $eventData->getAgeCondition() ?></p>
                         <!-- Gender Restriction -->
-                        <p>Gender: <?php echo $eventData->getGenderCondition() ?></p>
+                        <p>
+                            Gender: <?php echo $eventData->getGenderCondition() ?></p>
                         <!-- Attending Cost -->
-                        <p>Attending Cost: <?php echo $eventData->getAttendingCostStr()
+                        <p>Attending
+                            Cost: <?php echo $eventData->getAttendingCostStr()
                             ?></p>
                         <!-- Current Entries -->
                         <p>Available Entries: <?php echo
-                            $eventData->getGenderCondition() ?></p>
+                            $eventData->getEntries() ?></p>
+                        <!-- Google Form -->
+                        <p>Google Form: <a href="<?php echo
+                            $eventData->getGoogleForm() ?>">Link</a> </p>
+                        <!-- Button options -->
                         <div>
                             <a class="btn btn-primary m-1" href="#">Edit
                                 Event</a>
