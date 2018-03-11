@@ -15,7 +15,7 @@
         <div class="logo">Create a new attendant</div>
         <!-- Main Form -->
         <div class="login-form-1">
-            <form id="register-form" class="text-left">
+            <form id="register-form" class="text-left" action="create_attendant.php">
                 <div class="login-form-main-message"></div>
                 <div class="main-login-form">
                     <div class="login-group">
@@ -52,7 +52,7 @@
                             <input type="text" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
                         </div>                          
                         <div class="form-group login-group-checkbox">
-                            <input type="radio" class="" name="reg_gender" id="male" placeholder="username" value="male">
+                            <input type="radio" class="" name="reg_gender" id="male" placeholder="username" value="male" checked="checked">
                             <label for="male">male</label>
                             <input type="radio" class="" name="reg_gender" id="female" placeholder="username" value="female">
                             <label for="female">female</label>
