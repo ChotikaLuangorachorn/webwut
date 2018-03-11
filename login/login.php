@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <!-- Bootstrap core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
@@ -17,15 +17,23 @@
 
         if (array_key_exists("e", $_GET)) {
             if ($_GET['e']==1) {
-                echo "<p>Incorrect Username and/or Password</p>";
+                ?>
+                <div class="alert alert-light alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Warning</strong> Incorrect Username and/or Password
+                </div>
+                <?php
             } else if ($_GET['e']==2) {
-                echo "<p>Please login first.</p>";
+                ?>
+                <div class="alert alert-light alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Warning</strong> Please login first.
+                </div>
+                <?php
             }
         }
     ?>
-    <!-- <div class="alert alert-warning">
-        <strong>Warning!</strong> Incorrect Username and/or Password;
-    </div> -->
+    
     <div class="text-center">
         <div class="text-center"><span><img src="../assets/image/logo.png" width="80" height="80" class="d-inline-block align-top"></span></div>
         <div class="logo text-center">Sign In</div>
