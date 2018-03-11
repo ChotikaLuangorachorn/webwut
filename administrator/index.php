@@ -17,7 +17,6 @@
     <div class="tab">
         <button id="btn-show-organizer">Organizer</button>
         <button id="btn-show-attendant">Attendant</button>
-        <button id="btn-show-administrator">Administrator</button>
         <button id="btn-show-event">Event</button>
     </div>
     <div class="container" role="main">
@@ -69,27 +68,6 @@
             </div>
         </div>
 
-        <!-- Administrator -->
-        <div class="row" id="show-administrator">
-            <div class="col-12" style="text-align: center;">
-                <span style="font-size: 1.5em;">Administrator List</span><br>
-                Seach: <input oninput="w3.filterHTML('.administrator-list', '#list', this.value)" placeholder="search for a word" style="margin-bottom: 10px;">
-            </div>
-            <div class="col-12">
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col" style="width: 50px;">ID</th>
-                            <th scope="col" style="width: 200px;">UserID</th>
-                            <th scope="col" style="width: 200px;">Organizer Name</th>
-                            <th scope="col" style="width: 200px;">E-mail</th>
-                            <th scope="col" style="width: 100px;">Phone</th>
-                        </tr>
-                    </thead>
-                    <tbody class="administrator-list"></tbody>
-                </table>
-            </div>
-        </div>
 
         <!-- Event -->
         <div class="row" id="show-event">
@@ -134,6 +112,8 @@
 
     <!-- for search -->
     <script src="https://www.w3schools.com/lib/w3.js"></script>
+
+    <script src="moment.js"></script>
     <script src="adminScripts.js"></script>
 </body>
 </html>
