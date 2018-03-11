@@ -8,6 +8,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="loginStyle.css">
 </head>
 <body>
@@ -22,8 +23,12 @@
             }
         }
     ?>
+    <!-- <div class="alert alert-warning">
+        <strong>Warning!</strong> Incorrect Username and/or Password;
+    </div> -->
     <div class="text-center">
-        <div class="logo">Sign In</div>
+        <div class="text-center"><span><img src="../assets/image/logo.png" width="80" height="80" class="d-inline-block align-top"></span></div>
+        <div class="logo text-center">Sign In</div>
         <!-- Main Form -->
             <div class="login-form-1">
                 <form id="login-form" class="text-left" action="doLogin.php" method="post">
@@ -42,8 +47,8 @@
                                 <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                             </div>
                             <div class="etc-login-form">
-                                <p><a href="./regis_attendant.php">create new attendant</a></p>
-                                <p><a href="./regis_organizer.php">create new organizer</a></p>
+                                <p><a href="./regis_attendant.php"><span class="ion-person-add"></span> create new attendant</a></p>
+                                <p><a href="./regis_organizer.php"><span class="ion-person-stalker"></span> create new organizer</a></p>
                             </div>
                         </div>
                     </div>

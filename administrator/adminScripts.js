@@ -2,8 +2,9 @@ $(document).ready(function(e){
 	showAllOrganizer();
 	$('#show-attendant').hide();
 	$('#show-event').hide();
-	
-
+	$('#list').click(function(e){
+  	console.log("งือ");
+});
 // Organizer
 	$('#btn-show-organizer').click(function(e) {
 		$('#show-event').hide();
@@ -12,7 +13,6 @@ $(document).ready(function(e){
 
 		showAllOrganizer();
 	})
-
 	function showAllOrganizer(){
 		$.ajax({
 			url: 'organizerList.php',
@@ -39,6 +39,24 @@ $(document).ready(function(e){
 			}
 		});
 	}
+	document.getElementById('form-add-organizer').style.display='none';
+	$('#btn-add-organizer').click(function(e) {
+		document.getElementById('form-add-organizer').style.display='block';
+	})
+	$('#cancel-add-organizer').click(function(e) {
+		console.log("cancel");
+		document.getElementById('form-add-organizer').style.display='none';
+	})
+	$('#confirm-add-organizer').click(function(e) {
+		$("#organizer-form").ajaxForm({
+		url: "addOrganizer.php",
+		type: "POST",
+		success: function(response){
+			document.getElementById('form-add-organizer').style.display='none';
+			showAllOrganizer();
+		}
+		})
+	})
 
 // Attendant
 	$('#btn-show-attendant').click(function(e) {
@@ -71,6 +89,25 @@ $(document).ready(function(e){
 			}
 		});
 	}
+	document.getElementById('form-add-attendant').style.display='none';
+	$('#btn-add-attendant').click(function(e) {
+		document.getElementById('form-add-attendant').style.display='block';
+	})
+	$('#cancel-add-attendant').click(function(e) {
+		console.log("cancel");
+		document.getElementById('form-add-attendant').style.display='none';
+	})
+	$('#confirm-add-attendant').click(function(e) {
+		$("#attendant-form").ajaxForm({
+		url: "addAttendant.php",
+		type: "POST",
+		success: function(response){
+			document.getElementById('form-add-attendant').style.display='none';
+			showAllOrganizer();
+		}
+		})
+	})
+
 
 // Event
 	$('#btn-show-event').click(function(e) {

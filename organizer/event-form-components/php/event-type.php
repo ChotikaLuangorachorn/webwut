@@ -11,7 +11,7 @@
         <option value="health">Health</option>
         <option value="hobbies">Hobbies</option>
         <option value="music">Music</option>
-        <option value="science & technology">Science & Technology</option>
+        <option value="science">Science & Technology</option>
         <option value="sport">Sport</option>
     </select>
     <div class="invalid-feedback offset-sm-3">

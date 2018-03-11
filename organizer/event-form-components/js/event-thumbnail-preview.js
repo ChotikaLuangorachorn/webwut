@@ -1,22 +1,22 @@
-$(document).ready(function (e) {
+$(document).ready(function () {
 
     $("#event-thumbnail").change(function () {
-        console.log("onFileChange");
         previewPicture(this);
     });
 
     function previewPicture(input) {
+        let imageViewer = $("#image-viewer");
         if (input.files && input.files[0]) {
             let reader = new FileReader();
 
             reader.onload = function (e) {
-                $("#image-viewer").attr('src', e.target.result);
-                $("#image-viewer").show();
+                imageViewer.attr('src', e.target.result);
+                imageViewer.show();
             };
             reader.readAsDataURL(input.files[0]);
         } else {
-            $("#image-viewer").attr('src', '');
-            $("#image-viewer").hide();
+            imageViewer.attr('src', '');
+            imageViewer.hide();
         }
     }
 });

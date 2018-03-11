@@ -28,7 +28,7 @@
         <!-- form -->
         <form class="col-10 offset-1 needs-validation" method="post"
               enctype="multipart/form-data"
-              action="eventAppender.php" novalidate>
+              action="phpScripts/eventCreater.php" novalidate>
             <!-- Event Name -->
             <?php require 'event-form-components/php/event-name.php' ?>
             <!-- Type of Event -->

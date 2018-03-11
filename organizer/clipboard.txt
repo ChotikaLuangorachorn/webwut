@@ -1,0 +1,191 @@
+                <!-- Event Two -->
+                <div class="row">
+                    <div class="col-lg-7">
+                        <a href="#">
+                            <img class="img-fluid rounded mb-3 mb-md-0"
+                                 src="http://placehold.it/700x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-5">
+                        <h3>Event Two</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing
+                            elit.</p>
+                        <div>
+                            <a class="btn btn-primary m-1" href="#">View
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Edit
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Delete
+                                Event</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <hr>
+                <!-- Event Three -->
+                <div class="row">
+                    <div class="col-lg-7">
+                        <a href="#">
+                            <img class="img-fluid rounded mb-3 mb-md-0"
+                                 src="http://placehold.it/700x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-5">
+                        <h3>Event Three</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing
+                            elit. Omnis, temporibus, dolores, at,
+                            praesentium ut
+                            unde repudiandae voluptatum sit ab debitis suscipit
+                            fugiat natus velit excepturi amet
+                            commodi
+                            deleniti
+                            alias possimus!</p>
+                        <div>
+                            <a class="btn btn-primary m-1" href="#">View
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Edit
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Delete
+                                Event</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <hr>
+                <!-- Event Four -->
+                <div class="row">
+                    <div class="col-lg-7">
+                        <a href="#">
+                            <img class="img-fluid rounded mb-3 mb-md-0"
+                                 src="http://placehold.it/700x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-5">
+                        <h3>Event Four</h3>
+                        <p>Hey HEY HEYYY</p>
+                        <div>
+                            <a class="btn btn-primary m-1" href="#">View
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Edit
+                                Event</a>
+                            <a class="btn btn-primary m-1" href="#">Delete
+                                Event</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <hr>
+
+
+                <!-- Autocomplete -->
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFDllUC_ofU2tABnCon3X-WUfPtjS4H_o
+                &libraries=places&callback=initAutocomplete"
+                        async defer></script>
+
+                        <!-- Auto Address Script -->
+                        <script src="event-form-components/js/auto-address.js"></script>
+
+    <!-- Auto Complete -->
+    <label for="autocomplete-address"
+           class="col-sm-3 col-form-label">Location:</label>
+    <div id="location-field" class="col-sm-9 px-0">
+        <input id="autocomplete-address"
+               class="form-control mb-4"
+               placeholder="Enter your address..."
+               onFocus="geolocate()" type="text">
+        <div class="row container">
+            <!-- Location Name -->
+            <div class="form-group row col-12 mb-4">
+                <label for="location-name"
+                       class="col-lg-2 col-form-label">Location
+                    Name:</label>
+                <input type="text" class="col-lg-10 form-control"
+                       id="premise" name="location-name"
+                       placeholder="Location Name" required>
+                <div class="invalid-feedback offset-lg-2">
+                    Please fill a location name.
+                </div>
+            </div>
+            <!-- House No/ Village, Road -->
+            <div class="form-group row col-12 mb-4">
+                <!-- House No/ Village -->
+                <label for="street_number"
+                       class="col-lg-2 col-form-label">House
+                    Number:</label>
+                <input type="text" class="col-lg-2 form-control"
+                       id="street_number" name="street-number"
+                       placeholder="House No.">
+                <!-- Road -->
+                <label for="route" class="col-lg-2 col-form-label">Road
+                    Address:</label>
+                <input type="text" class="col-lg-6 form-control"
+                       id="route"
+                       name="route"
+                       placeholder="Road Address" required>
+                <div class="invalid-feedback col-lg-6 offset-lg-6">
+                    Please fill a road address name.
+                </div>
+            </div>
+            <!-- Subdistrict, District -->
+            <div class="form-group row col-12 mb-4">
+                <!-- Subdistrict -->
+                <label for="sublocality_level_2"
+                       class="col-lg-2 col-form-label">Subdistrict:</label>
+                <input type="text" class="col-lg-4 form-control"
+                       id="sublocality_level_2" name="sub-district"
+                       placeholder="Subdistrict" required>
+                <div class="invalid-feedback offset-lg-2">
+                    Please fill a subdiestrict name.
+                </div>
+                <!-- District -->
+                <label for="sublocality_level_1"
+                       class="col-lg-2 col-form-label">District:</label>
+                <input type="text" class="col-lg-4 form-control"
+                       id="sublocality_level_1" name="district"
+                       placeholder="District" required>
+                <div class="invalid-feedback offset-lg-2">
+                    Please fill a district name.
+                </div>
+            </div>
+            <!-- City -->
+            <div class="form-group row col-12 mb-4">
+                <label for="administrative_area_level_1"
+                       class="col-lg-2 col-form-label">City:</label>
+                <input type="text" class="col-lg-10 form-control"
+                       id="administrative_area_level_1"
+                       name="city"
+                       placeholder="City" required>
+                <div class="invalid-feedback offset-lg-2">
+                    Please fill a city name.
+                </div>
+            </div>
+            <!-- Postal code, Country -->
+            <div class="form-group row col-12 mb-4">
+                <!-- Postal code -->
+                <label for="postal_code"
+                       class="col-lg-2 col-form-label">Postal
+                    Code:</label>
+                <div class="col-lg-4 input-group p-0">
+                    <input type="number"
+                           class="col-lg-6 form-control"
+                           id="postal_code" name="postal-code"
+                           placeholder="Postal Code" required>
+                    <div class="invalid-feedback col-lg-6">
+                        Please fill a postal code.
+                    </div>
+                </div>
+                <!-- Country -->
+                <label for="country"
+                       class="col-lg-2 col-form-label">Country:</label>
+                <div class="col-lg-4 input-group p-0">
+                    <input type="text" class="col-lg-6 form-control"
+                           id="country"
+                           name="country"
+                           placeholder="Country" required>
+                    <div class="invalid-feedback col-lg-6 offset-lg-2">
+                        Please fill a country name.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
