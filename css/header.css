@@ -18,8 +18,18 @@
     color: black;
     border-style: solid;
     border-color: black;
+
   }
   #btn-login:hover {
     color: white;
     background-color: #f675b3;
+    border-color: #f675b3;
+  }
+  #bg-me {
+    padding: 1% !important;
+    text-align: right;
+
+  }
+  .material-icons{
+    padding: 0 2% ;
   }

@@ -2,15 +2,14 @@
 
 .container-fluid{
   font-family: 'Mitr', sans-serif;
-  /* font-weight: 300; */
 }
 .carousel-inner img {
-    width: 100%;
-    height: 100%;
-    padding: 0 4%;
-    background-color: #f675b3;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+  width: 100%;
+  height: 100%;
+  padding: 0 4%;
+  background-color: #f675b3;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 #menuBar {
   padding: 1% 4% 1.5% 4%;
@@ -38,24 +37,24 @@
 }
 .topic {
   background-color: white;
-  text-indent: 3%;
+  padding: 0 2%;
   font-weight: bold;
 }
-.topicYellow {
+#topicYellowSci , #topicYellowHob , #topicYellowCommu {
   background-color: #f7e881;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   font-size: 1.2em;
-  padding: 2% 0 2% 3%;
+  padding: 2% 3% 2% 4%;
 }
-.topicPink {
+#topicPinkBus , #topicPinkMu , #topicPinkSports {
   background-color: #f39e98;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   font-size: 1.2em;
   padding: 2% 0 2% 3%;
 }
-.topicBlue {
+#topicBlueEdu , #topicBlueHealth {
   background-color: #61b3cf;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -65,7 +64,7 @@
 .col-3 {
   text-align: center;
 }
-.col-sm-7 {
+.col-sm-7  {
   font-family: 'Mitr', sans-serif;
   font-weight: 200;
   background-color: #d9ceae;
@@ -84,6 +83,17 @@
   margin: 5% 0;
   border-radius:15px;
 }
+.row .table-row:hover{
+  background-color: white;
+  opacity: 0.9;
+  padding: 2% 0 2% 0;
+  margin: 5% 0;
+  border-radius:15px;
+}
 #titleImage{
   margin: 0 0 7% 0;
+}
+.btn-link{
+  color: black !important;
+  float: right;
 }

@@ -17,21 +17,34 @@
 
     <div id="banner"></div>
     <nav class="navbar navbar-light" style="background-color: white;">
-      <div class="container">
+      <div class="container"><div class="container-fluid">
+        <div class="row">
+          <div class="col-8">
           <a class="navbar-brand" href="../webwut">
             <img  src="assets/image/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
             <font size="6" color="#f675b3">WEBWUT <b>Event</b></font>
           </a>
+          </div>
+          <div class="col-4 noPadding">
           <?php
           if ($LOGGEDIN) {
             $ID = $_SESSION['ID'];
             echo "Welcome, ". $ID;
-            ?><button type="button" class="btn btn-light" id="btn-login" role="button">SIGN OUT</button><?php
+            ?>
+            <a href="#profile"><i class="material-icons" style="font-size:48px;color:#61b3cf">account_box</i></a>
+            <a href="#mail"><i class="material-icons" style="font-size:48px;color:#df8a83">mail</i></a>
+            <button type="button" class="btn btn-light" id="btn-login" role="button">SIGN OUT</button>
+            <?php
           } else {
-            ?><a href="./login/login.php" class="btn btn-light" id="btn-login" role="button">SIGN IN</a><?php
+            ?>
+            <div id="bg-me">
+              <button type="button" class="btn btn-light" id="btn-login" role="button">SIGN IN</button>
+            </div>
+            <?php
           }
           ?>
-      </div>
+        </div>
+      </div></div>
     </nav>
     <div id="fake-navbar"></div>
 

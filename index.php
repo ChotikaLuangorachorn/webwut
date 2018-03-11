@@ -83,11 +83,6 @@
         echo $exc->getTraceAsString();
       }
       $sportsEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
-      // while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-      //   echo $row['eventName']."<br>";
-      //   echo $row['date']."<br>";
-      //   echo $row['location']."<br>";
-      // }
     }
 ?>
 
@@ -102,13 +97,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <title>Webwut Event</title>
-</head>
+  </head>
 
 <body>
 
-  <?php include 'test/header.php';?>
+  <?php include 'header.php';?>
 
   <div class="container">
 <!-- CAROUSEL SLIDE -->
@@ -156,14 +152,14 @@
           <div class="dropdown-menu">
               <a class="dropdown-item" href="#">All</a>
                 <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" onClick="setVariable('science');">Science & Technology</a>
-                  <a class="dropdown-item" href="#" onClick="setVariable('business');">Business</a>
-                  <a class="dropdown-item" href="#" onClick="setVariable('education');">Educaion</a>
-                  <a class="dropdown-item" href="#" onClick="setVariable('hobbies');">Hobbies</a>
-                  <a class="dropdown-item" href="#" onClick="setVariable('music');">Music</a>
-                  <a class="dropdown-item" href="#" onClick="setVariable('health');">Health</a>
-                  <a class="dropdown-item" href="#" onClick="setVariable('community');">Community</a>
-                  <a class="dropdown-item" href="#" onClick="setVariable('sports');">Sports</a>
+                  <a class="dropdown-item" href="events.php?data=Science">Science & Technology</a>
+                  <a class="dropdown-item" href="events.php?data=Business">Business</a>
+                  <a class="dropdown-item" href="events.php?data=Education">Education</a>
+                  <a class="dropdown-item" href="events.php?data=Hobbies">Hobbies</a>
+                  <a class="dropdown-item" href="events.php?data=Music">Music</a>
+                  <a class="dropdown-item" href="events.php?data=Health">Health</a>
+                  <a class="dropdown-item" href="events.php?data=Community">Community</a>
+                  <a class="dropdown-item" href="events.php?data=Sports">Sports</a>
           </div>
         </div>
       </div>
@@ -174,21 +170,24 @@
               <b>time</b>
           </button>
           <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">time</a>
-                  <a class="dropdown-item" href="#">organizer</a>
-                  <a class="dropdown-item" href="#">location</a>
+                <a class="dropdown-item" href="#">time</a>
+                <a class="dropdown-item" href="#">organizer</a>
+                <a class="dropdown-item" href="#">location</a>
           </div>
         </div>
       </div>
     </div>
 
 <!-- Box -->
+
     <div class="container-fluid noPadding">
       <br><br>
       <!-- Science & Technology -->
       <div class="row">
-        <div class="col-sm-7 noPadding">
-          <div class="topicYellow"><b>Science & Technology</b></div>
+        <div class="col-sm-7 noPadding" id='hidden-col-7-Sci'>
+          <div id="topicYellowSci"><b>Science & Technology</b>
+            <a role="button" class="btn btn-link" href="events.php?data=Science">View all</a>
+          </div>
           <div class="scienceEvent"></div>
         </div>
         <div class="col-sm-5"></div>
@@ -197,16 +196,20 @@
       <!-- Business -->
       <div class="row">
         <div class="col-sm-5"></div>
-        <div class="col-sm-7 noPadding">
-          <div class="topicPink"><b>Business</b></div>
+        <div class="col-sm-7 noPadding" id='hidden-col-7-Bus'>
+          <div id="topicPinkBus"><b>Business</b>
+            <a role="button" class="btn btn-link" href="events.php?data=Business">View all</a>
+          </div>
           <div class="businessEvent"></div>
         </div>
       </div>
       <br>
       <!-- Education -->
       <div class="row">
-        <div class="col-sm-7 noPadding">
-          <div class="topicBlue"><b>Education</b></div>
+        <div class="col-sm-7 noPadding" id='hidden-col-7-Edu'>
+          <div id="topicBlueEdu"><b>Education</b>
+            <a role="button" class="btn btn-link" href="events.php?data=Education">View all</a>
+          </div>
           <div class="educationEvent"></div>
           </div>
         <div class="col-sm-5"></div>
@@ -215,16 +218,20 @@
       <!-- Hobbies -->
       <div class="row">
         <div class="col-sm-5"></div>
-        <div class="col-sm-7 noPadding">
-          <div class="topicYellow"><b>Hobbies</b></div>
+        <div class="col-sm-7 noPadding" id='hidden-col-7-Hob'>
+          <div id="topicYellowHob"><b>Hobbies</b>
+            <a role="button" class="btn btn-link" href="events.php?data=Hobbies">View all</a>
+          </div>
           <div class="hobbiesEvent"></div>
         </div>
       </div>
       <br>
       <!-- Music -->
       <div class="row">
-        <div class="col-sm-7 noPadding">
-          <div class="topicPink"><b>Music</b></div>
+        <div class="col-sm-7 noPadding" id='hidden-col-7-Mu'>
+          <div id="topicPinkMu"><b>Music</b>
+            <a role="button" class="btn btn-link" href="events.php?data=Music">View all</a>
+          </div>
           <div class="musicEvent"></div>
         </div>
         <div class="col-sm-5"></div>
@@ -233,16 +240,20 @@
       <!-- Health -->
       <div class="row">
         <div class="col-sm-5"></div>
-        <div class="col-sm-7 noPadding">
-            <div class="topicBlue"><b>Health</b></div>
+        <div class="col-sm-7 noPadding" id='hidden-col-7-Health'>
+            <div id="topicBlueHealth"><b>Health</b>
+              <a role="button" class="btn btn-link" href="events.php?data=Health">View all</a>
+            </div>
             <div class="healthEvent"></div>
         </div>
       </div>
       <br>
       <!-- Community -->
       <div class="row">
-        <div class="col-sm-7 noPadding">
-          <div class="topicYellow"><b>Community</b></div>
+        <div class="col-sm-7 noPadding" id='hidden-col-7-Commu'>
+          <div id="topicYellowCommu"><b>Community</b>
+            <a role="button" class="btn btn-link" href="events.php?data=Community">View all</a>
+          </div>
           <div class="communityEvent"></div>
         </div>
         <div class="col-sm-5"></div>
@@ -251,13 +262,15 @@
       <!-- Sports -->
       <div class="row">
         <div class="col-sm-5"></div>
-        <div class="col-sm-7 noPadding">
-          <div class="topicPink"><b>Sports</b></div>
+        <div class="col-sm-7 noPadding" id='hidden-col-7-Sports'>
+          <div id="topicPinkSports"><b>Sports</b>
+            <a role="button" class="btn btn-link" href="events.php?data=Sports">View all</a>
+          </div>
           <div class="sportsEvent"></div>
         </div>
       </div>
+      <br><br>
     </div>
-
   </div>
   </div>
 
@@ -270,32 +283,76 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-      <script type="text/javascript">
-      function setVariable($day) {
-          console.log($day);
-      }
-      </script>
 
       <script>
+        function isEmpty(str) {
+            return (!str || 0 === str.length);
+        }
+        function hidden(x){
+          $(x).hide();
+        }
+        function formatDate(sqlDate) {
+            sqlDate = sqlDate.split(" ");
+            date = sqlDate[0];
+            dateSplit = date.split("-");
+            year = dateSplit[0];
+            month = dateSplit[1];
+            if (month == 01){month = "January";}
+            else if (month == 02){month = "February";}
+            else if (month == 03){month = "March";}
+            else if (month == 04){month = "April";}
+            else if (month == 05){month = "May";}
+            else if (month == 06){month = "June";}
+            else if (month == 07){month = "July";}
+            else if (month == 08){month = "August";}
+            else if (month == 09){month = "September";}
+            else if (month == 10){month = "October";}
+            else if (month == 11){month = "November";}
+            else if (month == 12){month = "December";}
+            day = dateSplit[2];
+
+            time = sqlDate[1];
+            timeSplit = time.split(":");
+            hr = timeSplit[0];
+            min = timeSplit[1];
+            sec = timeSplit[2];
+
+            return day + " " + month + " " + year + " | " + hr + ":" + min;
+        }
 
 
-          var scienceEvents = <?php echo json_encode($scienceEvents); ?>;
+        var scienceEvents = <?php echo json_encode($scienceEvents); ?>;
+
+
+        if (isEmpty(scienceEvents)) {
+          $("#topicYellowSci").hide();
+          $(".scienceEvent").hide();
+          hidden("#hidden-col-7-Sci");
+        }
+        else {
           for (event of scienceEvents) {
-          $(".scienceEvent").append(`<a href="#selected event">
-          <div class="row table-row">
-            <div class="col-3">
-              <img src="#event pic promote" width="75" height="75" class="d-inline-block align-top" id="titleImage" alt="">
-              <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+            $(".scienceEvent").append(`<a href="#selected event">
+            <div class="row table-row">
+              <div class="col-3">
+                <img src="#event pic promote" width="100" height="100" class="d-inline-block align-top" id="titleImage" alt="">
+                <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+                </div>
+              <div class="col-9">
+                <p class="topic">`+event.eventName+`</p>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
-            <div class="col-9">
-              <p class="topic">`+event.eventName+`</p>
-              <div>`+event.date+`</div>
-              <div>`+event.location+`</div>
-            </div>
-          </div></a>`);
+            </div></a>`);
+            }
           }
 
-          var businessEvents = <?php echo json_encode($businessEvents ); ?>;
+        var businessEvents = <?php echo json_encode($businessEvents ); ?>;
+        if (isEmpty(businessEvents)) {
+          $("#topicPinkBus").hide();
+          $(".businessEvent").hide();
+          hidden("#hidden-col-7-Bus");
+        }
+        else {
           for (event of businessEvents) {
             $(".businessEvent").append(`<a href="#selected event">
             <div class="row table-row">
@@ -305,13 +362,20 @@
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div>`+event.date+`</div>
-                <div>`+event.location+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
           }
+        }
 
-          var educationEvents = <?php echo json_encode($educationEvents); ?>;
+        var educationEvents = <?php echo json_encode($educationEvents); ?>;
+        if (isEmpty(educationEvents)) {
+          $("#topicBlueEdu").hide();
+          $(".educationEvent").hide();
+          hidden("#hidden-col-7-Edu");
+        }
+        else {
           for (event of educationEvents) {
             $(".educationEvent").append(`<a href="#selected event">
             <div class="row table-row">
@@ -321,13 +385,20 @@
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div>`+event.date+`</div>
-                <div>`+event.location+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
           }
+        }
 
-          var hobbiesEvents = <?php echo json_encode($hobbiesEvents ); ?>;
+        var hobbiesEvents = <?php echo json_encode($hobbiesEvents ); ?>;
+        if (isEmpty(hobbiesEvents)) {
+          $("#topicYellowHob").hide();
+          $(".hobbiesEvent").hide();
+          hidden("#hidden-col-7-Hob");
+        }
+        else {
           for (event of hobbiesEvents) {
             $(".hobbiesEvent").append(`<a href="#selected event">
             <div class="row table-row">
@@ -337,13 +408,20 @@
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div>`+event.date+`</div>
-                <div>`+event.location+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
           }
+        }
 
-          var musicEvents = <?php echo json_encode($musicEvents ); ?>;
+        var musicEvents = <?php echo json_encode($musicEvents ); ?>;
+        if (isEmpty(musicEvents)) {
+          $("#topicPinkMu").hide();
+          $(".musicEvent").hide();
+          hidden("#hidden-col-7-Mu");
+        }
+        else {
           for (event of musicEvents) {
             $(".musicEvent").append(`<a href="#selected event">
             <div class="row table-row">
@@ -353,13 +431,20 @@
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div>`+event.date+`</div>
-                <div>`+event.location+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
           }
+        }
 
-          var healthEvents = <?php echo json_encode($healthEvents ); ?>;
+        var healthEvents = <?php echo json_encode($healthEvents ); ?>;
+        if (isEmpty(healthEvents)) {
+          $("#topicBlueHealth").hide();
+          $(".healthEvent").hide();
+          hidden("#hidden-col-7-Health");
+        }
+        else {
           for (event of healthEvents) {
             $(".healthEvent").append(`<a href="#selected event">
             <div class="row table-row">
@@ -369,13 +454,20 @@
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div>`+event.date+`</div>
-                <div>`+event.location+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
           }
+        }
 
-          var communityEvents = <?php echo json_encode($communityEvents ); ?>;
+        var communityEvents = <?php echo json_encode($communityEvents ); ?>;
+        if (isEmpty(communityEvents)) {
+          $("#topicYellowCommu").hide();
+          $(".communityEvent").hide();
+          hidden("#hidden-col-7-Commu");
+        }
+        else {
           for (event of communityEvents) {
             $(".communityEvent").append(`<a href="#selected event">
             <div class="row table-row">
@@ -385,13 +477,20 @@
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div>`+event.date+`</div>
-                <div>`+event.location+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
           }
+        }
 
-          var sportsEvents = <?php echo json_encode($sportsEvents ); ?>;
+        var sportsEvents = <?php echo json_encode($sportsEvents ); ?>;
+        if (isEmpty(sportsEvents)) {
+          $("#topicPinkSports").hide();
+          $(".sportsEvent").hide();
+          hidden("#hidden-col-7-Sports");
+        }
+        else {
           for (event of sportsEvents) {
             $(".sportsEvent").append(`<a href="#selected event">
             <div class="row table-row">
@@ -401,11 +500,12 @@
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div>`+event.date+`</div>
-                <div>`+event.location+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
           }
+        }
       </script>
   </body>
 </html>
