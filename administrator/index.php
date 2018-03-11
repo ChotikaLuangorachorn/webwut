@@ -31,7 +31,7 @@
                     <thead>
                         <tr>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(1)')" scope="col" style="width: 100px;">ID</th>
-                            <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User ID</th>
+                            <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User Name</th>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">Organizer Name</th>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">E-mail</th>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 150px;">Phone</th>
@@ -75,15 +75,17 @@
                     <div class="row">
                         <div class="col">
                             <div class="row">ID:</div>
+                            <div class="row">User Name:</div>
                             <div class="row">Organization Name:</div>
                             <div class="row">E-mail:</div>
                             <div class="row">Phone:</div>
                         </div>
                         <div class="col">
-                            <div class="row"><div class="col"><div id="id">ID</div></div></div>
-                            <div class="row"><input type="text" id="orgName"></div>
-                            <div class="row"><input type="text" id="email"></div>
-                            <div class="row"><input type="text" id="phone"></div>
+                            <div class="row"><div class="col"><div id="id-edit1">ID</div></div></div>
+                            <div class="row"><div class="col"><div id="userID-edit1">userID</div></div></div>
+                            <div class="row"><input type="text" id="orgName-edit1"></div>
+                            <div class="row"><input type="text" id="email-edit1"></div>
+                            <div class="row"><input type="text" id="phone-edit1"></div>
                             <div class="row" style="text-align: center;">
                                 <button id="confirm-edit-organizer" type="button">Confirm</button>
                                 <button id="cancel-edit-organizer" type="button">Cancel</button>
@@ -105,7 +107,7 @@
                     <thead>
                         <tr>
                             <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(1)')" scope="col" style="width: 100px;">ID</th>
-                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User ID</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User Name</th>
                             <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">First Name</th>
                             <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">Last Name</th>
                             <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 200px;">E-mail</th>
@@ -165,6 +167,36 @@
                             <button id="cancel-add-attendant" type="button">Cancel</button>
                         </div>
                     </div> 
+                </form>
+            </div>
+
+            <!-- form for edit attendant -->
+            <div id="form-edit-attendant">
+                <form id="attendant-editing-form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">ID:</div>
+                            <div class="row">User Name:</div>
+                            <div class="row">First Name:</div>
+                            <div class="row">Last Name:</div>
+                            <div class="row">E-mail:</div>
+                            <div class="row">Age:</div>
+                            <div class="row">Phone:</div>
+                        </div>
+                        <div class="col">
+                            <div class="row"><div class="col"><div id="id-edit2">ID</div></div></div>
+                            <div class="row"><div class="col"><div id="userID-edit2">ID</div></div></div>
+                            <div class="row"><input type="text" id="firstName-edit2"></div>
+                            <div class="row"><input type="text" id="lastName-edit2"></div>
+                            <div class="row"><input type="text" id="email-edit2"></div>
+                            <div class="row"><input type="number" min="8" max="100" id="age-edit2"> Years old</div>
+                            <div class="row"><input type="text" id="phone-edit2"></div>
+                            <div class="row" style="text-align: center;">
+                                <button id="confirm-edit-attendant" type="button">Confirm</button>
+                                <button id="cancel-edit-attendant" type="button">Cancel</button>
+                            </div>                            
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

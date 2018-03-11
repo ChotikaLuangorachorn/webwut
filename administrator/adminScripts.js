@@ -33,32 +33,52 @@ $(document).ready(function(e){
 					tr.append("<td scope='row'>" + row.email + "</td>");
 					tr.append("<td scope='row'>" + row.phoneNo + "</td>");
 					tr.click(function(){
-						onSelectOrganizerRow(row.userID,row.orgName,row.email,row.phoneNo);
+						onSelectOrganizerRow(row.id,row.userID,row.orgName,row.email,row.phoneNo);
 					})
 				});
 			}
 		});
 	}
 	// edit
-	function onSelectOrganizerRow(id,orgName,email,phone){
-		console.log("onSelect", id);
+	function onSelectOrganizerRow(id,userName,orgName,email,phone){
 		document.getElementById('form-edit-organizer').style.display='block';
-		$(input[name='id']).val() = id;
+		$("#id-edit1").text(id);
+		$("#userID-edit1").text(userName);
+		$("#orgName-edit1").val(orgName);
+		$("#email-edit1").val(email);
+		$("#phone-edit1").val(phone);
 	}
 	$('#cancel-edit-organizer').click(function(e) {
 		console.log("cancel");
 		document.getElementById('form-edit-organizer').style.display='none';
 	})
 	$('#confirm-edit-organizer').click(function(e) {
-		$("#organizer-adding-form").ajaxForm({
-		url: "updateOrganizer.php",
-		type: "POST",
-		success: function(response){
-			document.getElementById('form-edit-organizer').style.display='none';
-			showAllOrganizer();
-		}
+		var id = $('#id-edit1').text();
+		var orgName = $('#orgName-edit1').val();
+		var email = $('#email-edit1').val();
+		var phone = $('#phone-edit1').val();
+		console.log("id>",id);
+		console.log("email>",email);
+		$.ajax({
+			url: "updateOrganizer.php",
+			type: "POST",
+			data: {
+				id: id,
+				orgName: orgName,
+				email: email,
+				phone: phone
+			},
+			success: function(response){
+				console.log("success");
+				console.log(response);
+				document.getElementById('form-edit-organizer').style.display='none';
+				showAllOrganizer();
+			},error: function(r){
+				console.log("error");
+				console.log(r);
+			}
 		})
-	})
+		})
 
 
 	// add
@@ -142,11 +162,72 @@ $(document).ready(function(e){
 					td6 = "<td scope='row' style='text-align: center;'>" + row.age + "</td>";
 					td7 = "<td scope='row'>" + row.phoneNo + "</td>";
 					td8 = "<td scope='row'>" + row.gender + "</td>";
-					$('.attendant-list').append("<tr id='list'>"+td1+td2+td3+td4+td5+td6+td7+td8+"</tr>");
+					tr = tbody.append("<tr id='list'></tr>").children().last();
+					tr.append(td1);
+					tr.append(td2);
+					tr.append(td3);
+					tr.append(td4);
+					tr.append(td5);
+					tr.append(td6);
+					tr.append(td7);
+					tr.append(td8);
+
+					// $('.attendant-list').append("<tr id='list'>"+td1+td2+td3+td4+td5+td6+td7+td8+"</tr>");
+					tr.click(function(){
+						onSelectAttendantRow(row.id,row.userID,row.firstName,row.lastName,row.email,row.age,row.phoneNo);
+					})
 				});
 			}
 		});
 	}
+	// edit
+	function onSelectAttendantRow(id,userName,firstName,lastName,email,age,phone){
+		document.getElementById('form-edit-attendant').style.display='block';
+		$("#id-edit2").text(id);
+		$("#userID-edit2").text(userName);
+		$("#firstName-edit2").val(firstName);
+		$("#lastName-edit2").val(lastName);
+		$("#email-edit2").val(email);
+		$("#age-edit2").val(age);
+		$("#phone-edit2").val(phone);
+	}
+	$('#cancel-edit-attendant').click(function(e) {
+		console.log("cancel");
+		document.getElementById('form-edit-attendant').style.display='none';
+	})
+	$('#confirm-edit-attendant').click(function(e) {
+		var id = $('#id-edit2').text();
+		var firstName = $('#firstName-edit2').val();
+		var lastName = $('#lastName-edit2').val();
+		var email = $('#email-edit2').val();
+		var age = $('#age-edit2').val();
+		var phone = $('#phone-edit2').val();
+		console.log("id>",id);
+		console.log("email>",email);
+		$.ajax({
+			url: "updateAttendant.php",
+			type: "POST",
+			data: {
+				id: id,
+				firstName: firstName,
+				lastName: lastName,
+				email: email,
+				age: age,
+				phone: phone
+			},
+			success: function(response){
+				console.log("success");
+				console.log(response);
+				document.getElementById('form-edit-attendant').style.display='none';
+				showAllAttendant();
+			},error: function(r){
+				console.log("error");
+				console.log(r);
+			}
+		})
+		})
+
+	// add
 	document.getElementById('form-add-attendant').style.display='none';
 	$('#btn-add-attendant').click(function(e) {
 		document.getElementById('form-add-attendant').style.display='block';

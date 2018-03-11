@@ -1,18 +1,20 @@
 <?php 
 	include("./connectDB.php");
 	$id = $_POST['id'];
-    $orgName = $_POST['orgName'];
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
     $email = $_POST['email'];
+    $age = $_POST['age'];
     $phone = $_POST['phone'];
 
-    if ($orgName != "" && $email != "" && $phone != "") {
-		$query_check = 'SELECT * FROM `organizer_info` WHERE email="'.$email.'" AND userID!="'.$id.'"';
+    if ($firstName != "" && $lastName != "" && $email != "" && $age != "" && $phone != "") {
+		$query_check = 'SELECT * FROM `personal_info` WHERE email="'.$email.'" AND userID!="'.$id.'"';
      	$statement_check = $conn->query($query_check);
      	$row_check = $statement_check->fetchAll(PDO::FETCH_OBJ);
      	if (sizeof($row_check) > 0) {
             echo "email has already !!";
         } else {
-        	$query = 'UPDATE `organizer_info` SET `orgName`="'.$orgName.'",`email`="'.$email.'",`phoneNo`="'.$phone.'" WHERE userID="'.$id.'"';
+        	$query = 'UPDATE `personal_info` SET `firstName`="'.$firstName.'", `lastName`="'.$lastName.'",`email`="'.$email.'", `age`="'.$age.'",`phoneNo`="'.$phone.'" WHERE userID="'.$id.'"';
         	$statement= $conn->exec($query);
         	echo "pass", $query;
         }
