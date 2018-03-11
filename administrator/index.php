@@ -41,6 +41,41 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-12" style="text-align: center;">
+                <button id="btn-add-organizer">Add User</button>
+            </div>
+            <!-- form for add organizer -->
+            <div id="form-add-organizer">
+                <form id="organizer-form">
+                    <div class="row">
+                        <div class="col">Username:</div>
+                        <div class="col"><input type="text" name="userID"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Password:</div>
+                        <div class="col"><input type="text" name="pwd"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Organization Name:</div>
+                        <div class="col"><input type="text" name="orgName"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">E-mail:</div>
+                        <div class="col"><input type="text" name="email"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Phone:</div>
+                        <div class="col"><input type="text" name="phone"></div>
+                    </div> 
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col" style="text-align: center;">
+                            <button id="confirm-add-organizer" type="button">Add</button>
+                            <button id="cancel-add-organizer" type="button">Cancel</button>
+                        </div>
+                    </div> 
+                </form>
+            </div>
         </div>
 
         <!-- Attendant -->
@@ -65,6 +100,56 @@
                     </thead>
                     <tbody class="attendant-list"></tbody>
                 </table>
+            </div>
+            <div class="col-12" style="text-align: center;">
+                <button id="btn-add-attendant">Add User</button>
+            </div>
+            <!-- form for add attendant -->
+            <div id="form-add-attendant">
+                <form id="attendant-form">
+                    <div class="row">
+                        <div class="col">Username:</div>
+                        <div class="col"><input type="text" name="userID"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Password:</div>
+                        <div class="col"><input type="text" name="pwd"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">First Name:</div>
+                        <div class="col"><input type="text" name="fName"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Last Name:</div>
+                        <div class="col"><input type="text" name="lName"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Age:</div>
+                        <div class="col"><input type="number" min="8" max="100" name="age"> Years old</div>
+                    </div>                    
+                    <div class="row">
+                        <div class="col">E-mail:</div>
+                        <div class="col"><input type="text" name="email"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Phone:</div>
+                        <div class="col"><input type="text" name="phone"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Gender:</div>
+                        <div class="col">
+                            <input type="radio" name="gender" value="male" checked> Male
+                            <input type="radio" name="gender" value="female"> Female
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col" style="text-align: center;">
+                            <button id="confirm-add-attendant" type="button">Add</button>
+                            <button id="cancel-add-attendant" type="button">Cancel</button>
+                        </div>
+                    </div> 
+                </form>
             </div>
         </div>
 
@@ -94,6 +179,9 @@
                     <tbody class="event-list"></tbody>
                 </table>
             </div>
+            <div class="col-12" style="text-align: center;">
+                <button id="">save</button>
+            </div>
         </div>
 
 
@@ -115,5 +203,6 @@
 
     <script src="moment.js"></script>
     <script src="adminScripts.js"></script>
+
 </body>
 </html>

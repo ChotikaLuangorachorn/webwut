@@ -2,8 +2,9 @@ $(document).ready(function(e){
 	showAllOrganizer();
 	$('#show-attendant').hide();
 	$('#show-event').hide();
-	
-
+	$('#list').click(function(e){
+  	console.log("งือ");
+});
 // Organizer
 	$('#btn-show-organizer').click(function(e) {
 		$('#show-event').hide();
@@ -12,7 +13,6 @@ $(document).ready(function(e){
 
 		showAllOrganizer();
 	})
-
 	function showAllOrganizer(){
 		$.ajax({
 			url: 'organizerList.php',
@@ -39,6 +39,46 @@ $(document).ready(function(e){
 			}
 		});
 	}
+	document.getElementById('form-add-organizer').style.display='none';
+	$('#btn-add-organizer').click(function(e) {
+		document.getElementById('form-add-organizer').style.display='block';
+	})
+	$('#cancel-add-organizer').click(function(e) {
+		console.log("cancel");
+		document.getElementById('form-add-organizer').style.display='none';
+	})
+	$('#confirm-add-organizer').click(function(e) {
+		$("#organizer-form").ajaxForm({
+		url: "addOrganizer.php",
+		type: "POST",
+		success: function(response){
+			// console.log(response);
+			// if (response == "true"){
+			//     $('#snackbar').text('Message sent');
+			//     document.getElementById('toID').value = '';
+			// 	document.getElementById('msg-box').value = '';
+			// 	document.getElementById("file").value = '';
+			// 	$('#preview').attr('src', '');
+			// 	$(".btnDeleteFile").hide();
+			// 	document.getElementById("snackbar").style.backgroundColor ="#61cf6a";
+			// }else if (response == "false"){
+			// 	$('#snackbar').text('Invalid user ID');
+			// 	document.getElementById("snackbar").style.backgroundColor = "#ff5432";
+			// }else if (response == "not ID"){
+			// 	$('#snackbar').text('Please enter user ID');
+			// 	document.getElementById("snackbar").style.backgroundColor = "#ff5432";
+			// }else{
+			// 	$('#snackbar').text('Fill in not complete');
+			// 	document.getElementById("snackbar").style.backgroundColor = "#ff5432";
+			// }
+
+			// snackbar: alert sending msg 
+			// var x = document.getElementById("snackbar");
+		 //    x.className = "show";
+		 //    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+		}
+	})
+	})
 
 // Attendant
 	$('#btn-show-attendant').click(function(e) {
@@ -71,6 +111,18 @@ $(document).ready(function(e){
 			}
 		});
 	}
+	document.getElementById('form-add-attendant').style.display='none';
+	$('#btn-add-attendant').click(function(e) {
+		document.getElementById('form-add-attendant').style.display='block';
+	})
+	$('#cancel-add-attendant').click(function(e) {
+		console.log("cancel");
+		document.getElementById('form-add-attendant').style.display='none';
+	})
+	$('#confirm-add-attendant').click(function(e) {
+		// sent to DB
+	})
+
 
 // Event
 	$('#btn-show-event').click(function(e) {
