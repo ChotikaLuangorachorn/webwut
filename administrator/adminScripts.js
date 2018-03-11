@@ -26,7 +26,7 @@ $(document).ready(function(e){
 					tr.append("<td scope='row'>" + row.orgName + "</td>");
 					tr.append("<td scope='row'>" + row.email + "</td>");
 					tr.append("<td scope='row'>" + row.phoneNo + "</td>");
-					tr.click(function(){
+					tr.dblclick(function(){
 						onSelectOrganizerRow(row.id,row.userID,row.orgName,row.email,row.phoneNo);
 					})
 				});
@@ -152,7 +152,7 @@ $(document).ready(function(e){
 					tr.append(td8);
 
 					// $('.attendant-list').append("<tr id='list'>"+td1+td2+td3+td4+td5+td6+td7+td8+"</tr>");
-					tr.click(function(){
+					tr.dblclick(function(){
 						onSelectAttendantRow(row.id,row.userID,row.firstName,row.lastName,row.email,row.age,row.phoneNo);
 					})
 				});

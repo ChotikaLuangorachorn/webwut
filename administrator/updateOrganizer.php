@@ -14,7 +14,7 @@
         } else {
         	$query = 'UPDATE `organizer_info` SET `orgName`="'.$orgName.'",`email`="'.$email.'",`phoneNo`="'.$phone.'" WHERE userID="'.$id.'"';
         	$statement= $conn->exec($query);
-        	echo "pass", $query;
+        	echo "update complete";
         }
 
     // 	$d = $conn->exec('UPDATE `organizer_info` SET `email`="8" WHERE userID=54');
