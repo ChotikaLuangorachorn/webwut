@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2018 at 11:34 AM
+-- Generation Time: Mar 11, 2018 at 04:27 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -109,7 +109,9 @@ CREATE TABLE `organizer_info` (
 
 INSERT INTO `organizer_info` (`userID`, `orgName`, `email`, `phoneNo`) VALUES
 (43, 'admin', 'admin@webwut.com', '0812345678'),
-(45, 'GodMakeEvent', 'god@webwut.com', '0912345678');
+(45, 'GodMakeEvent', 'god@webwut.com', '0912345678'),
+(51, 'kampanatkr-org', 'kampanatkr@org.com', '0864589595'),
+(52, 'chotika-org', 'chotika@org.com', '0834561234');
 
 -- --------------------------------------------------------
 
@@ -151,8 +153,10 @@ CREATE TABLE `personal_info` (
 --
 
 INSERT INTO `personal_info` (`userID`, `firstName`, `lastName`, `email`, `age`, `phoneNo`, `gender`, `image`) VALUES
-(46, 'bob', 'maley', 'hello@webwut.com', 23, '0853331111', 'male', ''),
-(47, 'gracy', 'oman', 'omen@webwut.com', 18, '081122333', 'female', '');
+(47, 'gracy', 'oman', 'omen@webwut.com', 18, '081122333', 'female', ''),
+(48, 'bobmaley', 'thailand', 'bobmaley@webwut.com', 25, '0818182838', 'male', ''),
+(49, 'sarah', 'dankala', 'sarah@webwut.com', 23, '0830011223', 'female', ''),
+(50, 'godji', 'ruangbamroong', 'kampanatkr@webwut.com', 20, '0853948854', 'male', '');
 
 -- --------------------------------------------------------
 
@@ -188,8 +192,12 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `userID`, `password`, `role`) VALUES
 (44, 'admin', '$wykCC0S6UsnU', 'AD'),
 (45, 'god', '$w75ElNTVyllI', 'OR'),
-(46, 'bob', '$wthDhZWZfLnA', 'AT'),
-(47, 'grace', '$wQosiKUx6mmg', 'AT');
+(47, 'grace', '$wQosiKUx6mmg', 'AT'),
+(48, 'bob', '$wquD143UiKqw', 'AT'),
+(49, 'sarah', '$wquD143UiKqw', 'AT'),
+(50, 'godji', '$wquD143UiKqw', 'AT'),
+(51, 'kampanat', '$wquD143UiKqw', 'OR'),
+(52, 'chotika', '$wquD143UiKqw', 'OR');
 
 --
 -- Indexes for dumped tables
@@ -269,7 +277,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -281,7 +289,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- Constraints for dumped tables
