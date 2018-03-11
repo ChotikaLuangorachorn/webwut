@@ -1,6 +1,6 @@
 <div class="form-group row">
     <label for="event-start-date" class="col-sm-3 col-form-label">Event
-        Start Date:</label>
+        Start Date: <span class="required">*<span></label>
     <input type="datetime-local" class="col-sm-3 form-control"
            id="event-start-date"
            name="event-start-date"

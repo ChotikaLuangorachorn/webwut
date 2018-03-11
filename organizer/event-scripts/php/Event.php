@@ -10,13 +10,13 @@ class Event
     private $date;
     private $age;
     private $gender;
-    private $currentEntries;
     private $maxEntries;
     private $attendingCost;
     private $indoorName;
     private $location;
     private $surveyLink;
     private $thumbnail;
+    private $attendees;
 
     /**
      * Event constructor.
@@ -30,11 +30,10 @@ class Event
      * @param $attendingCost
      * @param $indoorName
      * @param $location
-     * @param $surveyLink
      */
 
     public function __construct($eventName, $eventType, $detail, $date, $age,
-                                $gender, $maxEntries, $attendingCost, $indoorName, $location, $surveyLink)
+                                $gender, $maxEntries, $attendingCost, $indoorName, $location)
     {
         $this->eventName = $eventName;
         $this->eventType = $eventType;
@@ -42,12 +41,11 @@ class Event
         $this->date = $date;
         $this->age = $age;
         $this->gender = $gender;
-        $this->currentEntries = 0;
         $this->maxEntries = $maxEntries;
         $this->attendingCost = $attendingCost;
         $this->indoorName = $indoorName;
         $this->location = $location;
-        $this->surveyLink = $surveyLink;
+        $this->attendees = [];
     }
 
     /**
@@ -179,22 +177,6 @@ class Event
     }
 
     /**
-     * @return int
-     */
-    public function getCurrentEntries(): int
-    {
-        return $this->currentEntries;
-    }
-
-    /**
-     * @param int $currentEntries
-     */
-    public function setCurrentEntries(int $currentEntries): void
-    {
-        $this->currentEntries = $currentEntries;
-    }
-
-    /**
      * @return mixed
      */
     public function getMaxEntries()
@@ -309,16 +291,41 @@ class Event
         }
     }
 
+    /**
+     * @return array
+     */
+    public function getAttendees(): array
+    {
+        return $this->attendees;
+    }
+
+    /**
+     * @param array $attendees
+     */
+    public function setAttendees(array $attendees): void
+    {
+        $this->attendees = $attendees;
+    }
+
+    /**
+     * @param array $attendee
+     */
+    public function pushAttendee($attendee): void
+    {
+        array_push($this->attendees, $attendee);
+    }
+
     public function getEntries(): string
     {
-        $remainEntries = ($this->maxEntries - $this->currentEntries);
+        $currentEntries = count($this->attendees);
+        $remainEntries = ($this->maxEntries - $currentEntries);
         if ($remainEntries <= 0) {
             return "No available entry";
         } else {
             if ($remainEntries == 1) {
-                return "$this->currentEntries/$this->maxEntries (Only $remainEntries Entry left!)";
+                return "$currentEntries/$this->maxEntries (Only $remainEntries Entry left!)";
             }
-            return "$this->currentEntries/$this->maxEntries ($remainEntries Entries left)";
+            return "$currentEntries/$this->maxEntries ($remainEntries Entries left)";
         }
     }
 
@@ -339,5 +346,34 @@ class Event
     public function getLocationName(): string
     {
         return $this->indoorName . ' &raquo; ' . $this->location;
+    }
+
+    public function getLink()
+    {
+        return ($this->surveyLink) ? $this->surveyLink : "no link given";
+    }
+
+    public function getTypeStr(): string {
+        switch ($this->eventType) {
+            case 'bu':
+                return 'Business';
+            case 'co':
+                return 'Community';
+            case 'ed':
+                return 'Education';
+            case 'he':
+                return 'Health';
+            case 'ho':
+                return 'Hobbies';
+            case 'mu':
+                return 'Music';
+            case 'sc':
+                return htmlspecialchars('Science & Technology');
+            case 'sp':
+                return 'Sport';
+
+            default:
+                return "Shouldn't be executed this, some error occurs";
+        }
     }
 }

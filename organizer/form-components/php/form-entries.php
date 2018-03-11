@@ -1,6 +1,6 @@
 <div class="form-group row">
     <label for="max-entries" class="col-sm-3 col-form-label">Maximum
-        Entries:</label>
+        Entries: <span class="required">*<span></label>
     <input type="number" class="col-sm-3 form-control"
            id="max-entries"
            name="max-entries"

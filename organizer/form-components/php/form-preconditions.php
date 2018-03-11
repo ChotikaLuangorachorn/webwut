@@ -1,6 +1,6 @@
 <div class="form-group row align-items-center">
     <label for="preconditions"
-           class="col-sm-3 col-form-label">Preconditions:</label>
+           class="col-sm-3 col-form-label">Preconditions: <span class="required">*<span></label>
     <!-- Wrapper -->
     <div class="col-sm-9 row">
         <!-- Age -->

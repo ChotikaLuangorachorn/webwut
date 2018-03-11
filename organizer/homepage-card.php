@@ -4,7 +4,7 @@
         <a href="<?php echo '../assets/events/' .
             $recentEvent->getThumbnail() ?>">
             <!-- Event Thumbnail -->
-            <img class="image-600-300 image-fit-cover
+            <img class="image-640-360 image-fit-cover
                             img-thumbnail
                             rounded mb-3
                              mb-md-0"
@@ -15,7 +15,7 @@
     <div class="col-lg-5">
         <!-- Event Name -->
         <h3><?php echo $recentEvent->getEventName() ?> -
-            <small><?php echo $recentEvent->getEventType() ?></small>
+            <small><?php echo $recentEvent->getTypeStr() ?></small>
         </h3>
         <!-- Event Detail -->
         <p class="card-text">
@@ -55,7 +55,7 @@
         <!-- Google Form -->
         <p class="card-text">
             <span>Google Form: </span>
-            <a href="<?php echo $recentEvent->getSurveyLink() ?>">Link</a>
+            <a href="<?php echo $recentEvent->getLink() ?>">Link</a>
         </p>
         <!-- Button options -->
         <div>

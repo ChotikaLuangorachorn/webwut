@@ -1,6 +1,6 @@
 <div class="form-group row">
     <label for="event-name" class="col-sm-3 col-form-label">Event
-        Name:</label>
+        Name: <span class="required">*<span></label>
     <input type="text" class="col-sm-8 form-control" id="event-name"
            name="event-name"
            placeholder="Name" required>

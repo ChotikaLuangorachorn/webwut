@@ -28,42 +28,29 @@
         <!-- form -->
         <form class="col-10 offset-1 needs-validation" method="post"
               enctype="multipart/form-data"
-              action="phpScripts/eventCreater.php" novalidate>
+              action="event-scripts/php/event-creator.php" novalidate>
             <!-- Event Name -->
-            <?php require 'event-form-components/php/event-name.php' ?>
+            <?php require 'form-components/php/form-name.php' ?>
             <!-- Type of Event -->
-            <?php require 'event-form-components/php/event-type.php' ?>
+            <?php require 'form-components/php/form-type.php' ?>
             <!-- Event Detail -->
-            <?php require 'event-form-components/php/event-detail.php' ?>
+            <?php require 'form-components/php/form-detail.php' ?>
             <!-- Event Thumbnail -->
-            <?php require 'event-form-components/php/event-thumbnail.php' ?>
+            <?php require 'form-components/php/form-thumbnail.php' ?>
             <!-- Event Date -->
-            <?php require 'event-form-components/php/event-date.php' ?>
+            <?php require 'form-components/php/form-date.php' ?>
             <!-- Event Entries -->
-            <?php require 'event-form-components/php/event-entries.php' ?>
+            <?php require 'form-components/php/form-entries.php' ?>
             <!-- Event Preconditions -->
-            <?php require 'event-form-components/php/event-preconditions.php' ?>
+            <?php require 'form-components/php/form-preconditions.php' ?>
             <!-- Attending Cost -->
-            <?php require 'event-form-components/php/event-attending-cost.php' ?>
+            <?php require 'form-components/php/form-attending-cost.php' ?>
             <!-- Location -->
-            <?php require 'event-form-components/php/event-location-info.php' ?>
+            <?php require 'form-components/php/form-location-info.php' ?>
             <!-- Google Form Link -->
-            <?php require 'event-form-components/php/event-google-form.php' ?>
+            <?php require 'form-components/php/form-survey-link.php' ?>
             <!-- Submit -->
-            <div class="form-group row col-sm-8 offset-sm-2">
-                <div class="col-centered">
-                    <button type="submit" class="btn btn-primary m-1"
-                            id="add-event-btn">
-                        Add
-                        Event
-                    </button>
-                    <button type="button" class="btn btn-secondary m-1"
-                            id="discard-event-btn"
-                            onclick="window.location.replace('orgHomepage.php')">
-                        Cancel
-                    </button>
-                </div>
-            </div>
+            <?php require 'form-components/php/form-submit.php' ?>
             <!-- /.form -->
         </form>
         <!-- /.wrapper -->
@@ -92,14 +79,16 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFDllUC_ofU2tABnCon3X-WUfPtjS4H_o&callback=initMap">
 </script>
-<script src="event-form-components/js/google-marker.js"></script>
+<script src="form-components/js/google-marker.js"></script>
 
-<!-- Event Validator-->
-<script src="event-form-components/js/event-validator.js"></script>
-<!-- Event Thumbnail Preview-->
-<script src="event-form-components/js/event-thumbnail-preview.js"></script>
-<!-- Event Checkbox -->
-<script src="event-form-components/js/event-checkbox.js"></script>
+<!-- Form Validator-->
+<script src="form-components/js/form-validator.js"></script>
+<!-- Form Thumbnail Preview-->
+<script src="form-components/js/form-thumbnail-preview.js"></script>
+<!-- Form Checkbox -->
+<script src="form-components/js/form-checkbox.js"></script>
+<!-- Form Modal -->
+<script src="form-components/js/form-modal.js"></script>
 </body>
 </html>
 

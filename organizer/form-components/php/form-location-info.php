@@ -2,20 +2,6 @@
     #map {
         height: 400px;
     }
-
-    #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto', 'sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-    }
 </style>
 
 <div class="form-group row">
@@ -29,7 +15,7 @@
                 <!-- Indoor Location Name -->
                 <div class="form-group row col-12 p-0 m-0">
                     <label for="indoor-name"
-                           class="col-sm-3 col-form-label">Indoor name:</label>
+                           class="col-sm-3 col-form-label">Indoor name: <span class="required">*<span></label>
                     <input type="text" class="col-sm-9 form-control"
                            id="indoor-name"
                            name="indoor-name"
@@ -40,7 +26,7 @@
                     <!-- Outdoor Location Name -->
                     <label for="location"
                            class="col-sm-3 col-form-label">Outdoor
-                        Location:</label>
+                        Location: <span class="required">*<span></label>
                     <input type="text" class="col-sm-9 form-control"
                            id="location"
                            name="location"
