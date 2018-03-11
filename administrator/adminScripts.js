@@ -36,7 +36,6 @@ $(document).ready(function(e){
 					tr.append("<td scope='row'>" + row.email + "</td>");
 					tr.append("<td scope='row'>" + row.phoneNo + "</td>");
 				});
-
 			}
 		});
 	}
@@ -72,7 +71,6 @@ $(document).ready(function(e){
 			}
 		});
 	}
-
 
 // Event
 	$('#btn-show-event').click(function(e) {
@@ -110,11 +108,8 @@ $(document).ready(function(e){
 					tr.append("<td scope='row'>" + row.type + "</td>");
 					tr.append("<td scope='row'>" + row.orgName + "</td>");
 				});
-				
-
 			}
 		});
-
 	}
 
 });

@@ -4,5 +4,4 @@
 	$statement = $conn->query($query);
 	$row = $statement->fetchAll(PDO::FETCH_OBJ);
 	echo json_encode($row);
-
  ?>
