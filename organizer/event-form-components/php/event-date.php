@@ -7,6 +7,6 @@
            min="<?php echo date("Y-m-d")."T00:00:00.00"; ?>"
            required>
     <div class="invalid-feedback offset-sm-3">
-        Please select a start date.
+        Please select a proper start date.
     </div>
 </div>

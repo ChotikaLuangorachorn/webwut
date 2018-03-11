@@ -55,3 +55,17 @@ div#event-options {
     max-width: 600px;
     max-height: 300px;
 }
+
+div > p.card-text > span {
+    font-weight: bold;
+}
+
+div > p.card-text > a {
+    color: #f675b3;
+    text-decoration: none;
+}
+
+div > p.card-text > a:hover {
+    color: white;
+    text-decoration: none;
+}

@@ -2,12 +2,12 @@
 
 class Event
 {
-    public static $EVENTID_PRIMARY = 0;
     private $eventID;
+    private $orgID;
     private $eventName;
     private $eventType;
     private $detail;
-    private $startDate;
+    private $date;
     private $age;
     private $gender;
     private $currentEntries;
@@ -15,7 +15,7 @@ class Event
     private $attendingCost;
     private $indoorName;
     private $location;
-    private $googleForm;
+    private $surveyLink;
     private $thumbnail;
 
     /**
@@ -23,24 +23,23 @@ class Event
      * @param $eventName
      * @param $eventType
      * @param $detail
-     * @param $startDate
+     * @param $date
      * @param $age
      * @param $gender
-     * @param $currentEntries
      * @param $maxEntries
      * @param $attendingCost
      * @param $indoorName
      * @param $location
-     * @param $googleForm
+     * @param $surveyLink
      */
-    public function __construct($eventName, $eventType, $detail, $startDate, $age, $gender, $maxEntries, $attendingCost, $indoorName, $location, $googleForm)
+
+    public function __construct($eventName, $eventType, $detail, $date, $age,
+                                $gender, $maxEntries, $attendingCost, $indoorName, $location, $surveyLink)
     {
-        self::$EVENTID_PRIMARY++;
-        $this->eventID = self::$EVENTID_PRIMARY;
         $this->eventName = $eventName;
         $this->eventType = $eventType;
         $this->detail = $detail;
-        $this->startDate = $startDate;
+        $this->date = $date;
         $this->age = $age;
         $this->gender = $gender;
         $this->currentEntries = 0;
@@ -48,23 +47,7 @@ class Event
         $this->attendingCost = $attendingCost;
         $this->indoorName = $indoorName;
         $this->location = $location;
-        $this->googleForm = $googleForm;
-    }
-
-    /**
-     * @return int
-     */
-    public static function getEVENTIDPRIMARY(): int
-    {
-        return self::$EVENTID_PRIMARY;
-    }
-
-    /**
-     * @param int $EVENTID_PRIMARY
-     */
-    public static function setEVENTIDPRIMARY(int $EVENTID_PRIMARY): void
-    {
-        self::$EVENTID_PRIMARY = $EVENTID_PRIMARY;
+        $this->surveyLink = $surveyLink;
     }
 
     /**
@@ -76,11 +59,27 @@ class Event
     }
 
     /**
-     * @param int $eventID
+     * @param mixed $eventID
      */
-    public function setEventID(int $eventID): void
+    public function setEventID($eventID): void
     {
         $this->eventID = $eventID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrgID()
+    {
+        return $this->orgID;
+    }
+
+    /**
+     * @param mixed $orgID
+     */
+    public function setOrgID($orgID): void
+    {
+        $this->orgID = $orgID;
     }
 
     /**
@@ -134,17 +133,17 @@ class Event
     /**
      * @return mixed
      */
-    public function getStartDate()
+    public function getDate()
     {
-        return $this->startDate;
+        return $this->date;
     }
 
     /**
-     * @param mixed $startDate
+     * @param mixed $date
      */
-    public function setStartDate($startDate): void
+    public function setDate($date): void
     {
-        $this->startDate = $startDate;
+        $this->date = $date;
     }
 
     /**
@@ -180,17 +179,17 @@ class Event
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getCurrentEntries()
+    public function getCurrentEntries(): int
     {
         return $this->currentEntries;
     }
 
     /**
-     * @param mixed $currentEntries
+     * @param int $currentEntries
      */
-    public function setCurrentEntries($currentEntries): void
+    public function setCurrentEntries(int $currentEntries): void
     {
         $this->currentEntries = $currentEntries;
     }
@@ -262,17 +261,17 @@ class Event
     /**
      * @return mixed
      */
-    public function getGoogleForm()
+    public function getSurveyLink()
     {
-        return $this->googleForm;
+        return $this->surveyLink;
     }
 
     /**
-     * @param mixed $googleForm
+     * @param mixed $surveyLink
      */
-    public function setGoogleForm($googleForm): void
+    public function setSurveyLink($surveyLink): void
     {
-        $this->googleForm = $googleForm;
+        $this->surveyLink = $surveyLink;
     }
 
     /**
@@ -291,33 +290,41 @@ class Event
         $this->thumbnail = $thumbnail;
     }
 
-    public function  getAttendingCostStr(){
-        if($this->attendingCost <= 0){
-            return "Free";
-        } else {
-            return "$this->attendingCost ฿";
-        }
-    }
 
-    public function getEntries(){
-        $remainEntries = ($this->maxEntries - $this->currentEntries);
-        if($remainEntries <= 0){
-            return "No available entry";
-        } else {
-            return "$this->currentEntries/$this->maxEntries ($remainEntries Entries left)";
-        }
-    }
-
-    public function getAgeCondition(){
-        if($this->age < 0){
+    public function getAgeCondition(): string
+    {
+        if ($this->age <= 0) {
             return 'Any Age';
         } else {
             return "Must be above $this->age";
         }
     }
 
-    public function getGenderCondition(){
-        switch ($this->gender){
+    public function getAttendingCostStr(): string
+    {
+        if ($this->attendingCost <= 0) {
+            return "Free";
+        } else {
+            return "$this->attendingCost ฿";
+        }
+    }
+
+    public function getEntries(): string
+    {
+        $remainEntries = ($this->maxEntries - $this->currentEntries);
+        if ($remainEntries <= 0) {
+            return "No available entry";
+        } else {
+            if ($remainEntries == 1) {
+                return "$this->currentEntries/$this->maxEntries (Only $remainEntries Entry left!)";
+            }
+            return "$this->currentEntries/$this->maxEntries ($remainEntries Entries left)";
+        }
+    }
+
+    public function getGenderCondition(): string
+    {
+        switch ($this->gender) {
             case 'a':
                 return 'Any Gender';
             case 'f':
@@ -329,7 +336,8 @@ class Event
         }
     }
 
-    public function getLocationName(){
-        return $this->indoorName . ' - ' . $this->location;
+    public function getLocationName(): string
+    {
+        return $this->indoorName . ' &raquo; ' . $this->location;
     }
 }
