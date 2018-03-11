@@ -32,7 +32,7 @@ $(document).ready(function(e){
 					})
 					// for delete
 					tr.mousedown(function(e){
-				        if(e.which == 3){
+				        if(e.which == 3){ //Right Click
             				onSetConfirmOrganizerRow(row.id,row.userID);
         				}
    					 })
@@ -202,7 +202,7 @@ $(document).ready(function(e){
 					})
 					// for delete
 					tr.mousedown(function(e){
-				        if(e.which == 3){
+				        if(e.which == 3){ //Right Click
             				onSetConfirmAttendantRow(row.id,row.userID);
         				}
    					 })

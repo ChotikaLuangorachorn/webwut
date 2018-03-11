@@ -117,8 +117,13 @@
                     </div> 
                 </form>
             </div>
+            <ul> Notation:
+                <li>Sort -> Click on Head Table</li>
+                <li>Edit -> Double Click</li>
+                <li>Delete -> Right Click</li>
+            </ul>
         </div>
-
+        
         <!-- Attendant -->
         <div class="row" id="show-attendant">
             <div class="col-12" style="text-align: center;">
@@ -245,7 +250,12 @@
                         </div>
                     </div> 
                 </form>
-            </div>            
+            </div>
+            <ul> Notation:
+                <li>Sort -> Click on Head Table</li>
+                <li>Edit -> Double Click</li>
+                <li>Delete -> Right Click</li>
+            </ul>            
         </div>
 
 
@@ -277,6 +287,9 @@
 <!--             <div class="col-12" style="text-align: center;">
                 <button id="">save</button>
             </div> -->
+            <ul> Notation:
+                <li>Sort -> Click on Head Table</li>
+            </ul>
         </div>
 
 
