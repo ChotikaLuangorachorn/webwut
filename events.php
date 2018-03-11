@@ -1,6 +1,13 @@
 <?php
+ if (isset($_POST["search"])){
+      echo $_POST["search"];
+}
+?>
+
+<?php
   $category = $_REQUEST['data'];
-  if ($category == "Science" ||
+  if ($category == "All" ||
+      $category == "Science" ||
       $category == "Business" ||
       $category == "Education" ||
       $category == "Hobbies" ||
@@ -18,7 +25,17 @@
 
 
   include 'services/connectDB.php';
-    if (isset($conn)) {
+    if (isset($conn) && $category == "All") {
+      $sql = "SELECT * FROM event ";
+      $stmt = $conn->prepare($sql);
+      try {
+        $stmt->execute();
+      } catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+      $allEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    else {
       $sql = "SELECT * FROM event WHERE type='$category'";
       $stmt = $conn->prepare($sql);
       try {
@@ -50,43 +67,66 @@
   <?php include 'header.php';?>
 
 <div class="container">
-
+  <br><br>
   <!-- menu Button -->
-    <div class="container-fluid">
-      <div class="row" id="menuBar">
-        <div class="col-sm-6 noPadding">
-          <div class="btn-group">
-            <button class="btn btn-default-dropdown btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <b>Explore events</b>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">All</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="events.php?data=Science">Science & Technology</a>
-                  <a class="dropdown-item" href="events.php?data=Business">Business</a>
-                  <a class="dropdown-item" href="events.php?data=Education">Education</a>
-                  <a class="dropdown-item" href="events.php?data=Hobbies">Hobbies</a>
-                  <a class="dropdown-item" href="events.php?data=Music">Music</a>
-                  <a class="dropdown-item" href="events.php?data=Health">Health</a>
-                  <a class="dropdown-item" href="events.php?data=Community">Community</a>
-                  <a class="dropdown-item" href="events.php?data=Sports">Sports</a>
-            </div>
+  <div class="container-fluid">
+     <div class="row" id="menuBar">
+       <div class="col-sm-4 noPadding">
+         <div class="btn-group">
+           <button class="btn btn-default-dropdown btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <b>Explore events</b>
+           </button>
+           <div class="dropdown-menu">
+              <a class="dropdown-item" href="events.php?data=All">All</a>
+                 <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="events.php?data=Science">Science & Technology</a>
+                <a class="dropdown-item" href="events.php?data=Business">Business</a>
+                <a class="dropdown-item" href="events.php?data=Education">Education</a>
+                <a class="dropdown-item" href="events.php?data=Hobbies">Hobbies</a>
+                <a class="dropdown-item" href="events.php?data=Music">Music</a>
+                <a class="dropdown-item" href="events.php?data=Health">Health</a>
+                <a class="dropdown-item" href="events.php?data=Community">Community</a>
+                <a class="dropdown-item" href="events.php?data=Sports">Sports</a>
+              </div>
           </div>
         </div>
-        <div class="col-sm-6 noPadding">
+      <div class="col-sm-8 noPadding">
           order by :
           <div class="btn-group">
-            <button class="btn btn-default-dropdown btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <b>time</b>
-            </button>
-            <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">time</a>
-                  <a class="dropdown-item" href="#">organizer</a>
-                  <a class="dropdown-item" href="#">location</a>
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">date</button>
+
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Date and Times</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>......</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <button class="btn btn-filter-dropdown btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>location</b>
+            </button>
+            <ul class="dropdown-menu" id="filterSelected">
+                  <li><a class="dropdown-item" id="location" href="#">location</a></li>
+                  <li><a class="dropdown-item" id="organizer" href="#">organizer</a></li>
+            </ul>
+            <form class="form-inline" action="index.php" method="post">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
           </div>
         </div>
       </div>
+  </div>
 
   <div class="container-fluid noPadding">
     <br><br>
@@ -101,9 +141,6 @@
 </div>
 
 
-
-
-
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -111,6 +148,14 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
   <script>
+
+      $("#filterSelected a").click(function(){
+        var selText = $(this).text();
+        $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+'<span class="caret"></span>');
+      });
+      $('#filterSelected a').click(function(e){
+        e.preventDefault();
+      });
 
     function formatDate(sqlDate) {
       sqlDate = sqlDate.split(" ");
