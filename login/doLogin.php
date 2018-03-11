@@ -16,7 +16,7 @@
         if ($user !== FALSE) {
             // echo "enter IF";
             //set ตัวแปรใน session ไว้ว่าใคร log in อยู่ และเป็น role อะไร
-            $_SESSION["ID"] = $user->id;
+            $_SESSION["ID"] = $user->userID;
             $_SESSION["ROLE"] = $user->role;
             session_write_close();
             //เช็คว่ากด login มาจากหน้าไหนให้กลับไปหน้านั้น

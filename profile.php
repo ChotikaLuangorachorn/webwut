@@ -59,12 +59,15 @@
         <div class="row">
             <div class="col-md-4 col-12">
                 <figure>
-                    <img src="assets/users/<?php if ($info->image) echo $info->image; else echo "assets/user/nopic.png"; ?>" style="border-radius: 25px; padding: 10px;" width="200" height="250">
-                    <figcaption>
-                        <form action="services/updateProfile.php" method="post" enctype="multipart/form-data">
-                            <label class="btn btn-outline-primary" for="image">อัพโหลดรูป Profile<input type="file" name="image" id="image" accept="image/*" hidden onchange="form.submit();"></label>
-                        </form>
-                    </figcaption>
+                    <form action="services/updateProfile.php" method="post" enctype="multipart/form-data">
+                        <label for="image">
+                            <img id="shownImage" src="assets/users/<?php if ($info->image) echo $info->image; else echo "assets/user/nopic.png"; ?>" style="border-radius: 25px; padding: 10px;" width="200" height="250">
+                            <img src="assets/image/clickme.png" id="clickme">
+                            <figcaption>
+                                <input type="file" name="image" id="image" accept="image/*" hidden onchange="form.submit();">
+                            </figcaption>
+                        </label>
+                    </form>
                 </figure>
             </div>
             <div class="col-md-8 col-12">

@@ -15,12 +15,13 @@ body {
     text-align: center;
 }
 figure {
+    position: relative;
     display: block;
     width: 100%;
     margin: 20px; /* adjust as needed */
     text-align: center;
 }
-figure img {
+figure img#shownImage {
     vertical-align: top;
     border: 1px solid black;
 }
@@ -69,4 +70,24 @@ figure figcaption {
 
 no-event {
     display: block;
+}
+
+#clickme {
+    position: absolute;
+    display: none;
+    background-color: rgba(245, 245, 245, 0.459);
+    top:0px;
+    width: 200px;
+    height: 250px;
+    border-radius: 25px;
+}
+
+#shownImage:hover+#clickme {
+    display: block;
+    
+}
+
+#clickme:hover {
+    display: block;
+    
 }
