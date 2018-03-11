@@ -31,7 +31,7 @@
                     <thead>
                         <tr>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(1)')" scope="col" style="width: 100px;">ID</th>
-                            <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User ID</th>
+                            <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User Name</th>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">Organizer Name</th>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">E-mail</th>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 150px;">Phone</th>
@@ -46,38 +46,84 @@
             </div>
             <!-- form for add organizer -->
             <div id="form-add-organizer">
-                <form id="organizer-form">
+                <form id="organizer-adding-form">
                     <div class="row">
-                        <div class="col">Username:</div>
-                        <div class="col"><input type="text" name="userID"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col">Password:</div>
-                        <div class="col"><input type="text" name="pwd"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col">Organization Name:</div>
-                        <div class="col"><input type="text" name="orgName"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col">E-mail:</div>
-                        <div class="col"><input type="text" name="email"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col">Phone:</div>
-                        <div class="col"><input type="text" name="phone"></div>
-                    </div> 
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col" style="text-align: center;">
-                            <button id="confirm-add-organizer" type="button">Add</button>
-                            <button id="cancel-add-organizer" type="button">Cancel</button>
+                        <div class="col">
+                            <div class="row">Username:</div>
+                            <div class="row">Password:</div>
+                            <div class="row">Organization Name:</div>
+                            <div class="row">E-mail:</div>
+                            <div class="row">Phone:</div>
+                        </div>
+                        <div class="col">
+                            <div class="row"><input type="text" id="userID"></div>
+                            <div class="row"><input type="text" id="pwd"></div>
+                            <div class="row"><input type="text" id="orgName"></div>
+                            <div class="row"><input type="text" id="email"></div>
+                            <div class="row"><input type="text" id="phone"></div>
+                            <div class="row" style="text-align: center;">
+                                <button id="confirm-add-organizer" type="button">Add</button>
+                                <button id="cancel-add-organizer" type="button">Cancel</button>
+                            </div>
                         </div>
                     </div> 
                 </form>
             </div>
+            <!-- form for edit organizer -->
+            <div id="form-edit-organizer">
+                <form id="organizer-editing-form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">ID:</div>
+                            <div class="row">User Name:</div>
+                            <div class="row">Organization Name:</div>
+                            <div class="row">E-mail:</div>
+                            <div class="row">Phone:</div>
+                        </div>
+                        <div class="col">
+                            <div class="row"><div class="col"><div id="id-edit1">ID</div></div></div>
+                            <div class="row"><div class="col"><div id="userID-edit1">userID</div></div></div>
+                            <div class="row"><input type="text" id="orgName-edit1"></div>
+                            <div class="row"><input type="text" id="email-edit1"></div>
+                            <div class="row"><input type="text" id="phone-edit1"></div>
+                            <div class="row" style="text-align: center;">
+                                <button id="confirm-edit-organizer" type="button">Confirm</button>
+                                <button id="cancel-edit-organizer" type="button">Cancel</button>
+                            </div>                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- delete organizer-->
+            <div id="alert-delete-organizer">
+                <form id="alert-delete-form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">ID:</div>
+                            <div class="row">User Name:</div>
+                        </div>
+                        <div class="col">
+                            <div class="row"><div class="col"><div id="id-delete1">ID</div></div></div>
+                            <div class="row"><div class="col"><div id="userID-delete1">userID</div></div></div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: center;">
+                        <div class="col">
+                            <button id="confirm-delete-organizer" type="button">Delete</button>
+                        </div>
+                        <div class="col">
+                            <button id="cancel-delete-organizer" type="button">Cancel</button>
+                        </div>
+                    </div> 
+                </form>
+            </div>
+            <ul> Notation:
+                <li>Sort -> Click on Head Table</li>
+                <li>Edit -> Double Click</li>
+                <li>Delete -> Right Click</li>
+            </ul>
         </div>
-
+        
         <!-- Attendant -->
         <div class="row" id="show-attendant">
             <div class="col-12" style="text-align: center;">
@@ -89,7 +135,7 @@
                     <thead>
                         <tr>
                             <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(1)')" scope="col" style="width: 100px;">ID</th>
-                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User ID</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User Name</th>
                             <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">First Name</th>
                             <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">Last Name</th>
                             <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 200px;">E-mail</th>
@@ -106,40 +152,40 @@
             </div>
             <!-- form for add attendant -->
             <div id="form-add-attendant">
-                <form id="attendant-form">
+                <form id="attendant-adding-form">
                     <div class="row">
                         <div class="col">Username:</div>
-                        <div class="col"><input type="text" name="userID"></div>
+                        <div class="col"><input type="text" id="userID2"></div>
                     </div>
                     <div class="row">
                         <div class="col">Password:</div>
-                        <div class="col"><input type="text" name="pwd"></div>
+                        <div class="col"><input type="text" id="pwd2"></div>
                     </div>
                     <div class="row">
                         <div class="col">First Name:</div>
-                        <div class="col"><input type="text" name="fName"></div>
+                        <div class="col"><input type="text" id="fName2"></div>
                     </div>
                     <div class="row">
                         <div class="col">Last Name:</div>
-                        <div class="col"><input type="text" name="lName"></div>
+                        <div class="col"><input type="text" id="lName2"></div>
                     </div>
                     <div class="row">
                         <div class="col">Age:</div>
-                        <div class="col"><input type="number" min="8" max="100" name="age"> Years old</div>
+                        <div class="col"><input type="number" min="8" max="100" id="age2"> Years old</div>
                     </div>                    
                     <div class="row">
                         <div class="col">E-mail:</div>
-                        <div class="col"><input type="text" name="email"></div>
+                        <div class="col"><input type="text" id="email2"></div>
                     </div>
                     <div class="row">
                         <div class="col">Phone:</div>
-                        <div class="col"><input type="text" name="phone"></div>
+                        <div class="col"><input type="text" id="phone2"></div>
                     </div>
                     <div class="row">
                         <div class="col">Gender:</div>
                         <div class="col">
-                            <input type="radio" name="gender" value="male" checked> Male
-                            <input type="radio" name="gender" value="female"> Female
+                            <input type="radio" id="male2" name="gender" value="male" checked> Male
+                            <input type="radio" id="female2" name="gender" value="female" > Female
                         </div>
                     </div> 
                     <div class="row">
@@ -151,6 +197,65 @@
                     </div> 
                 </form>
             </div>
+
+            <!-- form for edit attendant -->
+            <div id="form-edit-attendant">
+                <form id="attendant-editing-form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">ID:</div>
+                            <div class="row">User Name:</div>
+                            <div class="row">First Name:</div>
+                            <div class="row">Last Name:</div>
+                            <div class="row">E-mail:</div>
+                            <div class="row">Age:</div>
+                            <div class="row">Phone:</div>
+                        </div>
+                        <div class="col">
+                            <div class="row"><div class="col"><div id="id-edit2">ID</div></div></div>
+                            <div class="row"><div class="col"><div id="userID-edit2">ID</div></div></div>
+                            <div class="row"><input type="text" id="firstName-edit2"></div>
+                            <div class="row"><input type="text" id="lastName-edit2"></div>
+                            <div class="row"><input type="text" id="email-edit2"></div>
+                            <div class="row"><input type="number" min="8" max="100" id="age-edit2"> Years old</div>
+                            <div class="row"><input type="text" id="phone-edit2"></div>
+                            <div class="row" style="text-align: center;">
+                                <button id="confirm-edit-attendant" type="button">Confirm</button>
+                                <button id="cancel-edit-attendant" type="button">Cancel</button>
+                            </div>                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- delete attendant-->
+            <div id="alert-delete-attendant">
+                <form id="alert-delete-form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">ID:</div>
+                            <div class="row">User Name:</div>
+                        </div>
+                        <div class="col">
+                            <div class="row"><div class="col"><div id="id-delete2">ID</div></div></div>
+                            <div class="row"><div class="col"><div id="userID-delete2">userID</div></div></div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: center;">
+                        <div class="col">
+                            <button id="confirm-delete-attendant" type="button">Delete</button>
+                        </div>
+                        <div class="col">
+                            <button id="cancel-delete-attendant" type="button">Cancel</button>
+                        </div>
+                    </div> 
+                </form>
+            </div>
+            <ul> Notation:
+                <li>Sort -> Click on Head Table</li>
+                <li>Edit -> Double Click</li>
+                <li>Delete -> Right Click</li>
+            </ul>            
         </div>
 
 
@@ -179,9 +284,12 @@
                     <tbody class="event-list"></tbody>
                 </table>
             </div>
-            <div class="col-12" style="text-align: center;">
+<!--             <div class="col-12" style="text-align: center;">
                 <button id="">save</button>
-            </div>
+            </div> -->
+            <ul> Notation:
+                <li>Sort -> Click on Head Table</li>
+            </ul>
         </div>
 
 

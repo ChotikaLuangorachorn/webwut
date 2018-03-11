@@ -1,3 +1,5 @@
+<?php include '../services/checkLogin.php' ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,37 +9,42 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/header.css">
 
-    <style>
-    /* background */
-      body {
-        background-image: url("../assets/image/background.jpg");
-        background-attachment: fixed;
-      }
-      #banner {
-        background-image: url("../assets/image/banner.jpg");
-        height: 115px;
-        background-size: auto;
-        background-repeat: repeat-x;
-      }
-      #fake-navbar {
-        height: 76px;
-        width: 100%;
-        display: none;
-      }
-    </style>
   </head>
 
   <body>
 
     <div id="banner"></div>
     <nav class="navbar navbar-light" style="background-color: white;">
-      <div class="container">
-          <a class="navbar-brand" href="#">
+      <div class="container"><div class="container-fluid">
+        <div class="row">
+          <div class="col-8">
+          <a class="navbar-brand" href="../webwut">
             <img  src="../assets/image/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
             <font size="6" color="#f675b3">WEBWUT <b>Event</b></font>
           </a>
-      </div>
+          </div>
+          <div class="col-4 noPadding">
+          <?php
+          if ($LOGGEDIN) {
+            $ID = $_SESSION['ID'];
+            echo "Welcome, ". $ID;
+            ?>
+            <a href="#profile"><i class="material-icons" style="font-size:48px;color:#61b3cf">account_box</i></a>
+            <a href="#mail"><i class="material-icons" style="font-size:48px;color:#df8a83">mail</i></a>
+            <button type="button" class="btn btn-light" id="btn-login" role="button">SIGN OUT</button>
+            <?php
+          } else {
+            ?>
+            <div id="bg-me">
+              <button type="button" class="btn btn-light" id="btn-login" role="button">SIGN IN</button>
+            </div>
+            <?php
+          }
+          ?>
+        </div>
+      </div></div>
     </nav>
     <div id="fake-navbar"></div>
 

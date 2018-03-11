@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <!-- Bootstrap core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="loginStyle.css">
 </head>
 <body>
@@ -16,14 +17,26 @@
 
         if (array_key_exists("e", $_GET)) {
             if ($_GET['e']==1) {
-                echo "<p>Incorrect Username and/or Password</p>";
+                ?>
+                <div class="alert alert-light alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Warning</strong> Incorrect Username and/or Password
+                </div>
+                <?php
             } else if ($_GET['e']==2) {
-                echo "<p>Please login first.</p>";
+                ?>
+                <div class="alert alert-light alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Warning</strong> Please login first.
+                </div>
+                <?php
             }
         }
     ?>
+    
     <div class="text-center">
-        <div class="logo">Sign In</div>
+        <div class="text-center"><span><img src="../assets/image/logo.png" width="80" height="80" class="d-inline-block align-top"></span></div>
+        <div class="logo text-center">Sign In</div>
         <!-- Main Form -->
             <div class="login-form-1">
                 <form id="login-form" class="text-left" action="doLogin.php" method="post">
@@ -42,8 +55,8 @@
                                 <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                             </div>
                             <div class="etc-login-form">
-                                <p><a href="./regis_attendant.php">create new attendant</a></p>
-                                <p><a href="./regis_organizer.php">create new organizer</a></p>
+                                <p><a href="./regis_attendant.php"><span class="ion-person-add"></span> create new attendant</a></p>
+                                <p><a href="./regis_organizer.php"><span class="ion-person-stalker"></span> create new organizer</a></p>
                             </div>
                         </div>
                     </div>
