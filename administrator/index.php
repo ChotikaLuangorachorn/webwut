@@ -46,34 +46,50 @@
             </div>
             <!-- form for add organizer -->
             <div id="form-add-organizer">
-                <form id="organizer-form">
+                <form id="organizer-adding-form">
                     <div class="row">
-                        <div class="col">Username:</div>
-                        <div class="col"><input type="text" name="userID"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col">Password:</div>
-                        <div class="col"><input type="text" name="pwd"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col">Organization Name:</div>
-                        <div class="col"><input type="text" name="orgName"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col">E-mail:</div>
-                        <div class="col"><input type="text" name="email"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col">Phone:</div>
-                        <div class="col"><input type="text" name="phone"></div>
-                    </div> 
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col" style="text-align: center;">
-                            <button id="confirm-add-organizer" type="button">Add</button>
-                            <button id="cancel-add-organizer" type="button">Cancel</button>
+                        <div class="col">
+                            <div class="row">Username:</div>
+                            <div class="row">Password:</div>
+                            <div class="row">Organization Name:</div>
+                            <div class="row">E-mail:</div>
+                            <div class="row">Phone:</div>
+                        </div>
+                        <div class="col">
+                            <div class="row"><input type="text" id="userID"></div>
+                            <div class="row"><input type="text" id="pwd"></div>
+                            <div class="row"><input type="text" id="orgName"></div>
+                            <div class="row"><input type="text" id="email"></div>
+                            <div class="row"><input type="text" id="phone"></div>
+                            <div class="row" style="text-align: center;">
+                                <button id="confirm-add-organizer" type="button">Add</button>
+                                <button id="cancel-add-organizer" type="button">Cancel</button>
+                            </div>
                         </div>
                     </div> 
+                </form>
+            </div>
+            <!-- form for edit organizer -->
+            <div id="form-edit-organizer">
+                <form id="organizer-editing-form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">ID:</div>
+                            <div class="row">Organization Name:</div>
+                            <div class="row">E-mail:</div>
+                            <div class="row">Phone:</div>
+                        </div>
+                        <div class="col">
+                            <div class="row"><div class="col"><div id="id">ID</div></div></div>
+                            <div class="row"><input type="text" id="orgName"></div>
+                            <div class="row"><input type="text" id="email"></div>
+                            <div class="row"><input type="text" id="phone"></div>
+                            <div class="row" style="text-align: center;">
+                                <button id="confirm-edit-organizer" type="button">Confirm</button>
+                                <button id="cancel-edit-organizer" type="button">Cancel</button>
+                            </div>                            
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -106,40 +122,40 @@
             </div>
             <!-- form for add attendant -->
             <div id="form-add-attendant">
-                <form id="attendant-form">
+                <form id="attendant-adding-form">
                     <div class="row">
                         <div class="col">Username:</div>
-                        <div class="col"><input type="text" name="userID"></div>
+                        <div class="col"><input type="text" id="userID2"></div>
                     </div>
                     <div class="row">
                         <div class="col">Password:</div>
-                        <div class="col"><input type="text" name="pwd"></div>
+                        <div class="col"><input type="text" id="pwd2"></div>
                     </div>
                     <div class="row">
                         <div class="col">First Name:</div>
-                        <div class="col"><input type="text" name="fName"></div>
+                        <div class="col"><input type="text" id="fName2"></div>
                     </div>
                     <div class="row">
                         <div class="col">Last Name:</div>
-                        <div class="col"><input type="text" name="lName"></div>
+                        <div class="col"><input type="text" id="lName2"></div>
                     </div>
                     <div class="row">
                         <div class="col">Age:</div>
-                        <div class="col"><input type="number" min="8" max="100" name="age"> Years old</div>
+                        <div class="col"><input type="number" min="8" max="100" id="age2"> Years old</div>
                     </div>                    
                     <div class="row">
                         <div class="col">E-mail:</div>
-                        <div class="col"><input type="text" name="email"></div>
+                        <div class="col"><input type="text" id="email2"></div>
                     </div>
                     <div class="row">
                         <div class="col">Phone:</div>
-                        <div class="col"><input type="text" name="phone"></div>
+                        <div class="col"><input type="text" id="phone2"></div>
                     </div>
                     <div class="row">
                         <div class="col">Gender:</div>
                         <div class="col">
-                            <input type="radio" name="gender" value="male" checked> Male
-                            <input type="radio" name="gender" value="female"> Female
+                            <input type="radio" id="male2" name="gender" value="male" checked> Male
+                            <input type="radio" id="female2" name="gender" value="female" > Female
                         </div>
                     </div> 
                     <div class="row">
@@ -179,9 +195,9 @@
                     <tbody class="event-list"></tbody>
                 </table>
             </div>
-            <div class="col-12" style="text-align: center;">
+<!--             <div class="col-12" style="text-align: center;">
                 <button id="">save</button>
-            </div>
+            </div> -->
         </div>
 
 

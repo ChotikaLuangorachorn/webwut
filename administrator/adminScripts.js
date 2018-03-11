@@ -2,9 +2,6 @@ $(document).ready(function(e){
 	showAllOrganizer();
 	$('#show-attendant').hide();
 	$('#show-event').hide();
-	$('#list').click(function(e){
-  	console.log("งือ");
-});
 // Organizer
 	$('#btn-show-organizer').click(function(e) {
 		$('#show-event').hide();
@@ -35,10 +32,36 @@ $(document).ready(function(e){
 					tr.append("<td scope='row'>" + row.orgName + "</td>");
 					tr.append("<td scope='row'>" + row.email + "</td>");
 					tr.append("<td scope='row'>" + row.phoneNo + "</td>");
+					tr.click(function(){
+						onSelectOrganizerRow(row.userID,row.orgName,row.email,row.phoneNo);
+					})
 				});
 			}
 		});
 	}
+	// edit
+	function onSelectOrganizerRow(id,orgName,email,phone){
+		console.log("onSelect", id);
+		document.getElementById('form-edit-organizer').style.display='block';
+		$(input[name='id']).val() = id;
+	}
+	$('#cancel-edit-organizer').click(function(e) {
+		console.log("cancel");
+		document.getElementById('form-edit-organizer').style.display='none';
+	})
+	$('#confirm-edit-organizer').click(function(e) {
+		$("#organizer-adding-form").ajaxForm({
+		url: "updateOrganizer.php",
+		type: "POST",
+		success: function(response){
+			document.getElementById('form-edit-organizer').style.display='none';
+			showAllOrganizer();
+		}
+		})
+	})
+
+
+	// add
 	document.getElementById('form-add-organizer').style.display='none';
 	$('#btn-add-organizer').click(function(e) {
 		document.getElementById('form-add-organizer').style.display='block';
@@ -48,15 +71,50 @@ $(document).ready(function(e){
 		document.getElementById('form-add-organizer').style.display='none';
 	})
 	$('#confirm-add-organizer').click(function(e) {
-		$("#organizer-form").ajaxForm({
-		url: "addOrganizer.php",
-		type: "POST",
-		success: function(response){
-			document.getElementById('form-add-organizer').style.display='none';
-			showAllOrganizer();
-		}
+		console.log("add");
+		console.log($("#organizer-adding-form"));
+		// $("#organizer-adding-form").ajaxForm({
+		// url: "addOrganizer.php",
+		// type: "POST",
+		// success: function(response){
+		// 	console.log("success");
+		// 	console.log(response);
+		// 	document.getElementById('form-add-organizer').style.display='none';
+		// 	showAllOrganizer();
+		// },error: function(r){
+		// 	console.log("error");
+		// 	console.log(r);
+		// }
+		// })
+		var userID = $('#userID').val();
+		var pwd = $('#pwd').val();
+		var orgName = $('#orgName').val();
+		var email = $('#email').val();
+		var phone = $('#phone').val();
+		$.ajax({
+			url: "addOrganizer.php",
+			type: "POST",
+			data: {
+				userID: userID,
+				pwd: pwd,
+				orgName: orgName,
+				email: email,
+				phone: phone
+			},
+			success: function(response){
+				console.log("success");
+				console.log(response);
+				document.getElementById('form-add-organizer').style.display='none';
+				showAllOrganizer();
+			},error: function(r){
+				console.log("error");
+				console.log(r);
+			}
 		})
 	})
+
+	
+
 
 // Attendant
 	$('#btn-show-attendant').click(function(e) {
@@ -98,13 +156,42 @@ $(document).ready(function(e){
 		document.getElementById('form-add-attendant').style.display='none';
 	})
 	$('#confirm-add-attendant').click(function(e) {
-		$("#attendant-form").ajaxForm({
-		url: "addAttendant.php",
-		type: "POST",
-		success: function(response){
-			document.getElementById('form-add-attendant').style.display='none';
-			showAllOrganizer();
+		var userID = $('#userID2').val();
+		var pwd = $('#pwd2').val();
+		var fName = $('#fName2').val();
+		var lName = $('#lName2').val();
+		console.log("pwd:",pwd2);
+		var age = $('#age2').val();
+		var email = $('#email2').val();
+		var phone = $('#phone2').val();
+		if (document.getElementById('male2').checked) {
+			var gender = document.getElementById('male2').value;
 		}
+		else{
+			var gender = document.getElementById('female2').value;
+		}
+		$.ajax({
+			url: "addAttendant.php",
+			type: "POST",
+			data: {
+				userID: userID,
+				pwd: pwd,
+				fName: fName,
+				lName: lName,
+				age: age,
+				email: email,
+				phone: phone,
+				gender: gender
+			},
+			success: function(response){
+				console.log("success");
+				console.log(response);
+				document.getElementById('form-add-attendant').style.display='none';
+				showAllAttendant();
+			},error: function(r){
+				console.log("error");
+				console.log(r);
+			}
 		})
 	})
 
