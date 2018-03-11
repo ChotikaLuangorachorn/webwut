@@ -34,7 +34,7 @@
                     <thead>
                         <tr">
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(1)')" scope="col" style="width: 50px;">ID</th>
-                            <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">UserID</th>
+                            <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User ID</th>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">Organizer Name</th>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">E-mail</th>
                             <th onclick="w3.sortHTML('.organizer-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 100px;">Phone</th>
@@ -56,11 +56,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th scope="col" style="width: 50px;">ID</th>
-                            <th scope="col" style="width: 200px;">UserID</th>
-                            <th scope="col" style="width: 200px;">Organizer Name</th>
-                            <th scope="col" style="width: 200px;">E-mail</th>
-                            <th scope="col" style="width: 100px;">Phone</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(1)')" scope="col" style="width: 50px;">ID</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User ID</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">First Name</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">Last Name</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 200px;">E-mail</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(6)')" scope="col" style="width: 50px;">age</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(7)')" scope="col" style="width: 150px;">Phone</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(8)')" scope="col" style="width: 100px;">Gender</th>
                         </tr>
                     </thead>
                     <tbody class="attendant-list"></tbody>

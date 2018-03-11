@@ -46,7 +46,32 @@ $(document).ready(function(e){
 		$('#show-organizer').hide();
 		$('#show-event').hide();
 		$('#show-attendant').show();
+		showAllAttendant();
 	})
+
+	function showAllAttendant(){
+		$.ajax({
+			url: 'attendantList.php',
+			type: 'POST',
+			dataType:"json",
+			success: function(attendant){
+				tbody = $("tbody.attendant-list");
+				tbody.empty();
+				attendant.forEach(row=>{
+					console.log(row);
+					td1 = "<td scope='row' style='text-align: center;'>" + row.id + "</td>";
+					td2 = "<td scope='row'>" + row.userID + "</td>";
+					td3 = "<td scope='row'>" + row.firstName + "</td>";
+					td4 = "<td scope='row'>" + row.lastName + "</td>";
+					td5 = "<td scope='row'>" + row.email + "</td>";
+					td6 = "<td scope='row' style='text-align: center;'>" + row.age + "</td>";
+					td7 = "<td scope='row'>" + row.phoneNo + "</td>";
+					td8 = "<td scope='row'>" + row.gender + "</td>";
+					$('.attendant-list').append("<tr id='list'>"+td1+td2+td3+td4+td5+td6+td7+td8+"</tr>");
+				});
+			}
+		});
+	}
 
 
 // Event
@@ -56,7 +81,9 @@ $(document).ready(function(e){
 		$('#show-event').show();
 
 		showAllEvent();
-		function showAllEvent(){
+		
+	})
+	function showAllEvent(){
 		$.ajax({
 			url: 'eventList.php',
 			type: 'POST',
@@ -87,9 +114,8 @@ $(document).ready(function(e){
 
 			}
 		});
-	}
 
-	})
+	}
 
 });
 
