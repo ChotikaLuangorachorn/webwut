@@ -128,6 +128,7 @@ div[id*="form-add-"]{
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 10%;
 }
+/*edit form*/
 div[id*="form-edit-"]{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -142,10 +143,32 @@ div[id*="form-edit-"]{
     padding-top: 10%;
 }
 
-/*edit form*/
+
 form[id*="editing-form"]{
     background-color: #61b3cf;
     width: 40%;
+    margin: 0 auto;
+    padding: 2%;
+}
+
+/*alert for delet list*/
+div[id*='alert-delete']{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 10%;
+}
+
+#alert-delete-form{
+    background-color: #61b3cf;
+    width: 20%;
     margin: 0 auto;
     padding: 2%;
 }

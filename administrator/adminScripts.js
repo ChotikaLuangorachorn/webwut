@@ -26,9 +26,17 @@ $(document).ready(function(e){
 					tr.append("<td scope='row'>" + row.orgName + "</td>");
 					tr.append("<td scope='row'>" + row.email + "</td>");
 					tr.append("<td scope='row'>" + row.phoneNo + "</td>");
+					// for edit
 					tr.dblclick(function(){
 						onSelectOrganizerRow(row.id,row.userID,row.orgName,row.email,row.phoneNo);
 					})
+					// for delete
+					tr.mousedown(function(e){
+				        if(e.which == 3){
+            				onSetConfirmOrganizerRow(row.id,row.userID);
+        				}
+   					 })
+
 				});
 			}
 		});
@@ -72,7 +80,7 @@ $(document).ready(function(e){
 				console.log(r);
 			}
 		})
-		})
+	})
 
 
 	// add
@@ -113,6 +121,42 @@ $(document).ready(function(e){
 			}
 		})
 	})
+	// delete
+	function onSetConfirmOrganizerRow(id,userName){
+		document.getElementById('alert-delete-organizer').style.display='block';
+		$("#id-delete1").text(id);
+		$("#userID-delete1").text(userName);
+	}
+	document.getElementById('alert-delete-organizer').style.display='none';
+
+	$('#cancel-delete-organizer').click(function(e) {
+		console.log("cancel");
+		document.getElementById('alert-delete-organizer').style.display='none';
+	})
+
+	$('#confirm-delete-organizer').click(function(e) {
+		var id = $('#id-delete1').text();
+		console.log("id>",id);
+		$.ajax({
+			url: "deleteOrganizer.php",
+			type: "POST",
+			data: {
+				id: id,
+			},
+			success: function(response){
+				console.log("success for delete user");
+				console.log(response);
+				document.getElementById('alert-delete-organizer').style.display='none';
+				showAllOrganizer();
+			},error: function(r){
+				console.log("error for delete user");
+				console.log(r);
+			}
+		})
+	})
+
+
+
 
 
 // Attendant
@@ -152,9 +196,16 @@ $(document).ready(function(e){
 					tr.append(td8);
 
 					// $('.attendant-list').append("<tr id='list'>"+td1+td2+td3+td4+td5+td6+td7+td8+"</tr>");
+					// for edit
 					tr.dblclick(function(){
 						onSelectAttendantRow(row.id,row.userID,row.firstName,row.lastName,row.email,row.age,row.phoneNo);
 					})
+					// for delete
+					tr.mousedown(function(e){
+				        if(e.which == 3){
+            				onSetConfirmAttendantRow(row.id,row.userID);
+        				}
+   					 })
 				});
 			}
 		});
@@ -250,6 +301,40 @@ $(document).ready(function(e){
 				showAllAttendant();
 			},error: function(r){
 				console.log("error for add us");
+				console.log(r);
+			}
+		})
+	})
+
+	// delete
+	function onSetConfirmAttendantRow(id,userName){
+		document.getElementById('alert-delete-attendant').style.display='block';
+		$("#id-delete2").text(id);
+		$("#userID-delete2").text(userName);
+	}
+	document.getElementById('alert-delete-attendant').style.display='none';
+
+	$('#cancel-delete-attendant').click(function(e) {
+		console.log("cancel");
+		document.getElementById('alert-delete-attendant').style.display='none';
+	})
+
+	$('#confirm-delete-attendant').click(function(e) {
+		var id = $('#id-delete2').text();
+		console.log("id>",id);
+		$.ajax({
+			url: "deleteAttendant.php",
+			type: "POST",
+			data: {
+				id: id,
+			},
+			success: function(response){
+				console.log("success for delete user");
+				console.log(response);
+				document.getElementById('alert-delete-attendant').style.display='none';
+				showAllAttendant();
+			},error: function(r){
+				console.log("error for delete user");
 				console.log(r);
 			}
 		})

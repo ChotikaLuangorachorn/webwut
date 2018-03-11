@@ -94,6 +94,29 @@
                     </div>
                 </form>
             </div>
+            <!-- delete organizer-->
+            <div id="alert-delete-organizer">
+                <form id="alert-delete-form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">ID:</div>
+                            <div class="row">User Name:</div>
+                        </div>
+                        <div class="col">
+                            <div class="row"><div class="col"><div id="id-delete1">ID</div></div></div>
+                            <div class="row"><div class="col"><div id="userID-delete1">userID</div></div></div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: center;">
+                        <div class="col">
+                            <button id="confirm-delete-organizer" type="button">Delete</button>
+                        </div>
+                        <div class="col">
+                            <button id="cancel-delete-organizer" type="button">Cancel</button>
+                        </div>
+                    </div> 
+                </form>
+            </div>
         </div>
 
         <!-- Attendant -->
@@ -199,6 +222,30 @@
                     </div>
                 </form>
             </div>
+
+            <!-- delete attendant-->
+            <div id="alert-delete-attendant">
+                <form id="alert-delete-form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">ID:</div>
+                            <div class="row">User Name:</div>
+                        </div>
+                        <div class="col">
+                            <div class="row"><div class="col"><div id="id-delete2">ID</div></div></div>
+                            <div class="row"><div class="col"><div id="userID-delete2">userID</div></div></div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: center;">
+                        <div class="col">
+                            <button id="confirm-delete-attendant" type="button">Delete</button>
+                        </div>
+                        <div class="col">
+                            <button id="cancel-delete-attendant" type="button">Cancel</button>
+                        </div>
+                    </div> 
+                </form>
+            </div>            
         </div>
 
 
