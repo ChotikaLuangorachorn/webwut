@@ -28,7 +28,7 @@
             echo "Welcome, ". $ID;
             ?><button type="button" class="btn btn-light" id="btn-login" role="button">SIGN OUT</button><?php
           } else {
-            ?><a href="#login" class="btn btn-light" id="btn-login" role="button">SIGN IN</a><?php
+            ?><a href="./login/login.php" class="btn btn-light" id="btn-login" role="button">SIGN IN</a><?php
           }
           ?>
       </div>

@@ -42,7 +42,7 @@
                                 <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                             </div>
                             <div class="etc-login-form">
-                                <p><a href="./registration.php">create new attendant</a></p>
+                                <p><a href="./regis_attendant.php">create new attendant</a></p>
                                 <p><a href="./regis_organizer.php">create new organizer</a></p>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
             integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i"
             crossorigin="anonymous">
     </script>
-    <script src="index.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </body>
 </html>
