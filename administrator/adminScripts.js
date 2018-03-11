@@ -52,32 +52,10 @@ $(document).ready(function(e){
 		url: "addOrganizer.php",
 		type: "POST",
 		success: function(response){
-			// console.log(response);
-			// if (response == "true"){
-			//     $('#snackbar').text('Message sent');
-			//     document.getElementById('toID').value = '';
-			// 	document.getElementById('msg-box').value = '';
-			// 	document.getElementById("file").value = '';
-			// 	$('#preview').attr('src', '');
-			// 	$(".btnDeleteFile").hide();
-			// 	document.getElementById("snackbar").style.backgroundColor ="#61cf6a";
-			// }else if (response == "false"){
-			// 	$('#snackbar').text('Invalid user ID');
-			// 	document.getElementById("snackbar").style.backgroundColor = "#ff5432";
-			// }else if (response == "not ID"){
-			// 	$('#snackbar').text('Please enter user ID');
-			// 	document.getElementById("snackbar").style.backgroundColor = "#ff5432";
-			// }else{
-			// 	$('#snackbar').text('Fill in not complete');
-			// 	document.getElementById("snackbar").style.backgroundColor = "#ff5432";
-			// }
-
-			// snackbar: alert sending msg 
-			// var x = document.getElementById("snackbar");
-		 //    x.className = "show";
-		 //    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+			document.getElementById('form-add-organizer').style.display='none';
+			showAllOrganizer();
 		}
-	})
+		})
 	})
 
 // Attendant
@@ -120,7 +98,14 @@ $(document).ready(function(e){
 		document.getElementById('form-add-attendant').style.display='none';
 	})
 	$('#confirm-add-attendant').click(function(e) {
-		// sent to DB
+		$("#attendant-form").ajaxForm({
+		url: "addAttendant.php",
+		type: "POST",
+		success: function(response){
+			document.getElementById('form-add-attendant').style.display='none';
+			showAllOrganizer();
+		}
+		})
 	})
 
 
