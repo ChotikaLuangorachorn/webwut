@@ -1,9 +1,10 @@
 <?php
 	include("./connectDB.php");
 	session_start();
-	// $uid = $_POST['username'];
+	// $uid = $_SESSION['username'];
 	$uid = 'user';
 
+	$connection = $conn;
 	$statement = $connection->query('SELECT CURRENT_TIMESTAMP');
 	$timestamp = $statement->fetchAll(PDO::FETCH_OBJ)[0]->CURRENT_TIMESTAMP;
 
