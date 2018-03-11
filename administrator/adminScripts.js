@@ -20,12 +20,6 @@ $(document).ready(function(e){
 				tbody.empty();
 				organizer.forEach(row=>{
 					console.log(row);
-					// td1 = "<td scope='row' style='text-align: center;'>" + row.id + "</td>";
-					// td2 = "<td scope='row'>" + row.userID + "</td>";
-					// td3 = "<td scope='row'>" + row.orgName + "</td>";
-					// td4 = "<td scope='row'>" + row.email + "</td>";
-					// td5 = "<td scope='row'>" + row.phoneNo + "</td>";
-					// $('.organizer-list').append("<tr id='list'>"+td1+td2+td3+td4+td5+"</tr>");
 					tr = tbody.append("<tr id='list'></tr>").children().last();
 					tr.append("<td scope='row' style='text-align: center;'>" + row.id + "</td>");
 					tr.append("<td scope='row'>" + row.userID + "</td>");
@@ -69,12 +63,12 @@ $(document).ready(function(e){
 				phone: phone
 			},
 			success: function(response){
-				console.log("success");
+				console.log("success for edit user");
 				console.log(response);
 				document.getElementById('form-edit-organizer').style.display='none';
 				showAllOrganizer();
 			},error: function(r){
-				console.log("error");
+				console.log("error for edit user");
 				console.log(r);
 			}
 		})
@@ -93,19 +87,6 @@ $(document).ready(function(e){
 	$('#confirm-add-organizer').click(function(e) {
 		console.log("add");
 		console.log($("#organizer-adding-form"));
-		// $("#organizer-adding-form").ajaxForm({
-		// url: "addOrganizer.php",
-		// type: "POST",
-		// success: function(response){
-		// 	console.log("success");
-		// 	console.log(response);
-		// 	document.getElementById('form-add-organizer').style.display='none';
-		// 	showAllOrganizer();
-		// },error: function(r){
-		// 	console.log("error");
-		// 	console.log(r);
-		// }
-		// })
 		var userID = $('#userID').val();
 		var pwd = $('#pwd').val();
 		var orgName = $('#orgName').val();
@@ -122,18 +103,16 @@ $(document).ready(function(e){
 				phone: phone
 			},
 			success: function(response){
-				console.log("success");
+				console.log("success for add user");
 				console.log(response);
 				document.getElementById('form-add-organizer').style.display='none';
 				showAllOrganizer();
 			},error: function(r){
-				console.log("error");
+				console.log("error for add user");
 				console.log(r);
 			}
 		})
 	})
-
-	
 
 
 // Attendant
@@ -216,12 +195,12 @@ $(document).ready(function(e){
 				phone: phone
 			},
 			success: function(response){
-				console.log("success");
+				console.log("success for edit user");
 				console.log(response);
 				document.getElementById('form-edit-attendant').style.display='none';
 				showAllAttendant();
 			},error: function(r){
-				console.log("error");
+				console.log("error for edit user");
 				console.log(r);
 			}
 		})
@@ -265,17 +244,16 @@ $(document).ready(function(e){
 				gender: gender
 			},
 			success: function(response){
-				console.log("success");
+				console.log("success for add user");
 				console.log(response);
 				document.getElementById('form-add-attendant').style.display='none';
 				showAllAttendant();
 			},error: function(r){
-				console.log("error");
+				console.log("error for add us");
 				console.log(r);
 			}
 		})
 	})
-
 
 // Event
 	$('#btn-show-event').click(function(e) {
@@ -297,11 +275,6 @@ $(document).ready(function(e){
 				tbody.empty();
 				event.forEach(row=>{
 					console.log(row);
-					// day = row.date.slice(8, 10);
-					// month = row.date.slice(5, 7);
-					// year = row.date.slice(0, 4);
-					// hour = row.date.slice(11, 13);
-					// minute = row.date.slice(14, 16);
 			        formatDay= moment(row.date).format('DD/MM/YYYY H:mm');
 					tr = tbody.append("<tr id='list'></tr>").children().last();
 					tr.append("<td scope='row' style='text-align: center;'>" + row.eventID + "</td>");
