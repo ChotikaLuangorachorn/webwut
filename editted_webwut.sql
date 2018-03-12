@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2018 at 07:46 AM
+-- Generation Time: Mar 12, 2018 at 09:21 AM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -85,11 +85,20 @@ INSERT INTO `event_attendant` (`eventID`, `aID`, `flag`, `paymentID`, `qrCode`) 
 --
 
 CREATE TABLE `event_comment` (
+  `ID` int(11) NOT NULL,
   `eventID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `comment` varchar(255) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `event_comment`
+--
+
+INSERT INTO `event_comment` (`ID`, `eventID`, `userID`, `comment`, `date`) VALUES
+(1, 1, 1, 'hey', '2018-03-12 08:14:22'),
+(2, 1, 4, 'wut', '2018-03-12 08:20:59');
 
 -- --------------------------------------------------------
 
@@ -112,6 +121,26 @@ CREATE TABLE `event_requirement` (
   `currentEventID` int(11) NOT NULL,
   `prevEventID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `organizer_info`
+--
+
+CREATE TABLE `organizer_info` (
+  `userID` int(11) NOT NULL,
+  `orgName` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `phoneNo` char(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `organizer_info`
+--
+
+INSERT INTO `organizer_info` (`userID`, `orgName`, `email`, `phoneNo`) VALUES
+(3, 'admin', 'admin@webwut.com', '0812345678');
 
 -- --------------------------------------------------------
 
@@ -152,7 +181,7 @@ CREATE TABLE `personal_info` (
 --
 
 INSERT INTO `personal_info` (`userID`, `displayName`, `firstName`, `lastName`, `email`, `phoneNo`, `image`) VALUES
-(1, 'ice', 'wiwadh', 'chin', 'wiwadh.c@ku.th', '0830504393', 'profile-1.jpg'),
+(1, 'icewow', 'wiwadh', 'chin', 'wiwadh.c@ku.th', '0830504393', 'profile-1.jpg'),
 (4, 'ice2', 'wi', 'chi', 'wiwadh.c2@ku.th', '0830504393', '');
 
 -- --------------------------------------------------------
@@ -215,8 +244,9 @@ ALTER TABLE `event_attendant`
 -- Indexes for table `event_comment`
 --
 ALTER TABLE `event_comment`
-  ADD PRIMARY KEY (`eventID`),
-  ADD KEY `event_comment_user_id_fk` (`userID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `event_comment_user_id_fk` (`userID`),
+  ADD KEY `eventID` (`eventID`);
 
 --
 -- Indexes for table `event_image`
@@ -230,6 +260,12 @@ ALTER TABLE `event_image`
 ALTER TABLE `event_requirement`
   ADD PRIMARY KEY (`currentEventID`,`prevEventID`),
   ADD KEY `event_requirement_event_prevID_fk` (`prevEventID`);
+
+--
+-- Indexes for table `organizer_info`
+--
+ALTER TABLE `organizer_info`
+  ADD PRIMARY KEY (`userID`);
 
 --
 -- Indexes for table `payment`
@@ -265,6 +301,11 @@ ALTER TABLE `user`
 --
 ALTER TABLE `event`
   MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `event_comment`
+--
+ALTER TABLE `event_comment`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `payment`
 --
@@ -312,6 +353,12 @@ ALTER TABLE `event_image`
 ALTER TABLE `event_requirement`
   ADD CONSTRAINT `event_requirement_ibfk_1` FOREIGN KEY (`currentEventID`) REFERENCES `event` (`eventID`),
   ADD CONSTRAINT `event_requirement_ibfk_2` FOREIGN KEY (`prevEventID`) REFERENCES `event` (`eventID`);
+
+--
+-- Constraints for table `organizer_info`
+--
+ALTER TABLE `organizer_info`
+  ADD CONSTRAINT `organizer_info_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `personal_info`

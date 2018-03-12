@@ -91,7 +91,7 @@
             </div>
         </div>
         <div id="comments">
-            
+            <?php include 'services/comments.php'; ?>
         </div>
     </div>
     <script>
