@@ -4,7 +4,7 @@
     ```git clone https://github.com/Trosalio/webwut.git```
 2. สร้าง Database ชื่อ webwutdb
 3. import file ชื่อ webwutdb_update2.sql
-4. เริ่มที่```{project-path}/webwut```
+4. URL เริ่มที่```{project-path}/webwut/index.php```
 
 **อธิบายโครงสร้าง directory**
 ##### Folder #####
@@ -17,6 +17,7 @@
     - events
     - images
     - users
+    - payment เก็บรูปภาพหลักฐานการชำระเงิน
 * css
 * login - จัดการหน้าเว็บการลงทะเบียน
     - add_at.js - ใช้ส่งข้อมูลจาก regis_attendate.php ไปที่ services/create_attendant.php
