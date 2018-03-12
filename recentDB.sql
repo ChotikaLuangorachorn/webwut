@@ -52,7 +52,7 @@ CREATE TABLE `event` (
 
 INSERT INTO `event` (`eventID`, `orgID`, `eventCreate`, `registrableDate`, `eventStart`, `eventEnd`, `eventName`, `eventDetail`, `age`, `gender`, `price`, `capacity`, `indoorName`, `location`, `type`) VALUES
 (1, 3, '2018-03-11 18:23:45', '2018-03-12 00:00:00', '2018-03-15 00:00:00', '2018-03-18 00:00:00', 'Health Exam', 'Health Examination at Vibhavadee Hospital', -1, 'a', 0, 100, 'Vibhavadee Hospital', '51/3 Thanon Ngam Wong Wan, Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10900, Thailand', 'Science'),
-(21, 3, '2018-03-12 07:13:51', '2018-03-15 00:00:00', '2018-03-19 00:00:00', '2018-03-20 00:00:00', 'Pre-Test TOEIC', 'A test held for letting\n     students trying out their mad English skillz', -1, 'a', 100, 8, 'คณะมนุษยศาสตร์', 'คณะมนุษยศาสตร์ อาคาร 1 Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10220, Thailand', 'Education');
+(2, 3, '2018-03-12 07:13:51', '2018-03-15 00:00:00', '2018-03-19 00:00:00', '2018-03-20 00:00:00', 'Pre-Test TOEIC', 'A test held for letting\n     students trying out their mad English skillz', -1, 'a', 100, 8, 'คณะมนุษยศาสตร์', 'คณะมนุษยศาสตร์ อาคาร 1 Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10220, Thailand', 'Education');
 
 -- --------------------------------------------------------
 
