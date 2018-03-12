@@ -1,4 +1,4 @@
-<a href="<?php echo '../assets/events/' .
+<a href="<?php echo "../assets/events/" .
     $recentEvent->getThumbnail() ?>"
    data-toggle="modal"
    data-target="#viewModal">
@@ -13,11 +13,13 @@
 
 <!-- View Event Modal -->
 <?php
+$orgID = $_SESSION["orgID"];
+$eventID = $recentEvent->getEventID();
+
 $modalID = "viewModal";
 $modalTitle = "Viewing an event...";
 $modalBody = "Do you want to view an event?";
 $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\"
                         data-dismiss=\"modal\">No</button>";
-$eventID = $recentEvent->getEventID();
-$modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-viewer.php?eid=$eventID\">Yes</a>";
-require 'modal.php'; ?>
+$modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-viewer.php?eid=$eventID&orgID=$orgID\">Yes</a>";
+require "modal.php"; ?>

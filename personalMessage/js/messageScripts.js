@@ -4,7 +4,7 @@ $(document).ready(function(e){
 // display msg
 	function displayInbox(){
 		$.ajax({
-			url: './php/inbox.php',
+			url: './personalMessage/php/inbox.php',
 			type: 'POST',
 			success: function(data){
 				$("#inbox").html(data);
@@ -13,7 +13,7 @@ $(document).ready(function(e){
 	}
 	function displaySentBox(){
 		$.ajax({
-			url: './php/sentBox.php',
+			url: './personalMessage/php/sentBox.php',
 			type: 'POST',
 			success: function(data){
 				$("#sentBox").html(data);
@@ -46,7 +46,7 @@ $(document).ready(function(e){
 
 // send form(reviever, msg, image file) + upload image
 	$("#message-sender").ajaxForm({
-		url: "./php/sendMessage.php",
+		url: "./personalMessage/php/sendMessage.php",
 		type: "post",
 		success: function(response){
 			console.log(response);

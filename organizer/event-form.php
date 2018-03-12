@@ -18,11 +18,12 @@
 <body>
 
 <?php require_once "header.php" ?>
+<?php require_once "event-form-components/php/form-cache.php" ?>
 
 <!-- Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="headings my-4 p-4">Adding Event</h1>
+    <h1 class="headings my-4 p-4"><?php echo $headings ?></h1>
     <!-- Wrapper -->
     <div class="event-wrapper p-4">
         <!-- form -->

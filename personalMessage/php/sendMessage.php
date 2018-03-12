@@ -2,7 +2,7 @@
 	include("./connectDB.php");
 	session_start();
 	$uid = $_SESSION['username'];
-	// $uid = 'user';
+	// $uid = 'user2';
 
 	$connection = $conn;
 	$statement = $connection->query('SELECT CURRENT_TIMESTAMP');
@@ -10,7 +10,7 @@
 
 	// echo $timestamp;
 
-	$target_dir = "./messageFile/";
+	$target_dir = "../messageFile/";
 	$fromID = "1";
 	$toID = $_POST['toID'];
 	$msg = $_POST['msg'];
@@ -19,7 +19,7 @@
 		// echo "has file";
 
 		// create file name 
-		$target_file = $target_dir . $uid . "-to-" . $toID . " " . $timestamp . "." . basename($_FILES["file"]["type"]);
+		$target_file =  $uid . "-to-" . $toID . " " . $timestamp . "." . basename($_FILES["file"]["type"]);
 		// replace char can't use
 		$target_file =  str_replace(":", "-", $target_file);
 
@@ -45,9 +45,9 @@
 				// $query = $connection->exec(
 				// 	"INSERT INTO personal_message (`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ('$fromID', '$toID', '$msg', '$target_file', '$timestamp')");
 				try {
-					$query = $connection->exec('INSERT INTO `personal_message`(`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ((select id from user where userID="'.$uid.'"),(select userID from personal_info where displayName="'.$toID.'"),"'.$msg.'","'.$target_file.'","'.$timestamp.'")');
+					$query = $connection->exec('INSERT INTO `personal_message`(`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ((select id from user where userID="'.$uid.'"),(select userID from personal_info where displayName="'.$toID.'"),"'.$msg.'","'."./personalMessage/messageFile/".$target_file.'","'.$timestamp.'")');
 					echo "true";
-					move_uploaded_file($_FILES["file"]["tmp_name"], ".".$target_file); // เพิ่มจุดเพื่อ upload file
+					move_uploaded_file($_FILES["file"]["tmp_name"], $target_dir .$target_file); // เพิ่มจุดเพื่อ upload file
 				} catch (Exception $e) {
 					echo "false";
 					

@@ -4,7 +4,7 @@
     // $uid = $_SESSION['username'];
     // $uid = "user";
     $displayName = $_SESSION['displayName'];
-    // $displayName = "ice";
+    // $displayName = "ice2";
     $connection = $conn;
 
     $thaiMonth = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");

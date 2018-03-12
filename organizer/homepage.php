@@ -21,10 +21,10 @@
 require_once "header.php";
 require_once "event-scripts/php/Event.php";
 require_once "event-scripts/php/EventAttendee.php";
-require_once '../services/connectDB.php';
+require_once "../services/connectDB.php";
 
 if (!isset($_SESSION["orgID"])) {
-    $_SESSION['orgID'] = 3;
+    $_SESSION["orgID"] = 3;
 }
 
 require_once "event-scripts/php/event-loader.php";
@@ -55,7 +55,7 @@ $hasData = isset($event);
             $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\" 
                         data-dismiss=\"modal\">No</button>";
             $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-form.php \">Yes</a>";
-            require 'modal.php'; ?>
+            require "modal.php"; ?>
         </div>
         <!-- Events holder-->
         <div class="col-md-9 mx-auto p-4 container-fluid row">
@@ -68,7 +68,7 @@ $hasData = isset($event);
                         <!-- Event <?php echo $i + 1 ?> -->
                         <?php
                         $recentEvent = $events[$i];
-                        require 'homepage-components/homepage-card.php';
+                        require "homepage-components/homepage-card.php";
                     }} ?>
                     <!-- /.row -->
 
