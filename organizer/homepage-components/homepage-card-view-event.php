@@ -22,4 +22,4 @@ $modalBody = "Do you want to view an event?";
 $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\"
                         data-dismiss=\"modal\">No</button>";
 $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-viewer.php?eid=$eventID&orgID=$orgID\">Yes</a>";
-require "modal.php"; ?>
+require "php/modal.php"; ?>

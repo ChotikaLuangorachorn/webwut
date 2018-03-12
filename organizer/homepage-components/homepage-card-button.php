@@ -25,7 +25,7 @@ $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\"
                         data-dismiss=\"modal\">No</button>";
 $modalConfirmButton = "<a class=\"btn btn-primary\" 
 href=\"event-form.php?eid=$eventID&orgID=$orgID\">Yes</a>";
-require "modal.php"; ?>
+require "php/modal.php"; ?>
 
 <!-- Delete Event Modal -->
 <?php
@@ -46,5 +46,5 @@ if(count($recentEvent->getAttendees()) > 0){
     $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-script/php/event-remover.php?eid=$eventID&orgID=$orgID\">Yes</a>";
 }
 
-require "modal.php";
+require "php/modal.php";
 ?>
