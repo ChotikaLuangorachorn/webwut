@@ -26,6 +26,7 @@
 }
 
 #event-map-toggle {
+    padding: 0 5%;
     cursor: pointer;
     /* //padding: 5%; */
 }
@@ -34,14 +35,70 @@
 }
 
 .content-box{
-    background-color: white;
-   padding: 2% 0;
+    background-color:white;
+    padding: 0 0 2% 0;
+    border-radius: 5%;
+    
+    
 }
 
 #event-title{
     background-color:#f675b3;
     padding: 2%;
-    color: White;
+    color: Black;
     font-weight:bolder;
-    
+    border: 5px;
+}
+#event-title{
+    background-color:#f675b3;
+    padding: 3%;
+    color: Black;
+}
+#event-time{
+    padding: 0 5%;
+}
+
+#top-buy-tickets-btn{
+    padding: 3%;
+    background-color: #f675b3;
+    border-color: #f675b3;
+    padding: 3%;
+}
+#top-buy-tickets-btn:hover{
+    padding: 3%;
+    background-color:white;
+    border-color: black;
+    color: black;
+}
+
+.col-xs-12{
+
+}
+
+#event-sub{
+    padding: 10px;
+}
+
+.event-cover {
+    text-align: center;
+    background-color: #d9ceae;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.margin-top {
+    margin-top: 50px;
+}
+
+#event-detail {
+    background-color: #ebe7da;
+    padding: 10px;
+}
+#event-condition {
+    background-color: #d9ceae;
+    padding: 10px;
+}
+#event-ticket {
+    background-color: #ebe7da;
+    padding: 10px;
 }

@@ -28,8 +28,8 @@
             header('location:oops.php');
         }
 
-        $time = strtotime($event->date);
-        $event->date = date("j F Y \a\\t G:i", $time);
+        $event->eventStart = date("j F Y G:i", strtotime($event->eventStart));
+        $event->eventEnd = date("j F Y G:i", strtotime($event->eventEnd));
         $sql = "SELECT image FROM event_image WHERE eventID=?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$_GET['id']]);
@@ -40,7 +40,7 @@
                 $event->images[] = $value->image;
             }
         }
-        $sql = "SELECT event_comment.userID, comment, date, role FROM event_comment JOIN user ON event_comment.userID=user.id WHERE eventID=?";
+        $sql = "SELECT event_comment.userID, comment, date, role FROM event_comment JOIN user ON event_comment.userID=user.id WHERE eventID=? ORDER BY date";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$_GET['id']]);
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -64,22 +64,32 @@
                 $comments[] = $value;
             }
         }
-        var_dump($result);
+        $sql = 'SELECT age, gender FROM personal_info WHERE userID='.$_SESSION['ID'];
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $info = $stmt->fetch(PDO::FETCH_OBJ);
+        $PASS_CONDITION = TRUE;
+        if ($info->age < $event->age) {
+            $PASS_CONDITION = FALSE;
+        }
+        if ($event->gender != "all" && $event->gender != $info->gender) {
+            $PASS_CONDITION = FALSE;
+        }
     }
     ?>
     <div class="container" id="main-content">
         <div class="col-12 padding-top" id="event">
             <div class="event-cover">
-                <img class="img-responsive top-radius" style="width: 100%" src="assets/events/<?php echo $event->thumbnailPath; ?>">
+                <img class="img-responsive top-radius" style="height: 250px;" src="assets/events/<?php echo $event->images[0]; ?>">
             </div>
             <div class="content-box no-border-bottom">
                 <h1 id="event-title">
                     <?php echo $event->eventName; ?>
                 </h1>
-                <div class="row">
+                <div class="row" id="event-sub">
                     <div id="event-info" class="col-xs-12 col-sm-8">
                         <div id="event-time">
-                            <i class="fa fa-clock-o fa-fw text-primary"></i><?php echo $event->date; ?>
+                            <i class="fa fa-clock-o fa-fw text-primary"></i><?php echo $event->eventStart." - ".$event->eventEnd; ?>
                         </div>
 
                         <div id="event-location">
@@ -92,19 +102,29 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-4 text-right text-xs-center action-button">
-                        <a class="btn btn-secondary" id="top-buy-tickets-btn" data-scroll="true" href="#event-tickets"><?php echo ($event->price <= 0 ? "Get Tickets" : "Buy Ticket"); ?></a>
+                        <a class="btn btn-secondary <?php echo $PASS_CONDITION ? '' : 'disabled'; ?>" id="top-buy-tickets-btn" data-scroll="true" href="#event-ticket"><?php echo ($event->price <= 0 ? "Get Tickets" : "Buy Ticket"); ?></a>
                     </div>
                 </div>
                 <div id="event-map" class="collapse">
                     <div id="gmap"></div>
                 </div>
             </div>
-            <div id="event-detail">
-                
+            <div id="event-detail" class="margin-top">
+                <h2>Detail</h2>
+                <?php echo $event->eventDetail ?>
             </div>
-            <div id="event-tickets">
-
+            <div id="event-condition" >
+                <h2>Condition</h2>
+                <p>Age: <?php echo $event->age==-1? "All age" : $event->age." above" ?></p>
+                <p>Gender: <?php echo $event->gender=="all"? "All Gender" : "Only ".$event->gender ?></p>
+                <h3 style="color: <?php echo $PASS_CONDITION ? 'green' : 'red' ?>"><?php echo $PASS_CONDITION ? "YOU DO PASS ALL OF THE CONDITIONS." : "YOU DO NOT PASS ALL OF THE CONDITIONS." ?></h3>
             </div>
+            <?php echo $PASS_CONDITION ?
+            '<div id="event-ticket" >
+                <h2>Tickets</h2>
+                <p>1 Ticket for '.($event->price==0? "Free" : $event->price." baht.").'</p>
+                <a class="btn btn-outline-primary">'.($event->price==0? "Get" : "Buy").' one now</a>
+            </div>':""; ?>
         </div>
         <div id="comments">
             <?php include 'services/comments.php'; ?>
