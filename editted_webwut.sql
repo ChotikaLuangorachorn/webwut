@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2018 at 11:27 AM
+-- Generation Time: Mar 12, 2018 at 07:46 AM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -32,21 +32,30 @@ CREATE TABLE `event` (
   `eventID` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `orgID` int(11) NOT NULL,
-  `eventName` varchar(255) NOT NULL,
+  `eventName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_thai_520_w2 NOT NULL,
+  `eventDetail` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_thai_520_w2 NOT NULL,
+  `age` int(11) NOT NULL,
+  `gender` char(1) NOT NULL,
   `price` int(11) NOT NULL,
+  `currentCapacity` int(11) NOT NULL,
   `capacity` int(11) NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `qrCode` varchar(255) NOT NULL,
-  `type` varchar(8) NOT NULL,
-  `surveyLink` varchar(255) NOT NULL
+  `indoorName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_thai_520_w2 NOT NULL,
+  `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_thai_520_w2 NOT NULL,
+  `type` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_thai_520_w2 NOT NULL,
+  `surveyLink` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_thai_520_w2 NOT NULL,
+  `thumbnailPath` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_thai_520_w2 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`eventID`, `date`, `orgID`, `eventName`, `price`, `capacity`, `location`, `qrCode`, `type`, `surveyLink`) VALUES
-(1, '2018-03-08 11:00:00', 3, 'Hello World', 100, 100, 'Town', '', 'Science', '');
+INSERT INTO `event` (`eventID`, `date`, `orgID`, `eventName`, `eventDetail`, `age`, `gender`, `price`, `currentCapacity`, `capacity`, `indoorName`, `location`, `type`, `surveyLink`, `thumbnailPath`) VALUES
+(1, '2018-03-08 11:00:00', 3, 'Hello World', 'Detaill', 12, 'a', 100, 56, 100, 'IName', 'TownLoc', 'Science', 'someLink', '1.png'),
+(7, '2018-03-23 14:00:00', 3, 'da', 'Test', 0, 'm', 0, 0, 6, 'สารสนเทศ', 'อาคารสารสนเทศ Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10220, Thailand', 'business', 'DSA', 'event-6-org-3.jpg'),
+(8, '2018-03-16 00:00:00', 3, 'Testto', 'Detail', 100, 'm', 0, 0, 1, 'โรงบาลวิภา', '51/3 Thanon Ngam Wong Wan, Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10900, Thailand', 'communit', 'Form', 'event-8-org-3.jpg'),
+(19, '2018-03-12 01:59:00', 3, 'TestAA', 'da', -1, 'm', 0, 0, 12, 'dsa', 'ตึกพักชายที่ 14 Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10220, Thailand', 'business', 'dsa', 'org-3-Costa Rican Frog.jpg'),
+(20, '2018-03-13 13:00:00', 3, 'Hmmm', 'ROCK', -1, 'a', 0, 0, 9, 'พันธุ์', '50 จักรพันธุ์ Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10900, Thailand', 'music', 'da', 'org-3-2.png');
 
 -- --------------------------------------------------------
 
@@ -130,6 +139,7 @@ INSERT INTO `payment` (`paymentID`, `evidence`) VALUES
 
 CREATE TABLE `personal_info` (
   `userID` int(11) NOT NULL,
+  `displayName` text NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `email` varchar(320) NOT NULL,
@@ -141,8 +151,9 @@ CREATE TABLE `personal_info` (
 -- Dumping data for table `personal_info`
 --
 
-INSERT INTO `personal_info` (`userID`, `firstName`, `lastName`, `email`, `phoneNo`, `image`) VALUES
-(1, 'wi', 'chi', 'wiwadh.c@ku.th', '0830504393', 'profile-1.jpg');
+INSERT INTO `personal_info` (`userID`, `displayName`, `firstName`, `lastName`, `email`, `phoneNo`, `image`) VALUES
+(1, 'ice', 'wiwadh', 'chin', 'wiwadh.c@ku.th', '0830504393', 'profile-1.jpg'),
+(4, 'ice2', 'wi', 'chi', 'wiwadh.c2@ku.th', '0830504393', '');
 
 -- --------------------------------------------------------
 
@@ -178,7 +189,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `userID`, `password`, `role`) VALUES
 (1, 'user', 'user', 'AT'),
 (2, 'admin', 'admin', 'AD'),
-(3, 'organizer', 'organizer', 'OR');
+(3, 'organizer', 'organizer', 'OR'),
+(4, 'user2', 'user', 'AT');
 
 --
 -- Indexes for dumped tables
@@ -252,7 +264,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `payment`
 --
@@ -262,7 +274,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
@@ -277,15 +289,15 @@ ALTER TABLE `event`
 -- Constraints for table `event_attendant`
 --
 ALTER TABLE `event_attendant`
-  ADD CONSTRAINT `eventAttendant_event_eventID_fk` FOREIGN KEY (`eventID`) REFERENCES `event` (`eventID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `eventAttendant_user_id_fk` FOREIGN KEY (`aID`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `event_attendant_ibfk_1` FOREIGN KEY (`eventID`) REFERENCES `event` (`eventID`),
   ADD CONSTRAINT `event_attendant_payment_paymentID_fk` FOREIGN KEY (`paymentID`) REFERENCES `payment` (`paymentID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `event_comment`
 --
 ALTER TABLE `event_comment`
-  ADD CONSTRAINT `eventComment_event_eventID_fk` FOREIGN KEY (`eventID`) REFERENCES `event` (`eventID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `event_comment_ibfk_1` FOREIGN KEY (`eventID`) REFERENCES `event` (`eventID`),
   ADD CONSTRAINT `event_comment_user_id_fk` FOREIGN KEY (`userID`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -298,8 +310,8 @@ ALTER TABLE `event_image`
 -- Constraints for table `event_requirement`
 --
 ALTER TABLE `event_requirement`
-  ADD CONSTRAINT `event_requirement_event_currentID_fk` FOREIGN KEY (`currentEventID`) REFERENCES `event` (`eventID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `event_requirement_event_prevID_fk` FOREIGN KEY (`prevEventID`) REFERENCES `event` (`eventID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `event_requirement_ibfk_1` FOREIGN KEY (`currentEventID`) REFERENCES `event` (`eventID`),
+  ADD CONSTRAINT `event_requirement_ibfk_2` FOREIGN KEY (`prevEventID`) REFERENCES `event` (`eventID`);
 
 --
 -- Constraints for table `personal_info`
