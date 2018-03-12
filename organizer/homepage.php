@@ -27,6 +27,11 @@ if (!isset($_SESSION["orgID"])) {
     $_SESSION["orgID"] = 3;
 }
 
+// If unset eventID in session
+if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
+    unset($_SESSION["eventID"]);
+}
+
 require_once "php/event-loader.php";
 
 // check if session holds an event data
@@ -45,8 +50,9 @@ $hasData = isset($event);
         <!-- Add Events Button-->
         <div class="col-md-3 p-4">
             <button type="button" class="btn btn-primary btn-lg btn-block p-3"
-             id="add-event-btn" data-toggle="modal"
-                    data-target="#addEventModal">Add Event</button>
+                    id="add-event-btn" data-toggle="modal"
+                    data-target="#addEventModal">Add Event
+            </button>
             <!-- Add Event Modal -->
             <?php
             $modalID = "addEventModal";
@@ -54,7 +60,7 @@ $hasData = isset($event);
             $modalBody = "Do you want to add a new event??";
             $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\" 
                         data-dismiss=\"modal\">No</button>";
-            $modalConfirmButton = "";
+            $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-form.php?\">Yes</a>";
             require "php/modal.php"; ?>
         </div>
         <!-- Events holder-->
@@ -64,12 +70,13 @@ $hasData = isset($event);
                 <?php } else { ?>
                 <div class="event-holder p-4">
                     <?php
-                    for ($i =  0; $i < count($events); $i++) { ?>
+                    for ($i = 0; $i < count($events); $i++) { ?>
                         <!-- Event <?php echo $i + 1 ?> -->
                         <?php
                         $recentEvent = $events[$i];
                         require "homepage-components/homepage-card.php";
-                    }} ?>
+                    }
+                    } ?>
                     <!-- /.row -->
 
                     <!-- Pagination -->

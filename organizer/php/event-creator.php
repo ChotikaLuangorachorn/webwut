@@ -10,17 +10,27 @@ if (!isset($_SESSION["orgID"])) {
 
 // Check if there was any form has been sent submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // find the latest event id in database if it does not set
 
     // set organizer ID
     $orgID = $_SESSION["orgID"];
 
-    // create & execute query
-    $query = createInsertEventQuery($_POST, $orgID);
-    $statement = $conn->exec($query);
+    if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
+        // set event ID if it is in session
+        $eventID = $_SESSION["eventID"];
 
-    // get Event ID
-    $eventID = $conn->lastInsertId();
+        $query = updateEventQuery($_POST, $eventID);
+        $statement = $conn->exec($query);
+    } else {
+        // do it normal way
+
+        // find the latest event id in database if it does not set
+        // create & execute query
+        $query = createInsertEventQuery($_POST, $orgID);
+        $statement = $conn->exec($query);
+
+        // get Event ID
+        $eventID = $conn->lastInsertId();
+    }
 
     // If survey link exists.
     if ($_POST["event-survey-link"]) {
@@ -48,6 +58,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $statement = $conn->exec($query);
         }
     }
+}
+
+// If unset eventID in session
+if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
+    unset($_SESSION["eventID"]);
 }
 
 // close session
@@ -81,14 +96,36 @@ function createInsertEventQuery($postData, $orgID)
     return $query;
 }
 
+function updateEventQuery($postData, $eventID)
+{
+    $name = $postData["event-name"];
+    $type = $postData["event-selector"];
+    $detail = $postData["event-detail"];
+    $maxEntries = $postData["max-entries"];
+    $registrableDate = date("Y-m-d H:i:s", strtotime($postData["event-registrable-date"]));
+    $startDate = date("Y-m-d H:i:s", strtotime($postData["event-start-date"]));
+    $endDate = date("Y-m-d H:i:s", strtotime($postData["event-end-date"]));
+    $age = $postData["age"];
+    $gender = $postData["gender"];
+    $attendingCost = $postData["attending-cost"];
+    $indoorName = $postData["indoor-name"];
+    $location = $postData["location"];
+
+    $query = "UPDATE `event` SET `registrableDate`='$registrableDate',`eventStart`='$startDate',
+              `eventEnd`='$endDate',`eventName`='$name',`eventDetail`='$detail',
+              `age`=$age,`gender`='$gender',`price`=$attendingCost,`capacity`=$maxEntries,
+              `indoorName`='$indoorName',`location`='$location',`type`='$type' WHERE `eventID` = $eventID";
+    return $query;
+}
+
 function createInsertThumbnailQuery($eventID, $thumbnailPath)
 {
-    return "INSERT INTO `event_image`(`eventID`, `image`) VALUES ($eventID, '$thumbnailPath')";
+    return "REPLACE INTO `event_image`(`eventID`, `image`) VALUES ($eventID, '$thumbnailPath')";
 }
 
 function createInsertSurveyLinkQuery($eventID, $surveyLink)
 {
-    return "INSERT INTO `event_survey_link`(`eventID`, `surveyLink`) VALUES ($eventID, '$surveyLink')";
+    return "REPLACE INTO `event_survey_link`(`eventID`, `surveyLink`) VALUES ($eventID, '$surveyLink')";
 }
 
 function uploadImage($imageFile, $new_file_name)

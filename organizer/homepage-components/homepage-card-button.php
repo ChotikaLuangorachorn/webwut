@@ -15,7 +15,6 @@
 
 <!-- Edit Event Modal -->
 <?php
-$orgID = $_SESSION["orgID"];
 $eventID = $recentEvent->getEventID();
 
 $modalID = "editModal";
@@ -24,7 +23,7 @@ $modalBody = "Do you want to edit an event?";
 $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\"
                         data-dismiss=\"modal\">No</button>";
 $modalConfirmButton = "<a class=\"btn btn-primary\" 
-href=\"event-form.php?eid=$eventID&orgID=$orgID\">Yes</a>";
+href=\"event-form.php?eid=$eventID\">Yes</a>";
 require "php/modal.php"; ?>
 
 <!-- Delete Event Modal -->
@@ -33,7 +32,7 @@ $modalID = "deleteModal";
 if(count($recentEvent->getAttendees()) > 0){
     // Case 1: contains any attendees: Cannot be removed
     $modalTitle = "Could not delete an event...";
-    $modalBody = "You cannot delete an event if there was any attendee";
+    $modalBody = "You cannot delete an event if there was any attendee.";
     $modalCancelButton = "";
     $modalConfirmButton = "<button type=\"button\" class=\"btn btn-primary\" 
                         data-dismiss=\"modal\">Okay</button>";
@@ -43,7 +42,7 @@ if(count($recentEvent->getAttendees()) > 0){
     $modalBody = "Are you sure you want to delete an event?";
     $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\" 
                         data-dismiss=\"modal\">No</button>";
-    $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-script/php/event-remover.php?eid=$eventID&orgID=$orgID\">Yes</a>";
+    $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-script/php/event-remover.php?eid=$eventID\">Yes</a>";
 }
 
 require "php/modal.php";

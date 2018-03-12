@@ -13,12 +13,13 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="css/organizer.css">
 
-    <title>Organizer | Adding Event</title>
+    <title>Organizer | Event Form </title>
 </head>
 <body>
 
 <?php require_once "php/header.php" ?>
 <?php require_once "event-form-components/php/form-cache.php" ?>
+
 
 <!-- Page Content -->
 <div class="container-fluid">
