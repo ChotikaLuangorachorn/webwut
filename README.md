@@ -35,6 +35,10 @@
     - js - ใช้ส่งข้อมูลจาก personalMessage.php ไปที่php
     - messageFile - เก็บภาพที่ได้จากการแนบไฟล์ เมื่อส่งข้อความ
     - php - ใช้ เพื่อเชื่อมต่อไป database ประกอบด้วย การแสดงประวัติการส่ง และ ข้อความที่ส่งถึงตนเอง
+        - connectDB.php เชื่อมต่อ Database
+        - sendMessage.php ใช้ส่งข้อความ/ข้อมูลไปที่ Database
+        - inbox.php ใช้ดึงข้อมูลจาก Database ในการแสดงผล ข้อความที่ส่งมาถึงตนเอง
+        - sentBox.php ใช้ดึงข้อมูลจาก Database ในการแสดงผล ข้อความที่ส่งไปให้ผู้อื่น
 * services
     - create_attendant.php ใช้ เพื่อเชื่อมต่อไป database เพื่อเก็บข้อมูลการลงทะเบียนของ Attendant
     - create_organizer.php ใช้ เพื่อเชื่อมต่อไป database เพื่อเก็บข้อมูลการลงทะเบียนของ Organizer
