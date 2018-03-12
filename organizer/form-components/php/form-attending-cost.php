@@ -1,6 +1,6 @@
 <div class="form-group row align-items-center">
     <label for="attending-cost" class="col-sm-3 col-form-label">Attending
-        Cost:</label>
+        Cost: <span class="required">*<span></label>
     <div class="col-sm-3 input-group p-0">
         <div class="custom-control custom-checkbox m-2">
             <input type="checkbox" class="custom-control-input"

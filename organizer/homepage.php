@@ -19,13 +19,15 @@
 
 <?php
 require_once "header.php";
-require_once "Event.php";
+require_once "event-scripts/php/Event.php";
+require_once "event-scripts/php/EventAttendee.php";
+require_once '../services/connectDB.php';
 
 if (!isset($_SESSION["orgID"])) {
     $_SESSION['orgID'] = 3;
 }
 
-require_once "phpScripts/eventLoader.php";
+require_once "event-scripts/php/event-loader.php";
 
 // check if session holds an event data
 $hasData = isset($event);
@@ -43,7 +45,7 @@ $hasData = isset($event);
         <!-- Add Events Button-->
         <div class="col-md-3 p-4">
             <a class="btn btn-primary btn-lg btn-block p-3" id="add-event-btn"
-               href="eventForm.php">Add Event</a>
+               href="event-form.php">Add Event</a>
         </div>
         <!-- Events holder-->
         <div class="col-md-9 mx-auto p-4 container-fluid row">
@@ -52,11 +54,11 @@ $hasData = isset($event);
                 <?php } else { ?>
                 <div class="event-holder p-4">
                     <?php
-                    for ($i = count($events) - 1; $i >= 0; $i--) { ?>
+                    for ($i =  0; $i < count($events); $i++) { ?>
                         <!-- Event <?php echo $i + 1 ?> -->
                         <?php
                         $recentEvent = $events[$i];
-                        require 'homepageCard.php';
+                        require 'homepage-card.php';
                     }} ?>
                     <!-- /.row -->
 

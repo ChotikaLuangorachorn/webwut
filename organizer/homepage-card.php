@@ -4,7 +4,7 @@
         <a href="<?php echo '../assets/events/' .
             $recentEvent->getThumbnail() ?>">
             <!-- Event Thumbnail -->
-            <img class="image-600-300 image-fit-cover
+            <img class="image-640-360 image-fit-cover
                             img-thumbnail
                             rounded mb-3
                              mb-md-0"
@@ -15,7 +15,7 @@
     <div class="col-lg-5">
         <!-- Event Name -->
         <h3><?php echo $recentEvent->getEventName() ?> -
-            <small><?php echo $recentEvent->getEventType() ?></small>
+            <small><?php echo $recentEvent->getTypeStr() ?></small>
         </h3>
         <!-- Event Detail -->
         <p class="card-text">
@@ -27,11 +27,20 @@
             <span>Location Name: </span>
             <?php echo $recentEvent->getLocationName() ?>
         </p>
-        <!-- Event Date -->
+        <!-- Event Start Date -->
         <p class="card-text">
-            <span>Start Date: </span>
-            <?php echo date("d/m/Y \a\\t H:i", strtotime
-            ($recentEvent->getDate())) ?>
+            <span>Event Start: </span>
+            <?php echo date("d/m/Y", $recentEvent->getStartDate()) ?>
+        </p>
+        <!-- Event End Date -->
+        <p class="card-text">
+            <span>Event End: </span>
+            <?php echo date("d/m/Y", $recentEvent->getEndDate()) ?>
+        </p>
+        <!-- Registrable Date -->
+        <p class="card-text">
+            <span>Can register until: </span>
+            <?php echo date("d/m/Y", $recentEvent->getRegistrableDate()) ?>
         </p>
         <!-- Age Restriction -->
         <p class="card-text">
@@ -52,10 +61,10 @@
             <span>Available Entries: </span>
             <?php echo $recentEvent->getEntries() ?>
         </p>
-        <!-- Google Form -->
+        <!-- Survey Form -->
         <p class="card-text">
-            <span>Google Form: </span>
-            <a href="<?php echo $recentEvent->getSurveyLink() ?>">Link</a>
+            <span>Survey Form: </span>
+            <?php echo $recentEvent->getSurveyLink() ?>
         </p>
         <!-- Button options -->
         <div>
@@ -64,6 +73,11 @@
             <a class="btn btn-primary m-1" href="#">Delete
                 Event</a>
         </div>
+        <small>Created when:
+            <?php echo date("d/m/Y \a\\t H:i:s A",
+                $recentEvent->getCreateDate()
+            ) ?>
+        </small>
     </div>
 </div>
 <hr/>

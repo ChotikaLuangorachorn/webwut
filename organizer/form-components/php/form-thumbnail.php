@@ -2,7 +2,7 @@
 
     <label for="event-thumbnail"
            class="col-sm-3 col-form-label">Event
-        Thumbnail:</label>
+        Thumbnail: </label>
     <div class="container-fluid row col-sm-9">
         <div class="col-12 p-2">
             <input type="file" id="event-thumbnail"

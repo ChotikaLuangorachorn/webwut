@@ -7,23 +7,31 @@ class Event
     private $eventName;
     private $eventType;
     private $detail;
-    private $date;
+    private $createDate;
+    private $registrableDate;
+    private $startDate;
+    private $endDate;
     private $age;
     private $gender;
-    private $currentEntries;
     private $maxEntries;
     private $attendingCost;
     private $indoorName;
     private $location;
     private $surveyLink;
     private $thumbnail;
+    private $attendees;
 
     /**
      * Event constructor.
+     * @param $eventID
+     * @param $orgID
      * @param $eventName
      * @param $eventType
      * @param $detail
-     * @param $date
+     * @param $createDate
+     * @param $registrableDate
+     * @param $startDate
+     * @param $endDate
      * @param $age
      * @param $gender
      * @param $maxEntries
@@ -31,29 +39,35 @@ class Event
      * @param $indoorName
      * @param $location
      * @param $surveyLink
+     * @param $thumbnail
+     * @param $attendees
      */
-
-    public function __construct($eventName, $eventType, $detail, $date, $age,
-                                $gender, $maxEntries, $attendingCost, $indoorName, $location, $surveyLink)
+    public function __construct($eventID, $orgID, $eventName, $eventType, $detail,
+                                $createDate, $registrableDate, $startDate, $endDate, $age,
+                                $gender, $maxEntries, $attendingCost, $indoorName, $location)
     {
+        $this->eventID = $eventID;
+        $this->orgID = $orgID;
         $this->eventName = $eventName;
         $this->eventType = $eventType;
         $this->detail = $detail;
-        $this->date = $date;
+        $this->createDate = $createDate;
+        $this->registrableDate = $registrableDate;
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
         $this->age = $age;
         $this->gender = $gender;
-        $this->currentEntries = 0;
         $this->maxEntries = $maxEntries;
         $this->attendingCost = $attendingCost;
         $this->indoorName = $indoorName;
         $this->location = $location;
-        $this->surveyLink = $surveyLink;
+        $this->attendees = [];
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getEventID(): int
+    public function getEventID()
     {
         return $this->eventID;
     }
@@ -133,17 +147,65 @@ class Event
     /**
      * @return mixed
      */
-    public function getDate()
+    public function getCreateDate()
     {
-        return $this->date;
+        return $this->createDate;
     }
 
     /**
-     * @param mixed $date
+     * @param mixed $createDate
      */
-    public function setDate($date): void
+    public function setCreateDate($createDate): void
     {
-        $this->date = $date;
+        $this->createDate = $createDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegistrableDate()
+    {
+        return $this->registrableDate;
+    }
+
+    /**
+     * @param mixed $registrableDate
+     */
+    public function setRegistrableDate($registrableDate): void
+    {
+        $this->registrableDate = $registrableDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param mixed $startDate
+     */
+    public function setStartDate($startDate): void
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param mixed $endDate
+     */
+    public function setEndDate($endDate): void
+    {
+        $this->endDate = $endDate;
     }
 
     /**
@@ -176,22 +238,6 @@ class Event
     public function setGender($gender): void
     {
         $this->gender = $gender;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCurrentEntries(): int
-    {
-        return $this->currentEntries;
-    }
-
-    /**
-     * @param int $currentEntries
-     */
-    public function setCurrentEntries(int $currentEntries): void
-    {
-        $this->currentEntries = $currentEntries;
     }
 
     /**
@@ -263,7 +309,7 @@ class Event
      */
     public function getSurveyLink()
     {
-        return $this->surveyLink;
+        return ($this->surveyLink === null) ? "No Link Given" : "<a href=\"$this->surveyLink\">Survey Link</a>";
     }
 
     /**
@@ -279,7 +325,7 @@ class Event
      */
     public function getThumbnail()
     {
-        return $this->thumbnail;
+        return ($this->thumbnail === null) ? "holder-pic.png" : $this->thumbnail;
     }
 
     /**
@@ -290,38 +336,66 @@ class Event
         $this->thumbnail = $thumbnail;
     }
 
+    /**
+     * @return array
+     */
+    public function getAttendees(): array
+    {
+        return $this->attendees;
+    }
 
+    /**
+     * @param array $attendees
+     */
+    public function setAttendees(array $attendees): void
+    {
+        $this->attendees = $attendees;
+    }
+
+    /**
+     * @param array $attendee
+     */
+    public function pushAttendee($attendee): void
+    {
+        array_push($this->attendees, $attendee);
+    }
+
+    /**
+     * @return string
+     */
     public function getAgeCondition(): string
     {
-        if ($this->age <= 0) {
-            return 'Any Age';
-        } else {
-            return "Must be above $this->age";
-        }
+        return ($this->age <= 0) ? "Any Age" : "Must be above $this->age";
     }
 
+    /**
+     * @return string
+     */
     public function getAttendingCostStr(): string
     {
-        if ($this->attendingCost <= 0) {
-            return "Free";
-        } else {
-            return "$this->attendingCost ฿";
-        }
+        return ($this->attendingCost <= 0) ? "Free" : "$this->attendingCost ฿";
     }
 
+    /**
+     * @return string
+     */
     public function getEntries(): string
     {
-        $remainEntries = ($this->maxEntries - $this->currentEntries);
+        $currentEntries = count($this->attendees);
+        $remainEntries = ($this->maxEntries - $currentEntries);
         if ($remainEntries <= 0) {
             return "No available entry";
         } else {
             if ($remainEntries == 1) {
-                return "$this->currentEntries/$this->maxEntries (Only $remainEntries Entry left!)";
+                return "$currentEntries/$this->maxEntries (Only $remainEntries Entry left!)";
             }
-            return "$this->currentEntries/$this->maxEntries ($remainEntries Entries left)";
+            return "$currentEntries/$this->maxEntries ($remainEntries Entries left)";
         }
     }
 
+    /**
+     * @return string
+     */
     public function getGenderCondition(): string
     {
         switch ($this->gender) {
@@ -336,8 +410,39 @@ class Event
         }
     }
 
+    /**
+     * @return string
+     */
     public function getLocationName(): string
     {
         return $this->indoorName . ' &raquo; ' . $this->location;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypeStr(): string
+    {
+        switch ($this->eventType) {
+            case 'Business':
+                return 'Business';
+            case 'Community':
+                return 'Community';
+            case 'Education':
+                return 'Education';
+            case 'Health':
+                return 'Health';
+            case 'Hobbies':
+                return 'Hobbies';
+            case 'Music':
+                return 'Music';
+            case 'Science':
+                return htmlspecialchars('Science & Technology');
+            case 'Sports':
+                return 'Sports';
+
+            default:
+                return "Shouldn't be executed this, some error occurs";
+        }
     }
 }
