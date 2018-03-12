@@ -1,12 +1,13 @@
 <?php
     //ก๊อบมาจาก https://www.w3schools.com/php/php_mysql_connect.asp
     $HOST = "localhost";
-    $DB = "test_webwut";
+    $DB = "webwutdb";
     $USERNAME = "root";
     $PASSWORD = "";
 
     try {
-        $conn = new PDO("mysql:host=$HOST;dbname=$DB;charset=utf8", $USERNAME,
+        $conn = new PDO("mysql:host=$HOST;dbname=$DB; charset=utf8",
+            $USERNAME,
             $PASSWORD);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

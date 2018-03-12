@@ -8,14 +8,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/loginStyle.css">
 </head>
 <body>
+    <?php
+        session_start();
+    ?>
     <div class="text-center">
         <div class="logo">Create a new organizer</div>
         <!-- Main Form -->
         <div class="login-form-1">
-            <form id="register-form" class="text-left" action="create_organizer.php">
+            <form id="register-form" class="text-left">
                 <div class="login-form-main-message"></div>
                 <div class="main-login-form">
                     <div class="login-group">
@@ -47,7 +50,7 @@
                     <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                 </div>
                 <div class="etc-login-form">
-                    <p>already have an account? <a href="../login/login.php">login here</a></p>
+                    <p>already have an account? <a href="../login.php">login</a></p>
                 </div>
             </form>
         </div>

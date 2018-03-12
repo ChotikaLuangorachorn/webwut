@@ -29,17 +29,21 @@
           <div class="col-4 noPadding">
           <?php
           if ($LOGGEDIN) {
-            $ID = $_SESSION['ID'];
-            echo "Welcome, ". $ID;
+            $displayName = $_SESSION['displayName'];
+
+            echo "Welcome, ". $displayName;
             ?>
-            <a href="#profile"><i class="material-icons" style="font-size:48px;color:#61b3cf">account_box</i></a>
-            <a href="#mail"><i class="material-icons" style="font-size:48px;color:#df8a83">mail</i></a>
-            <button type="button" class="btn btn-light" id="btn-login" role="button">SIGN OUT</button>
+            <?php 
+            if ($_SESSION['ROLE'] != "AD")
+            echo '<a href="../profile.php"><i class="material-icons" style="font-size:48px;color:#61b3cf">account_box</i></a>
+            <a href="personalMessage.php"><i class="material-icons" style="font-size:48px;color:#df8a83">mail</i></a>';
+            ?>
+            <a href="../services/doLogout.php"><button type="button" class="btn btn-light" id="btn-login" role="button">SIGN OUT</button></a>
             <?php
           } else {
             ?>
             <div id="bg-me">
-              <button type="button" class="btn btn-light" id="btn-login" role="button">SIGN IN</button>
+              <a href="../login.php"><button type="button" class="btn btn-light" id="btn-login" role="button">SIGN IN</button></a>
             </div>
             <?php
           }

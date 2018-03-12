@@ -8,14 +8,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/loginStyle.css">
 </head>
 <body>
+    <?php
+        session_start();
+    ?>
     <div class="text-center">
         <div class="logo">Create a new attendant</div>
         <!-- Main Form -->
         <div class="login-form-1">
-            <form id="register-form" class="text-left" action="create_attendant.php">
+            <form id="register-form" class="text-left" >
                 <div class="login-form-main-message"></div>
                 <div class="main-login-form">
                     <div class="login-group">
@@ -32,15 +35,19 @@
                             <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
                         </div>
                         <div class="form-group">
+                            <label for="reg_displayname" class="sr-only">Display Name</label>
+                            <input type="text" class="form-control" id="reg_displayname" name="reg_displayname" placeholder="display name">
+                        </div>
+                        <div class="form-group">
                             <label for="reg_fullname" class="sr-only">Full Name</label>
                             <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="first name">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Surname</label>
+                            <label for="reg_lastname" class="sr-only">Surname</label>
                             <input type="text" class="form-control" id="reg_lastname" name="reg_lastname" placeholder="surname">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Age</label>
+                            <label for="reg_age" class="sr-only">Age</label>
                             <input type="text" class="form-control" id="reg_age" name="reg_age" placeholder="age">
                         </div>
                         <div class="form-group">
@@ -48,7 +55,7 @@
                             <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email address">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Mobile No</label>
+                            <label for="reg_mobile_no" class="sr-only">Mobile No</label>
                             <input type="text" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
                         </div>                          
                         <div class="form-group login-group-checkbox">
@@ -61,7 +68,7 @@
                     <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                 </div>
                 <div class="etc-login-form">
-                    <p>already have an account? <a href="../login/login.php">login here</a></p>
+                    <p>already have an account? <a href="../login.php">login</a></p>
                 </div>
             </form>
         </div>
