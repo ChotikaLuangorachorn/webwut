@@ -4,7 +4,7 @@ $(document).ready(function(e){
 // display msg
 	function displayInbox(){
 		$.ajax({
-			url: './personalMessage/php-scripts/inbox.php-scripts',
+			url: './personalMessage/php-scripts/inbox.php',
 			type: 'POST',
 			success: function(data){
 				$("#inbox").html(data);
@@ -13,7 +13,7 @@ $(document).ready(function(e){
 	}
 	function displaySentBox(){
 		$.ajax({
-			url: './personalMessage/php-scripts/sentBox.php-scripts',
+			url: './personalMessage/php-scripts/sentBox.php',
 			type: 'POST',
 			success: function(data){
 				$("#sentBox").html(data);
@@ -46,7 +46,7 @@ $(document).ready(function(e){
 
 // send form(reviever, msg, image file) + upload image
 	$("#message-sender").ajaxForm({
-		url: "./personalMessage/php-scripts/sendMessage.php-scripts",
+		url: "./personalMessage/php-scripts/sendMessage.php",
 		type: "post",
 		success: function(response){
 			console.log(response);
@@ -91,7 +91,7 @@ $(document).ready(function(e){
 	// 	var formData = new FormData($("#message-sender")[0]);
 	// 	console.log("formData " + FormData);
 	// 	$.ajax({
-	// 		url: 'sendMessage.php-scripts',
+	// 		url: 'sendMessage.php',
 	// 		type: 'POST',
 	// 		// data: {
 	// 		// 	toID: toID,
