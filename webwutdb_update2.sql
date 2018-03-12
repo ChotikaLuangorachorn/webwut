@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2018 at 10:32 AM
+-- Generation Time: Mar 12, 2018 at 11:26 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -38,7 +38,7 @@ CREATE TABLE `event` (
   `eventName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_thai_520_w2 NOT NULL,
   `eventDetail` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_thai_520_w2 NOT NULL,
   `age` int(11) NOT NULL,
-  `gender` varchar (6) NOT NULL,
+  `gender` char(1) NOT NULL,
   `price` int(11) NOT NULL,
   `capacity` int(11) NOT NULL,
   `indoorName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_thai_520_w2 NOT NULL,
@@ -51,10 +51,8 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`eventID`, `orgID`, `eventCreate`, `registrableDate`, `eventStart`, `eventEnd`, `eventName`, `eventDetail`, `age`, `gender`, `price`, `capacity`, `indoorName`, `location`, `type`) VALUES
-(1, 3, '2018-03-11 18:23:45', '2018-03-12 00:00:00', '2018-03-15 00:00:00',
-'2018-03-18 00:00:00', 'Health Exam', 'Health Examination at Vibhavadee Hospital', -1, 'all', 0, 100, 'Vibhavadee Hospital', '51/3 Thanon Ngam Wong Wan, Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10900, Thailand', 'Science'),
-(21, 3, '2018-03-12 07:13:51', '2018-03-15 00:00:00', '2018-03-19 00:00:00',
-'2018-03-20 00:00:00', 'Pre-Test TOEIC', 'A test held for letting\n     students trying out their mad English skillz', -1, 'all', 100, 8, 'คณะมนุษยศาสตร์', 'คณะมนุษยศาสตร์ อาคาร 1 Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10220, Thailand', 'Education');
+(1, 3, '2018-03-11 18:23:45', '2018-03-12 00:00:00', '2018-03-15 00:00:00', '2018-03-18 00:00:00', 'Health Exam', 'Health Examination at Vibhavadee Hospital', -1, 'a', 0, 100, 'Vibhavadee Hospital', '51/3 Thanon Ngam Wong Wan, Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10900, Thailand', 'Science'),
+(21, 3, '2018-03-12 07:13:51', '2018-03-15 00:00:00', '2018-03-19 00:00:00', '2018-03-20 00:00:00', 'Pre-Test TOEIC', 'A test held for letting\n     students trying out their mad English skillz', -1, 'a', 100, 8, 'คณะมนุษยศาสตร์', 'คณะมนุษยศาสตร์ อาคาร 1 Khwaeng Lat Yao, Khet Chatuchak, Krung Thep Maha Nakhon 10220, Thailand', 'Education');
 
 -- --------------------------------------------------------
 
@@ -233,9 +231,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `userID`, `password`, `role`) VALUES
-(1, 'user', 'user', 'AT'),
-(2, 'admin', 'admin', 'AD'),
-(3, 'organizer', 'organizer', 'OR'),
+(1, 'user', '$wiKP4kT.MWa2', 'AT'),
+(2, 'admin', '$wykCC0S6UsnU', 'AD'),
+(3, 'organizer', '$wShN7Lg53HX6', 'OR'),
 (4, 'user2', 'user', 'AT');
 
 --
@@ -341,7 +339,7 @@ ALTER TABLE `event_survey_link`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
