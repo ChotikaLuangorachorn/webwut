@@ -92,3 +92,9 @@ no-event {
     display: block;
     
 }
+
+img#modalImage {
+    display: block;
+    margin: 0 auto;
+}
+

@@ -38,13 +38,23 @@
         if ($info === FALSE) {
             header('location:oops.php');
         }
-        $sql = "SELECT eventID, date, eventName, location, flag, thumbnailPath FROM event_attendant LEFT JOIN event USING (eventID) WHERE aID=?";
+        $sql = "SELECT eventID, eventStart, eventEnd, eventName, location FROM event_attendant LEFT JOIN event USING (eventID) WHERE aID=?";
         $statement = $conn->prepare($sql); 
         $statement->execute([$USER]);
         $events = $statement->fetchAll(PDO::FETCH_OBJ);
         foreach ($events as $event) {
-            $event->prettydate = date("d/m/Y g:i A", strtotime($event->date));
+            $event->prettydate = date("d/m/Y g:i A", strtotime($event->eventEnd));
+            $event->prettydate1 = date("d/m/Y g:i A", strtotime($event->eventStart));
+            $sql = "SELECT image FROM event_image WHERE eventID=?";
+            $statement = $conn->prepare($sql); 
+            $statement->execute([$event->eventID]);
+            $images = $statement->fetchAll(PDO::FETCH_OBJ);
+            $event->images = array();
+            if ($images !== FALSE) {
+                $event->images = $images;
+            }
         }
+        
         if (isset($info->id) && $info->id != $_SESSION['ID']) {
             $ISOWNER = FALSE;
         }
@@ -160,13 +170,13 @@
             return jsDate
         }
         for (event of events) {
-            let date = parseSQLdate(event.date);
+            let date = parseSQLdate(event.eventEnd);
             if (date < now) {
                 past.push(event);
                 $("#past-events").append(`<div data-user="`+event.eventID+`" class="row table-row row-with-centered-col modal-toggler" data-toggle="modal" data-target="#mymodal">
                 <div class="col-5 text-centered">`+event.eventName+`</div>
                 <div class="col-3 text-centered">`+event.location+`</div>
-                <div class="col-3 text-centered">`+event.prettydate+`</div>
+                <div class="col-3 text-centered">`+event.prettydate1+" - "+event.prettydate+`</div>
                 </div>`);
             }
             else {
@@ -174,7 +184,7 @@
                 $("#upcoming-events").append(`<div data-user="`+event.eventID+`" class="row table-row row-with-centered-col modal-toggler" data-toggle="modal" data-target="#mymodal">
                 <div class="col-5 text-centered">`+event.eventName+`</div>
                 <div class="col-3 text-centered">`+event.location+`</div>
-                <div class="col-11 text-centered">`+event.prettydate+`</div>
+                <div class="col-3 text-centered">`+event.prettydate1+" - "+event.prettydate+`</div>
                 </div>`);
             }
         }        
@@ -200,7 +210,9 @@
                 if (event.eventID == eventID) evnt = event
             }
             $('#modalTitle').html(evnt.eventName)
-            $('#modalImage').attr("src", "assets/events/"+evnt.thumbnailPath)
+            if (evnt.images.length > 0) {
+                $('#modalImage').attr("src", "assets/events/"+evnt.images[0].image)
+            }
             $('#modalLocation').html("Location: " + evnt.location)
             $('#modalDate').html("Date: " + evnt.prettydate)
             $('#detail-btn').attr("href", "event.php?id="+evnt.eventID)

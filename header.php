@@ -20,13 +20,13 @@
     <nav class="navbar navbar-light" style="background-color: white;">
       <div class="container"><div class="container-fluid">
         <div class="row">
-          <div class="col-8">
+          <div class="col-6">
           <a class="navbar-brand" href="../webwut">
             <img  src="assets/image/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
             <font size="6" color="#f675b3">WEBWUT <b>Event</b></font>
           </a>
           </div>
-          <div class="col-4 noPadding">
+          <div class="col-6 noPadding">
           <?php
           if ($LOGGEDIN) {
             $displayName = $_SESSION['displayName'];
