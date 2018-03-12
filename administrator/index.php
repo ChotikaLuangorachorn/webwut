@@ -119,8 +119,8 @@
             </div>
             <ul> Notation:
                 <li>Sort -> Click on Head Table</li>
-                <li>Edit -> Double Click</li>
-                <li>Delete -> Right Click</li>
+                <li>Edit -> Click</li>
+                <li>Delete -> Double Click</li>
             </ul>
         </div>
         
@@ -253,8 +253,8 @@
             </div>
             <ul> Notation:
                 <li>Sort -> Click on Head Table</li>
-                <li>Edit -> Double Click</li>
-                <li>Delete -> Right Click</li>
+                <li>Edit -> Click</li>
+                <li>Delete -> Double Click</li>
             </ul>            
         </div>
 

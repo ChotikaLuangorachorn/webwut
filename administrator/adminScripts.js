@@ -27,15 +27,19 @@ $(document).ready(function(e){
 					tr.append("<td scope='row'>" + row.email + "</td>");
 					tr.append("<td scope='row'>" + row.phoneNo + "</td>");
 					// for edit
-					tr.dblclick(function(){
+					tr.click(function(){
 						onSelectOrganizerRow(row.id,row.userID,row.orgName,row.email,row.phoneNo);
 					})
+					
 					// for delete
-					tr.mousedown(function(e){
-				        if(e.which == 3){ //Right Click
-            				onSetConfirmOrganizerRow(row.id,row.userID);
-        				}
-   					 })
+					tr.dblclick(function(){
+						onSetConfirmOrganizerRow(row.id,row.userID);
+					})					
+					// tr.mousedown(function(e){
+				 //        if(e.which == 3){ //Right Click
+     //        				onSetConfirmOrganizerRow(row.id,row.userID);
+     //    				}
+   		// 			 })
 
 				});
 			}
@@ -197,15 +201,18 @@ $(document).ready(function(e){
 
 					// $('.attendant-list').append("<tr id='list'>"+td1+td2+td3+td4+td5+td6+td7+td8+"</tr>");
 					// for edit
-					tr.dblclick(function(){
+					tr.click(function(){
 						onSelectAttendantRow(row.id,row.userID,row.firstName,row.lastName,row.email,row.age,row.phoneNo);
 					})
 					// for delete
-					tr.mousedown(function(e){
-				        if(e.which == 3){ //Right Click
-            				onSetConfirmAttendantRow(row.id,row.userID);
-        				}
-   					 })
+					tr.dblclick(function(){
+						onSetConfirmAttendantRow(row.id,row.userID);
+					})					
+					// tr.mousedown(function(e){
+				 //        if(e.which == 3){ //Right Click
+     //        				onSetConfirmAttendantRow(row.id,row.userID);
+     //    				}
+   		// 			 })
 				});
 			}
 		});
