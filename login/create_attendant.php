@@ -4,6 +4,7 @@
     $username = $_POST['reg_username'];
     $password = crypt($_POST['reg_password'], '$webwut$');
     $con_password = crypt($_POST['reg_password_confirm'], '$webwut$');
+    $displayname = $_POST['reg_displayname'];
     $firstname = $_POST['reg_fullname'];
     $lastname = $_POST['reg_lastname'];
     $age = $_POST['reg_age'];
@@ -15,25 +16,25 @@
 
     //sql check username & email ไม่ซ้ำ
     $query_check = "SELECT * FROM `personal_info` LEFT JOIN `user` ON personal_info.userID = user.id 
-        WHERE personal_info.email='".$email."' AND user.userID='".$username."'";
+        WHERE personal_info.email='".$email."' AND user.userID='".$username."' AND personal_info.displayName='".$displayname."'";
     $statement_check = $conn->query($query_check);
     $row_check = $statement_check->fetchAll(PDO::FETCH_OBJ);
 
     //empty filled
-    if ($username != "" && $password != "" && $con_password != "" && $firstname != "" && $lastname != "" && $email != "" && $age != "" && $gender != "" && $mobile_no != "") {
+    if ($username != "" && $password != "" && $con_password != "" && $displayname != "" && $firstname != "" && $lastname != "" && $email != "" && $age != "" && $gender != "" && $mobile_no != "") {
         if (sizeof($row_check) > 0) {
             echo "username and email has already !!";
         } else {
             if ($password != $con_password) {
                 echo "The confirm password does not match password" ;
-            } else {
+            } else {                
                 $query1 = "INSERT INTO `user` (`userID`,`password`,`role`) 
                     VALUES ('".$username."','".$password."','".$role."')";
                 //insert USERNAME to DB
                 $statement = $conn->exec($query1);
                 $userID = $conn->lastInsertId();
-                $query2 = "INSERT INTO `personal_info` (`userID`, `firstName`,`lastName`,`age`,`email`,`phoneNo`,`gender`) 
-                    VALUES ('$userID', '".$firstname."','".$lastname."','".$age."','".$email."','".$mobile_no."','".$gender."')";
+                $query2 = "INSERT INTO `personal_info` (`userID`, `display`, `firstName`,`lastName`,`age`,`email`,`phoneNo`,`gender`) 
+                    VALUES ('$userID','".$displayname."' ,'".$firstname."','".$lastname."','".$age."','".$email."','".$mobile_no."','".$gender."')";
                 //insert INFO to DB
                 $statement = $conn->exec($query2);
                 echo " ---create new attendant--- ";

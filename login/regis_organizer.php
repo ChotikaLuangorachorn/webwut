@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="loginStyle.css">
 </head>
 <body>
+    <?php
+        session_start();
+    ?>
     <div class="text-center">
         <div class="logo">Create a new organizer</div>
         <!-- Main Form -->
@@ -47,7 +50,7 @@
                     <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                 </div>
                 <div class="etc-login-form">
-                    <p>already have an account? <a href="../login/login.php">login here</a></p>
+                    <p>already have an account? <a href="../login.php">login</a></p>
                 </div>
             </form>
         </div>

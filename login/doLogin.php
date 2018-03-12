@@ -30,7 +30,7 @@
                     echo 'Hi Attendant !';
                 }
                 if ($user->role == 'OR') {
-                    // header("location:index.php");
+                    header("location:../organizer");
                     echo 'Hello Organizer !!';
                 }
                 if ($user->role == 'AD') {
@@ -40,7 +40,7 @@
             }
         } else {
             //login ไม่สำเร็จ show error
-            header("location:login.php?e=1");
+            header("location:../login.php?e=1");
             session_write_close();
         }
     }
