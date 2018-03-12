@@ -9,7 +9,9 @@
 **อธิบายโครงสร้าง directory**
 ##### Folder #####
 * administrator
-    - css js php
+    - css
+    - js
+    php
 * assets
     - events
     - images
@@ -28,3 +30,7 @@
     - messageFile
     - php
 * services
+##### นอกโฟลเดอร์ #####
+- index.php - หน้าแรกของเว็บไซต์
+- login.php - หน้า login
+- personalMessage.php - หน้าหลักของ Message
