@@ -43,3 +43,4 @@
 - personalMessage.php - หน้าหลักของ Message
 - events.php หน้าแสดงรายการeventต่างๆ หลังจากเลือกfilter หรือ category
 - event.php หน้าแสดงรายละเอียดของ event
+- oops.php แสดงเมื่อหน้า page ไม่เจอ
