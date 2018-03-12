@@ -82,7 +82,6 @@ $(document).ready(function(e){
 		})
 	})
 
-
 	// add
 	document.getElementById('form-add-organizer').style.display='none';
 	$('#btn-add-organizer').click(function(e) {
@@ -126,6 +125,7 @@ $(document).ready(function(e){
 			}
 		})
 	})
+
 	// delete
 	function onSetConfirmOrganizerRow(id,userName){
 		document.getElementById('alert-delete-organizer').style.display='block';
@@ -217,6 +217,7 @@ $(document).ready(function(e){
 			}
 		});
 	}
+
 	// edit
 	function onSelectAttendantRow(id,userName,displayName,firstName,lastName,email,age,phone){
 		document.getElementById('form-edit-attendant').style.display='block';
@@ -375,15 +376,17 @@ $(document).ready(function(e){
 			type: 'POST',
 			dataType:"json",
 			success: function(event){
-				console.log(event);
+				console.log(event); 
 				tbody = $("tbody.event-list");
 				tbody.empty();
 				event.forEach(row=>{
 					console.log(row);
-			        formatDay= moment(row.date).format('DD/MM/YYYY H:mm');
+			        startDate= moment(row.eventStart).format('DD/MM/YYYY H:mm');
+			        endDate= moment(row.eventEnd).format('DD/MM/YYYY H:mm');
 					tr = tbody.append("<tr id='list'></tr>").children().last();
 					tr.append("<td scope='row' style='text-align: center;'>" + row.eventID + "</td>");
-					tr.append("<td scope='row' style='text-align: center;'>" +formatDay+ "</td>");
+					tr.append("<td scope='row' style='text-align: center;'>" +startDate+ "</td>");
+					tr.append("<td scope='row' style='text-align: center;'>" +endDate+ "</td>");
 					tr.append("<td scope='row'>" + row.eventName + "</td>");
 					tr.append("<td scope='row'>" + row.location + "</td>");
 					tr.append("<td scope='row' style='text-align: right;'>" + row.capacity + "</td>");

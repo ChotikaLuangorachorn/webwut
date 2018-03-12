@@ -280,13 +280,14 @@
                     <thead>
                         <tr>
                             <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(1)')" scope="col" style="width: 100px;">ID</th>
-                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">Date</th>
-                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">Name</th>
-                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 350px;">Location</th>
-                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 100px;">Capacity</th>
-                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(6)')" scope="col" style="width: 100px;">Price</th>
-                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(7)')" scope="col" style="width: 200px;">Type</th>
-                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(8)')" scope="col" style="width: 250px;">Organizer Name</th>
+                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">Start Date</th>
+                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">End Date</th>
+                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">Name</th>
+                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 350px;">Location</th>
+                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(6)')" scope="col" style="width: 100px;">Capacity</th>
+                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(7)')" scope="col" style="width: 100px;">Price</th>
+                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(8)')" scope="col" style="width: 200px;">Type</th>
+                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(9)')" scope="col" style="width: 250px;">Organizer Name</th>
                         </tr>
                     </thead>
                     <tbody class="event-list"></tbody>
