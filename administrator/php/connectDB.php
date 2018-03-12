@@ -1,5 +1,5 @@
 <?php
-	$DB_NAME = 'webwutdb2';
+	$DB_NAME = 'webwutdb';
 	$USERNAME = 'root';
 	$PASSWORD = '';
 	// $connection = new PDO('mysql:host=localhost;dbname=editted_webwut;charset=utf8mb4', 'root', '');
