@@ -17,7 +17,7 @@
         if ($user !== FALSE) {
             // echo "enter IF";
             //set ตัวแปรใน session ไว้ว่าใคร log in อยู่ และเป็น role อะไร
-            $_SESSION["ID"] = $user->userID;
+            $_SESSION["ID"] = $user->id;
             $_SESSION["ROLE"] = $user->role;
             if ($_SESSION['ROLE'] == "AT") {
                 $sql = 'SELECT displayName FROM personal_info WHERE userID='.$_SESSION['ID'];
@@ -27,7 +27,7 @@
                 $sql = 'SELECT userID as displayName FROM user WHERE id='.$_SESSION['ID'];
               }
               $stmt = $conn->prepare($sql);
-              $stmt->execute($sql);
+              $stmt->execute();
               $displayName = $stmt->fetch(PDO::FETCH_OBJ)->displayName;
               $_SESSION['displayName'] = $displayName;
             session_write_close();
