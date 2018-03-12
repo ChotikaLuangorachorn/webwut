@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-7">
         <!-- View Event -->
-        <?php require "homepage-card-view-event.php"?>
+        <?php require "homepage-card-view-event.php" ?>
     </div>
     <div class="col-lg-5">
         <!-- Event Name -->
@@ -58,7 +58,7 @@
             <?php echo $recentEvent->getSurveyLink() ?>
         </p>
         <!-- Button options -->
-        <?php require 'homepage-card-button.php' ?>
+        <?php require "homepage-card-button.php" ?>
         <!-- create date -->
         <small>Created when:
             <?php echo date("d/m/Y \a\\t H:i:s A",

@@ -15,14 +15,17 @@
 
 <!-- Edit Event Modal -->
 <?php
+$orgID = $_SESSION["orgID"];
+$eventID = $recentEvent->getEventID();
+
 $modalID = "editModal";
 $modalTitle = "Editing an event...";
 $modalBody = "Do you want to edit an event?";
 $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\"
                         data-dismiss=\"modal\">No</button>";
-$eventID = $recentEvent->getEventID();
-$modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-form.php?eid=$eventID\">Yes</a>";
-require 'modal.php'; ?>
+$modalConfirmButton = "<a class=\"btn btn-primary\" 
+href=\"event-form.php?eid=$eventID&orgID=$orgID\">Yes</a>";
+require "modal.php"; ?>
 
 <!-- Delete Event Modal -->
 <?php
@@ -40,9 +43,8 @@ if(count($recentEvent->getAttendees()) > 0){
     $modalBody = "Are you sure you want to delete an event?";
     $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\" 
                         data-dismiss=\"modal\">No</button>";
-    $eventID = $recentEvent->getEventID();
-    $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-script/php/event-remover.php?eid=$eventID\">Yes</a>";
+    $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-script/php/event-remover.php?eid=$eventID&orgID=$orgID\">Yes</a>";
 }
 
-require 'modal.php';
+require "modal.php";
 ?>

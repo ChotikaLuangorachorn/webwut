@@ -32,7 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // If thumbnail exists.
-    if (isset($_FILES["event-thumbnail"])) {
+    if (!empty($_FILES["event-thumbnail"])) {
+
         // invoke new file name from event and org ID
         $new_file_name = "event-$eventID-org-$orgID";
 
