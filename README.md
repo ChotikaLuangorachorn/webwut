@@ -29,6 +29,7 @@
      - homepage-components
      - js
      - php
+     - homepage.php หน้าหลักของ Organizer
 * personalMessage
     - css - ใช้ตกแต่งหน้าเว็บไซต์
     - js - ใช้ส่งข้อมูลจาก personalMessage.php ไปที่php
