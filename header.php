@@ -29,12 +29,24 @@
           <div class="col-4 noPadding">
           <?php
           if ($LOGGEDIN) {
-            $ID = $_SESSION['ID'];
-            echo "Welcome, ". $ID;
+            $displayName = $_SESSION['ID'];
+            include 'services/connectDB.php';
+            if ($_SESSION['ROLE'] == "AT") {
+              $sql = 'SELECT displayName FROM personal_info WHERE userID='.$_SESSION['ID'];
+            } else if ($_SESSION['ROLE'] == "OR") {
+              $sql = 'SELECT orgName as displayName FROM organizer_info WHERE userID='.$_SESSION['ID'];
+            } else if ($_SESSION['ROLE'] == "AD") {
+              $sql = 'SELECT userID as displayName FROM user WHERE id='.$_SESSION['ID'];
+            }
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $displayName = $stmt->fetch(PDO::FETCH_OBJ)->displayName;
+
+            echo "Welcome, ". $displayName;
             ?>
             <a href="profile.php"><i class="material-icons" style="font-size:48px;color:#61b3cf">account_box</i></a>
             <a href="personalMessage/"><i class="material-icons" style="font-size:48px;color:#df8a83">mail</i></a>
-            <a href="logout.php"><button type="button" class="btn btn-light" id="btn-login" role="button">SIGN OUT</button></a>
+            <a href="services/doLogout.php"><button type="button" class="btn btn-light" id="btn-login" role="button">SIGN OUT</button></a>
             <?php
           } else {
             ?>
