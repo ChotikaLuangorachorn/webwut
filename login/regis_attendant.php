@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="loginStyle.css">
 </head>
 <body>
+    <?php
+        session_start();
+    ?>
     <div class="text-center">
         <div class="logo">Create a new attendant</div>
         <!-- Main Form -->
@@ -30,6 +33,10 @@
                         <div class="form-group">
                             <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
                             <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_fullname" class="sr-only">Display Name</label>
+                            <input type="text" class="form-control" id="reg_fullname" name="reg_dispayname" placeholder="display name">
                         </div>
                         <div class="form-group">
                             <label for="reg_fullname" class="sr-only">Full Name</label>
@@ -61,7 +68,7 @@
                     <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                 </div>
                 <div class="etc-login-form">
-                    <p>already have an account? <a href="../login/login.php">login here</a></p>
+                    <p>already have an account? <a href="../login.php">login</a></p>
                 </div>
             </form>
         </div>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="login/loginStyle.css">
 </head>
 <body>
     <?php
@@ -35,11 +35,11 @@
     ?>
     
     <div class="text-center">
-        <div class="text-center"><span><img src="../assets/image/logo.png" width="80" height="80" class="d-inline-block align-top"></span></div>
+        <div class="text-center"><span><img src="assets/image/logo.png" width="80" height="80" class="d-inline-block align-top"></span></div>
         <div class="logo text-center">Sign In</div>
         <!-- Main Form -->
             <div class="login-form-1">
-                <form id="login-form" class="text-left" action="doLogin.php" method="post">
+                <form id="login-form" class="text-left" action="login/doLogin.php" method="post">
                     <div class="login-form-main-message"></div>
                     <div class="main-login-form">
                         <div class="login-group">
@@ -55,8 +55,8 @@
                                 <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                             </div>
                             <div class="etc-login-form">
-                                <p><a href="./regis_attendant.php"><span class="ion-person-add"></span> create new attendant</a></p>
-                                <p><a href="./regis_organizer.php"><span class="ion-person-stalker"></span> create new organizer</a></p>
+                                <p><a href="login/regis_attendant.php"><span class="ion-person-add"></span> create new attendant</a></p>
+                                <p><a href="login/regis_organizer.php"><span class="ion-person-stalker"></span> create new organizer</a></p>
                             </div>
                         </div>
                     </div>

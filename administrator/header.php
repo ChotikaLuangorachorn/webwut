@@ -32,9 +32,11 @@
             $ID = $_SESSION['ID'];
             echo "Welcome, ". $ID;
             ?>
+            <span style="display: inline;">
             <a href="#profile"><i class="material-icons" style="font-size:48px;color:#61b3cf">account_box</i></a>
             <a href="#mail"><i class="material-icons" style="font-size:48px;color:#df8a83">mail</i></a>
             <button type="button" class="btn btn-light" id="btn-login" role="button">SIGN OUT</button>
+            </span>
             <?php
           } else {
             ?>
