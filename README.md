@@ -38,7 +38,7 @@
     - create_attendant.php ใช้ เพื่อเชื่อมต่อไป database เพื่อเก็บข้อมูลการลงทะเบียนของ Attendant
     - create_organizer.php ใช้ เพื่อเชื่อมต่อไป database เพื่อเก็บข้อมูลการลงทะเบียนของ Organizer
 ##### นอกโฟลเดอร์ #####
-- index.php - หน้าแรกของเว็บไซต์
+- **index.php** - หน้าแรกของเว็บไซต์
 - login.php - หน้า login
 - personalMessage.php - หน้าหลักของ Message
 - events.php หน้าแสดงรายการeventต่างๆ หลังจากเลือกfilter หรือ category
@@ -46,3 +46,4 @@
 - oops.php แสดงเมื่อหน้า page ไม่เจอ
 - profile.php แสดงหน้า profile ของ Attendant
 - profile-edit.php แสดงหน้าแก้ไข profile ของ Attendant
+- **webwutdb_update2.sql** ฐานข้อมูลที่ใช้ในการเก็บข้อมูลในปัจจุบัน
