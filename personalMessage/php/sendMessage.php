@@ -1,8 +1,8 @@
 <?php
 	include("./connectDB.php");
 	session_start();
-	// $uid = $_SESSION['username'];
-	$uid = 'grace';
+	$uid = $_SESSION['username'];
+	// $uid = 'user';
 
 	$connection = $conn;
 	$statement = $connection->query('SELECT CURRENT_TIMESTAMP');
@@ -45,7 +45,7 @@
 				// $query = $connection->exec(
 				// 	"INSERT INTO personal_message (`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ('$fromID', '$toID', '$msg', '$target_file', '$timestamp')");
 				try {
-					$query = $connection->exec('INSERT INTO `personal_message`(`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ((select id from user where userID="'.$uid.'"),(select id from user where userID="'.$toID.'"),"'.$msg.'","'.$target_file.'","'.$timestamp.'")');
+					$query = $connection->exec('INSERT INTO `personal_message`(`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ((select id from user where userID="'.$uid.'"),(select userID from personal_info where displayName="'.$toID.'"),"'.$msg.'","'.$target_file.'","'.$timestamp.'")');
 					echo "true";
 					move_uploaded_file($_FILES["file"]["tmp_name"], ".".$target_file); // เพิ่มจุดเพื่อ upload file
 				} catch (Exception $e) {
@@ -71,7 +71,7 @@
 			// $query = $connection->exec(
 			// 	"INSERT INTO personal_message (`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ('$fromID', '$toID', '$msg', '', '$timestamp')");
 			try {
-				$query = $connection->exec('INSERT INTO `personal_message`(`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ((select id from user where userID="'.$uid.'"),(select id from user where userID="'.$toID.'"), "'.$msg.'","","'.$timestamp.'")');
+				$query = $connection->exec('INSERT INTO `personal_message`(`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ((select id from user where userID="'.$uid.'"),(select userID from personal_info where displayName="'.$toID.'"), "'.$msg.'","","'.$timestamp.'")');
 				echo "true";		
 			} catch (Exception $e) {
 				echo "false";

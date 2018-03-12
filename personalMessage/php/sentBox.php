@@ -2,20 +2,29 @@
     include("./connectDB.php");
     session_start();
     // $uid = $_SESSION['username'];
-    $uid = "grace";
+    // $uid = "user";
+    $displayName = $_SESSION['displayName'];
+    // $displayName = "ice";
     $connection = $conn;
 
     $thaiMonth = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
     // id ของ User ที่ Login
     // $statement = $connection->query('SELECT * FROM personal_message WHERE fromID="1" ORDER BY timestamp DESC');
-    $query = 'SELECT p.*, ut.userID as toUserID, uf.userID as fromUserID
+//     $query = 'SELECT p.*, ut.userID as toUserID, uf.userID as fromUserID
+// FROM personal_message as p
+// JOIN user as ut
+// ON p.toID = ut.id
+// JOIN user as uf
+// ON p.fromID = uf.id
+// WHERE uf.userID="'. $uid .'" 
+// ORDER BY timestamp DESC';
+        $query = 'SELECT p.*, ut.displayName as toUserID, uf.displayName as fromUserID
 FROM personal_message as p
-JOIN user as ut
-ON p.toID = ut.id
-JOIN user as uf
-ON p.fromID = uf.id
-WHERE uf.userID="'. $uid .'" 
-ORDER BY timestamp DESC';
+JOIN personal_info as ut
+ON p.toID = ut.userID
+JOIN personal_info as uf
+ON p.fromID = uf.userID
+WHERE uf.displayName="'.$displayName.'" ORDER BY timestamp DESC';
 
     $statement = $connection->query($query);
 
