@@ -2,11 +2,18 @@
   include 'services/connectDB.php';
     if (isset($conn)) {
       // random CAROUSEL SLIDE
-
+      $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID ORDER BY RAND() LIMIT 3";
+      $stmt = $conn->prepare($sql);
+      try {
+        $stmt->execute();
+      } catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+      $carouselSlide = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 
       // Science & Technology
-      $sql = "SELECT * FROM event WHERE type='Science'";
+      $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE type='Science' ORDER BY RAND() LIMIT 3";
       $stmt = $conn->prepare($sql);
       try {
         $stmt->execute();
@@ -16,7 +23,7 @@
       $scienceEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
 
       // Business
-      $sql = "SELECT * FROM event WHERE type='Business' ORDER BY RAND() LIMIT 2";
+      $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE type='Business' ORDER BY RAND() LIMIT 3";
       $stmt = $conn->prepare($sql);
       try {
         $stmt->execute();
@@ -26,7 +33,7 @@
       $businessEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
 
       // Education
-      $sql = "SELECT * FROM event WHERE type='Education' ORDER BY RAND() LIMIT 2";
+      $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE type='Education' ORDER BY RAND() LIMIT 3";
       $stmt = $conn->prepare($sql);
       try {
         $stmt->execute();
@@ -36,7 +43,7 @@
       $educationEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
 
       // Hobbies
-      $sql = "SELECT * FROM event WHERE type='Hobbies' ORDER BY RAND() LIMIT 2";
+      $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE type='Hobbies' ORDER BY RAND() LIMIT 3";
       $stmt = $conn->prepare($sql);
       try {
         $stmt->execute();
@@ -46,7 +53,7 @@
       $hobbiesEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
 
       // Music
-      $sql = "SELECT * FROM event WHERE type='Music' ORDER BY RAND() LIMIT 2";
+      $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE type='Music' ORDER BY RAND() LIMIT 3";
       $stmt = $conn->prepare($sql);
       try {
         $stmt->execute();
@@ -56,7 +63,7 @@
       $musicEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
 
       // Health
-      $sql = "SELECT * FROM event WHERE type='Health' ORDER BY RAND() LIMIT 2";
+      $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE type='Health' ORDER BY RAND() LIMIT 3";
       $stmt = $conn->prepare($sql);
       try {
         $stmt->execute();
@@ -66,7 +73,7 @@
       $healthEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
 
       // Community
-      $sql = "SELECT * FROM event WHERE type='Community' ORDER BY RAND() LIMIT 2";
+      $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE type='Community' ORDER BY RAND() LIMIT 3";
       $stmt = $conn->prepare($sql);
       try {
         $stmt->execute();
@@ -76,7 +83,7 @@
       $communityEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
 
       // Sports
-      $sql = "SELECT * FROM event WHERE type='Sports' ORDER BY RAND() LIMIT 2";
+      $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE type='Sports' ORDER BY RAND() LIMIT 3";
       $stmt = $conn->prepare($sql);
       try {
         $stmt->execute();
@@ -401,17 +408,18 @@
           hidden("#hidden-col-7-Sci");
         }
         else {
+          console.log(scienceEvents)
           for (event of scienceEvents) {
-          console.log(event.thumbnailPath);
-            $(".scienceEvent").append(`<a href="#selected event">
+          console.log(event.image);
+            $(".scienceEvent").append(`<a href="event.php?id=`+event.eventID+`">
             <div class="row table-row">
               <div class="col-3">
-                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
-                <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+                <img src="assets/events/`+event.image+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
+                <a href="event.php?id=`+event.eventID+`" class="btn btn-join" role="button">Buy ticket</a>
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.eventStart)+`</div>
                 <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
@@ -426,15 +434,15 @@
         }
         else {
           for (event of businessEvents) {
-            $(".businessEvent").append(`<a href="#selected event">
+            $(".businessEvent").append(`<a href="event.php?id=`+event.eventID+`">
             <div class="row table-row">
               <div class="col-3">
-                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
-                <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+                <img src="assets/events/`+event.image+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
+                <a href="event.php?id=`+event.eventID+`" class="btn btn-join" role="button">Buy ticket</a>
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.eventStart)+`</div>
                 <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
@@ -449,15 +457,15 @@
         }
         else {
           for (event of educationEvents) {
-            $(".educationEvent").append(`<a href="#selected event">
+            $(".educationEvent").append(`<a href="event.php?id=`+event.eventID+`">
             <div class="row table-row">
               <div class="col-3">
-                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
-                <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+                <img src="assets/events/`+event.image+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
+                <a href="event.php?id=`+event.eventID+`" class="btn btn-join" role="button">Buy ticket</a>
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.eventStart)+`</div>
                 <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
@@ -472,15 +480,15 @@
         }
         else {
           for (event of hobbiesEvents) {
-            $(".hobbiesEvent").append(`<a href="#selected event">
+            $(".hobbiesEvent").append(`<a href="event.php?id=`+event.eventID+`">
             <div class="row table-row">
               <div class="col-3">
-                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
-                <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+                <img src="assets/events/`+event.image+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
+                <a href="event.php?id=`+event.eventID+`" class="btn btn-join" role="button">Buy ticket</a>
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.eventStart)+`</div>
                 <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
@@ -495,15 +503,15 @@
         }
         else {
           for (event of musicEvents) {
-            $(".musicEvent").append(`<a href="#selected event">
+            $(".musicEvent").append(`<a href="event.php?id=`+event.eventID+`">
             <div class="row table-row">
               <div class="col-3">
-                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
-                <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+                <img src="assets/events/`+event.image+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
+                <a href="event.php?id=`+event.eventID+`" class="btn btn-join" role="button">Buy ticket</a>
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.eventStart)+`</div>
                 <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
@@ -518,15 +526,15 @@
         }
         else {
           for (event of healthEvents) {
-            $(".healthEvent").append(`<a href="#selected event">
+            $(".healthEvent").append(`<a href="event.php?id=`+event.eventID+`">
             <div class="row table-row">
               <div class="col-3">
-                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
-                <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+                <img src="assets/events/`+event.image+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
+                <a href="event.php?id=`+event.eventID+`" class="btn btn-join" role="button">Buy ticket</a>
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.eventStart)+`</div>
                 <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
@@ -541,15 +549,15 @@
         }
         else {
           for (event of communityEvents) {
-            $(".communityEvent").append(`<a href="#selected event">
+            $(".communityEvent").append(`<a href="event.php?id=`+event.eventID+`">
             <div class="row table-row">
               <div class="col-3">
-                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
-                <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+                <img src="assets/events/`+event.image+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
+                <a href="event.php?id=`+event.eventID+`" class="btn btn-join" role="button">Buy ticket</a>
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.eventStart)+`</div>
                 <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
@@ -564,15 +572,15 @@
         }
         else {
           for (event of sportsEvents) {
-            $(".sportsEvent").append(`<a href="#selected event">
+            $(".sportsEvent").append(`<a href="event.php?id=`+event.eventID+`">
             <div class="row table-row">
               <div class="col-3">
-                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
-                <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+                <img src="assets/events/`+event.image+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
+                <a href="event.php?id=`+event.eventID+`" class="btn btn-join" role="button">Buy ticket</a>
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
-                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.date)+`</div>
+                <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(event.eventStart)+`</div>
                 <div><i class="material-icons">place</i>&nbsp;`+event.location+`</div>
               </div>
             </div></a>`);
