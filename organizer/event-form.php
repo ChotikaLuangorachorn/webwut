@@ -30,35 +30,35 @@
               enctype="multipart/form-data"
               action="event-scripts/php/event-creator.php" novalidate>
             <!-- Event Name -->
-            <?php require 'form-components/php/form-name.php' ?>
+            <?php require 'event-form-components/php/form-name.php' ?>
             <!-- Type of Event -->
-            <?php require 'form-components/php/form-type.php' ?>
+            <?php require 'event-form-components/php/form-type.php' ?>
             <!-- Event Detail -->
-            <?php require 'form-components/php/form-detail.php' ?>
+            <?php require 'event-form-components/php/form-detail.php' ?>
             <!-- Event Thumbnail -->
-            <?php require 'form-components/php/form-thumbnail.php' ?>
+            <?php require 'event-form-components/php/form-thumbnail.php' ?>
             <!-- Registrable Date -->
-            <?php require 'form-components/php/form-registrable-date.php' ?>
+            <?php require 'event-form-components/php/form-registrable-date.php' ?>
             <!-- Start Date -->
-            <?php require 'form-components/php/form-start-date.php' ?>
+            <?php require 'event-form-components/php/form-start-date.php' ?>
             <!-- End Date -->
-            <?php require 'form-components/php/form-end-date.php' ?>
+            <?php require 'event-form-components/php/form-end-date.php' ?>
             <!-- Event Entries -->
-            <?php require 'form-components/php/form-entries.php' ?>
+            <?php require 'event-form-components/php/form-entries.php' ?>
             <!-- Event Preconditions -->
-            <?php require 'form-components/php/form-preconditions.php' ?>
+            <?php require 'event-form-components/php/form-preconditions.php' ?>
             <!-- Attending Cost -->
-            <?php require 'form-components/php/form-attending-cost.php' ?>
+            <?php require 'event-form-components/php/form-attending-cost.php' ?>
             <!-- GG Map -->
-            <?php require 'form-components/php/form-map.php' ?>
+            <?php require 'event-form-components/php/form-map.php' ?>
             <!-- Indoor Name -->
-            <?php require 'form-components/php/form-indoor-name.php' ?>
+            <?php require 'event-form-components/php/form-indoor-name.php' ?>
             <!-- Location -->
-            <?php require 'form-components/php/form-location-info.php' ?>
+            <?php require 'event-form-components/php/form-location-info.php' ?>
             <!-- Survey Link -->
-            <?php require 'form-components/php/form-survey-link.php' ?>
+            <?php require 'event-form-components/php/form-survey-link.php' ?>
             <!-- Submit -->
-            <?php require 'form-components/php/form-submit.php' ?>
+            <?php require 'event-form-components/php/form-submit.php' ?>
             <!-- /.form -->
         </form>
         <!-- /.wrapper -->
@@ -87,16 +87,16 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFDllUC_ofU2tABnCon3X-WUfPtjS4H_o&callback=initMap">
 </script>
-<script src="form-components/js/google-marker.js"></script>
+<script src="event-form-components/js/google-marker.js"></script>
 
 <!-- Form Validator-->
-<script src="form-components/js/form-validator.js"></script>
+<script src="event-form-components/js/form-validator.js"></script>
 <!-- Form Thumbnail Preview-->
-<script src="form-components/js/form-thumbnail-preview.js"></script>
+<script src="event-form-components/js/form-thumbnail-preview.js"></script>
 <!-- Form Checkbox -->
-<script src="form-components/js/form-checkbox.js"></script>
+<script src="event-form-components/js/form-checkbox.js"></script>
 <!-- Form Modal -->
-<script src="form-components/js/form-modal.js"></script>
+<script src="event-form-components/js/form-modal.js"></script>
 </body>
 </html>
 
