@@ -1,16 +1,7 @@
 <div class="row">
     <div class="col-lg-7">
         <!-- View Event -->
-        <a href="<?php echo '../assets/events/' .
-            $recentEvent->getThumbnail() ?>">
-            <!-- Event Thumbnail -->
-            <img class="image-640-360 image-fit-cover
-                            img-thumbnail
-                            rounded mb-3
-                             mb-md-0"
-                 src="<?php echo '../assets/events/' .
-                     $recentEvent->getThumbnail() ?>"/>
-        </a>
+        <?php require "homepage-card-view-event.php"?>
     </div>
     <div class="col-lg-5">
         <!-- Event Name -->
@@ -68,10 +59,10 @@
         </p>
         <!-- Button options -->
         <?php require 'homepage-card-button.php' ?>
+        <!-- create date -->
         <small>Created when:
             <?php echo date("d/m/Y \a\\t H:i:s A",
-                $recentEvent->getCreateDate()
-            ) ?>
+                $recentEvent->getCreateDate()) ?>
         </small>
     </div>
 </div>
