@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/loginStyle.css">
 </head>
 <body>
     <?php
@@ -18,7 +18,7 @@
         <div class="logo">Create a new organizer</div>
         <!-- Main Form -->
         <div class="login-form-1">
-            <form id="register-form" class="text-left" action="create_organizer.php">
+            <form id="register-form" class="text-left">
                 <div class="login-form-main-message"></div>
                 <div class="main-login-form">
                     <div class="login-group">

@@ -6,6 +6,7 @@
     if (array_key_exists("lg_username", $_POST) && array_key_exists("lg_password", $_POST)) {
         $uid = $_POST['lg_username'];
         $pass = crypt($_POST['lg_password'], '$webwut$');
+        
 
         include 'connectDB.php';
         $sql = "SELECT * FROM user WHERE userID=? AND PASSWORD=?";

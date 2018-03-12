@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="login/loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
 </head>
 <body>
     <?php
@@ -39,7 +39,7 @@
         <div class="logo text-center">Sign In</div>
         <!-- Main Form -->
             <div class="login-form-1">
-                <form id="login-form" class="text-left" action="login/doLogin.php" method="post">
+                <form id="login-form" class="text-left" action="services/doLogin.php" method="post">
                     <div class="login-form-main-message"></div>
                     <div class="main-login-form">
                         <div class="login-group">

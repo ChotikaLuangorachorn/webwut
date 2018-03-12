@@ -33,7 +33,7 @@
                 //insert USERNAME to DB
                 $statement = $conn->exec($query1);
                 $userID = $conn->lastInsertId();
-                $query2 = "INSERT INTO `personal_info` (`userID`, `display`, `firstName`,`lastName`,`age`,`email`,`phoneNo`,`gender`) 
+                $query2 = "INSERT INTO `personal_info` (`userID`, `displayName`, `firstName`,`lastName`,`age`,`email`,`phoneNo`,`gender`) 
                     VALUES ('$userID','".$displayname."' ,'".$firstname."','".$lastname."','".$age."','".$email."','".$mobile_no."','".$gender."')";
                 //insert INFO to DB
                 $statement = $conn->exec($query2);
