@@ -380,10 +380,12 @@ $(document).ready(function(e){
 				tbody.empty();
 				event.forEach(row=>{
 					console.log(row);
-			        formatDay= moment(row.date).format('DD/MM/YYYY H:mm');
+			        startDate= moment(row.eventStart).format('DD/MM/YYYY H:mm');
+			        endDate= moment(row.eventEnd).format('DD/MM/YYYY H:mm');
 					tr = tbody.append("<tr id='list'></tr>").children().last();
 					tr.append("<td scope='row' style='text-align: center;'>" + row.eventID + "</td>");
-					tr.append("<td scope='row' style='text-align: center;'>" +formatDay+ "</td>");
+					tr.append("<td scope='row' style='text-align: center;'>" +startDate+ "</td>");
+					tr.append("<td scope='row' style='text-align: center;'>" +endDate+ "</td>");
 					tr.append("<td scope='row'>" + row.eventName + "</td>");
 					tr.append("<td scope='row'>" + row.location + "</td>");
 					tr.append("<td scope='row' style='text-align: right;'>" + row.capacity + "</td>");
