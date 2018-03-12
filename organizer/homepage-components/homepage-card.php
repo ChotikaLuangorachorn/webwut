@@ -67,12 +67,7 @@
             <?php echo $recentEvent->getSurveyLink() ?>
         </p>
         <!-- Button options -->
-        <div>
-            <a class="btn btn-primary m-1" href="#">Edit
-                Event</a>
-            <a class="btn btn-primary m-1" href="#">Delete
-                Event</a>
-        </div>
+        <?php require 'homepage-card-button.php' ?>
         <small>Created when:
             <?php echo date("d/m/Y \a\\t H:i:s A",
                 $recentEvent->getCreateDate()

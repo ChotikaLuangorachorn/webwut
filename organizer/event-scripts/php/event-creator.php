@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // close session
 session_write_close();
 // redirect to organizer's homepage
-//header("Location: ../../homepage.php");
+header("Location: ../../homepage.php");
 
 function createInsertEventQuery($postData, $orgID)
 {
