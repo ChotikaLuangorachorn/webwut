@@ -120,7 +120,7 @@ include 'services/connectDB.php';
        <div class="col-sm-4 noPadding">
          <div class="btn-group">
            <button class="btn btn-default-dropdown btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <b>Explore events</b>
+               <b><?php echo isset($_GET['data'])? ($_GET['data']=="Science" ? "Science & Technology" : $_GET['data']) :"Explore events" ?></b>
            </button>
            <div class="dropdown-menu">
                <a class="dropdown-item" href="events.php?data=All">All</a>
