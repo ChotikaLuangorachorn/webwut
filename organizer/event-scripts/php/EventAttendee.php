@@ -14,6 +14,7 @@ class EventAttendee
     private $paymentID;
     private $qrCode;
     private $evidence;
+    private $registerStamp;
 
     /**
      * EventAttendee constructor.
@@ -21,7 +22,6 @@ class EventAttendee
     public function __construct()
     {
     }
-
 
     /**
      * @return mixed
@@ -117,6 +117,23 @@ class EventAttendee
     public function setEvidence($evidence): void
     {
         $this->evidence = $evidence;
+    }
+
+    /**
+     * @return mixed
+     */
+
+    public function getRegisterStamp()
+    {
+        return $this->registerStamp;
+    }
+
+    /**
+     * @param mixed $registerStamp
+     */
+    public function setRegisterStamp($registerStamp): void
+    {
+        $this->registerStamp = $registerStamp;
     }
 
 

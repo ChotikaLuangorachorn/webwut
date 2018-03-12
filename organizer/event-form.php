@@ -37,17 +37,25 @@
             <?php require 'form-components/php/form-detail.php' ?>
             <!-- Event Thumbnail -->
             <?php require 'form-components/php/form-thumbnail.php' ?>
-            <!-- Event Date -->
-            <?php require 'form-components/php/form-date.php' ?>
+            <!-- Registrable Date -->
+            <?php require 'form-components/php/form-registrable-date.php' ?>
+            <!-- Start Date -->
+            <?php require 'form-components/php/form-start-date.php' ?>
+            <!-- End Date -->
+            <?php require 'form-components/php/form-end-date.php' ?>
             <!-- Event Entries -->
             <?php require 'form-components/php/form-entries.php' ?>
             <!-- Event Preconditions -->
             <?php require 'form-components/php/form-preconditions.php' ?>
             <!-- Attending Cost -->
             <?php require 'form-components/php/form-attending-cost.php' ?>
+            <!-- GG Map -->
+            <?php require 'form-components/php/form-map.php' ?>
+            <!-- Indoor Name -->
+            <?php require 'form-components/php/form-indoor-name.php' ?>
             <!-- Location -->
             <?php require 'form-components/php/form-location-info.php' ?>
-            <!-- Google Form Link -->
+            <!-- Survey Link -->
             <?php require 'form-components/php/form-survey-link.php' ?>
             <!-- Submit -->
             <?php require 'form-components/php/form-submit.php' ?>

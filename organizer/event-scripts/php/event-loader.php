@@ -2,37 +2,42 @@
 $events = [];
 $orgID = $_SESSION["orgID"];
 
-$query = "SELECT `event`.*, `event_image`.*, `event_survey_link`.`surveyLink` FROM `event` 
-          INNER JOIN `event_image` ON `event`.`eventID` = `event_image`.`eventID` 
-          INNER JOIN `event_survey_link` ON `event`.`eventID` = `event_survey_link`.`eventID` 
+$query = "SELECT `event`.*, `event_image`.`image`, `event_survey_link`.`surveyLink` FROM `event` 
+          LEFT JOIN `event_image` ON `event`.`eventID` = `event_image`
+          .`eventID` 
+          LEFT JOIN `event_survey_link` ON `event`.`eventID` = 
+          `event_survey_link`.`eventID` 
           WHERE `event`.`orgID` = $orgID 
           ORDER BY `event`.`eventID` DESC";
 
 $statement = $conn->prepare($query);
 $statement->execute();
 
+
 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
     $eventID = intval($row["eventID"]);
-    $date = date(strtotime($row["date"]));
     $orgID = intval($row["orgID"]);
-    $eventName = $row["eventName"];
     $detail = $row["eventDetail"];
+    $type = $row["type"];
+    $eventName = $row["eventName"];
+    $createDate = date(strtotime($row["eventCreate"]));
+    $registrableDate = date(strtotime($row["registrableDate"]));
+    $startDate = date(strtotime($row["eventStart"]));
+    $endDate = date(strtotime($row["eventEnd"]));
     $age = intval($row["age"]);
     $gender = $row["gender"];
     $attendingCost = intval($row["price"]);
     $maxEntries = intval($row["capacity"]);
     $indoorName = $row["indoorName"];
     $location = $row["location"];
-    $type = $row["type"];
+
     $thumbnailPath = $row["image"];
     $surveyLink = $row["surveyLink"];
 
-    $event = new Event($eventName, $type, $detail,
-        $date, $age, $gender,
-        $maxEntries, $attendingCost, $indoorName,
-        $location);
-    $event->setEventID($eventID);
-    $event->setOrgID($orgID);
+    $event = new Event($eventID, $orgID, $eventName, $type, $detail,
+        $createDate, $registrableDate, $startDate, $endDate, $age,
+        $gender, $maxEntries, $attendingCost, $indoorName, $location);
+
     $event->setThumbnail($thumbnailPath);
     $event->setSurveyLink($surveyLink);
     array_push($events, $event);
@@ -40,7 +45,7 @@ while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
 
 foreach ($events as $event) {
     $eventID = $event->getEventID();
-    $query = "SELECT `event_attendant`.`aID`, `event_attendant`.`flag`, `event_attendant`.`paymentID`, `event_attendant`.`qrCode`, `personal_info`.`email`, `payment`.`evidence` FROM `event`
+    $query = "SELECT `event_attendant`.`aID`, `event_attendant`.`flag`, `event_attendant`.`paymentID`, `event_attendant`.`qrCode`, `event_attendant`.`registerStamp`, `personal_info`.`email`, `payment`.`evidence` FROM `event`
               INNER JOIN `event_attendant` ON `event`.`eventID` = `event_attendant`.`eventID`
               INNER JOIN `payment` ON `event_attendant`.`paymentID` = `payment`.`paymentID`
               INNER JOIN `personal_info` ON `event_attendant`.`aID` = `personal_info`.`userID`
@@ -54,8 +59,9 @@ foreach ($events as $event) {
         $flag = $nested_row["flag"];
         $paymentID = intval($nested_row["paymentID"]);
         $qrCode = $nested_row["qrCode"];
+        $registerStamp = $nested_row["registerStamp"];
         $email = $nested_row["email"];
-        $evidence = $nested_row["evidence"];
+        $evidence = date(strtotime($nested_row["evidence"]));
 
         $attendeeObject = new EventAttendee();
         $attendeeObject->setAttendeeID($attendeeID);
@@ -64,6 +70,7 @@ foreach ($events as $event) {
         $attendeeObject->setQRCode($qrCode);
         $attendeeObject->setPaymentID($paymentID);
         $attendeeObject->setEvidence($evidence);
+        $attendeeObject->setRegisterStamp($registerStamp);
         $event->pushAttendee($attendeeObject);
     }
 }

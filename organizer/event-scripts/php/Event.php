@@ -7,7 +7,10 @@ class Event
     private $eventName;
     private $eventType;
     private $detail;
-    private $date;
+    private $createDate;
+    private $registrableDate;
+    private $startDate;
+    private $endDate;
     private $age;
     private $gender;
     private $maxEntries;
@@ -20,25 +23,38 @@ class Event
 
     /**
      * Event constructor.
+     * @param $eventID
+     * @param $orgID
      * @param $eventName
      * @param $eventType
      * @param $detail
-     * @param $date
+     * @param $createDate
+     * @param $registrableDate
+     * @param $startDate
+     * @param $endDate
      * @param $age
      * @param $gender
      * @param $maxEntries
      * @param $attendingCost
      * @param $indoorName
      * @param $location
+     * @param $surveyLink
+     * @param $thumbnail
+     * @param $attendees
      */
-
-    public function __construct($eventName, $eventType, $detail, $date, $age,
+    public function __construct($eventID, $orgID, $eventName, $eventType, $detail,
+                                $createDate, $registrableDate, $startDate, $endDate, $age,
                                 $gender, $maxEntries, $attendingCost, $indoorName, $location)
     {
+        $this->eventID = $eventID;
+        $this->orgID = $orgID;
         $this->eventName = $eventName;
         $this->eventType = $eventType;
         $this->detail = $detail;
-        $this->date = $date;
+        $this->createDate = $createDate;
+        $this->registrableDate = $registrableDate;
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
         $this->age = $age;
         $this->gender = $gender;
         $this->maxEntries = $maxEntries;
@@ -49,9 +65,9 @@ class Event
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getEventID(): int
+    public function getEventID()
     {
         return $this->eventID;
     }
@@ -131,17 +147,65 @@ class Event
     /**
      * @return mixed
      */
-    public function getDate()
+    public function getCreateDate()
     {
-        return $this->date;
+        return $this->createDate;
     }
 
     /**
-     * @param mixed $date
+     * @param mixed $createDate
      */
-    public function setDate($date): void
+    public function setCreateDate($createDate): void
     {
-        $this->date = $date;
+        $this->createDate = $createDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegistrableDate()
+    {
+        return $this->registrableDate;
+    }
+
+    /**
+     * @param mixed $registrableDate
+     */
+    public function setRegistrableDate($registrableDate): void
+    {
+        $this->registrableDate = $registrableDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param mixed $startDate
+     */
+    public function setStartDate($startDate): void
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param mixed $endDate
+     */
+    public function setEndDate($endDate): void
+    {
+        $this->endDate = $endDate;
     }
 
     /**
@@ -245,7 +309,7 @@ class Event
      */
     public function getSurveyLink()
     {
-        return $this->surveyLink;
+        return ($this->surveyLink === null) ? "No Link Given" : "<a href=\"$this->surveyLink\">Survey Link</a>";
     }
 
     /**
@@ -261,7 +325,7 @@ class Event
      */
     public function getThumbnail()
     {
-        return $this->thumbnail;
+        return ($this->thumbnail === null) ? "holder-pic.png" : $this->thumbnail;
     }
 
     /**
@@ -270,25 +334,6 @@ class Event
     public function setThumbnail($thumbnail): void
     {
         $this->thumbnail = $thumbnail;
-    }
-
-
-    public function getAgeCondition(): string
-    {
-        if ($this->age <= 0) {
-            return 'Any Age';
-        } else {
-            return "Must be above $this->age";
-        }
-    }
-
-    public function getAttendingCostStr(): string
-    {
-        if ($this->attendingCost <= 0) {
-            return "Free";
-        } else {
-            return "$this->attendingCost ฿";
-        }
     }
 
     /**
@@ -315,6 +360,25 @@ class Event
         array_push($this->attendees, $attendee);
     }
 
+    /**
+     * @return string
+     */
+    public function getAgeCondition(): string
+    {
+        return ($this->age <= 0) ? "Any Age" : "Must be above $this->age";
+    }
+
+    /**
+     * @return string
+     */
+    public function getAttendingCostStr(): string
+    {
+        return ($this->attendingCost <= 0) ? "Free" : "$this->attendingCost ฿";
+    }
+
+    /**
+     * @return string
+     */
     public function getEntries(): string
     {
         $currentEntries = count($this->attendees);
@@ -329,6 +393,9 @@ class Event
         }
     }
 
+    /**
+     * @return string
+     */
     public function getGenderCondition(): string
     {
         switch ($this->gender) {
@@ -343,34 +410,36 @@ class Event
         }
     }
 
+    /**
+     * @return string
+     */
     public function getLocationName(): string
     {
         return $this->indoorName . ' &raquo; ' . $this->location;
     }
 
-    public function getLink()
+    /**
+     * @return string
+     */
+    public function getTypeStr(): string
     {
-        return ($this->surveyLink) ? $this->surveyLink : "no link given";
-    }
-
-    public function getTypeStr(): string {
         switch ($this->eventType) {
-            case 'bu':
+            case 'Business':
                 return 'Business';
-            case 'co':
+            case 'Community':
                 return 'Community';
-            case 'ed':
+            case 'Education':
                 return 'Education';
-            case 'he':
+            case 'Health':
                 return 'Health';
-            case 'ho':
+            case 'Hobbies':
                 return 'Hobbies';
-            case 'mu':
+            case 'Music':
                 return 'Music';
-            case 'sc':
+            case 'Science':
                 return htmlspecialchars('Science & Technology');
-            case 'sp':
-                return 'Sport';
+            case 'Sports':
+                return 'Sports';
 
             default:
                 return "Shouldn't be executed this, some error occurs";

@@ -12,25 +12,19 @@ if (!isset($_SESSION["orgID"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // find the latest event id in database if it does not set
 
-    // create event object
-    $eventObject = createEventObject($_POST);
-
     // set organizer ID
     $orgID = $_SESSION["orgID"];
-    $eventObject->setOrgID($orgID);
 
     // create & execute query
-    $query = createInsertEventQuery($eventObject);
+    $query = createInsertEventQuery($_POST, $orgID);
     $statement = $conn->exec($query);
 
     // get Event ID
     $eventID = $conn->lastInsertId();
 
     // If survey link exists.
-    if (isset($_POST["event-survey-link"])) {
+    if ($_POST["event-survey-link"]) {
         $surveyLink = $_POST["event-survey-link"];
-        // set survey link to event
-        $eventObject->setSurveyLink($surveyLink);
 
         // update survey link to DB
         $query = createInsertSurveyLinkQuery($eventID, $surveyLink);
@@ -42,67 +36,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // invoke new file name from event and org ID
         $new_file_name = "event-$eventID-org-$orgID";
 
-        // upload thumbnail to '../assets/events' path
+        // try to upload thumbnail to '../assets/events' path
         $thumbnailPath = uploadImage($_FILES["event-thumbnail"], $new_file_name);
 
-        $thumbnailPath = ($new_file_name . '.' !== $thumbnailPath) ? $thumbnailPath : "holder-pic.png";
+        // if successful
+        if ($new_file_name . '.' !== $thumbnailPath) {
 
-        // set event thumbnail to event
-        $eventObject->setThumbnail($thumbnailPath);
-
-        // upload thumbnail path to DB
-        $query = createInsertThumbnailQuery($eventID, $thumbnailPath);
-        $statement = $conn->exec($query);
+            // upload thumbnail path to DB
+            $query = createInsertThumbnailQuery($eventID, $thumbnailPath);
+            $statement = $conn->exec($query);
+        }
     }
 }
 
 // close session
 session_write_close();
 // redirect to organizer's homepage
-header("Location: ../../homepage.php");
+//header("Location: ../../homepage.php");
 
-function createEventObject($postData)
+function createInsertEventQuery($postData, $orgID)
 {
     $name = $postData["event-name"];
     $type = $postData["event-selector"];
     $detail = $postData["event-detail"];
     $maxEntries = $postData["max-entries"];
-    $startDate = $postData["event-start-date"];
+    $registrableDate = date("Y-m-d H:i:s", strtotime($postData["event-registrable-date"]));
+    $startDate = date("Y-m-d H:i:s", strtotime($postData["event-start-date"]));
+    $endDate = date("Y-m-d H:i:s", strtotime($postData["event-end-date"]));
     $age = $postData["age"];
     $gender = $postData["gender"];
     $attendingCost = $postData["attending-cost"];
     $indoorName = $postData["indoor-name"];
     $location = $postData["location"];
 
-    $event = new Event($name, $type, $detail,
-        $startDate, $age, $gender,
-        $maxEntries, $attendingCost, $indoorName,
-        $location);
-    return $event;
-}
-
-function createInsertEventQuery($eventObj)
-{
-    $date = date("Y-m-d H:i:s", strtotime($eventObj->getDate()));
-    $orgID = $eventObj->getOrgID();
-    $eventName = $eventObj->getEventName();
-    $detail = $eventObj->getDetail();
-    $age = $eventObj->getAge();
-    $gender = $eventObj->getGender();
-    $attendingCost = $eventObj->getAttendingCost();
-    $maxEntries = $eventObj->getMaxEntries();
-    $indoorName = $eventObj->getIndoorName();
-    $location = $eventObj->getLocation();
-    $type = $eventObj->getEventType();
-
-    $query = "INSERT INTO `event` (`date`,        `orgID`,    `eventName`,
-                                   `eventDetail`, `age`,      `gender`,
-                                   `price`,       `capacity`, `indoorName`,
-                                   `location`,    `type`) 
-                           VALUES ('$date',          $orgID,      '$eventName',
-                                   '$detail',        $age,        '$gender',
-                                    $attendingCost,  $maxEntries, '$indoorName',
-                                   '$location',     '$type');";
+    $query = "INSERT INTO `event` (`orgID`,           `eventName`,  `type`,    `eventDetail`,
+                                   `registrableDate`, `eventStart`, `eventEnd`,
+                                   `age`,             `gender`,     `price`,   `capacity`,
+                                   `indoorName`,      `location`)
+                           VALUES ( $orgID,           '$name',      '$type',   '$detail',
+                                   '$registrableDate','$startDate', '$endDate',
+                                    $age,             '$gender',     $attendingCost, $maxEntries,
+                                   '$indoorName',     '$location')";
     return $query;
 }
 
@@ -116,10 +90,9 @@ function createInsertSurveyLinkQuery($eventID, $surveyLink)
     return "INSERT INTO `event_survey_link`(`eventID`, `surveyLink`) VALUES ($eventID, '$surveyLink')";
 }
 
-
 function uploadImage($imageFile, $new_file_name)
 {
-    $target_dir = "../../assets/events/";
+    $target_dir = "../../../assets/events/";
     $imageFileType = strtolower(pathinfo(basename($imageFile["name"]),
         PATHINFO_EXTENSION));
     $new_file_name = "$new_file_name.$imageFileType";
