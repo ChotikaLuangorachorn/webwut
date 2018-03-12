@@ -21,12 +21,12 @@
 * login - จัดการหน้าเว็บการลงทะเบียน
     - add_at.js - ใช้ส่งข้อมูลจาก regis_attendate.php ไปที่ services/create_attendant.php
     - add_org.js - ใช้ส่งข้อมูลจาก regis_attendate.php ไปที่ services/create_organizer.php
-    - regis_attendant.php - หน้า ลงทะเบียนของ Attendant
-    - regis_organizer.php - หน้า ลงทะเบียนของ Organizer
+    - regis_attendant.php - หน้าลงทะเบียนของ Attendant
+    - regis_organizer.php - หน้าลงทะเบียนของ Organizer
 * organizer - จัดการ organizer
      - css
-     - event-form-components
-     - homepage-components
+     - event-form-components - ส่วนประกอบที่ใช้ในการแสดง event
+     - homepage-components - ส่วนประกอบต่างๆที่แสดงผลบนหน้าเว็บ
      - js
      - php
      - homepage.php หน้าหลักของ Organizer
