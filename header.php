@@ -33,7 +33,7 @@
 
             echo "Welcome, ". $displayName;
             ?>
-            <?php 
+            <?php
             if ($_SESSION['ROLE'] != "AD")
             echo '<a href="profile.php"><i class="material-icons" style="font-size:48px;color:#61b3cf">account_box</i></a>
             <a href="personalMessage.php"><i class="material-icons" style="font-size:48px;color:#df8a83">mail</i></a>';

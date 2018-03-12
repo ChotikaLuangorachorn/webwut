@@ -4,6 +4,7 @@
       // random CAROUSEL SLIDE
 
 
+
       // Science & Technology
       $sql = "SELECT * FROM event WHERE type='Science'";
       $stmt = $conn->prepare($sql);
@@ -99,6 +100,8 @@
     <link rel="stylesheet" href="css/home.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+
+
     <title>Webwut Event</title>
 
   </head>
@@ -169,7 +172,7 @@
         order by :
         <div class="btn-group">
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">date</button>
-
+          <form method="get" action="events.php">
           <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -178,24 +181,43 @@
                   <h4 class="modal-title">Date and Times</h4>
                 </div>
                 <div class="modal-body">
-                  <p>......</p>
+                  /////////////////////////
+
+                  from <div class="container">
+                      <div class="input-group date">
+                        <input type="date" onclick="date()" class="form-control" name="from" id="datepicker1" placeholder="MM/DD/YYYY">
+                      </div>
+                  </div>
+                  <br>to <div class="container">
+                      <div class="input-group date">
+                        <input type="date" onclick="date()" class="form-control" name="id" id="datepicker2" placeholder="MM/DD/YYYY">
+                      </div>
+                  </div>
+                  <input hidden type="text" name="filter" id="filter" value="date">
+
+                  /////////////////////////
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <input type="submit" name="submit" value="submit">
                 </div>
               </div>
             </div>
           </div>
-
+          </form>
           <button class="btn btn-filter-dropdown btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <b>location</b>
+              <b>event name</b>
           </button>
+          <form class="form-inline" action="events.php" method="get">
+          <input type="radio" name="filter" id="filter-organizer" value="organizer"  hidden>
+          <input type="radio" name="filter" id="filter-location" value="location" hidden >
+          <input type="radio" name="filter" id="filter-name" value="name" hidden checked>
           <ul class="dropdown-menu" id="filterSelected">
-                <li><a class="dropdown-item" id="location" href="#">location</a></li>
-                <li><a class="dropdown-item" id="organizer" href="#">organizer</a></li>
+                <label for="filter-name" onclick="changeSearchPlaceHolder('event name')"><li><p class="dropdown-item" id="name" href="#">event name</p></li></label>
+                <label for="filter-location" onclick="changeSearchPlaceHolder('location')"><li><p class="dropdown-item" id="location" href="#">location</p></li></label>
+                <label for="filter-organizer" onclick="changeSearchPlaceHolder('organizer')" ><li><p class="dropdown-item" id="organizer" href="#">organizer</p></li></label>
           </ul>
-          <form class="form-inline" action="index.php" method="post">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <input class="form-control mr-sm-2" type="search" placeholder="event name" aria-label="Search" name="search" id="search-input">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
@@ -309,16 +331,30 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js" charset="utf-8"></script>
       <script type="text/javascript">
 
+        // $('#datepicker1').datepicker();
+        //   $('#datepicker2').datepicker();
+      // function dateFrom(){
+      //   $('#datepicker').datepicker();
+      // }
+      // function dateTo(){
+      //   $('#datepicker').datepicker();
+      // }
 
-      $("#filterSelected a").click(function(){
+      function changeSearchPlaceHolder(str) {
+        $("#search-input").attr("placeholder", str);
+        $("#search-input").val('');
+      }
+
+      $("#filterSelected label").click(function(){
         var selText = $(this).text();
         $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+'<span class="caret"></span>');
       });
       $('#filterSelected a').click(function(e){
       e.preventDefault();
+      console.log(e.target)
       });
 
 
@@ -366,10 +402,11 @@
         }
         else {
           for (event of scienceEvents) {
+          console.log(event.thumbnailPath);
             $(".scienceEvent").append(`<a href="#selected event">
             <div class="row table-row">
               <div class="col-3">
-                <img src="#event pic promote" width="100" height="100" class="d-inline-block align-top" id="titleImage" alt="">
+                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
                 <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
                 </div>
               <div class="col-9">
@@ -392,7 +429,7 @@
             $(".businessEvent").append(`<a href="#selected event">
             <div class="row table-row">
               <div class="col-3">
-                <img src="#event pic promote" width="75" height="75" class="d-inline-block align-top" id="titleImage" alt="">
+                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
                 <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
                 </div>
               <div class="col-9">
@@ -415,7 +452,7 @@
             $(".educationEvent").append(`<a href="#selected event">
             <div class="row table-row">
               <div class="col-3">
-                <img src="#event pic promote" width="75" height="75" class="d-inline-block align-top" id="titleImage" alt="">
+                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
                 <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
                 </div>
               <div class="col-9">
@@ -438,7 +475,7 @@
             $(".hobbiesEvent").append(`<a href="#selected event">
             <div class="row table-row">
               <div class="col-3">
-                <img src="#event pic promote" width="75" height="75" class="d-inline-block align-top" id="titleImage" alt="">
+                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
                 <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
                 </div>
               <div class="col-9">
@@ -461,7 +498,7 @@
             $(".musicEvent").append(`<a href="#selected event">
             <div class="row table-row">
               <div class="col-3">
-                <img src="#event pic promote" width="75" height="75" class="d-inline-block align-top" id="titleImage" alt="">
+                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
                 <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
                 </div>
               <div class="col-9">
@@ -484,7 +521,7 @@
             $(".healthEvent").append(`<a href="#selected event">
             <div class="row table-row">
               <div class="col-3">
-                <img src="#event pic promote" width="75" height="75" class="d-inline-block align-top" id="titleImage" alt="">
+                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
                 <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
                 </div>
               <div class="col-9">
@@ -507,7 +544,7 @@
             $(".communityEvent").append(`<a href="#selected event">
             <div class="row table-row">
               <div class="col-3">
-                <img src="#event pic promote" width="75" height="75" class="d-inline-block align-top" id="titleImage" alt="">
+                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
                 <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
                 </div>
               <div class="col-9">
@@ -530,7 +567,7 @@
             $(".sportsEvent").append(`<a href="#selected event">
             <div class="row table-row">
               <div class="col-3">
-                <img src="#event pic promote" width="75" height="75" class="d-inline-block align-top" id="titleImage" alt="">
+                <img src="assets/events/`+event.thumbnailPath+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
                 <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
                 </div>
               <div class="col-9">

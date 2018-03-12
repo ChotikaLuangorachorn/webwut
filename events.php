@@ -1,50 +1,96 @@
 <?php
- if (isset($_POST["search"])){
-      echo $_POST["search"];
-}
-?>
-
-<?php
-  $category = $_REQUEST['data'];
-  if ($category == "All" ||
-      $category == "Science" ||
-      $category == "Business" ||
-      $category == "Education" ||
-      $category == "Hobbies" ||
-      $category == "Music" ||
-      $category == "Health" ||
-      $category == "Community" ||
-      $category == "Sports"){
-  }
-  else {
-    header('HTTP/1.0 404 Not Found');
-    echo "<h1>Error 404 Not Found</h1>";
-    echo "The page that you have requested could not be found.";
-   exit();
-  }
+include 'services/connectDB.php';
 
 
-  include 'services/connectDB.php';
-    if (isset($conn) && $category == "All") {
-      $sql = "SELECT * FROM event ";
-      $stmt = $conn->prepare($sql);
-      try {
-        $stmt->execute();
-      } catch(Exception $exc){
-        echo $exc->getTraceAsString();
+ if (isset($_GET["filter"])){
+      $filter = $_GET["filter"];
+
+      if (isset($conn) && $filter=="name") {
+        $search = $_GET["search"];
+        $sql = "SELECT * FROM event WHERE eventName LIKE '%$search%'";
+        $stmt = $conn->prepare($sql);
+        try {
+          $stmt->execute();
+        } catch(Exception $exc){
+          echo $exc->getTraceAsString();
+        }
+        $showEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
       }
-      $allEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
-    }
-    else {
-      $sql = "SELECT * FROM event WHERE type='$category'";
-      $stmt = $conn->prepare($sql);
-      try {
-        $stmt->execute();
-      } catch(Exception $exc){
-        echo $exc->getTraceAsString();
+      else if (isset($conn) && $filter=="location") {
+        $search = $_GET["search"];
+        $sql = "SELECT * FROM event WHERE location LIKE '%$search%'";
+        $stmt = $conn->prepare($sql);
+        try {
+          $stmt->execute();
+        } catch(Exception $exc){
+          echo $exc->getTraceAsString();
+        }
+        $showEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
       }
-      $allEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
-    }
+      else if (isset($conn) && $filter=="organizer") {
+        $search = $_GET["search"];
+        $sql = "SELECT * FROM event INNER JOIN organizer_info ON organizer_info.userID = event.orgID  WHERE orgName LIKE '%$search%'";
+        $stmt = $conn->prepare($sql);
+        try {
+        } catch(Exception $exc){
+          echo $exc->getTraceAsString();
+        }
+        $showEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
+      }
+      else if (isset($conn) && $filter=="date") {
+        $from = date('Y-m-d', strtotime($_GET['from']));
+        $to = date('Y-m-d', strtotime($_GET['to']));
+        $sql = "SELECT * FROM event WHERE date >= '$from' and date <= '$to'";
+        $stmt = $conn->prepare($sql);
+        try {
+        } catch(Exception $exc){
+          echo $exc->getTraceAsString();
+        }
+        $showEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
+      }
+  }
+
+  else if(isset($_REQUEST['data'])){
+
+      $category = $_REQUEST['data'];
+        if ($category == "All" ||
+            $category == "Science" ||
+            $category == "Business" ||
+            $category == "Education" ||
+            $category == "Hobbies" ||
+            $category == "Music" ||
+            $category == "Health" ||
+            $category == "Community" ||
+            $category == "Sports"){
+        }
+        else {
+          header('HTTP/1.0 404 Not Found');
+          echo "<h1>Error 404 Not Found</h1>";
+          echo "The page that you have requested could not be found.";
+          exit();
+        }
+        if (isset($conn) && $category == "All") {
+          $sql = "SELECT * FROM event ";
+          $stmt = $conn->prepare($sql);
+          try {
+            $stmt->execute();
+          } catch(Exception $exc){
+            echo $exc->getTraceAsString();
+          }
+          $showEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+        else {
+          $sql = "SELECT * FROM event WHERE type='$category'";
+          $stmt = $conn->prepare($sql);
+          try {
+            $stmt->execute();
+          } catch(Exception $exc){
+            echo $exc->getTraceAsString();
+          }
+          $showEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+  }
+
 ?>
 
 
@@ -77,7 +123,7 @@
                <b>Explore events</b>
            </button>
            <div class="dropdown-menu">
-              <a class="dropdown-item" href="events.php?data=All">All</a>
+               <a class="dropdown-item" href="events.php?data=All">All</a>
                  <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="events.php?data=Science">Science & Technology</a>
                 <a class="dropdown-item" href="events.php?data=Business">Business</a>
@@ -111,16 +157,19 @@
                 </div>
               </div>
             </div>
-
             <button class="btn btn-filter-dropdown btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <b>location</b>
+                <b>event name</b>
             </button>
+            <form class="form-inline" action="events.php" method="get">
+            <input type="radio" name="filter" id="filter-organizer" value="organizer"  hidden>
+            <input type="radio" name="filter" id="filter-location" value="location" hidden >
+            <input type="radio" name="filter" id="filter-name" value="name" hidden checked>
             <ul class="dropdown-menu" id="filterSelected">
-                  <li><a class="dropdown-item" id="location" href="#">location</a></li>
-                  <li><a class="dropdown-item" id="organizer" href="#">organizer</a></li>
+                  <label for="filter-name" onclick="changeSearchPlaceHolder('event name')"><li><p class="dropdown-item" id="name" href="#">event name</p></li></label>
+                  <label for="filter-location" onclick="changeSearchPlaceHolder('location')"><li><p class="dropdown-item" id="location" href="#">location</p></li></label>
+                  <label for="filter-organizer" onclick="changeSearchPlaceHolder('organizer')" ><li><p class="dropdown-item" id="organizer" href="#">organizer</p></li></label>
             </ul>
-            <form class="form-inline" action="index.php" method="post">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                  <input class="form-control mr-sm-2" type="search" placeholder="event name" aria-label="Search" name="search" id="search-input">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
           </div>
@@ -147,7 +196,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-  <script>
+  <script type="text/javascript">
+  function changeSearchPlaceHolder(str) {
+    $("#search-input").attr("placeholder", str);
+    $("#search-input").val('');
+  }
+
+  $("#filterSelected label").click(function(){
+    var selText = $(this).text();
+    $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+'<span class="caret"></span>');
+  });
+  $('#filterSelected a').click(function(e){
+  e.preventDefault();
+  console.log(e.target)
+  });
+
+
 
       $("#filterSelected a").click(function(){
         var selText = $(this).text();
@@ -186,8 +250,9 @@
       return day + " " + month + " " + year + " | " + hr + ":" + min;
     }
 
+
       var count = 0;
-      var allEvents = <?php echo json_encode($allEvents); ?>;
+      var allEvents = <?php echo json_encode($showEvents); ?>;
       var html = '';
 
       for (index in allEvents) {
@@ -195,10 +260,10 @@
         `+(index%3==0 ? '<div class="row">' : '')+`
         <div class="col-sm-4">
           <div class="row table-row">
-            <div class="col-7">
-              <img src="#event pic promote" width="100" height="100" class="d-inline-block align-top" id="titleImage" alt="">
+            <div class="col-8">
+              <img src="assets/events/`+allEvents[index].thumbnailPath+`" width="170" height="150" class="d-inline-block align-top" id="titleImage" alt="">
             </div>
-            <div class="col-5 align-self-center">
+            <div class="col-4 align-self-center">
               <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
             </div>
             <div class="col-12">
@@ -213,6 +278,10 @@
       `;
     }
     $(".allEvents").append(html);
+
+
+
+
 
 
   </script>
