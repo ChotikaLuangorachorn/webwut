@@ -29,7 +29,6 @@ include 'services/connectDB.php';
       }
       else if (isset($conn) && $filter=="organizer") {
         $search = $_GET["search"];
-        //////////////////////////////////////////////////////////////
         $sql = "SELECT * FROM (event JOIN event_image USING (eventID)) INNER JOIN organizer_info ON organizer_info.userID = event.orgID  WHERE organizer_info.orgName LIKE '%$search%'";
         $stmt = $conn->prepare($sql);
         try {
@@ -40,10 +39,15 @@ include 'services/connectDB.php';
         $showEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
       }
       else if (isset($conn) && $filter=="date") {
-        $from = date('Y-m-d', strtotime($_GET['from']));
-        $to = date('Y-m-d', strtotime($_GET['to']));
-        //////////////////////////////////////////////////////////////
-        $sql = "SELECT * FROM event JOIN event_image USING (eventID) WHERE eventStart >= '$from' and eventEnd <= '$to'";
+        $from = '0000-00-00';
+        if (array_key_exists('from', $_GET)) {
+          $from = date('Y-m-d', strtotime($_GET['from']));
+        }
+        $to = '9999-12-31';
+        if (array_key_exists('to', $_GET)) {
+          $to = date('Y-m-d', strtotime($_GET['to']));
+        }
+        $sql = "SELECT * FROM event JOIN event_image USING (eventID) WHERE eventStart >= '$from' and eventStart <= '$to'";
         $stmt = $conn->prepare($sql);
         try {
           $stmt->execute();
@@ -145,23 +149,37 @@ include 'services/connectDB.php';
           order by :
           <div class="btn-group">
               <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">date</button>
-
+            <form method="get" action="events.php">
             <div class="modal fade" id="myModal" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Date and Times</h4>
+                    <h4 class="modal-title"></h4>
                   </div>
                   <div class="modal-body">
-                    <p>......</p>
+
+                    from <div class="container">
+                        <div class="input-group date">
+                          <input type="date" onclick="date()" class="form-control" name="from" id="datepicker1" placeholder="MM/DD/YYYY">
+                        </div>
+                    </div>
+                    <br>to <div class="container">
+                        <div class="input-group date">
+                          <input type="date" onclick="date()" class="form-control" name="id" id="datepicker2" placeholder="MM/DD/YYYY">
+                        </div>
+                    </div>
+                    <input hidden type="text" name="filter" id="filter" value="date">
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" name="submit" value="submit">
                   </div>
                 </div>
               </div>
             </div>
+          </form>
             <button class="btn btn-filter-dropdown btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <b>event name</b>
             </button>

@@ -91,7 +91,20 @@
         echo $exc->getTraceAsString();
       }
       $sportsEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+      // date
+      $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID ORDER BY eventStart";
+      $stmt = $conn->prepare($sql);
+      try {
+        $stmt->execute();
+      } catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+      $timeEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+
+
 ?>
 
 
@@ -130,16 +143,16 @@
           </ul>
     <!-- The slideshow -->
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <!-- image example ,, random from table ?-->
-        <a href="#"><img src="https://p-u.popcdn.net/hero_images/desktop_images/000/000/116/medium/40fca800ed77afd6cdff29e2c9ca9940d02f8e0e.png?1519540399" alt="1">
-      </a></div>
-      <div class="carousel-item">
-        <a href="#"><img src="https://p-u.popcdn.net/hero_images/desktop_images/000/000/116/medium/40fca800ed77afd6cdff29e2c9ca9940d02f8e0e.png?1519540399" alt="2">
-      </a></div>
-      <div class="carousel-item">
-        <a href="#"><img src="https://p-u.popcdn.net/hero_images/desktop_images/000/000/116/medium/40fca800ed77afd6cdff29e2c9ca9940d02f8e0e.png?1519540399" alt="3">
-      </a></div>
+
+      <?php
+
+      foreach ($carouselSlide as $index => $slide) {
+        echo '<div class="carousel-item '.($index==0? "active":"").'">';
+        echo '<a href="event.php?id='.$slide->eventID.'"><img height="300" src="assets/events/'.$slide->image.'"></a>';
+        echo '</div>';
+      }
+
+      ?>
     </div>
 
     <!-- Left and right controls -->
@@ -185,10 +198,9 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Date and Times</h4>
+                  <h4 class="modal-title"></h4>
                 </div>
                 <div class="modal-body">
-                  /////////////////////////
 
                   from <div class="container">
                       <div class="input-group date">
@@ -202,7 +214,6 @@
                   </div>
                   <input hidden type="text" name="filter" id="filter" value="date">
 
-                  /////////////////////////
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -408,9 +419,7 @@
           hidden("#hidden-col-7-Sci");
         }
         else {
-          console.log(scienceEvents)
           for (event of scienceEvents) {
-          console.log(event.image);
             $(".scienceEvent").append(`<a href="event.php?id=`+event.eventID+`">
             <div class="row table-row">
               <div class="col-3">
