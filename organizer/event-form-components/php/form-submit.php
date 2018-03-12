@@ -24,7 +24,7 @@ $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\"
                         data-dismiss=\"modal\">No</button>";
 $modalConfirmButton = "<button type=\"submit\" class=\"btn btn-primary\"
                         onclick=\"closeSubmitModal()\">Yes</button>";
-require 'php/modal.php'; ?>
+require 'organizer/php-scripts/modal.php'; ?>
 <!-- Cancel Modal -->
 <?php
 $modalID = "cancelModal";
@@ -32,6 +32,6 @@ $modalTitle = "Canceling...";
 $modalBody = "Do you want to cancel your progress?";
 $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\" 
                         data-dismiss=\"modal\">No</button>";
-$modalConfirmButton = "<a class=\"btn btn-primary\" href=\"homepage.php \">Yes</a>";
-require 'php/modal.php';
+$modalConfirmButton = "<a class=\"btn btn-primary\" href=\"org-homepage.php\">Yes</a>";
+require 'organizer/php-scripts/modal.php';
 ?>

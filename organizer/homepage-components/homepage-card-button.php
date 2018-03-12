@@ -1,34 +1,35 @@
+<?php $eventID = $recentEvent->getEventID(); ?>
 <div>
     <!-- Edit Event Button -->
     <button type="button" class="btn btn-primary m-1"
             data-toggle="modal"
-            data-target="#editModal">
+            data-target="#editModal<?php echo "-$eventID"?>">
         Edit Event
     </button>
     <!-- Delete Event Button -->
     <button type="button" class="btn btn-primary m-1"
             data-toggle="modal"
-            data-target="#deleteModal">
+            data-target="#deleteModal<?php echo "-$eventID"?>">
         Delete Event
     </button>
 </div>
 
 <!-- Edit Event Modal -->
 <?php
-$eventID = $recentEvent->getEventID();
-
-$modalID = "editModal";
+$modalID = "editModal-$eventID";
 $modalTitle = "Editing an event...";
 $modalBody = "Do you want to edit an event?";
 $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\"
                         data-dismiss=\"modal\">No</button>";
 $modalConfirmButton = "<a class=\"btn btn-primary\" 
 href=\"event-form.php?eid=$eventID\">Yes</a>";
-require "php/modal.php"; ?>
+require "organizer/php-scripts/modal.php"; ?>
+
 
 <!-- Delete Event Modal -->
 <?php
-$modalID = "deleteModal";
+$modalID = "deleteModal-$eventID";
+$attendeeParticipated = count($recentEvent->getAttendees());
 if(count($recentEvent->getAttendees()) > 0){
     // Case 1: contains any attendees: Cannot be removed
     $modalTitle = "Could not delete an event...";
@@ -42,8 +43,8 @@ if(count($recentEvent->getAttendees()) > 0){
     $modalBody = "Are you sure you want to delete an event?";
     $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\" 
                         data-dismiss=\"modal\">No</button>";
-    $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-script/php/event-remover.php?eid=$eventID\">Yes</a>";
+    $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"organizer/php-scripts/event-remover.php?eid=$eventID\">Yes</a>";
 }
 
-require "php/modal.php";
+require "organizer/php-scripts/modal.php";
 ?>

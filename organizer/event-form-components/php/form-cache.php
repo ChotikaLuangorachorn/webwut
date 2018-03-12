@@ -1,10 +1,13 @@
 <?php
 
-require_once '../services/connectDB.php';
+require_once 'services/connectDB.php';
 
 $detail = null;
 $type = null;
 $eventName = null;
+$registrableDate = null;
+$startDate = null;
+$endDate = null;
 $maxEntries = null;
 $indoorName = null;
 $location = null;
@@ -20,7 +23,8 @@ if (empty($_GET)) {
     $_SESSION["eventID"] = $eventID;
     $orgID = $_SESSION["orgID"];
 
-    $query = "SELECT `eventDetail`, `eventName`, `type`, `capacity`,
+    $query = "SELECT `eventDetail`, `eventName`, `registrableDate`,
+              `eventStart`, `eventEnd`, `type`, `capacity`,
               `indoorName`, `location`, `surveyLink` 
               FROM `event`
               LEFT JOIN `event_survey_link` 
@@ -30,10 +34,13 @@ if (empty($_GET)) {
 
     $statement = $conn->prepare($query);
     $statement->execute();
-    if($statement->rowCount()){
+    if ($statement->rowCount()) {
         $eventData = $statement->fetch(PDO::FETCH_ASSOC);
         $detail = $eventData["eventDetail"];
         $type = $eventData["type"];
+        $registrableDate = date("Y-m-d", strtotime($eventData["registrableDate"]));
+        $startDate = date("Y-m-d", strtotime($eventData["eventStart"]));
+        $endDate = date("Y-m-d", strtotime($eventData["eventEnd"]));
         $eventName = $eventData["eventName"];
         $maxEntries = $eventData["capacity"];
         $indoorName = $eventData["indoorName"];

@@ -18,10 +18,11 @@
 <body>
 
 <?php
-require_once "php/header.php";
-require_once "php/Event.php";
-require_once "php/EventAttendee.php";
-require_once "../services/connectDB.php";
+require_once "services/connectDB.php";
+require_once "header.php";
+require_once "organizer/php-scripts/Event.php";
+require_once "organizer/php-scripts/EventAttendee.php";
+
 
 if (!isset($_SESSION["orgID"])) {
     $_SESSION["orgID"] = 3;
@@ -32,7 +33,7 @@ if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
     unset($_SESSION["eventID"]);
 }
 
-require_once "php/event-loader.php";
+require_once "organizer/php-scripts/event-loader.php";
 
 // check if session holds an event data
 $hasData = isset($event);
@@ -42,7 +43,7 @@ $hasData = isset($event);
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="headings my-4 p-4">Events
-        <small>from Organizer#1</small>
+        <small>from Organizer &raquo; <?php echo $_SESSION["orgID"] ?></small>
     </h1>
 
     <!-- Wrapper -->
@@ -60,8 +61,8 @@ $hasData = isset($event);
             $modalBody = "Do you want to add a new event??";
             $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\" 
                         data-dismiss=\"modal\">No</button>";
-            $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-form.php?\">Yes</a>";
-            require "php/modal.php"; ?>
+            $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-form.php\">Yes</a>";
+            require "organizer/php-scripts/modal.php"; ?>
         </div>
         <!-- Events holder-->
         <div class="col-md-9 mx-auto p-4 container-fluid row">
@@ -74,7 +75,7 @@ $hasData = isset($event);
                         <!-- Event <?php echo $i + 1 ?> -->
                         <?php
                         $recentEvent = $events[$i];
-                        require "homepage-components/homepage-card.php";
+                        require "organizer/homepage-components/homepage-card.php";
                     }
                     } ?>
                     <!-- /.row -->
@@ -111,19 +112,5 @@ $hasData = isset($event);
         </div>
         <!-- /.container -->
     </div>
-
-    <!-- Loading Scripts -->
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    <!-- Header Script -->
-    <script src="js/headerjs.js"></script>
 </body>
 </html>

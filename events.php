@@ -7,7 +7,7 @@ include 'services/connectDB.php';
 
       if (isset($conn) && $filter=="name") {
         $search = $_GET["search"];
-        $sql = "SELECT * FROM event WHERE eventName LIKE '%$search%'";
+        $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE eventName LIKE '%$search%'";
         $stmt = $conn->prepare($sql);
         try {
           $stmt->execute();
@@ -18,7 +18,7 @@ include 'services/connectDB.php';
       }
       else if (isset($conn) && $filter=="location") {
         $search = $_GET["search"];
-        $sql = "SELECT * FROM event WHERE location LIKE '%$search%'";
+        $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE location LIKE '%$search%'";
         $stmt = $conn->prepare($sql);
         try {
           $stmt->execute();
@@ -29,9 +29,11 @@ include 'services/connectDB.php';
       }
       else if (isset($conn) && $filter=="organizer") {
         $search = $_GET["search"];
-        $sql = "SELECT * FROM event INNER JOIN organizer_info ON organizer_info.userID = event.orgID  WHERE orgName LIKE '%$search%'";
+        //////////////////////////////////////////////////////////////
+        $sql = "SELECT * FROM (event JOIN event_image USING (eventID)) INNER JOIN organizer_info ON organizer_info.userID = event.orgID  WHERE organizer_info.orgName LIKE '%$search%'";
         $stmt = $conn->prepare($sql);
         try {
+          $stmt->execute();
         } catch(Exception $exc){
           echo $exc->getTraceAsString();
         }
@@ -40,9 +42,11 @@ include 'services/connectDB.php';
       else if (isset($conn) && $filter=="date") {
         $from = date('Y-m-d', strtotime($_GET['from']));
         $to = date('Y-m-d', strtotime($_GET['to']));
-        $sql = "SELECT * FROM event WHERE date >= '$from' and date <= '$to'";
+        //////////////////////////////////////////////////////////////
+        $sql = "SELECT * FROM event JOIN event_image USING (eventID) WHERE eventStart >= '$from' and eventEnd <= '$to'";
         $stmt = $conn->prepare($sql);
         try {
+          $stmt->execute();
         } catch(Exception $exc){
           echo $exc->getTraceAsString();
         }
@@ -70,7 +74,7 @@ include 'services/connectDB.php';
           exit();
         }
         if (isset($conn) && $category == "All") {
-          $sql = "SELECT * FROM event ";
+          $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID";
           $stmt = $conn->prepare($sql);
           try {
             $stmt->execute();
@@ -78,9 +82,10 @@ include 'services/connectDB.php';
             echo $exc->getTraceAsString();
           }
           $showEvents = $stmt->fetchAll(PDO::FETCH_OBJ);
+
         }
         else {
-          $sql = "SELECT * FROM event WHERE type='$category'";
+          $sql = "SELECT * FROM event_image INNER JOIN event ON event_image.eventID = event.eventID WHERE type='$category'";
           $stmt = $conn->prepare($sql);
           try {
             $stmt->execute();
@@ -260,16 +265,16 @@ include 'services/connectDB.php';
         `+(index%3==0 ? '<div class="row">' : '')+`
         <div class="col-sm-4">
           <div class="row table-row">
-            <div class="col-8">
-              <img src="assets/events/`+allEvents[index].thumbnailPath+`" width="170" height="150" class="d-inline-block align-top" id="titleImage" alt="">
+            <div class="col-7">
+              <img src="assets/events/`+allEvents[index].image+`" width="170" height="150" class="d-inline-block align-top" id="titleImage" alt="">
             </div>
-            <div class="col-4 align-self-center">
-              <a href="#selected event" class="btn btn-join" role="button">สมัคร</a>
+            <div class="col-5 align-self-center">
+              <a href="event.php?id=`+allEvents[index].eventID+`" class="btn btn-join" role="button">Buy ticket</a>
             </div>
             <div class="col-12">
               <br>
               <p class="topic">`+allEvents[index].eventName+`</p>
-              <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(allEvents[index].date)+`</div>
+              <div><i class="material-icons">access_time</i>&nbsp;`+formatDate(allEvents[index].eventStart)+`</div>
               <div><i class="material-icons">place</i>&nbsp;`+allEvents[index].location+`</div>
             </div>
           </div>

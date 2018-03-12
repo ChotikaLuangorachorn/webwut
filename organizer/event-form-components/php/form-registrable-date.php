@@ -5,8 +5,11 @@
     <input type="date" class="col-sm-3 form-control"
            id="event-registrable-date"
            name="event-registrable-date"
-           min="<?php echo $time ?>"
-           value="<?php echo $time ?>"
+        <?php if ($registrableDate !== null) { ?>
+            disabled value="<?php echo $registrableDate; ?>"
+        <?php } else { ?>
+           min="<?php echo $time; ?>"
+           value="<?php echo $time; }?>"
            required>
     <div class="invalid-feedback offset-sm-3">
         Please select a proper start date.
