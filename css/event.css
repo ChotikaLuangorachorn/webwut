@@ -5,6 +5,9 @@
 .container {
     padding: 0;
 }
+#event-title {
+    font-size: 26px;
+}
 #event-info {
     font-size: 15px;
 }
@@ -14,4 +17,17 @@
 #event {
     max-width: 800px;
     margin: 0 auto;
+}
+.top-radius {
+    border-radius: 20px;
+}
+#main-content {
+    padding-bottom: 50px;
+}
+
+#event-map-toggle {
+    cursor: pointer;
+}
+#event-map-toggle:hover {
+    color: cadetblue;
 }

@@ -5,6 +5,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Oops! User not found.</p>
+    <?php include 'header.php' ?>
+    <p>404 Page Not Found.</p>
 </body>
 </html>

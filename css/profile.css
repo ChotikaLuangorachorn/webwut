@@ -6,7 +6,8 @@ body {
     background-color: aliceblue;
 }
 .content {
-    background-color: white;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
 }
 .padding-top {
     padding-top: 50px;

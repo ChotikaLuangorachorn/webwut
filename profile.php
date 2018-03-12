@@ -1,43 +1,52 @@
 <?php
     // include 'checkLogin.php';
     include 'header.php'; 
-    $ISOWNER = FALSE;
+    $ISOWNER = TRUE;
     if ($LOGGEDIN) {
         $ROLE = $_SESSION['ROLE'];
-        $USER = $_SESSION['ID'];
+        $UID = $_SESSION['ID'];
         if (array_key_exists('user', $_GET)) {
             $USER = $_GET['user'];
-        }
-        $_GET['user'] = $USER;
-        if ($USER == $_SESSION['ID']) {
+        } else {
             if ($ROLE == 'OR') {
-                header('location:/test/index.php');
+                header('location:index.php');
             }
             if ($ROLE == 'AD') {
-                header('location:/test/admin.php');
+                header('location:index.php');
             }
         }
     } else {
         if (!array_key_exists('user', $_GET)) {
-            header('location:oops.html');
+            header('location:oops.php');
         }
         $USER = $_GET['user'];
     }
 
     include 'services/connectDB.php';
     if (isset($conn)) {
-        $sql = "SELECT * FROM personal_info WHERE userID=?";
+        if (isset($USER)) {
+            $sql = "SELECT * FROM personal_info join user on user.id=personal_info.userID WHERE user.name=?";
+        } else {
+            $sql = "SELECT * FROM personal_info WHERE userID=?";
+            $USER = $UID;
+        }
+        
 
         $statement = $conn->prepare($sql); 
         $statement->execute([$USER]);
         $info = $statement->fetch(PDO::FETCH_OBJ);
-
-        $sql = "SELECT date, eventName, location, flag FROM event_attendant LEFT JOIN event USING (eventID) WHERE aID=?";
+        if ($info === FALSE) {
+            header('location:oops.php');
+        }
+        $sql = "SELECT eventID, date, eventName, location, flag, thumbnailPath FROM event_attendant LEFT JOIN event USING (eventID) WHERE aID=?";
         $statement = $conn->prepare($sql); 
         $statement->execute([$USER]);
         $events = $statement->fetchAll(PDO::FETCH_OBJ);
-        if ($info === FALSE) {
-            header('location:oops.html');
+        foreach ($events as $event) {
+            $event->prettydate = date("d/m/Y g:i A", strtotime($event->date));
+        }
+        if (isset($info->id) && $info->id != $_SESSION['ID']) {
+            $ISOWNER = FALSE;
         }
     }
 ?>
@@ -45,29 +54,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
     <title>Document</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
     <?php ?>
     <div class="container content padding-top">
         <div class="row">
-            <div class="col-12"><h1>Profile</h1><div>
+            <div class="col-12"><h1>Profile <?php echo $ISOWNER ? '<a href="profile-edit.php"><i class="far fa-edit"></i></a>' : ''; ?></h1><div>
         </div>
         <div class="row">
             <div class="col-md-4 col-12">
                 <figure>
-                    <form action="services/updateProfile.php" method="post" enctype="multipart/form-data">
-                        <label for="image">
-                            <img id="shownImage" src="assets/users/<?php if ($info->image) echo $info->image; else echo "assets/user/nopic.png"; ?>" style="border-radius: 25px; padding: 10px;" width="200" height="250">
-                            <img src="assets/image/clickme.png" id="clickme">
+                    <?php
+                    echo $ISOWNER ? '<form action="services/updateProfile.php" method="post" enctype="multipart/form-data">
+                        <label for="image">' : '';
+                    echo '<img id="shownImage" src="assets/users/'.($info->image ? $info->image : "nopic.png").'" style="border-radius: 25px; padding: 10px;" width="200" height="250">';
+                    echo $ISOWNER ? '<img src="assets/image/clickme.png" id="clickme">
                             <figcaption>
                                 <input type="file" name="image" id="image" accept="image/*" hidden onchange="form.submit();">
                             </figcaption>
                         </label>
-                    </form>
+                    </form>' : '';
+                    ?>
                 </figure>
             </div>
             <div class="col-md-8 col-12">
@@ -106,6 +120,26 @@
                 </no-event>
             </div>
         </div>
+        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="mymodalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img id="modalImage" src="">
+                        <p id="modalLocation"></p>
+                        <p id="modalDate"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary" id="detail-btn">More detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     <div>
     
     
@@ -127,24 +161,23 @@
         }
         for (event of events) {
             let date = parseSQLdate(event.date);
-            console.log(event);
             if (date < now) {
                 past.push(event);
-                $("#past-events").append(`<div class="row table-row row-with-centered-col">
+                $("#past-events").append(`<div data-user="`+event.eventID+`" class="row table-row row-with-centered-col modal-toggler" data-toggle="modal" data-target="#mymodal">
                 <div class="col-5 text-centered">`+event.eventName+`</div>
                 <div class="col-3 text-centered">`+event.location+`</div>
-                <div class="col-3 text-centered">`+date+`</div>
+                <div class="col-3 text-centered">`+event.prettydate+`</div>
                 </div>`);
             }
             else {
                 soon.push(event);
-                $("#upcoming-events").append(`<div class="row table-row row-with-centered-col">
+                $("#upcoming-events").append(`<div data-user="`+event.eventID+`" class="row table-row row-with-centered-col modal-toggler" data-toggle="modal" data-target="#mymodal">
                 <div class="col-5 text-centered">`+event.eventName+`</div>
                 <div class="col-3 text-centered">`+event.location+`</div>
-                <div class="col-11 text-centered">`+date+`</div>
+                <div class="col-11 text-centered">`+event.prettydate+`</div>
                 </div>`);
             }
-        }
+        }        
         if (past.length > 0) {
             $('#past-events > no-event').hide();
         } else {
@@ -155,6 +188,23 @@
         } else {
             $('#upcoming-events > no-event').show();
         }
+
+        $('.modal-toggler').on('click', (e)=>{
+            let toggler = e.target;
+            while (!toggler.className.includes("modal-toggler")) {
+                toggler = toggler.parentNode
+            }
+            let eventID = $(toggler)[0].dataset['user']
+            let evnt = null
+            for (event of events) {
+                if (event.eventID == eventID) evnt = event
+            }
+            $('#modalTitle').html(evnt.eventName)
+            $('#modalImage').attr("src", "assets/events/"+evnt.thumbnailPath)
+            $('#modalLocation').html("Location: " + evnt.location)
+            $('#modalDate').html("Date: " + evnt.prettydate)
+            $('#detail-btn').attr("href", "event.php?id="+evnt.eventID)
+        })
     </script>
 </body>
 </html>
