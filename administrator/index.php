@@ -136,12 +136,13 @@
                         <tr>
                             <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(1)')" scope="col" style="width: 100px;">ID</th>
                             <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">User Name</th>
-                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">First Name</th>
-                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">Last Name</th>
-                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 200px;">E-mail</th>
-                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(6)')" scope="col" style="width: 50px;">age</th>
-                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(7)')" scope="col" style="width: 150px;">Phone</th>
-                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(8)')" scope="col" style="width: 100px;">Gender</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">Display Name</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">First Name</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 200px;">Last Name</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(6)')" scope="col" style="width: 200px;">E-mail</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(7)')" scope="col" style="width: 50px;">age</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(8)')" scope="col" style="width: 150px;">Phone</th>
+                            <th onclick="w3.sortHTML('.attendant-list', '#list', 'td:nth-child(9)')" scope="col" style="width: 100px;">Gender</th>
                         </tr>
                     </thead>
                     <tbody class="attendant-list"></tbody>
@@ -161,6 +162,10 @@
                         <div class="col">Password:</div>
                         <div class="col"><input type="text" id="pwd2"></div>
                     </div>
+                    <div class="row">
+                        <div class="col">Display Name:</div>
+                        <div class="col"><input type="text" id="displayName2"></div>
+                    </div>                    
                     <div class="row">
                         <div class="col">First Name:</div>
                         <div class="col"><input type="text" id="fName2"></div>
@@ -205,6 +210,7 @@
                         <div class="col">
                             <div class="row">ID:</div>
                             <div class="row">User Name:</div>
+                            <div class="row">Display Name:</div>                            
                             <div class="row">First Name:</div>
                             <div class="row">Last Name:</div>
                             <div class="row">E-mail:</div>
@@ -214,6 +220,7 @@
                         <div class="col">
                             <div class="row"><div class="col"><div id="id-edit2">ID</div></div></div>
                             <div class="row"><div class="col"><div id="userID-edit2">ID</div></div></div>
+                            <div class="row"><input type="text" id="displayName-edit2"></div>
                             <div class="row"><input type="text" id="firstName-edit2"></div>
                             <div class="row"><input type="text" id="lastName-edit2"></div>
                             <div class="row"><input type="text" id="email-edit2"></div>

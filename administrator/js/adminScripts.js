@@ -12,7 +12,7 @@ $(document).ready(function(e){
 	})
 	function showAllOrganizer(){
 		$.ajax({
-			url: './php/organizerList.php',
+			url: './php/showOrganizer.php',
 			type: 'POST',
 			dataType:"json",
 			success: function(organizer){
@@ -114,6 +114,11 @@ $(document).ready(function(e){
 				console.log("success for add user");
 				console.log(response);
 				document.getElementById('form-add-organizer').style.display='none';
+				$('#userID').val("");
+				$('#pwd').val("");
+				$('#orgName').val("");
+				$('#email').val("");
+				$('#phone').val("");
 				showAllOrganizer();
 			},error: function(r){
 				console.log("error for add user");
@@ -169,7 +174,7 @@ $(document).ready(function(e){
 
 	function showAllAttendant(){
 		$.ajax({
-			url: './php/attendantList.php',
+			url: './php/showAttendant.php',
 			type: 'POST',
 			dataType:"json",
 			success: function(attendant){
@@ -179,12 +184,13 @@ $(document).ready(function(e){
 					console.log(row);
 					td1 = "<td scope='row' style='text-align: center;'>" + row.id + "</td>";
 					td2 = "<td scope='row'>" + row.userID + "</td>";
-					td3 = "<td scope='row'>" + row.firstName + "</td>";
-					td4 = "<td scope='row'>" + row.lastName + "</td>";
-					td5 = "<td scope='row'>" + row.email + "</td>";
-					td6 = "<td scope='row' style='text-align: center;'>" + row.age + "</td>";
-					td7 = "<td scope='row'>" + row.phoneNo + "</td>";
-					td8 = "<td scope='row'>" + row.gender + "</td>";
+					td3 = "<td scope='row'>" + row.displayName + "</td>";
+					td4 = "<td scope='row'>" + row.firstName + "</td>";
+					td5 = "<td scope='row'>" + row.lastName + "</td>";
+					td6 = "<td scope='row'>" + row.email + "</td>";
+					td7 = "<td scope='row' style='text-align: center;'>" + row.age + "</td>";
+					td8 = "<td scope='row'>" + row.phoneNo + "</td>";
+					td9 = "<td scope='row'>" + row.gender + "</td>";
 					tr = tbody.append("<tr id='list'></tr>").children().last();
 					tr.append(td1);
 					tr.append(td2);
@@ -194,11 +200,12 @@ $(document).ready(function(e){
 					tr.append(td6);
 					tr.append(td7);
 					tr.append(td8);
+					tr.append(td9);
 
 					// $('.attendant-list').append("<tr id='list'>"+td1+td2+td3+td4+td5+td6+td7+td8+"</tr>");
 					// for edit
 					tr.dblclick(function(){
-						onSelectAttendantRow(row.id,row.userID,row.firstName,row.lastName,row.email,row.age,row.phoneNo);
+						onSelectAttendantRow(row.id,row.userID,row.displayName,row.firstName,row.lastName,row.email,row.age,row.phoneNo);
 					})
 					// for delete
 					tr.mousedown(function(e){
@@ -211,10 +218,11 @@ $(document).ready(function(e){
 		});
 	}
 	// edit
-	function onSelectAttendantRow(id,userName,firstName,lastName,email,age,phone){
+	function onSelectAttendantRow(id,userName,displayName,firstName,lastName,email,age,phone){
 		document.getElementById('form-edit-attendant').style.display='block';
 		$("#id-edit2").text(id);
 		$("#userID-edit2").text(userName);
+		$("#displayName-edit2").val(displayName);
 		$("#firstName-edit2").val(firstName);
 		$("#lastName-edit2").val(lastName);
 		$("#email-edit2").val(email);
@@ -227,6 +235,7 @@ $(document).ready(function(e){
 	})
 	$('#confirm-edit-attendant').click(function(e) {
 		var id = $('#id-edit2').text();
+		var displayName = $('#displayName-edit2').val();
 		var firstName = $('#firstName-edit2').val();
 		var lastName = $('#lastName-edit2').val();
 		var email = $('#email-edit2').val();
@@ -239,6 +248,7 @@ $(document).ready(function(e){
 			type: "POST",
 			data: {
 				id: id,
+				displayName: displayName,
 				firstName: firstName,
 				lastName: lastName,
 				email: email,
@@ -269,6 +279,7 @@ $(document).ready(function(e){
 	$('#confirm-add-attendant').click(function(e) {
 		var userID = $('#userID2').val();
 		var pwd = $('#pwd2').val();
+		var displayName = $('#displayName2').val();
 		var fName = $('#fName2').val();
 		var lName = $('#lName2').val();
 		console.log("pwd:",pwd2);
@@ -287,6 +298,7 @@ $(document).ready(function(e){
 			data: {
 				userID: userID,
 				pwd: pwd,
+				displayName: displayName,
 				fName: fName,
 				lName: lName,
 				age: age,
@@ -299,6 +311,14 @@ $(document).ready(function(e){
 				console.log(response);
 				document.getElementById('form-add-attendant').style.display='none';
 				showAllAttendant();
+				$('#userID2').val("");
+				$('#pwd2').val("");
+				$('#displayName2').val("");
+				$('#fName2').val("");
+				$('#lName2').val("");
+				$('#age2').val("");
+				$('#email2').val("");
+				$('#phone2').val("");
 			},error: function(r){
 				console.log("error for add us");
 				console.log(r);
@@ -351,7 +371,7 @@ $(document).ready(function(e){
 	})
 	function showAllEvent(){
 		$.ajax({
-			url: './php/eventList.php',
+			url: './php/showEvent.php',
 			type: 'POST',
 			dataType:"json",
 			success: function(event){

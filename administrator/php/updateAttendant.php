@@ -1,6 +1,7 @@
 <?php 
 	include("./connectDB.php");
 	$id = $_POST['id'];
+    $displayName = $_POST['displayName'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
@@ -14,7 +15,7 @@
      	if (sizeof($row_check) > 0) {
             echo "email has already !!";
         } else {
-        	$query = 'UPDATE `personal_info` SET `firstName`="'.$firstName.'", `lastName`="'.$lastName.'",`email`="'.$email.'", `age`="'.$age.'",`phoneNo`="'.$phone.'" WHERE userID="'.$id.'"';
+        	$query = 'UPDATE `personal_info` SET `displayName`="'.$displayName.'",`firstName`="'.$firstName.'", `lastName`="'.$lastName.'",`email`="'.$email.'", `age`="'.$age.'",`phoneNo`="'.$phone.'" WHERE userID="'.$id.'"';
         	$statement= $conn->exec($query);
         	echo "update complete";
         }
