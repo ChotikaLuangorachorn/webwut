@@ -56,12 +56,12 @@ if (array_key_exists("submit", $_POST)) {
         $stmt->execute([$first_name, $last_name, $tel, $userID]);
         echo "success personal info without email";
     }
-    $sql = "SELECT name FROM user WHERE name=?";
+    $sql = "SELECT displayName FROM personal_info WHERE displayName=?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$display_name]);
     $checkDisplayName = $stmt->fetch(PDO::FETCH_OBJ);
     if ($checkDisplayName === FALSE) {
-        $sql = "UPDATE user SET name=? WHERE id=?";
+        $sql = "UPDATE personal_info SET displayName=? WHERE userID=?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$display_name, $userID]);
         echo "success display name";

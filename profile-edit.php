@@ -17,7 +17,7 @@
 
     include 'services/connectDB.php';
     if (isset($conn)) {
-        $sql = "SELECT firstName, lastName, user.name as displayName, email, phoneNo, image FROM personal_info join user on personal_info.userID=user.id WHERE personal_info.userID=?";
+        $sql = "SELECT firstName, lastName, displayName, email, phoneNo, image FROM personal_info WHERE userID=?";
         
 
         $statement = $conn->prepare($sql); 
