@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2018 at 10:32 AM
+-- Generation Time: Mar 12, 2018 at 11:26 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -233,9 +233,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `userID`, `password`, `role`) VALUES
-(1, 'user', 'user', 'AT'),
-(2, 'admin', 'admin', 'AD'),
-(3, 'organizer', 'organizer', 'OR'),
+(1, 'user', '$wiKP4kT.MWa2', 'AT'),
+(2, 'admin', '$wykCC0S6UsnU', 'AD'),
+(3, 'organizer', '$wShN7Lg53HX6', 'OR'),
 (4, 'user2', 'user', 'AT');
 
 --
@@ -341,7 +341,7 @@ ALTER TABLE `event_survey_link`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

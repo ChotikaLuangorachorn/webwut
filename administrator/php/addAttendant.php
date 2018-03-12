@@ -4,6 +4,7 @@
     $username = $_POST['userID'];
     $password = crypt($_POST['pwd'], '$webwut$');
     $con_password =  $password;
+    $displayName = $_POST['displayName'];
     $firstname = $_POST['fName'];
     $lastname = $_POST['lName'];
     $age = $_POST['age'];
@@ -32,8 +33,8 @@
                 //insert USERNAME to DB
                 $statement = $conn->exec($query1);
                 $userID = $conn->lastInsertId();
-                $query2 = "INSERT INTO `personal_info` (`userID`, `firstName`,`lastName`,`age`,`email`,`phoneNo`,`gender`) 
-                    VALUES ('$userID', '".$firstname."','".$lastname."','".$age."','".$email."','".$mobile_no."','".$gender."')";
+                $query2 = "INSERT INTO `personal_info` (`userID`, `displayName`, `firstName`,`lastName`,`age`,`email`,`phoneNo`,`gender`) 
+                    VALUES ('$userID', '".$displayName."','".$firstname."','".$lastname."','".$age."','".$email."','".$mobile_no."','".$gender."')";
                 //insert INFO to DB
                 $statement = $conn->exec($query2);
                 echo " ---create new attendant--- ";

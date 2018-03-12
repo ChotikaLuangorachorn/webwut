@@ -88,14 +88,14 @@
 }
 .row .table-row{
   background-color: #ebe7da;
-  padding: 2% 0 2% 0;
+  padding: 4% 0;
   margin: 5% 0;
   border-radius:15px;
 }
 .row .table-row:hover{
   background-color: white;
   opacity: 0.9;
-  padding: 2% 0 2% 0;
+  padding: 4% 0 ;
   margin: 5% 0;
   border-radius:15px;
 }
@@ -113,4 +113,9 @@
   color: black !important;
   background-color: white !important;
   border-color: black!important;
+}
+
+
+body {
+  padding: 6rem;
 }
