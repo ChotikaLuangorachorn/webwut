@@ -5,10 +5,12 @@
     <input type="date" class="col-sm-3 form-control"
            id="event-end-date"
            name="event-end-date"
-           min="<?php echo $time ?>"
-           value="<?php echo $time ?>"
+        <?php if ($endDate !== null) { ?>
+            disabled value="<?php echo $endDate; ?>"
+        <?php } else { ?>
+           min="<?php echo $time; ?>"
+           value="<?php echo $time; }?>"
            required>
-
     <div class="invalid-feedback offset-sm-3">
         Please select a proper end date.
     </div>

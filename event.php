@@ -75,6 +75,15 @@
         if ($event->gender != "all" && $event->gender != $info->gender) {
             $PASS_CONDITION = FALSE;
         }
+
+        $sql = 'SELECT * FROM event_attendant WHERE aID='.$_SESSION['ID'].' AND eventID='.$_GET['id'];
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $attended = $stmt->fetch(PDO::FETCH_OBJ);
+        $ISATTENDED = FALSE;
+        if ($attended !== FALSE) {
+            $ISATTENDED = TRUE;
+        }
     }
     ?>
     <div class="container" id="main-content">
@@ -102,7 +111,18 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-4 text-right text-xs-center action-button">
-                        <a class="btn btn-secondary <?php echo $PASS_CONDITION ? '' : 'disabled'; ?>" id="top-buy-tickets-btn" data-scroll="true" href="#event-ticket"><?php echo ($event->price <= 0 ? "Get Tickets" : "Buy Ticket"); ?></a>
+                        <?php
+                        if (!$ISATTENDED) {
+                            echo '<a class="btn btn-secondary '.($PASS_CONDITION ? '' : 'disabled').'" id="top-buy-tickets-btn" data-scroll="true" href="#event-ticket">'.($event->price <= 0 ? "Get Tickets" : "Buy Ticket").'</a>';
+                        } else {
+                            if ($attended->flag != 1) {
+                                echo '<a class="btn btn-secondary disabled">รอการยืนยัน</a>';
+                            } else {
+                                echo '<a class="btn btn-success disabled">เข้าร่วมแล้ว</a>';
+                            }
+                        }
+
+                        ?>
                     </div>
                 </div>
                 <div id="event-map" class="collapse">
@@ -110,24 +130,77 @@
                 </div>
             </div>
             <div id="event-detail" class="margin-top">
-                <h2>Detail</h2>
-                <?php echo $event->eventDetail ?>
+                <h3>Detail</h3>
+                <p><?php echo $event->eventDetail ?></p>
             </div>
             <div id="event-condition" >
-                <h2>Condition</h2>
+                <h3>Condition</h3>
                 <p>Age: <?php echo $event->age==-1? "All age" : $event->age." above" ?></p>
                 <p>Gender: <?php echo $event->gender=="all"? "All Gender" : "Only ".$event->gender ?></p>
-                <h3 style="color: <?php echo $PASS_CONDITION ? 'green' : 'red' ?>"><?php echo $PASS_CONDITION ? "YOU DO PASS ALL OF THE CONDITIONS." : "YOU DO NOT PASS ALL OF THE CONDITIONS." ?></h3>
+                <h4 style="color: <?php echo $PASS_CONDITION ? 'green' : 'red' ?>"><?php echo $PASS_CONDITION ? "YOU DO PASS ALL OF THE CONDITIONS." : "YOU DO NOT PASS ALL OF THE CONDITIONS." ?></h4>
             </div>
-            <?php echo $PASS_CONDITION ?
-            '<div id="event-ticket" >
-                <h2>Tickets</h2>
-                <p>1 Ticket for '.($event->price==0? "Free" : $event->price." baht.").'</p>
-                <a class="btn btn-outline-primary">'.($event->price==0? "Get" : "Buy").' one now</a>
-            </div>':""; ?>
+            <?php 
+            if (!$ISATTENDED) {
+                echo $PASS_CONDITION ?
+                '<div id="event-ticket" >
+                    <h3>Tickets</h3>
+                    <p>1 Ticket for '.($event->price==0? "Free" : $event->price." baht.").'</p>
+                    <a class="btn btn-outline-primary" data-toggle="modal" data-target="#mymodal">'.($event->price==0? "Get" : "Buy").' one now</a>
+                </div>':"";
+            } else {
+                if ($attended->flag != 1) {
+                    echo '<div id="event-ticket" >
+                    <h3>Tickets</h3>
+                    <p>1 Ticket for '.($event->price==0? "Free" : $event->price." baht.").'</p>
+                    <a class="btn btn-secondary disabled">รอการยืนยัน</a>';
+                } else {
+                    echo '<div id="event-ticket" >
+                    <h3>Tickets</h3>
+                    <p>1 Ticket for '.($event->price==0? "Free" : $event->price." baht.").'</p>
+                    <a class="btn btn-success disabled">เข้าร่วมแล้ว</a>';
+                }
+            }
+            ?>
         </div>
         <div id="comments">
             <?php include 'services/comments.php'; ?>
+        </div>
+        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="mymodalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"><?php echo ($event->price==0? "Get" : "Buy"); ?> Ticket</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>1 Ticket for <?php echo ($event->price==0? "Free" : $event->price." baht."); ?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#buyModal"><?php echo ($event->price==0? "Get" : "Buy"); ?> Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="buyTitle"><?php echo ($event->price==0? "Get" : "Buy"); ?> Ticket</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="services/buyTicket.php" method="post" enctype="multipart/form-data">
+                            <label for="evidence" class="btn btn-primary" >UPLOAD หลักฐานการจ่ายเงิน</label>
+                            <input type="file" name="evidence" id="evidence" accept="image/*" hidden onchange="form.submit();">
+                            <input type="text" name="eventID" id="eventID" hidden value="<?php echo $_GET['id']; ?>">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script>
