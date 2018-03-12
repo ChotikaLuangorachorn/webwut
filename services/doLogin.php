@@ -42,7 +42,7 @@
                     echo 'Hi Attendant !';
                 }
                 if ($user->role == 'OR') {
-                    header("location:../organizer/");
+                    header("location:../organizer/homepage.php");
                     echo 'Hello Organizer !!';
                 }
                 if ($user->role == 'AD') {
