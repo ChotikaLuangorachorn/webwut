@@ -11,13 +11,13 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="organizer.css">
+    <link rel="stylesheet" href="css/organizer.css">
 
     <title>Organizer | Adding Event</title>
 </head>
 <body>
 
-<?php require_once "header.php" ?>
+<?php require_once "php/header.php" ?>
 <?php require_once "event-form-components/php/form-cache.php" ?>
 
 <!-- Page Content -->
@@ -29,37 +29,37 @@
         <!-- form -->
         <form class="col-10 offset-1 needs-validation" method="post"
               enctype="multipart/form-data"
-              action="event-scripts/php/event-creator.php" novalidate>
+              action="php/event-creator.php" novalidate>
             <!-- Event Name -->
-            <?php require 'event-form-components/php/form-name.php' ?>
+            <?php require "event-form-components/php/form-name.php" ?>
             <!-- Type of Event -->
-            <?php require 'event-form-components/php/form-type.php' ?>
+            <?php require "event-form-components/php/form-type.php" ?>
             <!-- Event Detail -->
-            <?php require 'event-form-components/php/form-detail.php' ?>
+            <?php require "event-form-components/php/form-detail.php" ?>
             <!-- Event Thumbnail -->
-            <?php require 'event-form-components/php/form-thumbnail.php' ?>
+            <?php require "event-form-components/php/form-thumbnail.php" ?>
             <!-- Registrable Date -->
-            <?php require 'event-form-components/php/form-registrable-date.php' ?>
+            <?php require "event-form-components/php/form-registrable-date.php" ?>
             <!-- Start Date -->
-            <?php require 'event-form-components/php/form-start-date.php' ?>
+            <?php require "event-form-components/php/form-start-date.php" ?>
             <!-- End Date -->
-            <?php require 'event-form-components/php/form-end-date.php' ?>
+            <?php require "event-form-components/php/form-end-date.php" ?>
             <!-- Event Entries -->
-            <?php require 'event-form-components/php/form-entries.php' ?>
+            <?php require "event-form-components/php/form-entries.php" ?>
             <!-- Event Preconditions -->
-            <?php require 'event-form-components/php/form-preconditions.php' ?>
+            <?php require "event-form-components/php/form-preconditions.php" ?>
             <!-- Attending Cost -->
-            <?php require 'event-form-components/php/form-attending-cost.php' ?>
+            <?php require "event-form-components/php/form-attending-cost.php" ?>
             <!-- GG Map -->
-            <?php require 'event-form-components/php/form-map.php' ?>
+            <?php require "event-form-components/php/form-map.php" ?>
             <!-- Indoor Name -->
-            <?php require 'event-form-components/php/form-indoor-name.php' ?>
+            <?php require "event-form-components/php/form-indoor-name.php" ?>
             <!-- Location -->
-            <?php require 'event-form-components/php/form-location-info.php' ?>
+            <?php require "event-form-components/php/form-location-info.php" ?>
             <!-- Survey Link -->
-            <?php require 'event-form-components/php/form-survey-link.php' ?>
+            <?php require "event-form-components/php/form-survey-link.php" ?>
             <!-- Submit -->
-            <?php require 'event-form-components/php/form-submit.php' ?>
+            <?php require "event-form-components/php/form-submit.php" ?>
             <!-- /.form -->
         </form>
         <!-- /.wrapper -->
@@ -80,7 +80,7 @@
         crossorigin="anonymous"></script>
 
 <!-- Header Script -->
-<script src="headerjs.js"></script>
+<script src="js/headerjs.js"></script>
 
 
 <!-- Google Maps JS API -->

@@ -399,11 +399,11 @@ class Event
     public function getGenderCondition(): string
     {
         switch ($this->gender) {
-            case 'a':
+            case 'all':
                 return 'Any Gender';
-            case 'f':
+            case 'female':
                 return 'Female';
-            case 'm':
+            case 'male':
                 return 'Male';
             default:
                 return "Shouldn't be executed this, some error occurs";
