@@ -27,7 +27,21 @@
 
 #event-map-toggle {
     cursor: pointer;
+    /* //padding: 5%; */
 }
 #event-map-toggle:hover {
     color: cadetblue;
+}
+
+.content-box{
+    background-color: white;
+   padding: 2% 0;
+}
+
+#event-title{
+    background-color:#f675b3;
+    padding: 2%;
+    color: White;
+    font-weight:bolder;
+    
 }

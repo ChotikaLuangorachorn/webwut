@@ -6,7 +6,9 @@
     <input type="text" class="col-sm-9 form-control"
            id="location"
            name="location"
-           placeholder="Outdoor Location" required>
+           placeholder="Outdoor Location"
+           value="<?php echo $location ?>"
+           required>
     <div class="invalid-feedback offset-sm-3">
         Please fill a location address.
     </div>
