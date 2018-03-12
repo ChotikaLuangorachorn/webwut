@@ -2,7 +2,7 @@
     include("./connectDB.php");
     session_start();
     // $uid = $_SESSION['username'];
-    $uid = "user";
+    $uid = "grace";
     $connection = $conn;
 
     $thaiMonth = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");

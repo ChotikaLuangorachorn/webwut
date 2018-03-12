@@ -2,7 +2,7 @@
     include("./connectDB.php");
     session_start();
     // $uid = $_SESSION['username'];
-    $uid = "user";
+    $uid = "grace";
     $connection = $conn;
 
 

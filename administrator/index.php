@@ -10,7 +10,7 @@
     <title>Administrator</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="adminStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/adminStyle.css">
     
 </head>
 <body>
@@ -309,8 +309,8 @@
     <!-- for search -->
     <script src="https://www.w3schools.com/lib/w3.js"></script>
 
-    <script src="moment.js"></script>
-    <script src="adminScripts.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/adminScripts.js"></script>
 
 </body>
 </html>
