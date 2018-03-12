@@ -375,7 +375,7 @@ $(document).ready(function(e){
 			type: 'POST',
 			dataType:"json",
 			success: function(event){
-				console.log(event);
+				console.log(event); 
 				tbody = $("tbody.event-list");
 				tbody.empty();
 				event.forEach(row=>{
