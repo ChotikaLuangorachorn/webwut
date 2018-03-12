@@ -5,8 +5,11 @@
     <input type="date" class="col-sm-3 form-control"
            id="event-start-date"
            name="event-start-date"
-           min="<?php echo $time ?>"
-           value="<?php echo $time ?>"
+        <?php if ($startDate !== null) { ?>
+            disabled value="<?php echo $startDate; ?>"
+        <?php } else { ?>
+           min="<?php echo $time; ?>"
+           value="<?php echo $time; }?>"
            required>
     <div class="invalid-feedback offset-sm-3">
         Please select a proper start date.
