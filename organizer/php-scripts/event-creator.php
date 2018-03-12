@@ -4,15 +4,11 @@ session_start();
 require_once "../../services/connectDB.php";
 require_once "Event.php";
 
-if (!isset($_SESSION["orgID"])) {
-    $_SESSION["orgID"] = 3;
-}
-
 // Check if there was any form has been sent submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // set organizer ID
-    $orgID = $_SESSION["orgID"];
+    $orgID = $_SESSION["ID"];
 
     if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
         // set event ID if it is in session

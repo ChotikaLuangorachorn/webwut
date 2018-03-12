@@ -1,6 +1,7 @@
 <?php
+
 $events = [];
-$orgID = $_SESSION["orgID"];
+$orgID = $_SESSION["ID"];
 
 $query = "SELECT `event`.*, `event_image`.`image`, `event_survey_link`.`surveyLink` FROM `event` 
           LEFT JOIN `event_image` ON `event`.`eventID` = `event_image`

@@ -18,7 +18,7 @@ $eventID = $recentEvent->getEventID();
 $modalID = "viewModal";
 $modalTitle = "Viewing an event...";
 $modalBody = "Do you want to view an event?";
-$modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\"
+$modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary button-modal\"
                         data-dismiss=\"modal\">No</button>";
-$modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-viewer.php?eid=$eventID\">Yes</a>";
+$modalConfirmButton = "<a class=\"btn btn-primary button-modal\" href=\"event-viewer.php?eid=$eventID\">Yes</a>";
 require "organizer/php-scripts/modal.php"; ?>

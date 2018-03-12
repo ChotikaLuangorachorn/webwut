@@ -1,3 +1,17 @@
+<?php
+require_once "header.php";
+
+/*   login session >>>
+ *  "ID" = orgID,
+ *  "ROLE" = "OR",
+ *  "displayName" = orgName
+ * */
+
+if($_SESSION["ROLE"] !== "OR"){
+    header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +20,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Loading CSS -->
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/organizer.css">
 
     <title>Organizer | Event Homepage</title>
@@ -19,31 +30,20 @@
 
 <?php
 require_once "services/connectDB.php";
-require_once "header.php";
 require_once "organizer/php-scripts/Event.php";
 require_once "organizer/php-scripts/EventAttendee.php";
-
-
-if (!isset($_SESSION["orgID"])) {
-    $_SESSION["orgID"] = 3;
-}
-
+require_once "organizer/php-scripts/event-loader.php";
 // If unset eventID in session
 if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
     unset($_SESSION["eventID"]);
 }
-
-require_once "organizer/php-scripts/event-loader.php";
-
-// check if session holds an event data
-$hasData = isset($event);
 ?>
 
 <!-- Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="headings my-4 p-4">Events
-        <small>from Organizer &raquo; <?php echo $_SESSION["orgID"] ?></small>
+        <small>from Organizer &raquo; <?php echo $_SESSION["displayName"] ?></small>
     </h1>
 
     <!-- Wrapper -->
@@ -59,14 +59,14 @@ $hasData = isset($event);
             $modalID = "addEventModal";
             $modalTitle = "Adding Event...";
             $modalBody = "Do you want to add a new event??";
-            $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\" 
+            $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary button-modal\" 
                         data-dismiss=\"modal\">No</button>";
-            $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-form.php\">Yes</a>";
+            $modalConfirmButton = "<a class=\"btn btn-primary button-modal\" href=\"event-form.php\">Yes</a>";
             require "organizer/php-scripts/modal.php"; ?>
         </div>
         <!-- Events holder-->
         <div class="col-md-9 mx-auto p-4 container-fluid row">
-            <?php if (!$hasData) { ?>
+            <?php if (!isset($events)) { ?>
             <div class="event-holder p-4 invisible">
                 <?php } else { ?>
                 <div class="event-holder p-4">

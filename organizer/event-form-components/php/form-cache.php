@@ -21,7 +21,7 @@ if (empty($_GET)) {
 
     // Invoke `eventID` in session
     $_SESSION["eventID"] = $eventID;
-    $orgID = $_SESSION["orgID"];
+    $orgID = $_SESSION["ID"];
 
     $query = "SELECT `eventDetail`, `eventName`, `registrableDate`,
               `eventStart`, `eventEnd`, `type`, `capacity`,
@@ -47,6 +47,10 @@ if (empty($_GET)) {
         $location = $eventData["location"];
         $surveyLink = $eventData["surveyLink"];
     } else {
+        /*
+        * If, for some reason, other organizer knows the event id, it will send
+        * them back to add an event instead.
+        */
         header("Location: " . $_SERVER['PHP_SELF']);
     }
 }

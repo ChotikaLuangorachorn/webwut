@@ -1,4 +1,6 @@
-.btn-primary {
+.btn-primary.edit-event,
+.btn-primary.delete-event,
+.btn-primary.button-modal {
     background-color: #f675b3;
     border-color: #f675b3;
 }
@@ -13,13 +15,15 @@
     border-color: #f7e881;
 }
 
-.btn-secondary {
+.btn-secondary.button-modal {
     background-color: #df8a83;
     border-color: #df8a83;
 }
 
-.btn-primary:hover,
-.btn-secondary:hover,
+.btn-primary.edit-event:hover,
+.btn-primary.delete-event:hover,
+.btn-primary.button-modal:hover,
+.btn-secondary.button-modal:hover,
 .btn-primary#add-event-btn:hover,
 .btn-primary#upload-image-btn:hover {
     color: black;

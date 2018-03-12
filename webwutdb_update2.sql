@@ -155,7 +155,7 @@ CREATE TABLE `organizer_info` (
 --
 
 INSERT INTO `organizer_info` (`userID`, `orgName`, `email`, `phoneNo`) VALUES
-(3, 'admin', 'admin@webwut.com', '0812345678');
+(3, 'org', 'org@webwut.com', '0812345678');
 
 -- --------------------------------------------------------
 
