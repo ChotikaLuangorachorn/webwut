@@ -9,9 +9,10 @@
 **อธิบายโครงสร้าง directory**
 ##### Folder #####
 * administrator
-    - css
-    - js
-    php
+    - css 
+    - js - ใช้ส่งข้อมูลจาก index.phpของ administrator ไปที่php
+    - php - ใช้ เพื่อเชื่อมต่อไป database ประกอบด้วยการ การ ADD, UPDATE, SELECT
+    - index.php -หน้าหลักของ administrator
 * assets
     - events
     - images
