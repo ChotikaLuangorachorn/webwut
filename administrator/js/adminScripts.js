@@ -82,7 +82,6 @@ $(document).ready(function(e){
 		})
 	})
 
-
 	// add
 	document.getElementById('form-add-organizer').style.display='none';
 	$('#btn-add-organizer').click(function(e) {
@@ -126,6 +125,7 @@ $(document).ready(function(e){
 			}
 		})
 	})
+
 	// delete
 	function onSetConfirmOrganizerRow(id,userName){
 		document.getElementById('alert-delete-organizer').style.display='block';
@@ -217,6 +217,7 @@ $(document).ready(function(e){
 			}
 		});
 	}
+
 	// edit
 	function onSelectAttendantRow(id,userName,displayName,firstName,lastName,email,age,phone){
 		document.getElementById('form-edit-attendant').style.display='block';
