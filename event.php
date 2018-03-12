@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/event.css">
+    <link rel="stylesheet" href="css/comments.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
@@ -16,9 +17,10 @@
     }
     include 'services/connectDB.php';
     if (isset($conn)) {
+        $eventID = $_GET['id'];
         $sql = "SELECT * FROM event WHERE eventID=?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$_GET['id']]);
+        $stmt->execute([$eventID]);
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         if ($result !== FALSE) {
             $event = $result;
@@ -38,17 +40,31 @@
                 $event->images[] = $value->image;
             }
         }
-        $sql = "SELECT userID, comment, date FROM event_comment WHERE eventID=?";
+        $sql = "SELECT event_comment.userID, comment, date, role FROM event_comment JOIN user ON event_comment.userID=user.id WHERE eventID=?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$_GET['id']]);
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-        $event->comments = array();
+        $comments = array();
         if ($result !== FALSE) {
             foreach ($result as $value) {
                 $value->date = date("d/m/Y g:i A", strtotime($value->date));
-                $event->comments[] = $value;
+                $role = $value->role;
+                $userID = $value->userID;
+                if ($role == "AT") {
+                    $sql = 'SELECT displayName FROM personal_info WHERE userID='.$userID;
+                } else if ($role == "OR") {
+                    $sql = 'SELECT orgName as displayName FROM organizer_info WHERE userID='.$userID;
+                } else if ($role == "AD") {
+                    $sql = 'SELECT userID as displayName FROM user WHERE id='.$userID;
+                }
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+                $displayName = $stmt->fetch(PDO::FETCH_OBJ)->displayName;
+                $value->name = $displayName;
+                $comments[] = $value;
             }
         }
+        var_dump($result);
     }
     ?>
     <div class="container" id="main-content">
