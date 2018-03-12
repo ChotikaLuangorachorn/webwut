@@ -12,7 +12,7 @@ $(document).ready(function(e){
 	})
 	function showAllOrganizer(){
 		$.ajax({
-			url: 'organizerList.php',
+			url: './php/organizerList.php',
 			type: 'POST',
 			dataType:"json",
 			success: function(organizer){
@@ -62,7 +62,7 @@ $(document).ready(function(e){
 		console.log("id>",id);
 		console.log("email>",email);
 		$.ajax({
-			url: "updateOrganizer.php",
+			url: "./php/updateOrganizer.php",
 			type: "POST",
 			data: {
 				id: id,
@@ -101,7 +101,7 @@ $(document).ready(function(e){
 		var email = $('#email').val();
 		var phone = $('#phone').val();
 		$.ajax({
-			url: "addOrganizer.php",
+			url: "./php/addOrganizer.php",
 			type: "POST",
 			data: {
 				userID: userID,
@@ -138,7 +138,7 @@ $(document).ready(function(e){
 		var id = $('#id-delete1').text();
 		console.log("id>",id);
 		$.ajax({
-			url: "deleteOrganizer.php",
+			url: "./php/deleteOrganizer.php",
 			type: "POST",
 			data: {
 				id: id,
@@ -169,7 +169,7 @@ $(document).ready(function(e){
 
 	function showAllAttendant(){
 		$.ajax({
-			url: 'attendantList.php',
+			url: './php/attendantList.php',
 			type: 'POST',
 			dataType:"json",
 			success: function(attendant){
@@ -235,7 +235,7 @@ $(document).ready(function(e){
 		console.log("id>",id);
 		console.log("email>",email);
 		$.ajax({
-			url: "updateAttendant.php",
+			url: "./php/updateAttendant.php",
 			type: "POST",
 			data: {
 				id: id,
@@ -282,7 +282,7 @@ $(document).ready(function(e){
 			var gender = document.getElementById('female2').value;
 		}
 		$.ajax({
-			url: "addAttendant.php",
+			url: "./php/addAttendant.php",
 			type: "POST",
 			data: {
 				userID: userID,
@@ -323,7 +323,7 @@ $(document).ready(function(e){
 		var id = $('#id-delete2').text();
 		console.log("id>",id);
 		$.ajax({
-			url: "deleteAttendant.php",
+			url: "./php/deleteAttendant.php",
 			type: "POST",
 			data: {
 				id: id,
@@ -351,7 +351,7 @@ $(document).ready(function(e){
 	})
 	function showAllEvent(){
 		$.ajax({
-			url: 'eventList.php',
+			url: './php/eventList.php',
 			type: 'POST',
 			dataType:"json",
 			success: function(event){

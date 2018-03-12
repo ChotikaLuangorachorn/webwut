@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <label for="reg_fullname" class="sr-only">Display Name</label>
-                            <input type="text" class="form-control" id="reg_fullname" name="reg_dispayname" placeholder="display name">
+                            <input type="text" class="form-control" id="reg_displayname" name="reg_dispayname" placeholder="display name">
                         </div>
                         <div class="form-group">
                             <label for="reg_fullname" class="sr-only">Full Name</label>
