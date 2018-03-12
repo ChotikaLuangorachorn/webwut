@@ -1,6 +1,6 @@
 <?php
     include("./connectDB.php");
-
+    session_start();
     $username = $_POST['reg_username'];
     $password = crypt($_POST['reg_password'], '$webwut$');
     $con_password = crypt($_POST['reg_password_confirm'], '$webwut$');
@@ -37,6 +37,9 @@
                     VALUES ('$userID','".$displayname."' ,'".$firstname."','".$lastname."','".$age."','".$email."','".$mobile_no."','".$gender."')";
                 //insert INFO to DB
                 $statement = $conn->exec($query2);
+                $_SESSION['ID'] = $userID;
+                $_SESSION['ROLE'] = "AT";
+                $_SESSION['displayName'] = $displayname;
                 echo " ---create new attendant--- ";
             }
         }

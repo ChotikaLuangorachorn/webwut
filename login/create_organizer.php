@@ -1,6 +1,6 @@
 <?php
     include("./connectDB.php");
-
+    session_start();
     $username = $_POST['reg_username'];
     $password = crypt($_POST['reg_password'], '$webwut$');
     $con_password = crypt($_POST['reg_password_confirm'], '$webwut$');
@@ -34,8 +34,11 @@
                     VALUES ('$userID.','".$org_name."','".$email."','".$mobile_no."')";
                 //insert INFO to DB
                 $statement = $conn->exec($query2);
+                $_SESSION['ID'] = $userID;
+                $_SESSION['ROLE'] = "OR";
+                $_SESSION['displayName'] = $org_name;
                 echo " --create new organizer--";
-                header("location:../organizer/");
+                
                 }
         }
     } else {
