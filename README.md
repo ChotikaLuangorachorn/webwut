@@ -41,3 +41,5 @@
 - index.php - หน้าแรกของเว็บไซต์
 - login.php - หน้า login
 - personalMessage.php - หน้าหลักของ Message
+- events.php หน้าแสดงรายการeventต่างๆ หลังจากเลือกfilter หรือ category
+- event.php หน้าแสดงรายละเอียดของ event
