@@ -18,6 +18,17 @@
             //set ตัวแปรใน session ไว้ว่าใคร log in อยู่ และเป็น role อะไร
             $_SESSION["ID"] = $user->userID;
             $_SESSION["ROLE"] = $user->role;
+            if ($_SESSION['ROLE'] == "AT") {
+                $sql = 'SELECT displayName FROM personal_info WHERE userID='.$_SESSION['ID'];
+              } else if ($_SESSION['ROLE'] == "OR") {
+                $sql = 'SELECT orgName as displayName FROM organizer_info WHERE userID='.$_SESSION['ID'];
+              } else if ($_SESSION['ROLE'] == "AD") {
+                $sql = 'SELECT userID as displayName FROM user WHERE id='.$_SESSION['ID'];
+              }
+              $stmt = $conn->prepare($sql);
+              $stmt->execute();
+              $displayName = $stmt->fetch(PDO::FETCH_OBJ)->displayName;
+              $_SESSION['displayName'] = $displayName;
             session_write_close();
             //เช็คว่ากด login มาจากหน้าไหนให้กลับไปหน้านั้น
             //ถ้าไม่ได้บอกไว้ให้ไปหน้าแรกของแต่ละ Role
@@ -26,15 +37,15 @@
                 echo 'PREV';
             } else {
                 if ($user->role == 'AT') {
-                    header("location:..");
+                    header("location:../");
                     echo 'Hi Attendant !';
                 }
                 if ($user->role == 'OR') {
-                    header("location:../organizer");
+                    header("location:../organizer/");
                     echo 'Hello Organizer !!';
                 }
                 if ($user->role == 'AD') {
-                    header("location:../administrator/index.php");
+                    header("location:../administrator/");
                     echo 'Welcome Admin';
                 }
             }

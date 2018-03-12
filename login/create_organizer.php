@@ -35,6 +35,7 @@
                 //insert INFO to DB
                 $statement = $conn->exec($query2);
                 echo " --create new organizer--";
+                header("location:../organizer/");
                 }
         }
     } else {
