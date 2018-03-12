@@ -17,6 +17,7 @@
     </div>
 </form>
 <div id="comment-list">
+
 <?php
 foreach ($comments as $comment) {
     include 'commentCreator.php';
