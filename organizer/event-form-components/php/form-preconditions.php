@@ -29,21 +29,21 @@
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio"
                        name="gender"
-                       id="all-gender" value="a" checked>
+                       id="all-gender" value="all" checked>
                 <label class="form-check-label" for="all-gender">All
                     Gender</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio"
                        name="gender"
-                       id="male" value="m">
+                       id="male" value="male">
                 <label class="form-check-label" for="male">Male
                     Only</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio"
                        name="gender"
-                       id="female" value="f">
+                       id="female" value="female">
                 <label class="form-check-label" for="female">Female
                     Only</label>
             </div>

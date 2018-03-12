@@ -11,23 +11,23 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="organizer.css">
+    <link rel="stylesheet" href="css/organizer.css">
 
     <title>Organizer | Event Homepage</title>
 </head>
 <body>
 
 <?php
-require_once "header.php";
-require_once "event-scripts/php/Event.php";
-require_once "event-scripts/php/EventAttendee.php";
+require_once "php/header.php";
+require_once "php/Event.php";
+require_once "php/EventAttendee.php";
 require_once "../services/connectDB.php";
 
 if (!isset($_SESSION["orgID"])) {
     $_SESSION["orgID"] = 3;
 }
 
-require_once "event-scripts/php/event-loader.php";
+require_once "php/event-loader.php";
 
 // check if session holds an event data
 $hasData = isset($event);
@@ -54,8 +54,8 @@ $hasData = isset($event);
             $modalBody = "Do you want to add a new event??";
             $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary\" 
                         data-dismiss=\"modal\">No</button>";
-            $modalConfirmButton = "<a class=\"btn btn-primary\" href=\"event-form.php \">Yes</a>";
-            require "modal.php"; ?>
+            $modalConfirmButton = "";
+            require "php/modal.php"; ?>
         </div>
         <!-- Events holder-->
         <div class="col-md-9 mx-auto p-4 container-fluid row">
@@ -117,6 +117,6 @@ $hasData = isset($event);
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <!-- Header Script -->
-    <script src="headerjs.js"></script>
+    <script src="js/headerjs.js"></script>
 </body>
 </html>
