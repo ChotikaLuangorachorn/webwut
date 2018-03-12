@@ -9,9 +9,9 @@
 **อธิบายโครงสร้าง directory**
 ##### Folder #####
 * administrator
-    - css 
+    - css - ใช้ตกแต่งหน้าเว็บไซต์
     - js - ใช้ส่งข้อมูลจาก index.phpของ administrator ไปที่php
-    - php - ใช้ เพื่อเชื่อมต่อไป database ประกอบด้วยการ การ ADD, UPDATE, SELECT
+    - php - ใช้ เพื่อเชื่อมต่อไป database ประกอบด้วย การ ADD, UPDATE, SELECT
     - index.php -หน้าหลักของ administrator
 * assets
     - events
@@ -26,10 +26,10 @@
      - js
      - php
 * personalMessage
-    - css
-    - js
-    - messageFile
-    - php
+    - css - ใช้ตกแต่งหน้าเว็บไซต์
+    - js - ใช้ส่งข้อมูลจาก personalMessage.php ไปที่php
+    - messageFile - เก็บภาพที่ได้จากการแนบไฟล์ เมื่อส่งข้อความ
+    - php - ใช้ เพื่อเชื่อมต่อไป database ประกอบด้วย การแสดงประวัติการส่ง และ ข้อความที่ส่งถึงตนเอง
 * services
 ##### นอกโฟลเดอร์ #####
 - index.php - หน้าแรกของเว็บไซต์
