@@ -35,19 +35,19 @@
                             <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Display Name</label>
-                            <input type="text" class="form-control" id="reg_displayname" name="reg_dispayname" placeholder="display name">
+                            <label for="reg_displayname" class="sr-only">Display Name</label>
+                            <input type="text" class="form-control" id="reg_displayname" name="reg_displayname" placeholder="display name">
                         </div>
                         <div class="form-group">
                             <label for="reg_fullname" class="sr-only">Full Name</label>
                             <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="first name">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Surname</label>
+                            <label for="reg_lastname" class="sr-only">Surname</label>
                             <input type="text" class="form-control" id="reg_lastname" name="reg_lastname" placeholder="surname">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Age</label>
+                            <label for="reg_age" class="sr-only">Age</label>
                             <input type="text" class="form-control" id="reg_age" name="reg_age" placeholder="age">
                         </div>
                         <div class="form-group">
@@ -55,7 +55,7 @@
                             <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email address">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Mobile No</label>
+                            <label for="reg_mobile_no" class="sr-only">Mobile No</label>
                             <input type="text" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
                         </div>                          
                         <div class="form-group login-group-checkbox">

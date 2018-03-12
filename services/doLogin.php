@@ -26,7 +26,7 @@
                 $sql = 'SELECT userID as displayName FROM user WHERE id='.$_SESSION['ID'];
               }
               $stmt = $conn->prepare($sql);
-              $stmt->execute($sql);
+              $stmt->execute();
               $displayName = $stmt->fetch(PDO::FETCH_OBJ)->displayName;
               $_SESSION['displayName'] = $displayName;
             session_write_close();
