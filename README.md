@@ -43,7 +43,7 @@
 - personalMessage.php - หน้าหลักของ Message
 - events.php หน้าแสดงรายการeventต่างๆ หลังจากเลือกfilter หรือ category
 - event.php หน้าแสดงรายละเอียดของ event
-- oops.php แสดงเมื่อหน้า page ไม่เจอ
+- oops.php แสดงเมื่อไม่เจอหน้า page 
 - profile.php แสดงหน้า profile ของ Attendant
 - profile-edit.php แสดงหน้าแก้ไข profile ของ Attendant
 - **webwutdb_update2.sql** ฐานข้อมูลที่ใช้ในการเก็บข้อมูลในปัจจุบัน
