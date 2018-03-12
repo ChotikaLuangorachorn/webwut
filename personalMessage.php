@@ -10,7 +10,7 @@
     <title>Personal Message</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/messageStyle.css">
+    <link rel="stylesheet" type="text/css" href="personalMessage/css/messageStyle.css">
     
 </head>
 <body>   
@@ -77,6 +77,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
 
-    <script src="js/messageScripts.js"></script>
+    <script src="personalMessage/js/messageScripts.js"></script>
 </body>
 </html>
