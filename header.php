@@ -29,18 +29,7 @@
           <div class="col-4 noPadding">
           <?php
           if ($LOGGEDIN) {
-            $displayName = $_SESSION['ID'];
-            include 'services/connectDB.php';
-            if ($_SESSION['ROLE'] == "AT") {
-              $sql = 'SELECT displayName FROM personal_info WHERE userID='.$_SESSION['ID'];
-            } else if ($_SESSION['ROLE'] == "OR") {
-              $sql = 'SELECT orgName as displayName FROM organizer_info WHERE userID='.$_SESSION['ID'];
-            } else if ($_SESSION['ROLE'] == "AD") {
-              $sql = 'SELECT userID as displayName FROM user WHERE id='.$_SESSION['ID'];
-            }
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            $displayName = $stmt->fetch(PDO::FETCH_OBJ)->displayName;
+            $displayName = $_SESSION['displayName'];
 
             echo "Welcome, ". $displayName;
             ?>
