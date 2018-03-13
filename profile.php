@@ -99,6 +99,12 @@
                     <div class="col-12"><h3>Name: <?php echo $info->firstName." ".$info->lastName; ?></h3></div>
                 </div>
                 <div class="row">
+                    <div class="col-12"><h3>Gender: <?php echo $info->gender; ?></h3></div>
+                </div>
+                <div class="row">
+                    <div class="col-12"><h3>Age: <?php echo $info->age; ?></h3></div>
+                </div>
+                <div class="row">
                     <div class="col-12"><h3>E-mail: <?php echo $info->email; ?></h3></div>
                 </div>
                 <div class="row">

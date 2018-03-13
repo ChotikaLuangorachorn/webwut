@@ -53,6 +53,11 @@ figure figcaption {
     border-right: 0px;
 }
 
+.table-row:hover:not(no-event) > * {
+    background-color: #aba7aa;
+}
+
+
 .table-row > *:last-child {
     border-right: 1px solid black;
 }

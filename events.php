@@ -166,7 +166,7 @@ include 'services/connectDB.php';
                     </div>
                     <br>to <div class="container">
                         <div class="input-group date">
-                          <input type="date" onclick="date()" class="form-control" name="id" id="datepicker2" placeholder="MM/DD/YYYY">
+                          <input type="date" onclick="date()" class="form-control" name="to" id="datepicker2" placeholder="MM/DD/YYYY">
                         </div>
                     </div>
                     <input hidden type="text" name="filter" id="filter" value="date">
