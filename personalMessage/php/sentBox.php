@@ -42,7 +42,7 @@ WHERE uf.displayName="'.$displayName.'" ORDER BY timestamp DESC';
         $year = date('Y',strtotime($row['timestamp']));
 
 
-        $hour = date('G',strtotime($row['timestamp']));
+        $hour = date('H',strtotime($row['timestamp']));
         $minute = date('i',strtotime($row['timestamp']));
 
 

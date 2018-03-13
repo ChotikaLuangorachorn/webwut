@@ -45,6 +45,12 @@
             <div class="col-12" style="text-align: center;">
                 <button id="btn-add-organizer">Add User</button>
             </div>
+            <div class="col-12" style="text-align: right;">
+                <a href="./php/exportPDF/exportPDFOrganizer.php" target="_blank">
+                    <button id="btn-export-organizer">Export PDF</button>
+                </a>
+            </div>
+
             <!-- form for add organizer -->
             <div id="form-add-organizer">
                 <form id="organizer-adding-form">
@@ -118,11 +124,13 @@
                     </div> 
                 </form>
             </div>
+
             <ul> Notation:
                 <li>Sort -> Click on Head Table</li>
                 <li>Edit -> Double Click</li>
                 <li>Delete -> Right Click</li>
             </ul>
+                
         </div>
         
         <!-- Attendant -->
@@ -152,6 +160,13 @@
             <div class="col-12" style="text-align: center;">
                 <button id="btn-add-attendant">Add User</button>
             </div>
+            
+            <div class="col-12" style="text-align: right;">
+                <a href="./php/exportPDF/exportPDFAttendant.php" target="_blank">
+                    <button id="btn-export-attendant">Export PDF</button>
+                </a>
+            </div>
+
             <!-- form for add attendant -->
             <div id="form-add-attendant">
                 <form id="attendant-adding-form">
@@ -282,7 +297,7 @@
                             <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(1)')" scope="col" style="width: 100px;">ID</th>
                             <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(2)')" scope="col" style="width: 200px;">Start Date</th>
                             <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(3)')" scope="col" style="width: 200px;">End Date</th>
-                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">Name</th>
+                            <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(4)')" scope="col" style="width: 200px;">Event Name</th>
                             <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(5)')" scope="col" style="width: 350px;">Location</th>
                             <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(6)')" scope="col" style="width: 100px;">Capacity</th>
                             <th onclick="w3.sortHTML('.event-list', '#list', 'td:nth-child(7)')" scope="col" style="width: 100px;">Price</th>
@@ -296,6 +311,11 @@
 <!--             <div class="col-12" style="text-align: center;">
                 <button id="">save</button>
             </div> -->
+            <div class="col-12" style="text-align: right;">
+                <a href="./php/exportPDF/exportPDFEvent.php" target="_blank">
+                    <button id="btn-export-event">Export PDF</button>
+                </a>
+            </div>
             <ul> Notation:
                 <li>Sort -> Click on Head Table</li>
             </ul>
