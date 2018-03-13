@@ -29,13 +29,14 @@
 		}
 
 		function bodyTable(){
+			// $this->SetFont('Times','',10);
+			$this->AddFont('DejaVu','','THSarabun.ttf',true);
+            $this->SetFont('DejaVu','',14);
 
 			include('../connectDB.php');
 			$query = "SELECT * FROM `event` LEFT JOIN `organizer_info` ON event.orgID=organizer_info.userID ORDER BY `eventID` ASC";
 			$statement = $conn->query($query);
 
-			$this->AddFont('DejaVu','','THSarabun.ttf',true);
-            $this->SetFont('DejaVu','',12);
 
 			while($row = $statement->fetch(PDO::FETCH_OBJ)){
 				// start date
