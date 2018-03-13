@@ -12,7 +12,7 @@ $(document).ready(function(e){
 	})
 	function showAllOrganizer(){
 		$.ajax({
-			url: './php-scripts/showOrganizer.php-scripts',
+			url: './php/showOrganizer.php',
 			type: 'POST',
 			dataType:"json",
 			success: function(organizer){
@@ -62,7 +62,7 @@ $(document).ready(function(e){
 		console.log("id>",id);
 		console.log("email>",email);
 		$.ajax({
-			url: "./php-scripts/updateOrganizer.php-scripts",
+			url: "./php/updateOrganizer.php",
 			type: "POST",
 			data: {
 				id: id,
@@ -100,7 +100,7 @@ $(document).ready(function(e){
 		var email = $('#email').val();
 		var phone = $('#phone').val();
 		$.ajax({
-			url: "./php-scripts/addOrganizer.php-scripts",
+			url: "./php/addOrganizer.php",
 			type: "POST",
 			data: {
 				userID: userID,
@@ -143,7 +143,7 @@ $(document).ready(function(e){
 		var id = $('#id-delete1').text();
 		console.log("id>",id);
 		$.ajax({
-			url: "./php-scripts/deleteOrganizer.php-scripts",
+			url: "./php/deleteOrganizer.php",
 			type: "POST",
 			data: {
 				id: id,
@@ -174,7 +174,7 @@ $(document).ready(function(e){
 
 	function showAllAttendant(){
 		$.ajax({
-			url: './php-scripts/showAttendant.php-scripts',
+			url: './php/showAttendant.php',
 			type: 'POST',
 			dataType:"json",
 			success: function(attendant){
@@ -245,7 +245,7 @@ $(document).ready(function(e){
 		console.log("id>",id);
 		console.log("email>",email);
 		$.ajax({
-			url: "./php-scripts/updateAttendant.php-scripts",
+			url: "./php/updateAttendant.php",
 			type: "POST",
 			data: {
 				id: id,
@@ -294,7 +294,7 @@ $(document).ready(function(e){
 			var gender = document.getElementById('female2').value;
 		}
 		$.ajax({
-			url: "./php-scripts/addAttendant.php-scripts",
+			url: "./php/addAttendant.php",
 			type: "POST",
 			data: {
 				userID: userID,
@@ -344,7 +344,7 @@ $(document).ready(function(e){
 		var id = $('#id-delete2').text();
 		console.log("id>",id);
 		$.ajax({
-			url: "./php-scripts/deleteAttendant.php-scripts",
+			url: "./php/deleteAttendant.php",
 			type: "POST",
 			data: {
 				id: id,
@@ -372,7 +372,7 @@ $(document).ready(function(e){
 	})
 	function showAllEvent(){
 		$.ajax({
-			url: './php-scripts/showEvent.php-scripts',
+			url: './php/showEvent.php',
 			type: 'POST',
 			dataType:"json",
 			success: function(event){
