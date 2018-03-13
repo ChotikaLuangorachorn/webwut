@@ -381,8 +381,8 @@ $(document).ready(function(e){
 				tbody.empty();
 				event.forEach(row=>{
 					console.log(row);
-			        startDate= moment(row.eventStart).format('DD/MM/YYYY H:mm');
-			        endDate= moment(row.eventEnd).format('DD/MM/YYYY H:mm');
+			        startDate= moment(row.eventStart).format('DD/MM/YYYY HH:mm');
+			        endDate= moment(row.eventEnd).format('DD/MM/YYYY HH:mm');
 					tr = tbody.append("<tr id='list'></tr>").children().last();
 					tr.append("<td scope='row' style='text-align: center;'>" + row.eventID + "</td>");
 					tr.append("<td scope='row' style='text-align: center;'>" +startDate+ "</td>");

@@ -17,19 +17,17 @@
 	$msg = $_POST['msg'];
 	
 	if(array_key_exists("file", $_FILES)){
-		// echo "has file";
+		// echo "has img file";
 
 		// create file name 
 		$target_file =  $displayName . "-to-" . $toID . " " . $timestamp . "." . basename($_FILES["file"]["type"]);
 		// replace char can't use
 		$target_file =  str_replace(":", "-", $target_file);
 
-		// $target_file = $target_dir . "sadsda" . "-" . basename($_FILES["file"]["name"]);
-		// echo $target_file;
+
 		$uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-		// Check if image file is a actual image or fake image
-		// if(isset($_POST["submit"])) {
+
 	    $check = getimagesize($_FILES["file"]["tmp_name"]);
 	    if($check !== false) {
 	        // echo "File is an image - " . $check["mime"] . ".";
@@ -42,9 +40,8 @@
 		// Check if $uploadOk is set to 0 by an error
 		if ($uploadOk !== 0) {
 
+			// check not enter name of reciever
     		if ($toID!=""){
-				// $query = $connection->exec(
-				// 	"INSERT INTO personal_message (`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ('$fromID', '$toID', '$msg', '$target_file', '$timestamp')");
 				try {
 					$query = $connection->exec('INSERT INTO `personal_message`(`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ((select userID from personal_info where displayName="'.$displayName.'"),(select userID from personal_info where displayName="'.$toID.'"),"'.$msg.'","'."./personalMessage/messageFile/".$target_file.'","'.$timestamp.'")');
 					echo "true";
@@ -54,23 +51,15 @@
 					
 				}
 
-				// if ($query){
-				// 	echo "true";
-				// 	// save file to folder + upload image
-				// 	move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
-				// } else{
-				// 	echo "false";
-				// }
 			} else{
 				echo "not ID";
 			}
 		}
 	}else {
-		// echo "has not file";
+		// echo "has not img file";
 
+		// check not enter name of reciever and msg
 	    if ($toID!="" && $msg!=""){
-			// $query = $connection->exec(
-			// 	"INSERT INTO personal_message (`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ('$fromID', '$toID', '$msg', '', '$timestamp')");
 			try {
 				$query = $connection->exec('INSERT INTO `personal_message`(`fromID`, `toID`, `message`, `filePath`, `timestamp`) VALUES ((select userID from personal_info where displayName="'.$displayName.'"),(select userID from personal_info where displayName="'.$toID.'"), "'.$msg.'","","'.$timestamp.'")');
 				echo "true";		
