@@ -30,7 +30,7 @@
         $statement->execute([$USER]);
         $info = $statement->fetch(PDO::FETCH_OBJ);
         if ($info === FALSE) {
-            // header('location:oops.php');
+            header('location:oops.php');
         }
         $sql = "SELECT eventID, eventStart, eventEnd, eventName, location FROM event_attendant LEFT JOIN event USING (eventID) WHERE aID=?";
         $statement = $conn->prepare($sql); 
@@ -48,8 +48,7 @@
                 $event->images = $images;
             }
         }
-        
-        if (isset($info->id) && $info->id != $_SESSION['ID']) {
+        if (isset($info->userID) && $info->userID != $_SESSION['ID']) {
             $ISOWNER = FALSE;
         }
     }

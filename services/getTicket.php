@@ -8,6 +8,20 @@ if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
     $userID = $_SESSION['ID'];
     $eventID = $_POST['eventID'];
     
+    $sql = "SELECT * FROM event WHERE eventID=?";
+    $statement = $conn->prepare($sql); 
+    $statement->execute([$eventID]);
+    $event = $statement->fetch(PDO::FETCH_OBJ);
+
+    $sql = 'SELECT count(*) as num FROM event_attendant WHERE eventID='.$eventID;;
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $num = $stmt->fetch(PDO::FETCH_OBJ)->num;
+    
+    if ($num >= $event->capacity) {   
+        header("location:../event.php?id=".$eventID);
+    }
+
     $sql = "INSERT INTO payment() values()";
     $statement = $conn->prepare($sql); 
     $statement->execute();
@@ -19,13 +33,7 @@ if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
     $sql = "INSERT INTO event_attendant(eventID,aID,flag,paymentID) values(?,?,?,?)";
     $statement = $conn->prepare($sql); 
     $statement->execute([$eventID, $userID, 1, $max_id]);
-
     
-    $sql = "SELECT * FROM event WHERE eventID=?";
-    $statement = $conn->prepare($sql); 
-    $statement->execute([$eventID]);
-    $event = $statement->fetch(PDO::FETCH_OBJ);
-
     $sql = "SELECT email FROM organizer_info WHERE userID=?";
     $statement = $conn->prepare($sql); 
     $statement->execute([$event->orgID]);
