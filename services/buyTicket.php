@@ -1,5 +1,7 @@
 <?php
 session_start();
+include 'connectDB.php';
+include 'sendMail.php';
 
 if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
     $userID = $_SESSION['ID'];
@@ -19,7 +21,6 @@ if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
         header("location:../event.php?id=".$eventID);
     }
 
-    include 'connectDB.php';
     if($_FILES["evidence"]["name"] != "") {
         $UID = $_SESSION["ID"];
         $target_dir = "../assets/payment/";
