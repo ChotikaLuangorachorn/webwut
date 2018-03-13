@@ -21,18 +21,18 @@
         <!-- Event Start Date -->
         <p class="card-text">
             <span>Event Start: </span>
-            <?php echo date("d/m/Y \a\\t H:i", $recentEvent->getStartDate()
+            <?php echo date("j/m/Y \a\\t H:i", $recentEvent->getStartDate()
             ) ?>
         </p>
         <!-- Event End Date -->
         <p class="card-text">
             <span>Event End: </span>
-            <?php echo date("d/m/Y \\a\t H:i", $recentEvent->getEndDate()) ?>
+            <?php echo date("j/m/Y \a\\t H:i", $recentEvent->getEndDate()) ?>
         </p>
         <!-- Registrable Date -->
         <p class="card-text">
             <span>Can register until: </span>
-            <?php echo date("d/m/Y \a\\t H:i",
+            <?php echo date("j/m/Y \a\\t H:i",
                 $recentEvent->getRegistrableDate()) ?>
         </p>
         <!-- Age Restriction -->
@@ -63,7 +63,7 @@
         <?php require "homepage-card-button.php" ?>
         <!-- create date -->
         <small>Created when:
-            <?php echo date("d/m/Y \a\\t H:i:s A",
+            <?php echo date("j/m/Y \a\\t H:i:s",
                 $recentEvent->getCreateDate()) ?>
         </small>
     </div>

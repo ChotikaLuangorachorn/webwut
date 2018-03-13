@@ -9,6 +9,7 @@
 class EventAttendee
 {
     private $attendeeID;
+    private $attendeeName;
     private $flag;
     private $email;
     private $paymentID;
@@ -38,6 +39,23 @@ class EventAttendee
     {
         $this->attendeeID = $attendeeID;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAttendeeName()
+    {
+        return $this->attendeeName;
+    }
+
+    /**
+     * @param mixed $attendeeName
+     */
+    public function setAttendeeName($attendeeName): void
+    {
+        $this->attendeeName = $attendeeName;
+    }
+
 
     /**
      * @return mixed
@@ -136,5 +154,15 @@ class EventAttendee
         $this->registerStamp = $registerStamp;
     }
 
+    public function getPaymentStatus()
+    {
+        return ($this->flag) ? "Approved " : "Pending";
+    }
+
+    public function getEvidenceLink()
+    {
+        $link = "assets/payment/" . $this->evidence;
+        return "<img src=\"$link\" style=\"height: 100%; width: 100%\">$this->evidence</img>";
+    }
 
 }

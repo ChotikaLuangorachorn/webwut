@@ -1,7 +1,9 @@
+<?php $eventID = $recentEvent->getEventID(); ?>
+
 <a href="<?php echo "assets/events/" .
     $recentEvent->getThumbnail() ?>"
    data-toggle="modal"
-   data-target="#viewModal">
+   data-target="#viewModal-<?= $eventID ?>">
     <!-- Event Thumbnail -->
     <img class="image-640-360 image-fit-cover
                             img-thumbnail
@@ -11,16 +13,12 @@
              $recentEvent->getThumbnail() ?>"/>
 </a>
 
-<!-- View Event Modal -->
+<!-- View Event Modal <?= $eventID ?> -->
 <?php
-$eventID = $recentEvent->getEventID();
-
-$modalID = "viewModal";
+$modalID = "viewModal-$eventID";
 $modalTitle = "Viewing an event...";
 $modalBody = "Do you want to view an event?";
 $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary button-modal\"
                         data-dismiss=\"modal\">No</button>";
-$modalConfirmButton = "<a class=\"btn btn-primary button-modal\" href=\"#\" data-dismiss=\"modal\">Yes</a>";
-
-/* href should go event-viewer.php?eid=$eventID, but it's not ready */
+$modalConfirmButton = "<a class=\"btn btn-primary button-modal\" href=\"event-viewer.php?eid=$eventID\">Yes</a>";
 require "organizer/php-scripts/modal.php"; ?>

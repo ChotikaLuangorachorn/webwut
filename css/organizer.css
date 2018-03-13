@@ -53,6 +53,10 @@ div#event-options {
     object-fit: cover;
 }
 
+.image-fit-contain {
+    object-fit: contain;
+}
+
 .image-640-360 {
     width: 640px;
     height: 360px;
