@@ -130,6 +130,11 @@ $orgName = $stmt->fetch(PDO::FETCH_OBJ)->orgName;
                 </p>
                 <div class="px-4 pb-4 table-responsive">
                     <?php require 'organizer/event-view-components/attendee-table.php'; ?>
+                    <a class="btn btn
+                    btn-primary button-modal"
+                       href="organizer/php-scripts/pdf-export/exportPDFAttendees.php"
+                       target="_blank">Export as PDF
+                    </a>
                 </div>
             <?php } else { ?>
                 <p class="card-text pl-4"><span>No one participate :(</span></p>
