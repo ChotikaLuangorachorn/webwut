@@ -12,6 +12,10 @@
 <body>
     <?php
     include 'header.php';
+    if (!$LOGGEDIN) {
+        $_SESSION["PREV"] = "../event.php" . (array_key_exists("id", $_GET) ? "?id=".$_GET['id'] :'');
+        header('location:login.php');
+    }
     if (!array_key_exists("id", $_GET)) {
         header('location:oops.php');
     }
