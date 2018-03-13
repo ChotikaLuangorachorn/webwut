@@ -17,7 +17,8 @@
         }
     } else {
         if (!array_key_exists('user', $_GET)) {
-            header('location:oops.php');
+            $_SESSION["PREV"] = "../profile.php";
+            header('location:login.php');
         }
         $USER = $_GET['user'];
     }
@@ -36,7 +37,7 @@
         $statement->execute([$USER]);
         $info = $statement->fetch(PDO::FETCH_OBJ);
         if ($info === FALSE) {
-            header('location:oops.php');
+            // header('location:oops.php');
         }
         $sql = "SELECT eventID, eventStart, eventEnd, eventName, location FROM event_attendant LEFT JOIN event USING (eventID) WHERE aID=?";
         $statement = $conn->prepare($sql); 

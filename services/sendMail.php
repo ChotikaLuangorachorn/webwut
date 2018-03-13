@@ -5,8 +5,10 @@
 //     <h1>hello</h1>
 // HOw are You?
 // ";
-$headers = 'From: no-reply@localhost' . "\r\n" .
-$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-mail($receiver, $email_subject, $message, $headers);
+function sendMail($receiver, $subject, $message) {
+    $headers = 'From: webwut.event@gmail.com' . "\r\n" .
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+    
+    mail($receiver, $subject, $message, $headers);
+}
 ?>
