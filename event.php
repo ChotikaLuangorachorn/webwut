@@ -104,20 +104,17 @@
             $survey_link = $survey_link->surveyLink;
         }
 
-        $sql = 'SELECT orgName FROM organizer_info WHERE userID='.$event->orgID;;
+        $sql = 'SELECT orgName FROM organizer_info WHERE userID='.$event->orgID;
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $orgName = $stmt->fetch(PDO::FETCH_OBJ)->orgName;
 
-<<<<<<< HEAD
         
-        $sql = 'SELECT count(*) as num FROM event_attendant WHERE eventID='.$eventID;;
+        $sql = 'SELECT count(*) as num FROM event_attendant WHERE eventID='.$eventID;
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $num = $stmt->fetch(PDO::FETCH_OBJ)->num;
         
-=======
->>>>>>> 99ba229f5d7fdb6259a0fcdc67b7a5252bbcc977
     }
     ?>
     <div class="container" id="main-content">
