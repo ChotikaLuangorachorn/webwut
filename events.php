@@ -287,7 +287,7 @@ include 'services/connectDB.php';
               <img src="assets/events/`+allEvents[index].image+`" width="170" height="150" class="d-inline-block align-top" id="titleImage" alt="">
             </div>
             <div class="col-5 align-self-center">
-              <a href="event.php?id=`+allEvents[index].eventID+`" class="btn btn-join" role="button">Buy ticket</a>
+              <a href="event.php?id=`+allEvents[index].eventID+`" class="btn btn-join" role="button">`+(allEvents[index].price == 0 ? 'Get ticket' : 'Buy ticket')+`</a>
             </div>
             <div class="col-12">
               <br>

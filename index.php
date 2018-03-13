@@ -412,6 +412,7 @@
         }
 
 
+
         var scienceEvents = <?php echo json_encode($scienceEvents); ?>;
         if (isEmpty(scienceEvents)) {
           $("#topicYellowSci").hide();
@@ -424,7 +425,7 @@
             <div class="row table-row">
               <div class="col-3">
                 <img src="assets/events/`+event.image+`" width="130" height="130" class="d-inline-block align-top" id="titleImage" alt="">
-                <a href="event.php?id=`+event.eventID+`" class="btn btn-join" role="button">Buy ticket</a>
+                <a href="event.php?id=`+event.eventID+`" class="btn btn-join" role="button">`+(event.price == 0 ? 'Get ticket' : 'Buy ticket')+`</a>
                 </div>
               <div class="col-9">
                 <p class="topic">`+event.eventName+`</p>
