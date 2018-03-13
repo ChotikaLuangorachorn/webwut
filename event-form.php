@@ -5,6 +5,7 @@ require_once "header.php";
  *  "ROLE" = "OR",
  *  "displayName" = orgName
  */
+
 // Send them back to index if they're not organizer
 if($_SESSION["ROLE"] !== "OR"){
     header("Location: index.php");

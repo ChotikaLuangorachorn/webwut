@@ -38,9 +38,6 @@ class Event
      * @param $attendingCost
      * @param $indoorName
      * @param $location
-     * @param $surveyLink
-     * @param $thumbnail
-     * @param $attendees
      */
     public function __construct($eventID, $orgID, $eventName, $eventType, $detail,
                                 $createDate, $registrableDate, $startDate, $endDate, $age,
@@ -365,7 +362,7 @@ class Event
      */
     public function getAgeCondition(): string
     {
-        return ($this->age <= 0) ? "Any Age" : "Must be above $this->age";
+        return ($this->age <= 0) ? "All Age" : "Must be above $this->age";
     }
 
     /**
@@ -400,7 +397,7 @@ class Event
     {
         switch ($this->gender) {
             case 'all':
-                return 'Any Gender';
+                return 'All Gender';
             case 'female':
                 return 'Female';
             case 'male':

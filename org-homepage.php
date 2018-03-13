@@ -7,7 +7,7 @@ require_once "header.php";
  *  "displayName" = orgName
  * */
 
-if($_SESSION["ROLE"] !== "OR"){
+if ($_SESSION["ROLE"] !== "OR") {
     header("Location: index.php");
 }
 ?>
@@ -20,7 +20,8 @@ if($_SESSION["ROLE"] !== "OR"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Loading CSS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/organizer.css">
 
@@ -32,7 +33,11 @@ if($_SESSION["ROLE"] !== "OR"){
 require_once "services/connectDB.php";
 require_once "organizer/php-scripts/Event.php";
 require_once "organizer/php-scripts/EventAttendee.php";
-require_once "organizer/php-scripts/event-loader.php";
+
+// get $events element
+require_once "organizer/php-scripts/event-homepage-loader.php";
+$hasData = count($events) > 0;
+
 // If unset eventID in session
 if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
     unset($_SESSION["eventID"]);
@@ -43,17 +48,36 @@ if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="headings my-4 p-4">Events
-        <small>from Organizer &raquo; <?php echo $_SESSION["displayName"] ?></small>
+        <small>from Organizer
+            &raquo; <?php echo $_SESSION["displayName"] ?></small>
     </h1>
 
     <!-- Wrapper -->
     <div class="row">
         <!-- Add Events Button-->
         <div class="col-md-3 p-4">
-            <button type="button" class="btn btn-primary btn-lg btn-block p-3"
-                    id="add-event-btn" data-toggle="modal"
-                    data-target="#addEventModal">Add Event
-            </button>
+            <div class="row">
+                <button type="button"
+                        class="btn btn-primary btn-lg btn-block p-3"
+                        id="add-event-btn" data-toggle="modal"
+                        data-target="#addEventModal">Add Event
+                </button>
+                <h4 class="col-12">View Event as:</h4>
+                <div class="btn-group col-10 offset-1" role="group"
+                     aria-label="Basic example">
+                    <button type="button" class="btn btn
+                    btn-primary button-modal col-4"
+                            onclick="viewCard()">Card
+                    </button>
+                    <button type="button" class="btn btn
+                    btn-secondary button-modal col-4"
+                            onclick="viewTable()">Table
+                    </button>
+                    <button type="button" class="btn btn
+                    btn-primary button-modal col-4">PDF
+                    </button>
+                </div>
+            </div>
             <!-- Add Event Modal -->
             <?php
             $modalID = "addEventModal";
@@ -65,56 +89,39 @@ if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
             require "organizer/php-scripts/modal.php"; ?>
         </div>
         <!-- Events holder-->
-        <div class="col-md-9 mx-auto p-4 container-fluid row">
-            <?php if (count($events) <= 0) { ?>
-            <!-- No data -->
-            <div class="event-holder p-4 invisible">
-                <?php } else { ?>
-                <!-- Have some data -->
-                <div class="event-holder p-4">
-                    <?php
-                    for ($i = 0; $i < count($events); $i++) { ?>
-                        <!-- Event <?php echo $i + 1 ?> -->
-                        <?php
-                        $recentEvent = $events[$i];
-                        require "organizer/homepage-components/homepage-card.php";
-                    }
-                    } ?>
-                    <!-- /.row -->
-<?php
-// 'Temporary' remove paginator
-//                    <!-- Pagination -->
-//                    <ul class="pagination justify-content-center">
-//                        <li class="page-item">
-//                            <a class="page-link" href="#" aria-label="Previous">
-//                                <span aria-hidden="true">&laquo;</span>
-//                                <span class="sr-only">Previous</span>
-//                            </a>
-//                        </li>
-//                        <li class="page-item">
-//                            <a class="page-link" href="#">1</a>
-//                        </li>
-//                        <li class="page-item">
-//                            <a class="page-link" href="#">2</a>
-//                        </li>
-//                        <li class="page-item">
-//                            <a class="page-link" href="#">3</a>
-//                        </li>
-//                        <li class="page-item">
-//                            <a class="page-link" href="#" aria-label="Next">
-//                                <span aria-hidden="true">&raquo;</span>
-//                                <span class="sr-only">Next</span>
-//                            </a>
-//                        </li>
-//                    </ul>
-?>
-                    <!-- /.row -->
-                </div>
-                <!-- /.event holder -->
+        <div class="col-md-9 mx-auto p-4 container-fluid row <?php if (!$hasData) echo "invisible"; ?>">
+            <div id="card-wrapper" class="container-fluid">
+                <?php
+                for ($i = 0; $i < count($events); $i++) { ?>
+                    <!-- Event <?php echo $i + 1 ?> -->
+                    <?php $recentEvent = $events[$i]; ?>
+                    <div class="event-holder p-4">
+                        <?php require "organizer/homepage-components/homepage-card.php"; ?>
+                        <!-- /.event card holder -->
+                    </div>
+                <?php } ?>
             </div>
-            <!-- /.wrapper -->
+            <div id="table-wrapper" class="event-holder pb-4 table-responsive"
+                 style="display: none">
+                <?php require "organizer/homepage-components/homepage-table.php"; ?>
+                <!-- /.event table holder -->
+            </div>
+            <!-- /.Event Holder -->
         </div>
-        <!-- /.container -->
+        <!-- /.Wrapper -->
     </div>
+    <!-- /.container -->
+</div>
+<script>
+    function viewCard() {
+        document.getElementById("card-wrapper").style.display = "block";
+        document.getElementById("table-wrapper").style.display = "none";
+    }
+
+    function viewTable() {
+        document.getElementById("card-wrapper").style.display = "none";
+        document.getElementById("table-wrapper").style.display = "block";
+    }
+</script>
 </body>
 </html>
