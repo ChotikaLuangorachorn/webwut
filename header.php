@@ -22,7 +22,7 @@
         <div class="row">
           <div class="col-6">
           <a class="navbar-brand" href="../webwut">
-            <img  src="assets/image/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
+            <img src="assets/image/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
             <font size="6" color="#f675b3">WEBWUT <b>Event</b></font>
           </a>
           </div>

@@ -60,7 +60,7 @@
                 $role = $value->role;
                 $userID = $value->userID;
                 if ($role == "AT") {
-                    $sql = 'SELECT displayName FROM personal_info WHERE userID='.$userID;
+                    $sql = 'SELECT displayName,image FROM personal_info WHERE userID='.$userID;
                 } else if ($role == "OR") {
                     $sql = 'SELECT orgName as displayName FROM organizer_info WHERE userID='.$userID;
                 } else if ($role == "AD") {
@@ -68,8 +68,10 @@
                 }
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
-                $displayName = $stmt->fetch(PDO::FETCH_OBJ)->displayName;
+                $pinfo = $stmt->fetch(PDO::FETCH_OBJ);
+                $displayName = $pinfo->displayName;
                 $value->name = $displayName;
+                $value->image = $pinfo->image;
                 $comments[] = $value;
             }
         }
@@ -123,7 +125,7 @@
                         <div id="event-time">
                             <i class="fa fa-clock-o fa-fw text-primary"></i><?php echo $event->eventStart." - ".$event->eventEnd; ?>
                         </div>
-
+                        <hr>
                         <div id="event-location">
                             <toggle id="event-map-toggle" data-toggle="collapse" href="#event-map">
                                 <i class="fa fa-map-marker fa-fw text-primary"></i>
@@ -133,7 +135,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-sm-4 text-right text-xs-center action-button">
+                 <div class="col-xs-12 col-sm-4 text-right text-xs-center action-button">
                         <?php
                         if (!$ISATTENDED) {
                             echo '<a class="btn btn-secondary '.($PASS_CONDITION ? '' : 'disabled').'" id="top-buy-tickets-btn" data-scroll="true" href="#event-ticket">'.($event->price <= 0 ? "Get Tickets" : "Buy Ticket").'</a>';
@@ -152,6 +154,9 @@
                     <div id="gmap"></div>
                 </div>
             </div>
+
+            <br>
+            <div class=container-fluid id='bg'>
             <div id="event-detail" class="margin-top">
                 <h3>Detail</h3>
                 <p><?php echo $event->eventDetail ?></p>
@@ -176,7 +181,7 @@
                     echo '<div id="event-ticket" >
                     <h3>Tickets</h3>
                     <p>1 Ticket for '.($event->price==0? "Free" : $event->price." baht.").'</p>
-                    <a class="btn btn-secondary disabled">รอการยืนยัน</a></div>';
+                    <a class="btn btn-secondary disabled" id="btnStatus" >รอการยืนยัน</a></div>';
                 } else {
                     echo '<div id="event-ticket" >
                     <h3>Tickets</h3>
@@ -188,12 +193,14 @@
                 echo '
                 <div id="event-survey">
                     <h3>Survey</h3>
-                    <a href="'.$survey_link.'">ทำแบบประเมินที่นี่</a>
+                    <a id="assessment" href="'.$survey_link.'">ทำแบบประเมินที่นี่</a>
                 </div>
                 ';
             }
             ?>
-        </div>
+        </div></div>
+
+        <br>
         <div id="comments">
             <?php include 'services/comments.php'; ?>
         </div>

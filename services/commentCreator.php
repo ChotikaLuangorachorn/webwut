@@ -1,22 +1,24 @@
 <?php
 echo "
+<br>
 <div class='comment-box'>
     <div class='row'>
-        <div class='col-2' id='comment-user'>
-            <a href='profile.php?user=".$comment->name."'>".$comment->name."</a>
+        <div class='col-3'>
+            <a href='profile.php?user=".$comment->name."'>
+            <img id=imgUser width='50' height='50' src='assets/users/".($comment->image? $comment->image:'nopic.png')."'><br>".$comment->name."</a>
         </div>
-        <div class='col-10'>
-            <div class='row' id='comment-detail'>   
-                <div class='col-12'>
-                    <p>".$comment->comment."</p>
+        <div class='col-9 ' id='comment'>
+            <div class='table-row'>   
+                <div class='col-12 noPadding' id='comment-detail'>
+                    <p id='commentText'>".$comment->comment."</p>
+                </div>
+            </div>
+            <div class='table-row'>   
+                <div class='col-12 noPadding' id='comment-date'>
+                    <p id='commentDate'>Date: ".$comment->date."</p>
                 </div>
             </div>
 
-            <div class='row' id='comment-detail'>  
-                <div class='col-12' id='comment-date'>
-                    <p>Date: ".$comment->date."</p>
-                </div>
-            </div>
         </div>    
     </div>
  

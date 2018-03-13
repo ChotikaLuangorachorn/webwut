@@ -279,7 +279,7 @@ include 'services/connectDB.php';
       var html = '';
 
       for (index in allEvents) {
-      html += `
+      html += `<a href="event.php?id=`+allEvents[index].eventID+`">
         `+(index%3==0 ? '<div class="row">' : '')+`
         <div class="col-sm-4">
           <div class="row table-row">
@@ -298,7 +298,7 @@ include 'services/connectDB.php';
           </div>
           </div>
           `+(index%3==2 || index+1==allEvents.length ? '</div>' : '')+`
-      `;
+      </a>`;
     }
     $(".allEvents").append(html);
 
