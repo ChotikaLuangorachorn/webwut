@@ -101,6 +101,12 @@
         if ($survey_link !== FALSE) {
             $survey_link = $survey_link->surveyLink;
         }
+
+        $sql = 'SELECT orgName FROM organizer_info WHERE userID='.$event->orgID;;
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $orgName = $stmt->fetch(PDO::FETCH_OBJ)->orgName;
+        
     }
     ?>
     <div class="container" id="main-content">
@@ -149,6 +155,7 @@
             <div id="event-detail" class="margin-top">
                 <h3>Detail</h3>
                 <p><?php echo $event->eventDetail ?></p>
+                <p>Event Founder: <?php echo $orgName ?></p>
             </div>
             <div id="event-condition" >
                 <h3>Condition</h3>
