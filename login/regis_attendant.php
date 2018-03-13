@@ -15,7 +15,7 @@
         session_start();
     ?>
     <div class="text-center">
-        <div class="logo">Create a new attendant</div>
+        <div class="logo">New attendant</div>
         <!-- Main Form -->
         <div class="login-form-1">
             <form id="register-form" class="text-left" >
@@ -23,39 +23,39 @@
                 <div class="main-login-form">
                     <div class="login-group">
                         <div class="form-group">
-                            <label for="reg_username" class="sr-only">Username</label>
+                            <label for="reg_username" class="form-control">Username :</label>
                             <input type="text" required minlength="3" maxlength="16" class="form-control" id="reg_username" name="reg_username" placeholder="username">
                         </div>
                         <div class="form-group">
-                            <label for="reg_password" class="sr-only">Password</label>
+                            <label for="reg_password" class="form-control">Password :</label>
                             <input type="password" required minlength="3" maxlength="16" class="form-control" id="reg_password" name="reg_password" placeholder="password">
                         </div>
                         <div class="form-group">
-                            <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
+                            <label for="reg_password_confirm" class="form-control">Password Confirm :</label>
                             <input type="password" required class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
                         </div>
                         <div class="form-group">
-                            <label for="reg_displayname" class="sr-only">Display Name</label>
+                            <label for="reg_displayname" class="form-control">Display Name :</label>
                             <input type="text" required class="form-control" id="reg_displayname" name="reg_displayname" placeholder="display name">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Full Name</label>
-                            <input type="text" required class="form-control" id="reg_fullname" name="reg_fullname" placeholder="first name">
+                            <label for="reg_firstname" class="form-control">First Name :</label>
+                            <input type="text" required class="form-control" id="reg_firstname" name="reg_firstname" placeholder="first name">
                         </div>
                         <div class="form-group">
-                            <label for="reg_lastname" class="sr-only">Surname</label>
+                            <label for="reg_lastname" class="form-control">Surname :</label>
                             <input type="text" required class="form-control" id="reg_lastname" name="reg_lastname" placeholder="surname">
                         </div>
                         <div class="form-group">
-                            <label for="reg_age" class="sr-only">Age</label>
+                            <label for="reg_age" class="form-control">Age :</label>
                             <input type="number" required min="1" max="150" class="form-control" id="reg_age" name="reg_age" placeholder="age">
                         </div>
                         <div class="form-group">
-                            <label for="reg_email" class="sr-only">Email</label>
+                            <label for="reg_email" class="form-control">Email Address :</label>
                             <input type="email" required class="form-control" id="reg_email" name="reg_email" placeholder="email address">
                         </div>
                         <div class="form-group">
-                            <label for="reg_mobile_no" class="sr-only">Mobile No</label>
+                            <label for="reg_mobile_no" class="form-control">Mobile Number :</label>
                             <input type="tel" required pattern="[0-9]{10}" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
                         </div>                          
                         <div class="form-group login-group-checkbox">

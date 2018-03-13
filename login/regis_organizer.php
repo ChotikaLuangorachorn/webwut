@@ -15,7 +15,7 @@
         session_start();
     ?>
     <div class="text-center">
-        <div class="logo">Create a new organizer</div>
+        <div class="logo">New organizer</div>
         <!-- Main Form -->
         <div class="login-form-1">
             <form id="register-form" class="text-left">
@@ -23,27 +23,27 @@
                 <div class="main-login-form">
                     <div class="login-group">
                         <div class="form-group">
-                            <label for="reg_username" class="sr-only">Username</label>
+                            <label for="reg_username" class="form-control">Username :</label>
                             <input type="text" required minlength="3" maxlength="16" class="form-control" id="reg_username" name="reg_username" placeholder="username" value="">
                         </div>
                         <div class="form-group">
-                            <label for="reg_password" class="sr-only">Password</label>
+                            <label for="reg_password" class="form-control">Password :</label>
                             <input type="password" required minlength="3" maxlength="16" class="form-control" id="reg_password" name="reg_password" placeholder="password">
                         </div>
                         <div class="form-group">
-                            <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
+                            <label for="reg_password_confirm" class="form-control">Password Confirm :</label>
                             <input type="password" required class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Name</label>
+                            <label for="reg_orgname" class="form-control">Organization Name :</label>
                             <input type="text" required class="form-control" id="reg_fullname" name="reg_fullname" placeholder="organization name">
                         </div>
                         <div class="form-group">
-                            <label for="reg_email" class="sr-only">Email</label>
+                            <label for="reg_email" class="form-control">Email Address:</label>
                             <input type="email" required class="form-control" id="reg_email" name="reg_email" placeholder="email address">
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Mobile No</label>
+                            <label for="reg_orgname" class="form-control">Mobile number :</label>
                             <input type="tel" required pattern="[0-9]{10}" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
                         </div>                                                    
                     </div>
