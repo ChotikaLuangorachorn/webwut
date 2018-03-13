@@ -53,4 +53,8 @@
 - oops.php แสดงเมื่อไม่เจอหน้า page 
 - profile.php แสดงหน้า profile ของ Attendant
 - profile-edit.php แสดงหน้าแก้ไข profile ของ Attendant
-- **webwutdb_update2.sql** ฐานข้อมูลที่ใช้ในการเก็บข้อมูลในปัจจุบัน
+- **webwutdb_update2.sql** ฐานข้อมูลที่ใช้ในการเก็บข้อมูลในปัจจุบัน  
+
+**หมายเหตุ**
+* Administrator Page
+ - การ export to PDF ไม่รองรับภาษาไทย
