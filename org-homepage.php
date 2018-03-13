@@ -63,7 +63,7 @@ if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
                         data-target="#addEventModal">Add Event
                 </button>
                 <h4 class="col-12">View Event as:</h4>
-                <div class="btn-group col-10 offset-1" role="group"
+                <div class="btn-group col-12" role="group"
                      aria-label="Basic example">
                     <button type="button" class="btn btn
                     btn-primary button-modal col-4"
@@ -73,9 +73,11 @@ if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
                     btn-secondary button-modal col-4"
                             onclick="viewTable()">Table
                     </button>
-                    <button type="button" class="btn btn
-                    btn-primary button-modal col-4">PDF
-                    </button>
+                    <a class="btn btn
+                    btn-primary button-modal col-4"
+                       href="organizer/php-scripts/pdf-export/exportPDFOrgEvents.php"
+                       target="_blank">PDF
+                    </a>
                 </div>
             </div>
             <!-- Add Event Modal -->
