@@ -19,6 +19,8 @@
     - images
     - users
     - payment เก็บรูปภาพหลักฐานการชำระเงิน
+    - lib
+        - tfpdf - ใช้ในการ export to PDF
 * css
 * login - จัดการหน้าเว็บการลงทะเบียน
     - add_at.js - ใช้ส่งข้อมูลจาก regis_attendate.php ไปที่ services/create_attendant.php
