@@ -71,7 +71,7 @@
                         <div class="col-4"><h3>E-mail: </h3></div><div class="col-8"><input type="email" name="email" id="email" required value="<?php echo $info->email; ?>"></div>
                     </div>
                     <div class="row">
-                        <div class="col-4"><h3>Tel: </h3></div><div class="col-8"><input type="tel" name="tel" id="tel" required value="<?php echo $info->phoneNo; ?>"></div>
+                        <div class="col-4"><h3>Tel: </h3></div><div class="col-8"><input type="tel" name="tel" id="tel" required pattern="[0-9]{10}" value="<?php echo $info->phoneNo; ?>"></div>
                     </div>
                     <div class="row padding-top">
                         <div class="col-2"></div>

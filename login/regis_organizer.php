@@ -24,27 +24,27 @@
                     <div class="login-group">
                         <div class="form-group">
                             <label for="reg_username" class="sr-only">Username</label>
-                            <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username" value="">
+                            <input type="text" required minlength="3" maxlength="16" class="form-control" id="reg_username" name="reg_username" placeholder="username" value="">
                         </div>
                         <div class="form-group">
                             <label for="reg_password" class="sr-only">Password</label>
-                            <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
+                            <input type="password" required minlength="3" maxlength="16" class="form-control" id="reg_password" name="reg_password" placeholder="password">
                         </div>
                         <div class="form-group">
                             <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
-                            <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
+                            <input type="password" required class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
                         </div>
                         <div class="form-group">
                             <label for="reg_fullname" class="sr-only">Name</label>
-                            <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="organization name">
+                            <input type="text" required class="form-control" id="reg_fullname" name="reg_fullname" placeholder="organization name">
                         </div>
                         <div class="form-group">
                             <label for="reg_email" class="sr-only">Email</label>
-                            <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email address">
+                            <input type="email" required class="form-control" id="reg_email" name="reg_email" placeholder="email address">
                         </div>
                         <div class="form-group">
                             <label for="reg_fullname" class="sr-only">Mobile No</label>
-                            <input type="text" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
+                            <input type="tel" required pattern="[0-9]{10}" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
                         </div>                                                    
                     </div>
                     <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
