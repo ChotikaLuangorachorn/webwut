@@ -21,17 +21,19 @@
         <!-- Event Start Date -->
         <p class="card-text">
             <span>Event Start: </span>
-            <?php echo date("d/m/Y", $recentEvent->getStartDate()) ?>
+            <?php echo date("d/m/Y \a\\t H:i", $recentEvent->getStartDate()
+            ) ?>
         </p>
         <!-- Event End Date -->
         <p class="card-text">
             <span>Event End: </span>
-            <?php echo date("d/m/Y", $recentEvent->getEndDate()) ?>
+            <?php echo date("d/m/Y \\a\t H:i", $recentEvent->getEndDate()) ?>
         </p>
         <!-- Registrable Date -->
         <p class="card-text">
             <span>Can register until: </span>
-            <?php echo date("d/m/Y", $recentEvent->getRegistrableDate()) ?>
+            <?php echo date("d/m/Y \a\\t H:i",
+                $recentEvent->getRegistrableDate()) ?>
         </p>
         <!-- Age Restriction -->
         <p class="card-text">

@@ -94,6 +94,8 @@ require_once "organizer/event-form-components/php/form-cache.php";
 <script src="organizer/event-form-components/js/form-checkbox.js"></script>
 <!-- Form Modal -->
 <script src="organizer/event-form-components/js/form-modal.js"></script>
+<!-- Form date -->
+<script src="organizer/event-form-components/js/form-date.js"></script>
 </body>
 </html>
 

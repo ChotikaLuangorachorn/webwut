@@ -10,10 +10,15 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
-    <?php 
+    <?php
     include 'header.php';
     if (!array_key_exists("id", $_GET)) {
         header('location:oops.php');
+    }
+
+    // Redirect if the user is ad or org
+    if(!empty($_SESSION["ROLE"]) && $_SESSION["ROLE"] == "OR"){
+        header('location: index.php');
     }
     include 'services/connectDB.php';
     if (isset($conn)) {
@@ -139,7 +144,7 @@
                 <p>Gender: <?php echo $event->gender=="all"? "All Gender" : "Only ".$event->gender ?></p>
                 <h4 style="color: <?php echo $PASS_CONDITION ? 'green' : 'red' ?>"><?php echo $PASS_CONDITION ? "YOU DO PASS ALL OF THE CONDITIONS." : "YOU DO NOT PASS ALL OF THE CONDITIONS." ?></h4>
             </div>
-            <?php 
+            <?php
             if (!$ISATTENDED) {
                 echo $PASS_CONDITION ?
                 '<div id="event-ticket" >
@@ -211,7 +216,7 @@
                 center: {lat: -34.397, lng: 150.644},
                 zoom: 15
             });
-            
+
             google.maps.event.addListenerOnce(map, 'idle', codeAddress);
         }
 

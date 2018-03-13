@@ -66,9 +66,11 @@ if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
         </div>
         <!-- Events holder-->
         <div class="col-md-9 mx-auto p-4 container-fluid row">
-            <?php if (!isset($events)) { ?>
+            <?php if (count($events) <= 0) { ?>
+            <!-- No data -->
             <div class="event-holder p-4 invisible">
                 <?php } else { ?>
+                <!-- Have some data -->
                 <div class="event-holder p-4">
                     <?php
                     for ($i = 0; $i < count($events); $i++) { ?>
@@ -79,31 +81,33 @@ if (isset($_SESSION["eventID"]) && !empty($_SESSION["eventID"])) {
                     }
                     } ?>
                     <!-- /.row -->
-
-                    <!-- Pagination -->
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
+<?php
+// 'Temporary' remove paginator
+//                    <!-- Pagination -->
+//                    <ul class="pagination justify-content-center">
+//                        <li class="page-item">
+//                            <a class="page-link" href="#" aria-label="Previous">
+//                                <span aria-hidden="true">&laquo;</span>
+//                                <span class="sr-only">Previous</span>
+//                            </a>
+//                        </li>
+//                        <li class="page-item">
+//                            <a class="page-link" href="#">1</a>
+//                        </li>
+//                        <li class="page-item">
+//                            <a class="page-link" href="#">2</a>
+//                        </li>
+//                        <li class="page-item">
+//                            <a class="page-link" href="#">3</a>
+//                        </li>
+//                        <li class="page-item">
+//                            <a class="page-link" href="#" aria-label="Next">
+//                                <span aria-hidden="true">&raquo;</span>
+//                                <span class="sr-only">Next</span>
+//                            </a>
+//                        </li>
+//                    </ul>
+?>
                     <!-- /.row -->
                 </div>
                 <!-- /.event holder -->

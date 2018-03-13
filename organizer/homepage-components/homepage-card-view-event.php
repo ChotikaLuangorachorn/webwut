@@ -20,5 +20,7 @@ $modalTitle = "Viewing an event...";
 $modalBody = "Do you want to view an event?";
 $modalCancelButton = "<button type=\"button\" class=\"btn btn-secondary button-modal\"
                         data-dismiss=\"modal\">No</button>";
-$modalConfirmButton = "<a class=\"btn btn-primary button-modal\" href=\"event-viewer.php?eid=$eventID\">Yes</a>";
+$modalConfirmButton = "<a class=\"btn btn-primary button-modal\" href=\"#\" data-dismiss=\"modal\">Yes</a>";
+
+/* href should go event-viewer.php?eid=$eventID, but it's not ready */
 require "organizer/php-scripts/modal.php"; ?>

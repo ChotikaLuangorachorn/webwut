@@ -38,9 +38,9 @@ if (empty($_GET)) {
         $eventData = $statement->fetch(PDO::FETCH_ASSOC);
         $detail = $eventData["eventDetail"];
         $type = $eventData["type"];
-        $registrableDate = date("Y-m-d", strtotime($eventData["registrableDate"]));
-        $startDate = date("Y-m-d", strtotime($eventData["eventStart"]));
-        $endDate = date("Y-m-d", strtotime($eventData["eventEnd"]));
+        $registrableDate = date("Y-m-d\TH:i:s", strtotime($eventData["registrableDate"]));
+        $startDate = date("Y-m-d\TH:i:s", strtotime($eventData["eventStart"]));
+        $endDate = date("Y-m-d\TH:i:s", strtotime($eventData["eventEnd"]));
         $eventName = $eventData["eventName"];
         $maxEntries = $eventData["capacity"];
         $indoorName = $eventData["indoorName"];

@@ -4,7 +4,7 @@ $(document).ready(function(e){
     type: "POST",
     success: function(response){
       if (response == 0) {
-        window.location.replace("../organizer/homepage.php");
+        window.location.replace("../org-homepage.php");
       }
       if (response == 1) {
         $('#error-box').html('Please fill data!!')

@@ -82,6 +82,7 @@ function createInsertEventQuery($postData, $orgID)
     $registrableDate = date("Y-m-d H:i:s", strtotime($postData["event-registrable-date"]));
     $startDate = date("Y-m-d H:i:s", strtotime($postData["event-start-date"]));
     $endDate = date("Y-m-d H:i:s", strtotime($postData["event-end-date"]));
+
     $age = $postData["age"];
     $gender = $postData["gender"];
     $attendingCost = $postData["attending-cost"];
