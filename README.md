@@ -4,7 +4,8 @@
     ```git clone https://github.com/Trosalio/webwut.git```
 2. สร้าง Database ชื่อ webwutdb
 3. import file ชื่อ webwutdb.sql
-4. URL เริ่มที่```{project-path}/webwut/index.php```
+4. URL เริ่มที่
+    ```{project-path}/webwut/index.php```
 
 **อธิบายโครงสร้าง directory**
 ##### Folder #####
