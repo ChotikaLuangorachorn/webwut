@@ -1,5 +1,5 @@
 <?php 
-	require '../../tfpdf/tfpdf.php';
+	require '../../../assets/lib/tfpdf/tfpdf.php';
 
 
 	class exportPDFEvent extends tFPDF{

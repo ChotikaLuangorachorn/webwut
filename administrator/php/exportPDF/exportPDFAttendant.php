@@ -1,5 +1,5 @@
 <?php 
-	require '../../tfpdf/tfpdf.php';
+	require '../../../assets/lib/tfpdf/tfpdf.php';
 
 
 	class exportPDFAttendant extends tFPDF{
@@ -30,6 +30,7 @@
 
 		function bodyTable(){
 			$this->SetFont('Times','',12);
+			
 			include('../connectDB.php');
 			$query = "SELECT * FROM `personal_info` LEFT JOIN `user` ON personal_info.userID=user.id ORDER BY `id` ASC";
 			$statement = $conn->query($query);

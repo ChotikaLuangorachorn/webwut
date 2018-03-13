@@ -1,5 +1,5 @@
 <?php 
-	require '../../tfpdf/tfpdf.php';
+	require '../../../assets/lib/tfpdf/tfpdf.php';
 
 
 	class exportPDFOrganizer extends tFPDF{
@@ -30,8 +30,8 @@
 			$query = "SELECT * FROM `organizer_info` LEFT JOIN `user` ON organizer_info.userID=user.id ORDER BY `id` ASC";
 			$statement = $conn->query($query);
 
-			$this->AddFont('DejaVu','','THSarabun.ttf',true);
-            $this->SetFont('DejaVu','',16);
+			// $this->AddFont('DejaVu','','THSarabun.ttf',true);
+            $this->SetFont('Times','',16);
 
 			while($row = $statement->fetch(PDO::FETCH_OBJ)){
 				$this->Cell(20,10,$row->id,1,0,'C');
