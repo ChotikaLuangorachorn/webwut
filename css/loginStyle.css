@@ -34,9 +34,8 @@ a:hover {
   color: #333333;
   text-decoration: none;
 }
-.form-control {
-  display: inline-block;
-  margin-bottom: -0.5rem;
+label {
+  margin-bottom: 0px;
 }
 /*=== 3. Text Outside the Box ===*/
 .etc-login-form {

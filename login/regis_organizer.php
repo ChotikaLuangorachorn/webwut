@@ -15,7 +15,7 @@
         session_start();
     ?>
     <div class="text-center">
-        <div class="logo">New organizer</div>
+        <div class="logo">New Organizer</div>
         <!-- Main Form -->
         <div class="login-form-1">
             <form id="register-form" class="text-left">
@@ -36,16 +36,16 @@
                         </div>
                         <div class="form-group">
                             <label for="reg_orgname" class="form-control">Organization Name :</label>
-                            <input type="text" required class="form-control" id="reg_fullname" name="reg_fullname" placeholder="organization name">
+                            <input type="text" required class="form-control" id="reg_orgname" name="reg_orgname" placeholder="organization name">
                         </div>
                         <div class="form-group">
                             <label for="reg_email" class="form-control">Email Address:</label>
                             <input type="email" required class="form-control" id="reg_email" name="reg_email" placeholder="email address">
                         </div>
                         <div class="form-group">
-                            <label for="reg_orgname" class="form-control">Mobile number :</label>
+                            <label for="reg_mobile_no" class="form-control">Mobile number :</label>
                             <input type="tel" required pattern="[0-9]{10}" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
-                        </div>                                                    
+                        </div>
                     </div>
                     <label class="btn login-button" for="submit_button"><i class="fa fa-chevron-right"><input type="submit" name="submit_button" id="submit_button" hidden></i></label>
                 </div>

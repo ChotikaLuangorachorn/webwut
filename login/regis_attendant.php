@@ -15,7 +15,7 @@
         session_start();
     ?>
     <div class="text-center">
-        <div class="logo">New attendant</div>
+        <div class="logo">New Attendant</div>
         <!-- Main Form -->
         <div class="login-form-1">
             <form id="register-form" class="text-left" >
@@ -58,10 +58,10 @@
                             <label for="reg_mobile_no" class="form-control">Mobile Number :</label>
                             <input type="tel" required pattern="[0-9]{10}" class="form-control" id="reg_mobile_no" name="reg_mobile_no" placeholder="mobile number">
                         </div>                          
-                        <div class="form-group login-group-checkbox">
-                            <input type="radio" class="" name="reg_gender" id="male" placeholder="username" value="male" checked="checked">
+                        <div class="form-group login-group-checkbox ">
+                            <input type="radio" class="form-control" name="reg_gender" id="male" placeholder="username" value="male" checked="checked">
                             <label for="male">male</label>
-                            <input type="radio" class="" name="reg_gender" id="female" placeholder="username" value="female">
+                            <input type="radio" class="form-control" name="reg_gender" id="female" placeholder="username" value="female">
                             <label for="female">female</label>
                         </div>                            
                     </div>
