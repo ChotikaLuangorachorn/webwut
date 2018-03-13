@@ -37,6 +37,14 @@ if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
     $att = $statement->fetch(PDO::FETCH_OBJ);
     $attEmail = $att->email;
     $attGender = $att->gender;
+    
+    $sql = "SELECT surveyLink FROM event_survey_link WHERE eventID=?";
+    $statement = $conn->prepare($sql); 
+    $statement->execute([$eventID]);
+    $hasSurveyLink = $statement->fetch(PDO::FETCH_OBJ);
+    if ($hasSurveyLink !== FALSE) {
+        $surveyLink = $hasSurveyLink->surveyLink;
+    }
 
     $attendeeSubject = "You have joined an event: $event->eventName.";
     $organizerSubject = $_SESSION['displayName']." has joined your event: $event->eventName.";
@@ -44,10 +52,13 @@ if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
     $attMessage .= "<h3>Location: '".$event->indoorName."' ".$event->location."</h3>";
     $attMessage .= "<h3>Start date: ".$event->eventStart."</h3>";
     $attMessage .= "<h3>Status: APPROVED</h3>";
-    $attMessage .= "<a href='localhost/webwut/event.php?id=$eventID'><h3>See more detail</h3></a>";
+    if ($hasSurveyLink !== FALSE) {
+        $attMessage .= "<h3>Survey Link: <a href='$surveyLink'>$surveyLink</a></h3>";
+    }
+    $attMessage .= "<a href='http://localhost/webwut/event.php?id=$eventID'><h3>See more detail</h3></a>";
 
     $orgMessage = $_SESSION['displayName']." has joined your event: $event->eventName.";
-    $orgMessage .= "<a href='localhost/webwut/profile.php?user=$userID'><h3>Check out ".($attGender=="male"?"his":"her")." profile</h3></a>";
+    $orgMessage .= "<a href='http://localhost/webwut/profile.php?user=$userID'><h3>Check out ".($attGender=="male"?"his":"her")." profile</h3></a>";
     $SUCCESS = TRUE;
 
     sendMail($attEmail, $attendeeSubject, $attMessage);

@@ -58,11 +58,11 @@ if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
                     $attMessage .= "<h3>Location: '".$event->indoorName."' ".$event->location."</h3>";
                     $attMessage .= "<h3>Start date: ".$event->eventStart."</h3>";
                     $attMessage .= "<h3>Status: PENDING</h3>";
-                    $attMessage .= "<a href='localhost/webwut/event.php?id=$eventID'><h3>See more detail</h3></a>";
+                    $attMessage .= "<a href='http://localhost/webwut/event.php?id=$eventID'><h3>See more detail</h3></a>";
 
                     $orgMessage = $_SESSION['displayName']." has joined your event: $event->eventName.";
-                    $orgMessage .= "<a href='localhost/webwut/profile.php?user=$userID'><h3>Approve or Deny ".($attGender=="male"?"him":"her")."</h3></a>";
-                    $orgMessage .= "<a href='localhost/webwut/profile.php?user=$userID'><h3>Check out ".($attGender=="male"?"his":"her")." profile</h3></a>";
+                    $orgMessage .= "<a href='http://localhost/webwut/event-viewer.php?eid=4$eventID'><h3>Approve or Deny ".($attGender=="male"?"him":"her")."</h3></a>";
+                    $orgMessage .= "<a href='http://localhost/webwut/profile.php?user=$userID'><h3>Check out ".($attGender=="male"?"his":"her")." profile</h3></a>";
                     $SUCCESS = TRUE;
 
                     sendMail($attEmail, $attendeeSubject, $attMessage);

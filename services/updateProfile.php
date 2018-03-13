@@ -10,7 +10,7 @@ $failedSubject = "Warning! Your profile has not been updated properly.";
 
 $successMessage = "<h1>Your profile has been updated successfully.</h1>";
 $failedMessage = "<h1>Your profile has not been updated properly.</h1>";
-$defaultMessage = "<a href='localhost/webwut/profile.php'><h3>Check out your profile</h3></a>";
+$defaultMessage = "<a href='http://localhost/webwut/profile.php'><h3>Check out your profile</h3></a>";
 $SUCCESS = TRUE;
 $ISEMAILUPDATED = FALSE;
 $ISNAMEUPDATED = FALSE;
