@@ -210,7 +210,18 @@
                         <p>1 Ticket for <?php echo ($event->price==0? "Free" : $event->price." baht."); ?></p>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-primary" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#buyModal"><?php echo ($event->price==0? "Get" : "Buy"); ?> Now</a>
+                        <?php
+                        if ($event->price==0) {
+                            echo '<form method="post" action="services/getTicket.php">';
+                            echo '<label class="btn btn-primary" for="getTicket">'.($event->price==0? "Get" : "Buy").' Now</label>';
+                            echo '<input type="submit" name="getTicket" id="getTicket" hidden value="submit">';
+                            echo '<input type="text" name="eventID" id="eventID" hidden value="'.$_GET['id'].'">';
+                            echo '</form>';
+                        } else {
+                            echo '<a class="btn btn-primary" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#buyModal">'.($event->price==0? "Get" : "Buy").' Now</a>';
+                        }
+                        
+                        ?>
                     </div>
                 </div>
             </div>
