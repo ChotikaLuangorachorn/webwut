@@ -108,7 +108,7 @@
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $orgName = $stmt->fetch(PDO::FETCH_OBJ)->orgName;
-        
+
     }
     ?>
     <div class="container" id="main-content">
@@ -227,7 +227,7 @@
                         } else {
                             echo '<a class="btn btn-primary" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#buyModal">'.($event->price==0? "Get" : "Buy").' Now</a>';
                         }
-                        
+
                         ?>
                     </div>
                 </div>
@@ -294,3 +294,4 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8OKwMaEJnFUsBBoHsvaHF_cvYoXbJydM&callback=initMap" async defer></script>
 </body>
 </html>
+<?php include 'footer.php';?>

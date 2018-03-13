@@ -7,13 +7,6 @@
         $UID = $_SESSION['ID'];
         if (array_key_exists('user', $_GET)) {
             $USER = $_GET['user'];
-        } else {
-            if ($ROLE == 'OR') {
-                header('location:index.php');
-            }
-            if ($ROLE == 'AD') {
-                header('location:index.php');
-            }
         }
     } else {
         if (!array_key_exists('user', $_GET)) {

@@ -211,6 +211,8 @@ include 'services/connectDB.php';
     <br>
 
 </div>
+</div>
+<?php include 'footer.php';?>
 
 
   <!-- Optional JavaScript -->
