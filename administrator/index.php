@@ -23,10 +23,21 @@
     <div class="container" role="main">
         <!-- Organizer -->
         <div class="row" id="show-organizer">
+
             <div class="col-12" style="text-align: center;">
-                <span style="font-size: 1.5em;">Organizer List</span><br>
+                <span style="font-size: 1.5em;">Organizer List</span>
+            </div>
+
+            <div class="col-12" style="text-align: right;">
+                <a href="./php/exportPDF/exportPDFOrganizer.php" target="_blank">
+                    <button id="btn-export-organizer">Export PDF</button>
+                </a>
+            </div>
+
+            <div class="col-12" style="text-align: center;">
                 Seach: <input oninput="w3.filterHTML('.organizer-list', '#list', this.value)" placeholder="search for a word" style="margin-bottom: 10px;">
             </div>
+
             <div class="col-12">
                 <table>
                     <thead>
@@ -44,11 +55,6 @@
             </div>
             <div class="col-12" style="text-align: center;">
                 <button id="btn-add-organizer">Add User</button>
-            </div>
-            <div class="col-12" style="text-align: right;">
-                <a href="./php/exportPDF/exportPDFOrganizer.php" target="_blank">
-                    <button id="btn-export-organizer">Export PDF</button>
-                </a>
             </div>
 
             <!-- form for add organizer -->
@@ -136,9 +142,19 @@
         <!-- Attendant -->
         <div class="row" id="show-attendant">
             <div class="col-12" style="text-align: center;">
-                <span style="font-size: 1.5em;">Attendant List</span><br>
+                <span style="font-size: 1.5em;">Attendant List</span>
+            </div>
+
+            <div class="col-12" style="text-align: right;">
+                <a href="./php/exportPDF/exportPDFAttendant.php" target="_blank">
+                    <button id="btn-export-attendant">Export PDF</button>
+                </a>
+            </div>
+
+            <div class="col-12" style="text-align: center;">
                 Seach: <input oninput="w3.filterHTML('.attendant-list', '#list', this.value)" placeholder="search for a word" style="margin-bottom: 10px;">
             </div>
+
             <div class="col-12">
                 <table>
                     <thead>
@@ -161,11 +177,6 @@
                 <button id="btn-add-attendant">Add User</button>
             </div>
             
-            <div class="col-12" style="text-align: right;">
-                <a href="./php/exportPDF/exportPDFAttendant.php" target="_blank">
-                    <button id="btn-export-attendant">Export PDF</button>
-                </a>
-            </div>
 
             <!-- form for add attendant -->
             <div id="form-add-attendant">
@@ -285,12 +296,20 @@
         <!-- Event -->
         <div class="row" id="show-event">
             <div class="col-12" style="text-align: center;">
-                <span style="font-size: 1.5em;">Event List</span><br>
-                Seach: <input oninput="w3.filterHTML('.event-list', '#list', this.value)" placeholder="search for a word" style="margin-bottom: 10px;">
+                <span style="font-size: 1.5em;">Event List</span>
             </div>
             
-            <div class="col-12">
+            <div class="col-12" style="text-align: right;">
+                <a href="./php/exportPDF/exportPDFEvent.php" target="_blank">
+                    <button id="btn-export-event">Export PDF</button>
+                </a>
+            </div>     
 
+            <div class="col-12" style="text-align: center;">
+                Seach: <input oninput="w3.filterHTML('.event-list', '#list', this.value)" placeholder="search for a word" style="margin-bottom: 10px;">
+            </div>
+
+            <div class="col-12">
                 <table>
                     <thead>
                         <tr>
@@ -311,11 +330,7 @@
 <!--             <div class="col-12" style="text-align: center;">
                 <button id="">save</button>
             </div> -->
-            <div class="col-12" style="text-align: right;">
-                <a href="./php/exportPDF/exportPDFEvent.php" target="_blank">
-                    <button id="btn-export-event">Export PDF</button>
-                </a>
-            </div>
+
             <ul> Notation:
                 <li>Sort -> Click on Head Table</li>
             </ul>
