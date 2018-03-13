@@ -109,12 +109,15 @@
         $stmt->execute();
         $orgName = $stmt->fetch(PDO::FETCH_OBJ)->orgName;
 
+<<<<<<< HEAD
         
         $sql = 'SELECT count(*) as num FROM event_attendant WHERE eventID='.$eventID;;
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $num = $stmt->fetch(PDO::FETCH_OBJ)->num;
         
+=======
+>>>>>>> 99ba229f5d7fdb6259a0fcdc67b7a5252bbcc977
     }
     ?>
     <div class="container" id="main-content">
@@ -234,7 +237,7 @@
                         } else {
                             echo '<a class="btn btn-primary" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#buyModal">'.($event->price==0? "Get" : "Buy").' Now</a>';
                         }
-                        
+
                         ?>
                     </div>
                 </div>
@@ -301,3 +304,4 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8OKwMaEJnFUsBBoHsvaHF_cvYoXbJydM&callback=initMap" async defer></script>
 </body>
 </html>
+<?php include 'footer.php';?>
