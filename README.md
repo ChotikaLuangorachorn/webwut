@@ -13,6 +13,7 @@
     - css - ใช้ตกแต่งหน้าเว็บไซต์
     - js - ใช้ส่งข้อมูลจาก index.phpของ administrator ไปที่php
     - php - ใช้ เพื่อเชื่อมต่อไป database ประกอบด้วย การ ADD, UPDATE, SELECT
+        - exportPDF - ใช้ สร้าง PDF ของแต่ละตารางของ attendant,organizer และ event
     - index.php -หน้าหลักของ administrator
 * assets - เก็บรูปภาพที่ใช้ภายในเว็บไซต์
     - events
@@ -55,8 +56,6 @@
 - oops.php แสดงเมื่อไม่เจอหน้า page 
 - profile.php แสดงหน้า profile ของ Attendant
 - profile-edit.php แสดงหน้าแก้ไข profile ของ Attendant
-- **webwutdb_update2.sql** ฐานข้อมูลที่ใช้ในการเก็บข้อมูลในปัจจุบัน  
+- **webwutdb.sql** ฐานข้อมูลที่ใช้ในการเก็บข้อมูลในปัจจุบัน  
 
 **หมายเหตุ**
-* Administrator Page
-    - การ export to PDF ไม่รองรับภาษาไทย
