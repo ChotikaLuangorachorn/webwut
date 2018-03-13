@@ -93,6 +93,14 @@
         if ($attended !== FALSE) {
             $ISATTENDED = TRUE;
         }
+
+        $sql = 'SELECT surveyLink FROM event_survey_link WHERE eventID='.$_GET['id'];
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $survey_link = $stmt->fetch(PDO::FETCH_OBJ);
+        if ($survey_link !== FALSE) {
+            $survey_link = $survey_link->surveyLink;
+        }
     }
     ?>
     <div class="container" id="main-content">
@@ -161,13 +169,21 @@
                     echo '<div id="event-ticket" >
                     <h3>Tickets</h3>
                     <p>1 Ticket for '.($event->price==0? "Free" : $event->price." baht.").'</p>
-                    <a class="btn btn-secondary disabled">รอการยืนยัน</a>';
+                    <a class="btn btn-secondary disabled">รอการยืนยัน</a></div>';
                 } else {
                     echo '<div id="event-ticket" >
                     <h3>Tickets</h3>
                     <p>1 Ticket for '.($event->price==0? "Free" : $event->price." baht.").'</p>
-                    <a class="btn btn-success disabled">เข้าร่วมแล้ว</a>';
+                    <a class="btn btn-success disabled">เข้าร่วมแล้ว</a></div>';
                 }
+            }
+            if ($ISATTENDED && $survey_link !== FALSE) {
+                echo '
+                <div id="event-survey">
+                    <h3>Survey</h3>
+                    <a href="'.$survey_link.'">ทำแบบประเมินที่นี่</a>
+                </div>
+                ';
             }
             ?>
         </div>

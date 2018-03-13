@@ -18,7 +18,7 @@ if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
             echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
             if (move_uploaded_file($_FILES["evidence"]["tmp_name"], $target_file)) {
-                echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+                echo "The file ". basename( $_FILES["evidence"]["name"]). " has been uploaded.";
                 if (isset($conn)) {
                     
 
