@@ -29,12 +29,10 @@
     - regis_attendant.php - หน้าลงทะเบียนของ Attendant
     - regis_organizer.php - หน้าลงทะเบียนของ Organizer
 * organizer - จัดการ organizer
-     - css
-     - event-form-components - ส่วนประกอบที่ใช้ในการแสดง event
-     - homepage-components - ส่วนประกอบต่างๆที่แสดงผลบนหน้าเว็บ
-     - js
-     - php
-     - homepage.php - หน้าหลักของ Organizer
+     - event-form-components - โฟล์เดอร์ที่เก็บส่วนประกอบที่ต้องใช้สำหรับไฟล์ event-form.php
+     - event-view-components - โฟล์เดอร์ที่เก็บส่วนประกอบที่ต้องใช้สำหรับไฟล์ event-viewer.php
+     - homepage-components - โฟล์เดอร์ที่เก็บส่วนประกอบที่ต้องใช้สำหรับไฟล์ org-homepage.php
+     - php-scripts - คลาส และ สคริปท์ php ที่ต้องใช้ร่วมกันในไฟล์หลักของ organizer
 * personalMessage - จัดการส่ง และรับ message
     - css - ใช้ตกแต่งหน้าเว็บไซต์
     - js - ใช้ส่งข้อมูลจาก personalMessage.php ไปที่php
@@ -53,6 +51,9 @@
 - personalMessage.php - หน้าหลักของ Message
 - events.php - หน้าแสดงรายการeventต่างๆ หลังจากเลือกfilter หรือ category
 - event.php - หน้าแสดงรายละเอียดของ event
+- org-homepage.php - หน้าหลักของ Organizer สามารถเลือกดูระหว่างแบบการ์ดกับแบบตารางได้
+- event-form.php - หน้าสร้าง/แก้ไขข้อมูล event ของ Organizer
+- event-viewer.php - หน้าดูข้อมูลอื่นๆของ event ที่เลือกขึ้นมาของ Organizer และข้อมูลของผู้เข้าร่วม event
 - oops.php - แสดงเมื่อไม่เจอหน้า page 
 - profile.php - แสดงหน้า profile ของ Attendant
 - profile-edit.php - แสดงหน้าแก้ไข profile ของ Attendant
