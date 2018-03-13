@@ -5,6 +5,20 @@ if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
     $userID = $_SESSION['ID'];
     $eventID = $_POST['eventID'];
 
+    $sql = "SELECT * FROM event WHERE eventID=?";
+    $statement = $conn->prepare($sql); 
+    $statement->execute([$eventID]);
+    $event = $statement->fetch(PDO::FETCH_OBJ);
+
+    $sql = 'SELECT count(*) as num FROM event_attendant WHERE eventID='.$eventID;;
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $num = $stmt->fetch(PDO::FETCH_OBJ)->num;
+    
+    if ($num >= $event->capacity) {   
+        header("location:../event.php?id=".$eventID);
+    }
+
     include 'connectDB.php';
     if($_FILES["evidence"]["name"] != "") {
         $UID = $_SESSION["ID"];
@@ -21,7 +35,6 @@ if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
                 echo "The file ". basename( $_FILES["evidence"]["name"]). " has been uploaded.";
                 if (isset($conn)) {
                     
-
                     $sql = "INSERT INTO payment(evidence) values(?)";
                     $statement = $conn->prepare($sql); 
                     $statement->execute([$new_file_name]);
@@ -33,12 +46,6 @@ if (array_key_exists("ID", $_SESSION) && array_key_exists("eventID", $_POST)) {
                     $sql = "INSERT INTO event_attendant(eventID,aID,flag,paymentID) values(?,?,?,?)";
                     $statement = $conn->prepare($sql); 
                     $statement->execute([$eventID, $UID, 0, $max_id]);
-
-                    
-                    $sql = "SELECT * FROM event WHERE eventID=?";
-                    $statement = $conn->prepare($sql); 
-                    $statement->execute([$eventID]);
-                    $event = $statement->fetch(PDO::FETCH_OBJ);
 
                     $sql = "SELECT email FROM organizer_info WHERE userID=?";
                     $statement = $conn->prepare($sql); 

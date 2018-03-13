@@ -108,6 +108,12 @@
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $orgName = $stmt->fetch(PDO::FETCH_OBJ)->orgName;
+
+        
+        $sql = 'SELECT count(*) as num FROM event_attendant WHERE eventID='.$eventID;;
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $num = $stmt->fetch(PDO::FETCH_OBJ)->num;
         
     }
     ?>
@@ -161,6 +167,7 @@
                 <h3>Detail</h3>
                 <p><?php echo $event->eventDetail ?></p>
                 <p>Event Founder: <?php echo $orgName ?></p>
+                <p>Capacity: <?php echo "$num/$event->capacity"; ?></p>
             </div>
             <div id="event-condition" >
                 <h3>Condition</h3>
@@ -174,7 +181,7 @@
                 '<div id="event-ticket" >
                     <h3>Tickets</h3>
                     <p>1 Ticket for '.($event->price==0? "Free" : $event->price." baht.").'</p>
-                    <a class="btn btn-outline-primary" data-toggle="modal" data-target="#mymodal">'.($event->price==0? "Get" : "Buy").' one now</a>
+                    <a class="btn btn-outline-primary '.($num >= $event->capacity? "disabled" : "").'" data-toggle="modal" data-target="#mymodal">'.($event->price==0? "Get" : "Buy").' one now</a>
                 </div>':"";
             } else {
                 if ($attended->flag != 1) {
@@ -189,7 +196,7 @@
                     <a class="btn btn-success disabled">เข้าร่วมแล้ว</a></div>';
                 }
             }
-            if ($ISATTENDED && $survey_link !== FALSE) {
+            if ($ISATTENDED && $survey_link !== FALSE && $attended->flag==1) {
                 echo '
                 <div id="event-survey">
                     <h3>Survey</h3>
