@@ -20,7 +20,7 @@
 		// echo "has file";
 
 		// create file name 
-		$target_file =  $uid . "-to-" . $toID . " " . $timestamp . "." . basename($_FILES["file"]["type"]);
+		$target_file =  $displayName . "-to-" . $toID . " " . $timestamp . "." . basename($_FILES["file"]["type"]);
 		// replace char can't use
 		$target_file =  str_replace(":", "-", $target_file);
 
